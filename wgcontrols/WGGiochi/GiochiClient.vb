@@ -720,8 +720,9 @@ Public NotInheritable Class GiochiClient
     ''' <summary>
     ''' La prova di calcolo per creare un nome utente: cerca un numero (in esadecimale minuscolo) tale che SHA-256 di "sfida|nome in minuscolo|numero"
     ''' abbia almeno "bit" bit a zero all'inizio. Pochi secondi di calcolo per chi crea un nome, troppi per chi ne crea migliaia.
+    ''' La usa anche la chat (WGChat) per aprire cassette nuove quando il relè lo chiede: lì al posto del nome c'è l'impronta delle cassette.
     ''' </summary>
-    Private Shared Function RisolviProva(sfida As String, nome As String, bit As Integer) As String
+    Public Shared Function RisolviProva(sfida As String, nome As String, bit As Integer) As String
         Try
             Dim prefisso As Byte() = Encoding.UTF8.GetBytes(sfida & "|" & nome.ToLowerInvariant() & "|")
             Dim blocco(prefisso.Length + 31) As Byte

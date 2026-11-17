@@ -14,7 +14,9 @@ ORIGINE="$(cd "$(dirname "$0")" && pwd)"
 SITO=/var/www/html/wingabriel.net
 DESTINAZIONE="$SITO/chat"
 BETA="${BETA:-}"
-UTENTE=wingabriel
+UTENTE=wingabriel   # PHP gira con questo utente: possiede solo i dati, il codice è di root
+# alla fine (anche se si esce prima) si aggiornano le impronte del controllo d'integrità del sito, se c'è: i file nuovi sono quelli giusti
+trap '[ -x /usr/local/bin/wingabriel-impronte ] && /usr/local/bin/wingabriel-impronte aggiorna >/dev/null 2>&1 || true' EXIT
 GRUPPO=www-data
 NGINX=/etc/nginx/nginx.conf
 APACHE_SITO=/etc/apache2/sites-available/wingabriel.net.conf
@@ -29,7 +31,7 @@ if [ "$BETA" = 1 ]; then
   DESTINAZIONE="$SITO/beta/chat"
   echo "== COPIA BETA: $DESTINAZIONE"
   python3 "$ORIGINE/configura-beta.py"   # prima di tutto: senza registro e senza copia veloce, o non si installa
-  install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$SITO/beta"
+  install -d -m 755 -o root -g "$GRUPPO" "$SITO/beta"
 fi
 
 echo "== Controllo di chat.php"
@@ -37,15 +39,15 @@ php -l "$ORIGINE/chat.php" | tail -1
 php -l "$ORIGINE/index.php" | tail -1
 
 echo "== File"
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE"
 for f in chat.php index.php chat.js chat.css IMPRONTE.txt IMPRONTE.firmate.json pwa.js sw.js manifest.webmanifest icona-192.png icona-512.png icona-maskable-512.png apple-touch-icon.png; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$ORIGINE/$f" "$DESTINAZIONE/$f"
+  install -m 644 -o root -g "$GRUPPO" "$ORIGINE/$f" "$DESTINAZIONE/$f"
 done
 
 # i suoni delle notifiche (un messaggio, una richiesta di contatto)
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE/suoni"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE/suoni"
 for f in "$ORIGINE"/suoni/*.wav; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$f" "$DESTINAZIONE/suoni/$(basename "$f")"
+  install -m 644 -o root -g "$GRUPPO" "$f" "$DESTINAZIONE/suoni/$(basename "$f")"
 done
 
 if [ "$BETA" = 1 ]; then

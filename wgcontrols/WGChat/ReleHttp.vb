@@ -305,6 +305,19 @@ Public NotInheritable Class ReleHttp
         End Function
     End Class
 
+    ''' <summary>SHA-256 (esadecimale minuscolo) dei numeri delle cassette, in minuscolo, senza doppioni, in ordine e separati da virgole: come lo calcola il relè.</summary>
+    Private Shared Function ImprontaCassette(cassette As JArray) As String
+        Try
+            Dim numeri As List(Of String) = cassette.OfType(Of JObject)().Select(Function(c) Convert.ToString(c("mb")).ToLowerInvariant()).Distinct().OrderBy(Function(m) m, StringComparer.Ordinal).ToList()
+            Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                Return BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(String.Join(",", numeri)))).Replace("-", "").ToLowerInvariant()
+            End Using
+        Catch ex As Exception
+            RegistroErrori.Registra("ReleHttp.ImprontaCassette", ex)
+            Throw
+        End Try
+    End Function
+
     Public Async Function InviaAsync(mb As String, tk As String, b64 As String) As Task(Of String) Implements IReleChat.InviaAsync
         Try
             Dim r As Tuple(Of Integer, JObject) = Await ChiamaAsync("invia", New JObject From {{"mb", mb}, {"tk", tk}, {"b", b64}}, 20000)
@@ -335,6 +348,20 @@ Public NotInheritable Class ReleHttp
             End If
             Dim corpo As New JObject From {{"cassette", cassette}, {"ack", New JArray(ack)}, {"attesa", attesa}}
             Dim r As Tuple(Of Integer, JObject) = Await ChiamaAsync("ascolta", corpo, (attesa + 20) * 1000)
+            Dim prova As JObject = TryCast(r.Item2("prova"), JObject)
+            If r.Item1 = 428 AndAlso prova IsNot Nothing Then
+                ' Il relè chiede una piccola prova di calcolo per aprire cassette nuove (succede solo quando ne nascono moltissime).
+                ' La prova vale per le cassette di questa richiesta, identificate dall'impronta SHA-256 dei loro numeri in ordine.
+                Dim sfida As String = Convert.ToString(prova("sfida"))
+                Dim bit As Integer = If(prova("bit") IsNot Nothing, prova.Value(Of Integer)("bit"), 0)
+                If sfida <> "" AndAlso bit >= 1 AndAlso bit <= 26 Then
+                    Dim impronta As String = ImprontaCassette(cassette)
+                    Dim nonce As String = Await Task.Run(Function() WGGiochi.GiochiClient.RisolviProva(sfida, impronta, bit)).ConfigureAwait(False)
+                    corpo("attesa") = 0
+                    corpo("prova") = New JObject From {{"sfida", sfida}, {"nonce", nonce}}
+                    r = Await ChiamaAsync("ascolta", corpo, 20000)
+                End If
+            End If
             If r.Item1 <> 200 Then Throw New IOException("Il server della chat ha risposto con l'errore " & r.Item1.ToString() & ".")
             Dim b As JArray = TryCast(r.Item2("blocchi"), JArray)
             Return If(b, New JArray())

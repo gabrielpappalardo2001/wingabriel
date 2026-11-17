@@ -16,7 +16,9 @@ ORIGINE="$(cd "$(dirname "$0")" && pwd)"
 SITO=/var/www/html/wingabriel.net
 DESTINAZIONE="$SITO/giochi"
 DATI=/var/lib/wingabriel-giochi
-UTENTE=wingabriel
+UTENTE=wingabriel   # PHP gira con questo utente: possiede solo i dati, il codice è di root
+# alla fine (anche se si esce prima) si aggiornano le impronte del controllo d'integrità del sito, se c'è: i file nuovi sono quelli giusti
+trap '[ -x /usr/local/bin/wingabriel-impronte ] && /usr/local/bin/wingabriel-impronte aggiorna >/dev/null 2>&1 || true' EXIT
 GRUPPO=www-data
 NGINX=/etc/nginx/nginx.conf
 APACHE_SITO=/etc/apache2/sites-available/wingabriel.net.conf
@@ -47,28 +49,28 @@ for f in attesa.py installa-attesa.sh; do
 done
 
 echo "== Cartelle"
-if [ "$BETA" = 1 ]; then install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$SITO/beta"; fi
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE"
+if [ "$BETA" = 1 ]; then install -d -m 755 -o root -g "$GRUPPO" "$SITO/beta"; fi
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE"
 install -d -m 770 -o "$UTENTE" -g "$GRUPPO" "$DATI"
 
 echo "== File"
 for f in giochi.php burraco.php monopoli.php mazzo-italiano.php briscola.php scopa.php battaglia.php index.html giochi.js giochi.css sw.js manifest.webmanifest icona-192.png icona-512.png icona-maskable-512.png apple-touch-icon.png; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$ORIGINE/$f" "$DESTINAZIONE/$f"
+  install -m 644 -o root -g "$GRUPPO" "$ORIGINE/$f" "$DESTINAZIONE/$f"
 done
 # le immagini delle carte (una per carta, più il dorso)
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE/carte"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE/carte"
 for f in "$ORIGINE"/carte/*.png; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$f" "$DESTINAZIONE/carte/$(basename "$f")"
+  install -m 644 -o root -g "$GRUPPO" "$f" "$DESTINAZIONE/carte/$(basename "$f")"
 done
 # i suoni dei giochi (carte, dadi, soldi...: li fa scripts/genera-suoni.py)
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE/suoni"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE/suoni"
 for f in "$ORIGINE"/suoni/*.wav; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$f" "$DESTINAZIONE/suoni/$(basename "$f")"
+  install -m 644 -o root -g "$GRUPPO" "$f" "$DESTINAZIONE/suoni/$(basename "$f")"
 done
 # le immagini del monopoli (dadi, case, albergo, pedine, icone delle caselle: le fa scripts/genera-monopoli.py)
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE/monopoli"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE/monopoli"
 for f in "$ORIGINE"/monopoli/*.png; do
-  install -m 644 -o "$UTENTE" -g "$GRUPPO" "$f" "$DESTINAZIONE/monopoli/$(basename "$f")"
+  install -m 644 -o root -g "$GRUPPO" "$f" "$DESTINAZIONE/monopoli/$(basename "$f")"
 done
 
 if [ "$BETA" = 1 ]; then

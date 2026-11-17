@@ -94,6 +94,7 @@ RE_CASSETTA = re.compile(r'^[0-9a-fA-F]{32}$')
 RE_GIOCHI = re.compile(r'^(/beta)?/giochi/giochi\.php$')
 RE_CHAT = re.compile(r'^(/beta)?/chat/chat\.php$')
 RE_RIGA = re.compile(r'^([A-Z]+) (\S+) HTTP/1\.[01]$')
+RE_INDIRIZZO = re.compile(r'^(?:[0-9]{1,3}(?:\.[0-9]{1,3}){3}|[0-9A-Fa-f:]{2,39})$')
 
 # intestazioni che non si ripetono verso chi ha chiesto (le ricalcola questo programma)
 SALTA_RISPOSTA = {'connection', 'keep-alive', 'transfer-encoding', 'content-length', 'date', 'server', 'upgrade', 'proxy-connection'}
@@ -234,6 +235,10 @@ async def inoltra(metodo, target, intest, corpo):
             # solo valori senza caratteri di controllo: un a capo dentro un valore non deve poter aggiungere righe alla richiesta per Apache
             if nome in intest and not any(ord(c) < 32 or ord(c) == 127 for c in intest[nome]):
                 testa.append('%s: %s' % (nome, intest[nome]))
+        # l'indirizzo vero di chi chiede, messo da nginx (questo programma ascolta solo su questo computer): Apache lo prende con
+        # mod_remoteip e il relè della chat conta le cassette per rete. Solo se è davvero un indirizzo.
+        if RE_INDIRIZZO.match(intest.get('x-real-ip', '')):
+            testa.append('X-Real-IP: %s' % intest['x-real-ip'])
         if metodo != 'GET' or corpo:
             testa.append('Content-Length: %d' % len(corpo))
         scrittore.write(('\r\n'.join(testa) + '\r\n\r\n').encode('latin-1') + corpo)

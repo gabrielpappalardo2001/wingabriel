@@ -11,7 +11,9 @@ ORIGINE="$(cd "$(dirname "$0")" && pwd)"
 SITO=/var/www/html/wingabriel.net
 DESTINAZIONE="$SITO/segnalazioni"
 DATI=/var/lib/wingabriel-segnalazioni
-UTENTE=wingabriel
+UTENTE=wingabriel   # PHP gira con questo utente: possiede solo i dati, il codice è di root
+# alla fine (anche se si esce prima) si aggiornano le impronte del controllo d'integrità del sito, se c'è: i file nuovi sono quelli giusti
+trap '[ -x /usr/local/bin/wingabriel-impronte ] && /usr/local/bin/wingabriel-impronte aggiorna >/dev/null 2>&1 || true' EXIT
 GRUPPO=www-data
 NGINX=/etc/nginx/nginx.conf
 APACHE_SITO=/etc/apache2/sites-available/wingabriel.net.conf
@@ -26,9 +28,9 @@ php -l "$ORIGINE/segnalazioni.php" | tail -1
 php -l "$ORIGINE/invia-segnalazioni.php" | tail -1
 
 echo "== Cartelle e file"
-install -d -m 755 -o "$UTENTE" -g "$GRUPPO" "$DESTINAZIONE"
+install -d -m 755 -o root -g "$GRUPPO" "$DESTINAZIONE"
 install -d -m 770 -o "$UTENTE" -g "$GRUPPO" "$DATI" "$DATI/coda"
-install -m 644 -o "$UTENTE" -g "$GRUPPO" "$ORIGINE/segnalazioni.php" "$DESTINAZIONE/segnalazioni.php"
+install -m 644 -o root -g "$GRUPPO" "$ORIGINE/segnalazioni.php" "$DESTINAZIONE/segnalazioni.php"
 install -m 755 -o root -g root "$ORIGINE/invia-segnalazioni.php" /usr/local/bin/invia-segnalazioni
 sed -i 's/\r$//' /usr/local/bin/invia-segnalazioni
 

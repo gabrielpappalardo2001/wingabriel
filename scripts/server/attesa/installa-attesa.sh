@@ -158,6 +158,12 @@ map "$uri:$arg_a" $wg_reg_chiave {
     "~^/(beta/)?giochi/giochi[.]php:registra$" $wg_rete;
 }
 limit_req_zone $wg_reg_chiave zone=wg_reg:2m rate=1r/m;
+# Chat: per ogni rete al massimo 120 richieste al minuto, con 120 di scorta (un utente normale ne fa poche decine). Solo in memoria di nginx.
+map $uri $wg_chat_chiave {
+    default "";
+    "~^/(beta/)?chat/chat[.]php$" $wg_rete;
+}
+limit_req_zone $wg_chat_chiave zone=wg_chat:5m rate=120r/m;
 '''
 if leggi(mappe) != nuove_mappe:
     scrivi(mappe, nuove_mappe)
@@ -174,12 +180,16 @@ for v in usate:
     proxy_http_version 1.1;
     proxy_set_header Connection "";
     proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;   # il motore lo passa ad Apache (mod_remoteip): il relè della chat conta per rete
     proxy_connect_timeout 2s;
     proxy_send_timeout 30s;
     proxy_read_timeout 65s;   # i flussi di eventi danno segno di vita ogni 15 secondi
     proxy_buffering off;
     limit_conn wg_conn 60;
     limit_conn_status 429;
+    limit_req zone=wg_chat burst=120 nodelay;
+    limit_req_status 429;
+    error_page 429 = @wg_troppe;
     gzip on;
     gzip_vary on;
     gzip_proxied any;
@@ -188,11 +198,12 @@ for v in usate:
 }''' % (regola, nome))
 pezzi.append('''location @wg_troppe {
     default_type application/json;
-    return 429 '{"errore":"Troppe registrazioni da questa rete: riprova tra qualche minuto."}';
+    return 429 '{"errore":"Troppe richieste da questa rete: riprova tra qualche minuto."}';
 }''')
 pezzi.append('''location @wg_apache {
     error_page 429 = @wg_troppe;
     limit_req zone=wg_reg burst=5 nodelay;
+    limit_req zone=wg_chat burst=120 nodelay;
     limit_req_status 429;
     proxy_pass https://apache_wingabriel_net;
     include /etc/nginx/gabriel-proxy.inc;

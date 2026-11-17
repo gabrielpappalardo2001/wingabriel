@@ -144,9 +144,22 @@ async function ascoltaConFlusso(cassette, ack, attesa) {
       }
     }
   }
-  const r = await post('ascolta', { cassette, ack, attesa });
+  let r = await post('ascolta', { cassette, ack, attesa });
+  if (r.codice === 428 && r.dati.prova && r.dati.prova.sfida && r.dati.prova.bit >= 1 && r.dati.prova.bit <= 26) {
+    // il relè chiede una piccola prova di calcolo per aprire cassette nuove (succede solo quando ne nascono moltissime): la prova vale
+    // per le cassette di questa richiesta, identificate dall'impronta SHA-256 dei loro numeri in ordine
+    const nonce = await risolviProva(r.dati.prova.sfida, await improntaCassette(cassette), r.dati.prova.bit);
+    r = await post('ascolta', { cassette, ack, attesa: 0, prova: { sfida: r.dati.prova.sfida, nonce } });
+  }
   if (r.codice !== 200) throw new Error('errore ' + r.codice);
   return r.dati.blocchi;
+}
+
+/** SHA-256 (esadecimale) dei numeri delle cassette, in minuscolo, senza doppioni, in ordine e separati da virgole: come lo calcola il relè. */
+async function improntaCassette(cassette) {
+  const numeri = [...new Set(cassette.map((c) => String(c.mb).toLowerCase()))].sort();
+  const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(numeri.join(',')));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 // </flusso-chat>
 const trasporto = {
