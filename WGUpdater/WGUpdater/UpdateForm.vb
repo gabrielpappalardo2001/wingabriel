@@ -2578,7 +2578,25 @@ Friend Class RisultatoAggiornamento
     Public Property FileScaricati As Integer = 0
     Public Property FileSaltati As Integer = 0
     Public Property FileFalliti As Integer = 0
+    ' Vero se i file arrivati sono stati installati ma qualcuno è mancato: al prossimo avvio l'aggiornamento riprende da solo e scarica
+    ' solo quelli che mancano.
+    Public Property Parziale As Boolean = False
     Public Property Errori As New List(Of String)
+End Class
+
+''' <summary>
+''' Un errore di una sola sorgente (il sito o GitHub). Definitivo se riprovare la stessa sorgente non serve (il server ha detto no, o il
+''' file non è quello giusto): allora si passa subito all'altra.
+''' </summary>
+Friend Class ErroreSorgente
+    Inherits IOException
+
+    Public ReadOnly Property Definitivo As Boolean
+
+    Public Sub New(ByVal messaggio As String, ByVal definitivo As Boolean)
+        MyBase.New(messaggio)
+        Me.Definitivo = definitivo
+    End Sub
 End Class
 
 Friend Class ContestoLavoratore
@@ -2591,7 +2609,11 @@ Friend Class GestoreAggiornamento
     Private Const APP_NOME As String = "wingabriel"
     Private Const NUMERO_MASSIMO_DOWNLOAD_PARALLELI As Integer = 6
     Private Const TOLLERANZA_SECONDI_DATA As Integer = 2
-    Private Const TENTATIVI_PER_FILE As Integer = 3
+    ' Giri su tutte le sorgenti (sito e GitHub) per ogni file, e secondi senza dati dopo cui una connessione si considera bloccata.
+    Private Const GIRI_PER_FILE As Integer = 3
+    Private Const SECONDI_SENZA_DATI As Integer = 60
+    ' Spazio libero che deve restare sul disco oltre ai file da scaricare.
+    Private Const MARGINE_SPAZIO As Long = 100L * 1024L * 1024L
     Private Const DIMENSIONE_BUFFER As Integer = 131072
     Private Const CARTELLA_BACKUP As String = "hold"
     Private Const ESTENSIONE_BACKUP As String = ".WGHold"
@@ -2616,6 +2638,8 @@ Friend Class GestoreAggiornamento
     ' Il rilascio firmato da cui viene l'elenco (Nothing se non c'è) e l'indirizzo da cui scaricare i file.
     Private _manifestRilascio As RilascioFirmato.Manifest = Nothing
     Private _urlBaseDownload As String = ""
+    ' I file che non si sono potuti scaricare in questo giro: si riprovano alla fine, uno alla volta.
+    Private ReadOnly _vociFallite As New ConcurrentQueue(Of VoceFileAggiornamento)()
 
     Friend Sub New(ByVal cartellaBase As String)
         _cartellaBase = cartellaBase
@@ -2738,6 +2762,15 @@ Friend Class GestoreAggiornamento
                 Return risultato
             End If
 
+            ' Prima di cominciare: c'è spazio per i file nuovi (scaricati accanto a quelli vecchi)?
+            Dim spazioMancante As String = ControllaSpazio(daScaricare)
+            If spazioMancante <> "" Then
+                risultato.Errori.Add(spazioMancante)
+                RegistroAggiornamento.Scrivi(spazioMancante)
+                risultato.FileFalliti = daScaricare.Count
+                Return risultato
+            End If
+
             For Each voce As VoceFileAggiornamento In daScaricare
                 _coda.Enqueue(voce)
             Next
@@ -2775,6 +2808,9 @@ Friend Class GestoreAggiornamento
                 End Try
             Next
 
+            ' Secondo giro per i file mancati: uno alla volta, con calma, dopo che gli altri hanno liberato la connessione.
+            RiprovaVociFallite()
+
             Try
                 _cacheImpronte.Salva()
             Catch exCacheFinale As Exception
@@ -2785,13 +2821,17 @@ Friend Class GestoreAggiornamento
             risultato.FileFalliti = Interlocked.CompareExchange(_fileFalliti, 0, 0)
             risultato.Annullato = tokenAnnullamento.IsCancellationRequested
 
-            If risultato.FileFalliti = 0 AndAlso Not risultato.Annullato Then
-                ' tutti i file sono scaricati e verificati: solo adesso si tocca l'installazione. Se invece qualcosa è mancato non si è sostituito
-                ' niente, e la copia di sicurezza della versione di prima resta com'è.
+            Dim pronti As List(Of VoceFileAggiornamento) = daScaricare.Where(Function(v) Not String.IsNullOrEmpty(v.TemporaneoPronto) AndAlso File.Exists(v.TemporaneoPronto)).ToList()
+
+            If Not risultato.Annullato AndAlso pronti.Count > 0 Then
+                ' Si installano tutti i file arrivati e verificati, anche se qualcuno è mancato: un file solo non deve bloccare tutto
+                ' l'aggiornamento. Quelli mancati restano nella versione di prima; lo stato del rilascio non si salva, quindi al prossimo
+                ' avvio l'aggiornamento riparte da solo e scarica solo quelli. La copia di sicurezza permette sempre di tornare indietro.
+                If risultato.FileFalliti > 0 Then RegistroAggiornamento.Scrivi("Installo i " & pronti.Count & " file arrivati; " & risultato.FileFalliti & " si riproveranno al prossimo avvio.")
                 _descrizioneCorrente = "Sostituzione dei file"
                 PreparaCartellaBackup()
 
-                For Each voceDaApplicare As VoceFileAggiornamento In daScaricare
+                For Each voceDaApplicare As VoceFileAggiornamento In pronti
                     Try
                         ApplicaVoceFile(voceDaApplicare)
                     Catch exApplica As Exception
@@ -2807,20 +2847,23 @@ Friend Class GestoreAggiornamento
                 risultato.FileScaricati = Interlocked.CompareExchange(_fileRiusciti, 0, 0)
                 risultato.FileFalliti = Interlocked.CompareExchange(_fileFalliti, 0, 0)
 
+                ' Controllo finale: ogni file installato deve avere l'impronta del manifest firmato.
+                VerificaInstallati(pronti)
+
                 Try
                     _cacheImpronte.Salva()
                 Catch exCacheApplica As Exception
                     RegistroAggiornamento.Scrivi("Esegui (salvataggio cache dopo la sostituzione): " & exCacheApplica.Message)
                 End Try
-            Else
-                PulisciResiduiPrecedenti(_cartellaBase)
             End If
+            PulisciResiduiPrecedenti(_cartellaBase)
 
             SyncLock _erroriBlocco
                 risultato.Errori = New List(Of String)(_errori)
             End SyncLock
 
             risultato.Successo = Not risultato.Annullato AndAlso risultato.FileFalliti = 0
+            risultato.Parziale = Not risultato.Annullato AndAlso risultato.FileFalliti > 0 AndAlso risultato.FileScaricati > 0
 
             If risultato.Successo Then
                 RimuoviMarchioZonaRicorsivo(_cartellaBase)
@@ -2878,6 +2921,7 @@ Friend Class GestoreAggiornamento
                     Interlocked.Increment(_fileRiusciti)
                 ElseIf Not _tokenAnnullamento.IsCancellationRequested Then
                     Interlocked.Increment(_fileFalliti)
+                    _vociFallite.Enqueue(voce)
                 End If
 
                 Interlocked.Increment(_fileCompletati)
@@ -2887,35 +2931,84 @@ Friend Class GestoreAggiornamento
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Le sorgenti di un file, in ordine: prima quella del rilascio letto (il sito, o GitHub se il sito non rispondeva), poi l'altra. Su
+    ''' GitHub ogni file sta nel rilascio "file" con il nome h.&lt;impronta&gt;, quindi si trova con l'impronta del manifest firmato.
+    ''' </summary>
+    Private Function SorgentiPerVoce(ByVal voce As VoceFileAggiornamento) As List(Of String)
+        Dim sorgenti As New List(Of String)()
+        Try
+            Dim relativo As String = If(voce.Tipo.Equals("libmpv", StringComparison.OrdinalIgnoreCase), If(Environment.Is64BitOperatingSystem, voce.UrlRelativaX64, voce.UrlRelativaX86), voce.PercorsoRelativo)
+            If String.IsNullOrWhiteSpace(relativo) Then Return sorgenti
+            relativo = relativo.Replace("\"c, "/"c).TrimStart("/"c)
+            If _urlBaseDownload <> "" Then sorgenti.Add(RilascioFirmato.UrlFile(_urlBaseDownload, relativo))
+            Dim versione As String = If(_manifestRilascio IsNot Nothing AndAlso _manifestRilascio.Puntatore IsNot Nothing, _manifestRilascio.Puntatore.Versione, "")
+            If versione <> "" Then
+                Dim sito As String = RilascioFirmato.BASE_RILASCI & APP_NOME & "/v/" & Uri.EscapeDataString(versione) & "/f/" & relativo
+                If Not sorgenti.Contains(sito) Then sorgenti.Add(sito)
+            End If
+            Dim impronta As String = voce.ImprontaAttesa()
+            If Not String.IsNullOrEmpty(impronta) Then
+                Dim github As String = RilascioFirmato.BASE_DOWNLOAD_GITHUB & RilascioFirmato.TAG_FILE_GITHUB & "/h." & impronta.ToLowerInvariant()
+                If Not sorgenti.Contains(github) Then sorgenti.Add(github)
+            End If
+        Catch ex As Exception
+            RegistroAggiornamento.Scrivi("SorgentiPerVoce " & voce.PercorsoRelativo & ": " & ex.Message)
+        End Try
+        Return sorgenti
+    End Function
+
+    ''' <summary>
+    ''' Scarica un file provando tutte le sorgenti, per più giri. Un errore definitivo di una sorgente (403, 404, impronta sbagliata) la
+    ''' esclude per questo file e si passa subito all'altra; un errore di rete si riprova al giro dopo, con un'attesa che cresce.
+    ''' </summary>
     Private Function ScaricaConTentativi(ByVal voce As VoceFileAggiornamento, ByVal indiceLavoratore As Integer) As Boolean
         Dim ultimoErrore As String = String.Empty
+        Dim sorgenti As List(Of String) = SorgentiPerVoce(voce)
+        Dim escluse As New HashSet(Of String)(StringComparer.OrdinalIgnoreCase)
 
-        For tentativo As Integer = 1 To TENTATIVI_PER_FILE
-            If _tokenAnnullamento.IsCancellationRequested Then
-                Return False
-            End If
+        If sorgenti.Count = 0 Then
+            ultimoErrore = "nessun indirizzo da cui scaricarlo"
+        End If
 
-            Try
-                ScaricaVoceFile(voce, indiceLavoratore)
-                Return True
-            Catch ex As OperationCanceledException
-                Return False
-            Catch ex As Exception
-                ultimoErrore = ex.Message
-                RegistroAggiornamento.Scrivi("Tentativo " & tentativo & " fallito per " & voce.PercorsoRelativo & ": " & ex.Message)
+        For giro As Integer = 1 To GIRI_PER_FILE
+            For Each sorgente As String In sorgenti
+                If _tokenAnnullamento.IsCancellationRequested Then
+                    Return False
+                End If
+                If escluse.Contains(sorgente) Then Continue For
+
+                Try
+                    ScaricaVoceFile(voce, indiceLavoratore, sorgente)
+                    If giro > 1 OrElse sorgente <> sorgenti(0) Then RegistroAggiornamento.Scrivi(voce.PercorsoRelativo & ": scaricato da " & sorgente & " al giro " & giro & ".")
+                    Return True
+                Catch ex As OperationCanceledException
+                    If _tokenAnnullamento.IsCancellationRequested Then Return False
+                    ultimoErrore = "connessione bloccata"
+                    RegistroAggiornamento.Scrivi("Giro " & giro & ", " & voce.PercorsoRelativo & " da " & sorgente & ": connessione bloccata.")
+                Catch ex As ErroreSorgente
+                    ultimoErrore = ex.Message
+                    RegistroAggiornamento.Scrivi("Giro " & giro & ", " & voce.PercorsoRelativo & " da " & sorgente & ": " & ex.Message & If(ex.Definitivo, " (sorgente esclusa per questo file)", ""))
+                    If ex.Definitivo Then escluse.Add(sorgente)
+                Catch ex As Exception
+                    ultimoErrore = ex.Message
+                    RegistroAggiornamento.Scrivi("Giro " & giro & ", " & voce.PercorsoRelativo & " da " & sorgente & ": " & ex.Message)
+                End Try
 
                 Try
                     Interlocked.Exchange(_frazioni(indiceLavoratore), 0.0R)
                 Catch
                 End Try
+            Next
 
-                If tentativo < TENTATIVI_PER_FILE Then
-                    Try
-                        Thread.Sleep(1000 * tentativo)
-                    Catch
-                    End Try
-                End If
-            End Try
+            If escluse.Count >= sorgenti.Count Then Exit For
+            If giro < GIRI_PER_FILE Then
+                Try
+                    ' 2, 6 secondi: abbastanza per un sito che si riprende o una rete che torna
+                    _tokenAnnullamento.WaitHandle.WaitOne(TimeSpan.FromSeconds(If(giro = 1, 2, 6)))
+                Catch
+                End Try
+            End If
         Next
 
         SyncLock _erroriBlocco
@@ -2925,20 +3018,94 @@ Friend Class GestoreAggiornamento
         Return False
     End Function
 
-    Private Sub ScaricaVoceFile(ByVal voce As VoceFileAggiornamento, ByVal indiceLavoratore As Integer)
-        Dim urlRelativa As String
+    ''' <summary>Riprova, uno alla volta, i file che i lavoratori non sono riusciti a scaricare.</summary>
+    Private Sub RiprovaVociFallite()
+        Try
+            Dim voce As VoceFileAggiornamento = Nothing
+            Dim daRiprovare As New List(Of VoceFileAggiornamento)()
+            While _vociFallite.TryDequeue(voce)
+                daRiprovare.Add(voce)
+            End While
+            If daRiprovare.Count = 0 OrElse _tokenAnnullamento.IsCancellationRequested Then Return
+            _descrizioneCorrente = "Nuovo tentativo per " & daRiprovare.Count & " file"
+            RegistroAggiornamento.Scrivi("Secondo giro per " & daRiprovare.Count & " file non scaricati.")
+            For Each v As VoceFileAggiornamento In daRiprovare
+                If _tokenAnnullamento.IsCancellationRequested Then Return
+                Dim riuscito As Boolean = False
+                Try
+                    riuscito = ScaricaConTentativi(v, 0)
+                Catch ex As Exception
+                    RegistroAggiornamento.Scrivi("RiprovaVociFallite " & v.PercorsoRelativo & ": " & ex.Message)
+                End Try
+                If riuscito Then
+                    Interlocked.Increment(_fileRiusciti)
+                    Interlocked.Decrement(_fileFalliti)
+                    SyncLock _erroriBlocco
+                        _errori.RemoveAll(Function(e) e.StartsWith(v.PercorsoRelativo & ": ", StringComparison.Ordinal))
+                    End SyncLock
+                End If
+            Next
+        Catch ex As Exception
+            RegistroAggiornamento.Scrivi("RiprovaVociFallite: " & ex.Message)
+        End Try
+    End Sub
 
-        If voce.Tipo.Equals("libmpv", StringComparison.OrdinalIgnoreCase) Then
-            urlRelativa = If(Environment.Is64BitOperatingSystem, voce.UrlRelativaX64, voce.UrlRelativaX86)
-        Else
-            urlRelativa = voce.PercorsoRelativo
+    ''' <summary>Messaggio se sul disco non c'è posto per i file da scaricare; vuoto se c'è.</summary>
+    Private Function ControllaSpazio(ByVal voci As List(Of VoceFileAggiornamento)) As String
+        Try
+            Dim necessario As Long = 0
+            For Each v As VoceFileAggiornamento In voci
+                Dim d As Long = v.DimensioneAttesa()
+                If d > 0 Then necessario += d
+            Next
+            Dim radice As String = Path.GetPathRoot(Path.GetFullPath(_cartellaBase))
+            If String.IsNullOrEmpty(radice) OrElse radice.StartsWith("\\", StringComparison.Ordinal) Then Return ""
+            Dim unita As New DriveInfo(radice)
+            If Not unita.IsReady Then Return ""
+            ' i file nuovi e la copia di sicurezza di quelli vecchi
+            Dim richiesto As Long = necessario * 2 + MARGINE_SPAZIO
+            If unita.AvailableFreeSpace >= richiesto Then Return ""
+            Return "Non c'è abbastanza spazio sul disco " & radice & ": servono circa " & (richiesto \ (1024L * 1024L)).ToString(CultureInfo.InvariantCulture) & " MB e ce ne sono " & (unita.AvailableFreeSpace \ (1024L * 1024L)).ToString(CultureInfo.InvariantCulture) & "."
+        Catch ex As Exception
+            RegistroAggiornamento.Scrivi("ControllaSpazio: " & ex.Message)
+            Return ""
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Dopo l'installazione rilegge ogni file installato e controlla l'impronta. Un file diverso (per esempio sostituito solo al riavvio
+    ''' perché era in uso) si segna: lo stato del rilascio non si salva e al prossimo avvio si sistema.
+    ''' </summary>
+    Private Sub VerificaInstallati(ByVal voci As List(Of VoceFileAggiornamento))
+        Try
+            _descrizioneCorrente = "Controllo dei file installati"
+            For Each v As VoceFileAggiornamento In voci
+                Try
+                    Dim attesa As String = v.ImprontaAttesa()
+                    If String.IsNullOrEmpty(attesa) Then Continue For
+                    Dim percorso As String = OttieniPercorsoLocale(v)
+                    If Not File.Exists(percorso) OrElse Not String.Equals(CalcolaImprontaLocale(percorso), attesa, StringComparison.OrdinalIgnoreCase) Then
+                        RegistroAggiornamento.Scrivi("VerificaInstallati: " & v.PercorsoRelativo & " non corrisponde al manifest dopo l'installazione.")
+                        SyncLock _erroriBlocco
+                            _errori.Add(v.PercorsoRelativo & ": non installato correttamente (si sistemerà al prossimo avvio)")
+                        End SyncLock
+                        Interlocked.Increment(_fileFalliti)
+                        Interlocked.Decrement(_fileRiusciti)
+                    End If
+                Catch exVoce As Exception
+                    RegistroAggiornamento.Scrivi("VerificaInstallati " & v.PercorsoRelativo & ": " & exVoce.Message)
+                End Try
+            Next
+        Catch ex As Exception
+            RegistroAggiornamento.Scrivi("VerificaInstallati: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ScaricaVoceFile(ByVal voce As VoceFileAggiornamento, ByVal indiceLavoratore As Integer, ByVal urlCompleto As String)
+        If String.IsNullOrWhiteSpace(urlCompleto) Then
+            Throw New ErroreSorgente("URL di download non disponibile per la voce.", True)
         End If
 
-        If String.IsNullOrWhiteSpace(urlRelativa) Then
-            Throw New InvalidOperationException("URL di download non disponibile per la voce.")
-        End If
-
-        Dim urlCompleto As String = RilascioFirmato.UrlFile(_urlBaseDownload, urlRelativa)
         Dim percorsoLocale As String = OttieniPercorsoLocale(voce)
         Dim cartellaFile As String = Path.GetDirectoryName(percorsoLocale)
 
@@ -2968,10 +3135,14 @@ Friend Class GestoreAggiornamento
             giaScaricati = 0
         End If
 
+        ' Una connessione che non manda più niente per SECONDI_SENZA_DATI secondi si chiude e si riprova (anche da un'altra sorgente):
+        ' senza, un server bloccato terrebbe fermo l'aggiornamento fino al limite di 15 minuti.
+        Using sveglia As CancellationTokenSource = CancellationTokenSource.CreateLinkedTokenSource(_tokenAnnullamento)
+        sveglia.CancelAfter(TimeSpan.FromSeconds(SECONDI_SENZA_DATI))
         Using richiesta As New HttpRequestMessage(HttpMethod.Get, urlCompleto)
             If giaScaricati > 0 Then richiesta.Headers.Range = New System.Net.Http.Headers.RangeHeaderValue(giaScaricati, Nothing)
 
-            Using risposta As HttpResponseMessage = _httpClient.SendAsync(richiesta, HttpCompletionOption.ResponseHeadersRead, _tokenAnnullamento).GetAwaiter().GetResult()
+            Using risposta As HttpResponseMessage = _httpClient.SendAsync(richiesta, HttpCompletionOption.ResponseHeadersRead, sveglia.Token).GetAwaiter().GetResult()
                 If CInt(risposta.StatusCode) = 416 Then
                     Try
                         File.Delete(percorsoTemporaneo)
@@ -2980,7 +3151,19 @@ Friend Class GestoreAggiornamento
                     Throw New IOException("Il file parziale non corrisponde a quello del server: ricomincio da capo.")
                 End If
 
-                risposta.EnsureSuccessStatusCode()
+                If Not risposta.IsSuccessStatusCode Then
+                    Dim codice As Integer = CInt(risposta.StatusCode)
+                    ' 4xx (tranne 408 e 429) non cambia riprovando: si passa all'altra sorgente
+                    Dim definitivo As Boolean = codice >= 400 AndAlso codice < 500 AndAlso codice <> 408 AndAlso codice <> 429
+                    Throw New ErroreSorgente("il server ha risposto " & codice.ToString(CultureInfo.InvariantCulture) & " " & risposta.ReasonPhrase, definitivo)
+                End If
+                Dim chiusura As CancellationTokenRegistration = sveglia.Token.Register(Sub()
+                                                                                          Try
+                                                                                              risposta.Dispose()
+                                                                                          Catch
+                                                                                          End Try
+                                                                                      End Sub)
+                Try
 
                 Dim riprende As Boolean = (CInt(risposta.StatusCode) = 206 AndAlso giaScaricati > 0)
                 If Not riprende Then giaScaricati = 0
@@ -3003,6 +3186,7 @@ Friend Class GestoreAggiornamento
 
                             flussoLocale.Write(buffer, 0, letti)
                             byteScritti += letti
+                            sveglia.CancelAfter(TimeSpan.FromSeconds(SECONDI_SENZA_DATI))
 
                             If lunghezzaAttesa > 0 Then
                                 Try
@@ -3019,7 +3203,13 @@ Friend Class GestoreAggiornamento
                         flussoLocale.Flush(True)
                     End Using
                 End Using
+                Catch exLettura As Exception When sveglia.IsCancellationRequested AndAlso Not _tokenAnnullamento.IsCancellationRequested
+                    Throw New IOException("nessun dato ricevuto per " & SECONDI_SENZA_DATI & " secondi: connessione chiusa (il file riprende da dove era arrivato)")
+                Finally
+                    chiusura.Dispose()
+                End Try
             End Using
+        End Using
         End Using
 
         If byteScritti = 0 Then
@@ -3053,7 +3243,7 @@ Friend Class GestoreAggiornamento
                     File.Delete(percorsoTemporaneo)
                 Catch
                 End Try
-                Throw New IOException("L'impronta del file scaricato non corrisponde a quella del server per " & voce.PercorsoRelativo & ".")
+                Throw New ErroreSorgente("l'impronta del file scaricato non corrisponde al manifest firmato", True)
             End If
         End If
 
@@ -3959,6 +4149,9 @@ Friend Class FinestraAvanzamentoAggiornamento
                 Else
                     messaggio = "Nessun aggiornamento necessario, i file sono gia' aggiornati."
                 End If
+            ElseIf _risultato.Parziale AndAlso Not _modalitaRipristino Then
+                _barra.Valore = 100
+                messaggio = "Aggiornamento quasi completo: aggiornati " & _risultato.FileScaricati.ToString(CultureInfo.InvariantCulture) & " file, " & _risultato.FileFalliti.ToString(CultureInfo.InvariantCulture) & " non sono arrivati e si riproveranno da soli al prossimo avvio. Il dettaglio si trova nel file wg_updater_log.txt."
             Else
                 messaggio = NomeOperazione() & " terminato con " & _risultato.FileFalliti.ToString(CultureInfo.InvariantCulture) & " errori. Il dettaglio si trova nel file wg_updater_log.txt."
             End If
@@ -4342,6 +4535,21 @@ Public Class UpdateForm
 
             If File.Exists(percorso) Then
                 Return Reflection.Assembly.LoadFrom(percorso)
+            End If
+
+            If nomeRichiesto.Equals("System.Net.Http", StringComparison.OrdinalIgnoreCase) Then
+                For Each giaCaricato As Reflection.Assembly In AppDomain.CurrentDomain.GetAssemblies()
+                    Try
+                        If String.Equals(giaCaricato.GetName().Name, "System.Net.Http", StringComparison.OrdinalIgnoreCase) Then
+                            Return giaCaricato
+                        End If
+                    Catch
+                    End Try
+                Next
+                Dim percorsoRuntime As String = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "System.Net.Http.dll")
+                If File.Exists(percorsoRuntime) Then
+                    Return Reflection.Assembly.LoadFrom(percorsoRuntime)
+                End If
             End If
 
             Return Nothing
