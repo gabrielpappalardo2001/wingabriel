@@ -132,7 +132,11 @@ Friend NotInheritable Class InstallatoreLettore
     ' In uso portatile i file estratti si copiano in una cartella dell'utente, perché la cartella di lavoro viene cancellata.
     Private Shared Function ScaricaEInstallaInterno(modalita As String) As Integer
         ' Non si estrae in %TEMP%: i criteri di controllo delle applicazioni di Windows possono impedire di eseguire lì un programma non firmato.
-        Dim cartella As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinGabriel", "installazione-lettore", Guid.NewGuid().ToString("N"))
+        ' Con i privilegi di amministratore si lavora nella cartella di WinGabriel (in Programmi l'utente normale non può scriverci): in
+        ' %LOCALAPPDATA% chiunque giri come utente potrebbe cambiare il programma tra l'estrazione e l'avvio, che sarebbe da amministratore.
+        Dim elevato As Boolean = AvvioAmministratore.Elevato()
+        Dim base As String = If(elevato, AppDomain.CurrentDomain.BaseDirectory, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinGabriel"))
+        Dim cartella As String = Path.Combine(base, "installazione-lettore", Guid.NewGuid().ToString("N"))
         Try
             Directory.CreateDirectory(cartella)
             Dim archivio As String = Path.Combine(cartella, "wglettore.zip")
@@ -153,6 +157,9 @@ Friend NotInheritable Class InstallatoreLettore
                 CopiaCartella(Path.GetDirectoryName(eseguibile), stabile)
                 eseguibile = Path.Combine(stabile, "WGLettore.exe")
                 If Not File.Exists(eseguibile) Then Return -3
+                ' Da amministratore la copia nella cartella dell'utente non si avvia: si fa a mano quello che farebbe /installa:portatile,
+                ' cioè la voce di avvio all'accesso, e il lettore partirà all'accesso senza privilegi.
+                If elevato Then Return RegistraAvvioPortatile(eseguibile)
             End If
             Dim argomento As String = If(modalita = "portatile", "/installa:portatile", "/installa:sistema")
             Return Esegui(eseguibile, argomento)
@@ -163,6 +170,20 @@ Friend NotInheritable Class InstallatoreLettore
                 Directory.Delete(cartella, True)
             Catch
             End Try
+        End Try
+    End Function
+
+    ''' <summary>Scrive la voce che fa partire il lettore portatile all'accesso a Windows. 0 se fatto, 1 se non è stato possibile.</summary>
+    Private Shared Function RegistraAvvioPortatile(eseguibile As String) As Integer
+        Try
+            Using chiave As Microsoft.Win32.RegistryKey = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\Microsoft\Windows\CurrentVersion\Run")
+                chiave.SetValue("WGLettore", """" & eseguibile & """ /avvio ""/config:" & LettoreEsterno.PercorsoConfigurazione() & """")
+            End Using
+            Return 0
+        Catch ex As Exception
+            Dim log As New Logger()
+            log.ScriviLog("InstallatoreLettore.RegistraAvvioPortatile: " & ex.Message)
+            Return 1
         End Try
     End Function
 

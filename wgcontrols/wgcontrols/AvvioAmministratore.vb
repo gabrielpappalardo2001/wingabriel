@@ -97,6 +97,34 @@ Public Module AvvioAmministratore
         End Try
     End Function
 
+    ''' <summary>
+    ''' Vero se questo processo può avviare (o caricare) il file senza dare i suoi privilegi a chi non li ha. Senza privilegi di amministratore
+    ''' è sempre vero. Con i privilegi, solo per i file in cartelle che un utente normale non può modificare (Programmi, Windows) o nella
+    ''' cartella di WinGabriel stesso: un programma in %LOCALAPPDATA% o indicato in HKCU potrebbe averlo messo lì chiunque giri come utente,
+    ''' e partirebbe come amministratore senza nessuna conferma.
+    ''' </summary>
+    Public Function EseguibileAffidabile(percorso As String) As Boolean
+        Try
+            If String.IsNullOrWhiteSpace(percorso) Then Return False
+            If Not Elevato() Then Return True
+            Dim completo As String = Path.GetFullPath(percorso)
+            Dim radici As New List(Of String) From {
+                Environment.GetEnvironmentVariable("ProgramW6432"),
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                Environment.GetFolderPath(Environment.SpecialFolder.Windows),
+                AppDomain.CurrentDomain.BaseDirectory}
+            For Each radice As String In radici
+                If String.IsNullOrWhiteSpace(radice) Then Continue For
+                Dim r As String = Path.GetFullPath(radice).TrimEnd("\"c) & "\"
+                If completo.StartsWith(r, StringComparison.OrdinalIgnoreCase) Then Return True
+            Next
+            Return False
+        Catch
+            Return False
+        End Try
+    End Function
+
     Public Function Elevato() As Boolean
         Try
             Using identita As WindowsIdentity = WindowsIdentity.GetCurrent()

@@ -38,9 +38,13 @@ Friend NotInheritable Class LettoreEsterno
         Return ""
     End Function
 
+    ''' <summary>
+    ''' Vero se il file c'è e si può avviare: se WinGabriel ha i privilegi di amministratore, solo da cartelle che l'utente normale non può
+    ''' modificare (una copia del lettore in %LOCALAPPDATA% o indicata nella chiave Run di HKCU partirebbe come amministratore).
+    ''' </summary>
     Private Shared Function EsisteFile(percorso As String) As Boolean
         Try
-            Return Not String.IsNullOrWhiteSpace(percorso) AndAlso File.Exists(percorso)
+            Return Not String.IsNullOrWhiteSpace(percorso) AndAlso File.Exists(percorso) AndAlso AvvioAmministratore.EseguibileAffidabile(percorso)
         Catch ex As Exception
             log.ScriviLog("LettoreEsterno.EsisteFile: " & ex.Message)
             Return False

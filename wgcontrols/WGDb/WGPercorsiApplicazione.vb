@@ -265,12 +265,25 @@ Public NotInheritable Class WGPercorsiApplicazione
     ''' dell'applicazione. Si cerca sia nei dati accanto al programma sia nella cartella dei dati scelta dall'utente, e nella vecchia
     ''' cartella dei suoni nei dati locali.
     ''' </summary>
+    ''' <summary>
+    ''' Vero per i componenti che contengono solo dati e nessun programma o libreria da eseguire: i suoni. (I modelli no: in models\vosk
+    ''' ci sono anche le librerie native di Vosk.)
+    ''' </summary>
+    Private Shared Function ComponenteSenzaCodice(nome As String) As Boolean
+        Return String.Equals(nome, "suoni", StringComparison.OrdinalIgnoreCase)
+    End Function
+
     Private Shared Sub MigraComponenti()
         SyncLock _blocco
             If _componentiMigrati Then Return
             _componentiMigrati = True
             Try
                 Dim radice As String = RadiceApplicazione()
+                ' Se la destinazione è la cartella del programma installato (in Programmi, scrivibile solo dagli amministratori), dalle
+                ' cartelle che l'utente può scrivere (dati locali, cartella dei dati scelta) non si porta dentro niente che contenga codice
+                ' eseguibile: un programma qualunque dell'utente potrebbe lasciarci una dll o un .exe e farlo poi eseguire a WinGabriel
+                ' con i privilegi di amministratore. Quei componenti si riscaricano dalle loro fonti.
+                Dim destinazioneProtetta As Boolean = EInstallato() AndAlso Uguali(radice, CartellaProgramma())
                 Dim basi As New System.Collections.Generic.List(Of String)()
                 basi.Add(Path.Combine(CartellaProgramma(), "dati"))
                 Try
@@ -280,7 +293,9 @@ Public NotInheritable Class WGPercorsiApplicazione
                     Scrivi("MigraComponenti (cartella dati): " & ex.Message)
                 End Try
                 For Each baseDati As String In basi
+                    Dim dentroProgramma As Boolean = Uguali(baseDati, Path.Combine(CartellaProgramma(), "dati"))
                     Sposta(Path.Combine(baseDati, "suoni"), Path.Combine(radice, "suoni"))
+                    If destinazioneProtetta AndAlso Not dentroProgramma Then Continue For
                     Sposta(Path.Combine(baseDati, "spartiti", "audiveris"), Path.Combine(radice, "audiveris"))
                     Sposta(Path.Combine(baseDati, "traduttore"), Path.Combine(radice, "traduttore"))
                     Sposta(Path.Combine(baseDati, "espeak"), Path.Combine(radice, "espeak"))
@@ -296,6 +311,8 @@ Public NotInheritable Class WGPercorsiApplicazione
                 ' le versioni che li tenevano nei dati locali dell'utente (e chi, in Programmi, non poteva scrivere e ripiegava lì)
                 Dim locale As String = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "WinGabriel")
                 For Each nome As String In Componenti
+                    ' verso Programmi solo i componenti fatti di dati (suoni e modelli), mai quelli con programmi o librerie
+                    If destinazioneProtetta AndAlso Not ComponenteSenzaCodice(nome) Then Continue For
                     Sposta(Path.Combine(locale, nome), Path.Combine(radice, nome))
                 Next
             Catch ex As Exception
