@@ -47,7 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MailKit">
-      <HintPath>..\packages\MailKit.4.17.0\lib\net48\MailKit.dll</HintPath>
+      <HintPath>..\packages\MailKit.5.0.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

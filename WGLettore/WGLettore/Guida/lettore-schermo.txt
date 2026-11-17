@@ -1,0 +1,38 @@
+Il lettore di schermo
+
+WinGabriel ha dentro di sé un lettore di schermo, che funziona anche fuori dal programma: legge dove va il fuoco, dice i menu, le finestre, i campi dove scrivi, le pagine web. Così non serve un altro programma per usare il computer, e i tasti sono sempre gli stessi.
+
+Come si guida il lettore
+
+Il lettore si guida con il tasto dei comandi, seguito da un altro tasto. Il tasto dei comandi è Insert, oppure Bloc maiuscole, oppure entrambi: si sceglie dalle impostazioni del lettore di schermo, alla voce "Tasto dei comandi". Un doppio tocco del tasto dei comandi, da solo, manda il tasto vero all'applicazione.
+
+I tasti più importanti, con il tasto dei comandi tenuto premuto:
+
+Freccia in su: legge la riga dove sta il cursore.
+Freccia in giù: lettura continua. Parte dalla riga del cursore e va avanti fino in fondo, una riga dopo l'altra, nei documenti, nei campi di testo e nelle pagine web. Premuto di nuovo mette in pausa, e poi riprende. Qualsiasi altro tasto interrompe la lettura.
+C: legge il carattere del cursore. W: la parola. Con Shift, C compita la parola.
+S: legge la selezione. T: il titolo della finestra. B: il testo della finestra. Fine: la barra di stato. F12 l'ora, F11 la data.
+Spazio: nelle pagine web entra o esce dalla navigazione dell'albero. Invio attiva l'elemento. Tab dice l'elemento con il fuoco. Esc esce dalla scrittura e torna alla navigazione.
+F1: ripete l'elenco dei comandi. Il tasto dei comandi con 1: aiuto dei tasti, dice che cosa fa ogni tasto senza eseguirlo. Q sospende il lettore, e lo stesso tasto lo riaccende.
+
+Nelle pagine web, in navigazione, le lettere saltano ai punti della pagina: H le intestazioni (da 1 a 6 i livelli), K i link, B i pulsanti, E i campi di scrittura, L gli elenchi, T le tabelle e così via; con Shift si torna indietro.
+
+La lettura continua
+
+La lettura continua va dove va NVDA: nei documenti di Word, nell'editor, nei campi di scrittura, nei messaggi di posta, e nelle pagine web in navigazione, dove scorre la pagina elemento per elemento. Nei documenti parte dalla riga del cursore e prosegue fino in fondo, una riga per volta. Il tasto P mette in pausa e riprende, e la freccia in giù avvia o mette in pausa.
+
+I menu virtuali delle applicazioni web
+
+I menu delle applicazioni con le pagine dentro (Teams, Thunderbird, i programmi fatti con Electron, Chrome e simili) si aprono in un menu virtuale: le frecce in alto e in basso scorrono le voci una alla volta, e Invio attiva la voce detta. Il lettore dice anche il numero della voce, per esempio "3 di 7", se è spuntata e se apre un sottomenu. Quando il menu si chiude il lettore torna al suo lavoro normale: nessun tasto in più da imparare.
+
+Quando si scrive
+
+Le lettere e le parole digitate si possono far ripetere a voce: è l'eco dei caratteri e l'eco delle parole, nelle impostazioni del lettore. Quando si cancella, il lettore dice il carattere che è stato tolto: per esempio "e", e non la parola "cancellato". Quando si toglie una parola o una frase, dice che cosa è sparito. Le maiuscole si possono far notare con la voce ("a maiuscola") o con un suono.
+
+Gli annunci non si accavallano
+
+Il lettore dice una cosa alla volta: ogni annuncio aspetta che la voce abbia finito quello di prima, e la fine la sa dalla sintesi vocale stessa. Così le frasi non si montano una sopra l'altra quando arrivano insieme: un titolo, un avviso e una finestra aperta nello stesso momento si sentono in ordine, uno dopo l'altro. Gli annunci importanti, come le finestre di dialogo e le domande, interrompono quello che stava dicendo, come sempre.
+
+Dove si regola il lettore
+
+Dalle opzioni del lettore di schermo si scelgono: il tasto dei comandi, l'eco dei caratteri e delle parole, come si leggono i numeri e la punteggiatura, come si segnalano le maiuscole, i suoni, la navigazione delle pagine web, il display braille. Ogni scelta vale subito, per tutto il computer: il lettore legge anche fuori da WinGabriel, sempre allo stesso modo.

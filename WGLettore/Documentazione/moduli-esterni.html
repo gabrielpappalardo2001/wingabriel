@@ -1,0 +1,51 @@
+<h2>Documentazione tecnica dei moduli esterni di WGLettore</h2>
+<h3>Panoramica</h3>
+<p>Un modulo esterno è una libreria di classi compilata per .NET Framework 4.8, scritta in Visual Basic .NET oppure in C#, che estende il lettore di schermo aggiungendo la gestione specifica per un determinato programma senza dover ricompilare l'eseguibile principale. WGLettore include già moduli interni per Esplora risorse, Excel, Word, PowerPoint, i terminali e i browser web; i moduli esterni servono per gestire tutti gli altri programmi.</p>
+<h3>Creare un modulo</h3>
+<ol><li>Crea un nuovo progetto di tipo <strong>Libreria di classi (.NET Framework)</strong> impostando come versione del framework .NET Framework 4.8.</li><li>Aggiungi al progetto il riferimento all'assembly <code>WGLettoreSchermo.dll</code>.</li><li>Scrivi una classe pubblica, non astratta e dotata di costruttore senza parametri, che eredita da <code>ModuloEsternoLettore</code> nello spazio dei nomi <code>WGLettoreSchermo</code>.</li><li>Compila il progetto e copia il file DLL generato all'interno della cartella <code>moduli</code>, situata nella medesima cartella di <code>WGLettoreSchermo.dll</code>.</li><li>Riavvia il lettore di schermo per caricare la libreria. Il caricamento avviene esclusivamente all'avvio del lettore e solo dalla cartella <code>moduli</code>.</li></ol>
+<h3>Riferimento della classe base</h3>
+<p>La classe base <code>ModuloEsternoLettore</code> mette a disposizione cinque membri ridefinibili. La proprietà <code>Programmi</code> è l'unico membro obbligatorio.</p>
+<table><thead><tr><th>Membro</th><th>Tipo di ritorno</th><th>Quando viene chiamato</th><th>Valore predefinito</th></tr></thead><tbody><tr><td><code>Programmi</code></td><td><code>String()</code></td><td>All'avvio, per identificare gli eseguibili associati al modulo. Proprietà di sola lettura (<code>MustOverride</code>).</td><td>Nessuno (obbligatorio)</td></tr><tr><td><code>AlFuoco(frase As String, nomeElemento As String)</code></td><td><code>String</code></td><td>Quando il fuoco di sistema passa su un elemento del programma gestito. <code>frase</code> indica il testo che il lettore pronuncerebbe, <code>nomeElemento</code> contiene il nome dell'elemento secondo UI Automation.</td><td>Restituisce <code>frase</code> invariata. Se restituisce <code>Nothing</code>, viene usata la frase originale.</td></tr><tr><td><code>AlTasto(codiceTasto As Integer, ctrl As Boolean, maiuscolo As Boolean, alt As Boolean)</code></td><td><code>String</code></td><td>Pressione dei tasti di spostamento e di modifica nel programma. <code>codiceTasto</code> indica il codice di tasto virtuale di Windows (VK_*).</td><td>Restituisce una stringa vuota <code>""</code>.</td></tr><tr><td><code>Formato()</code></td><td><code>String</code></td><td>Pressione della combinazione per la lettura del formato (tasto comandi + F).</td><td>Restituisce una stringa vuota <code>""</code> (in tal caso il lettore usa la lettura del formato tramite UI Automation).</td></tr><tr><td><code>BarraStato()</code></td><td><code>String</code></td><td>Pressione della combinazione per la lettura della barra di stato (tasto comandi + Fine).</td><td>Restituisce una stringa vuota <code>""</code>.</td></tr></tbody></table>
+<p>Per la proprietà <code>Programmi</code>, occorre indicare i nomi degli eseguibili in minuscolo e senza estensione <code>.exe</code> (ad esempio <code>notepad++</code>). Il confronto tra stringhe non distingue maiuscole e minuscole. Qualora due moduli dichiarino lo stesso eseguibile, ha la precedenza l'ultimo modulo caricato.</p>
+<p>Nel metodo <code>AlTasto</code>, se la funzione restituisce una stringa non vuota, il lettore la pronuncia in coda senza interrompere il parlato corrente. La pressione del tasto viene comunque inviata all'applicazione sottostante: il modulo non ha la possibilità di intercettare o bloccare il tasto.</p>
+<h3>Esempio</h3>
+<pre><code>Imports WGLettoreSchermo
+
+Public Class ModuloBloccoNoteInPiu
+    Inherits ModuloEsternoLettore
+
+    Public Overrides ReadOnly Property Programmi As String()
+        Get
+            Return New String() {"notepad++"}
+        End Get
+    End Property
+
+    Public Overrides Function AlFuoco(frase As String, nomeElemento As String) As String
+        Return "editor, " &amp; frase
+    End Function
+
+    Public Overrides Function AlTasto(codiceTasto As Integer, ctrl As Boolean, maiuscolo As Boolean, alt As Boolean) As String
+        Return ""
+    End Function
+
+    Public Overrides Function Formato() As String
+        Return ""
+    End Function
+
+    Public Overrides Function BarraStato() As String
+        Return ""
+    End Function
+End Class</code></pre>
+<h3>Comportamento e limiti</h3>
+<ul><li>Tutte le chiamate rivolte ai moduli sono protette da una gestione delle eccezioni. Se un metodo del modulo solleva un'eccezione, il lettore scrive l'errore nel registro degli errori e prosegue l'esecuzione standard. Il modulo non viene disattivato e l'eccezione verrà registrata nuovamente alla chiamata successiva.</li><li>I metodi vengono eseguiti durante l'elaborazione degli eventi del lettore e non nel thread dell'interfaccia grafica dell'applicazione target. La risposta deve avvenire entro poche decine di millisecondi per evitare che la voce ritardi rispetto agli spostamenti del fuoco. È vietato aprire finestre di dialogo, effettuare operazioni di rete bloccanti o accedere direttamente a controlli Windows Forms.</li><li>I moduli esterni non possono sovrascrivere la gestione dei programmi per i quali il lettore possiede già un modulo interno (Esplora risorse, Excel, Word, Outlook, PowerPoint, terminali, browser, Thunderbird, Teams, Calcolatrice e Blocco note). Per questi programmi i moduli esterni vengono ignorati.</li><li>Le librerie DLL vengono caricate nello stesso processo del lettore di schermo, il quale può essere eseguito con privilegi elevati. La cartella <code>moduli</code> deve essere protetta in scrittura allo stesso modo della cartella principale del programma e devono essere caricate esclusivamente librerie di provenienza fidata.</li><li>Una singola DLL può contenere più classi che ereditano da <code>ModuloEsternoLettore</code>: l'avvio del lettore le individuerà ed eseguirà tutte.</li><li>Se una DLL non può essere caricata a causa di un errore, viene registrata nel registro degli errori e saltata, senza impedire il caricamento delle altre librerie valide.</li></ul>
+<h3>Provare e correggere un modulo</h3>
+<p>Durante la fase di sviluppo di un modulo, è possibile utilizzare le seguenti combinazioni di tasti messe a disposizione dal lettore di schermo. Il tasto comandi corrisponde al tasto <code>Insert</code>, a <code>Bloc maiusc</code> oppure a entrambi, a seconda dell'impostazione scelta.</p>
+<ul><li><strong>Tasto comandi + F</strong>: richiama il metodo <code>Formato()</code> del modulo.</li><li><strong>Tasto comandi + Fine</strong>: richiama il metodo <code>BarraStato()</code> del modulo.</li><li><strong>Tasto comandi + H</strong>: ripete l'ultima frase pronunciata dal lettore. Aggiungendo il tasto <code>Shift</code> si risale alle frasi precedenti (una frase indietro ad ogni pressione). Aggiungendo il tasto <code>Control</code> si copia l'ultima frase pronunciata negli appunti di Windows.</li><li><strong>Tasto comandi + F10</strong>: salva l'albero UI Automation dell'elemento che possiede il fuoco all'interno di un file di testo posizionato nella cartella dati <code>lettore</code> (accanto al file di configurazione). Permette di analizzare nomi, tipi di controllo e proprietà esposte dal programma target.</li><li><strong>Tasto comandi + 1</strong>: attiva l'aiuto tasti, annunciando la funzione associata ad ogni pressione senza eseguirla.</li></ul>
+<h3>Profili per programma</h3>
+<p>Ogni programma può disporre di un profilo personalizzato per regolare il livello di dettaglio della sintesi vocale (valori da 0 a 2) e l'eco della digitazione per caratteri e parole. È possibile salvare il profilo del programma attivo premendo <code>Tasto comandi + Control + 0</code> ed eliminarlo premendo <code>Tasto comandi + Shift + 0</code>, oppure agendo tramite la scheda <strong>Profili</strong> nella finestra delle impostazioni del lettore.</p>
+<p>Nel file di configurazione condivisa, il profilo viene registrato nella chiave <code>lettore_schermo_profilo_</code> seguita dal nome dell'eseguibile in minuscolo e privo di estensione. Il valore viene memorizzato nella forma <code>p=1;c=1;w=1</code> (dove <code>p</code> indica la prolissità, <code>c</code> l'eco dei caratteri e <code>w</code> l'eco delle parole, con valore 1 per attivo e 0 per disattivato). I parametri vengono applicati in memoria all'ingresso del programma e ripristinati ai valori generali all'uscita, senza modificare la configurazione globale.</p>
+<h3>Il modulo per i terminali</h3>
+<p>WGLettore include un modulo interno dedicato alle applicazioni di terminale e console, quali Windows Terminal, conhost, cmd, PowerShell, pwsh, WSL, PuTTY e mintty. Il modulo legge ogni nuova riga inviata in uscita, una per volta. La pressione del singolo tasto <code>Shift</code> interrompe la lettura della riga corrente e passa a quella successiva, mentre i tasti <code>Invio</code> e <code>Control + C</code> azzerano immediatamente la voce.</p>
+<p>Per esaminare il contenuto dello schermo senza spostare il cursore di sistema, sono disponibili le seguenti scorciatoie da tastiera:</p>
+<ul><li><strong>Tasto comandi + Control + Freccia sinistra / Freccia destra</strong>: legge la riga precedente o successiva.</li><li><strong>Tasto comandi + Control + Freccia su</strong>: legge la prima riga dello schermo.</li><li><strong>Tasto comandi + Control + Freccia giù</strong>: legge l'ultima riga dello schermo.</li><li><strong>Tasto comandi + B</strong>: legge l'intero schermo visibile.</li></ul>
+<p>Utilizzando la disposizione della tastiera da tavolo, le stesse funzioni di consultazione possono essere eseguite tramite i tasti <code>4</code>, <code>6</code>, <code>8</code> e <code>2</code> del tastierino numerico. La rilettura prende come riferimento iniziale la posizione attuale del cursore.</p>

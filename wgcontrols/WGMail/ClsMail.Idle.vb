@@ -108,7 +108,7 @@ Partial Public Class CLSMail
                 While Not stato.Interruzione.IsCancellationRequested
                     Dim primaDelControllo As Integer = inbox.Count
 
-                    If client.Capabilities.HasFlag(ImapCapabilities.Idle) Then
+                    If client.Capabilities.Contains(ImapCapability.Idle) Then
                         Using finestra As New CancellationTokenSource()
                             finestra.CancelAfter(DurataMassimaIdleMs)
                             Try

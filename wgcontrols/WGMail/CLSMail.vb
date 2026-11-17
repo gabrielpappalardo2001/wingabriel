@@ -1061,7 +1061,7 @@ Partial Public Class CLSMail
 
             Dim tipo As ContentType = ContentType.Parse(tipoMime)
             Dim parte As New MimePart(tipo)
-            parte.Content = New MimeContent(File.OpenRead(percorsoFile), ContentEncoding.Default)
+            parte.Content = New MimeContent(File.OpenRead(percorsoFile), ContentEncoding.Unspecified)
             parte.ContentDisposition = New ContentDisposition(ContentDisposition.Attachment)
             parte.ContentTransferEncoding = ContentEncoding.Base64
             parte.FileName = nomeFile
@@ -1842,7 +1842,7 @@ Partial Public Class CLSMail
     Private Function ServerSupportaCartelleSpeciali(client As ImapClient) As Boolean
         Try
             If client Is Nothing Then Return False
-            Return client.Capabilities.HasFlag(ImapCapabilities.SpecialUse) OrElse client.Capabilities.HasFlag(ImapCapabilities.XList)
+            Return client.Capabilities.Contains(ImapCapability.SpecialUse) OrElse client.Capabilities.Contains(ImapCapability.XList)
         Catch ex As Exception
             ScriviLog("CLSMail.ServerSupportaCartelleSpeciali: " & ex.Message)
             Return False

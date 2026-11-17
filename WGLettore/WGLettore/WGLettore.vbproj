@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3C9A1F52-8D47-4E0B-9A6E-5B2D7F8C1A34}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>WGLettore</RootNamespace>
+    <AssemblyName>WGLettore</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>Off</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicazioneLettore.vb" />
+    <Compile Include="AvvioLettore.vb" />
+    <Compile Include="ControlloLettore.vb" />
+    <Compile Include="FinestraImpostazioni.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GuidaLettore.vb" />
+    <Compile Include="Installazione.vb" />
+    <Compile Include="InstallazioneGuidata.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="MenuNativoLettore.vb" />
+    <Compile Include="NativoApp.vb" />
+    <Compile Include="PrimoAvvio.vb" />
+    <Compile Include="Program.vb" />
+    <Compile Include="UscitaEComponenti.vb" />
+    <Compile Include="Voci.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <EmbeddedResource Include="Guida\lettore-schermo.txt">
+      <LogicalName>WGLettore.Guida.lettore-schermo.txt</LogicalName>
+    </EmbeddedResource>
+    <Content Include="..\Nativo\WGLettoreVoce.exe" Condition="Exists('..\Nativo\WGLettoreVoce.exe')">
+      <Link>WGLettoreVoce.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Nativo\WGLettoreServizio.exe" Condition="Exists('..\Nativo\WGLettoreServizio.exe')">
+      <Link>WGLettoreServizio.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Nativo\WGAiutoLettore32.dll" Condition="Exists('..\Nativo\WGAiutoLettore32.dll')">
+      <Link>WGAiutoLettore32.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Nativo\WGAiutoLettore64.dll" Condition="Exists('..\Nativo\WGAiutoLettore64.dll')">
+      <Link>WGAiutoLettore64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Nativo\WGAiutoLettoreCarica32.exe" Condition="Exists('..\Nativo\WGAiutoLettoreCarica32.exe')">
+      <Link>WGAiutoLettoreCarica32.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Nativo\WGAiutoLettoreCarica64.exe" Condition="Exists('..\Nativo\WGAiutoLettoreCarica64.exe')">
+      <Link>WGAiutoLettoreCarica64.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WGLettoreSchermo\WGLettoreSchermo.vbproj">
+      <Project>{54A254AC-FF36-4CB6-9932-E39BE2FF576A}</Project>
+      <Name>WGLettoreSchermo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGEspeak\WGEspeak.vbproj">
+      <Project>{7A3D5C19-2E84-4B6F-A1D0-9C5E7F2B8D46}</Project>
+      <Name>WGEspeak</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

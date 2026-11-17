@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{54A254AC-FF36-4CB6-9932-E39BE2FF576A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WGLettoreSchermo</RootNamespace>
+    <AssemblyName>WGLettoreSchermo</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WGLettoreSchermo.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WGLettoreSchermo.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="System.Runtime.WindowsRuntime">
+      <HintPath>C:\Windows\Microsoft.NET\Framework64\v4.0.30319\System.Runtime.WindowsRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Windows">
+      <HintPath>C:\Program Files (x86)\Windows Kits\10\UnionMetadata\10.0.26100.0\Windows.winmd</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessibilitaMsaa.vb" />
+    <Compile Include="AppModules\ExcelAppModule.vb" />
+    <Compile Include="AppModules\TerminaleAppModule.vb" />
+    <Compile Include="AppModules\ModuliEsterni.vb" />
+    <Compile Include="LetturaEmoji.vb" />
+    <Compile Include="AppModules\ComponentiApi.vb" />
+    <Compile Include="WGLettoreSchermo.Profili.vb" />
+    <Compile Include="AppModules\WordAppModule.vb" />
+    <Compile Include="AppModules\PowerPointAppModule.vb" />
+    <Compile Include="WGLettoreSchermo.Terminale.vb" />
+    <Compile Include="WGLettoreSchermo.ListeNative.vb" />
+    <Compile Include="WGLettoreSchermo.Annunci.vb" />
+    <Compile Include="AppModules\NotePadModules.vb" />
+    <Compile Include="ControlliNativi.vb" />
+    <Compile Include="LetturaRigheElenco.vb" />
+    <Compile Include="LetturaJava.vb" />
+    <Compile Include="AccessibilitaIA2.vb" />
+    <Compile Include="LetturaRiquadroCollegato.vb" />
+    <Compile Include="LetturaStrutturaDocumento.vb" />
+    <Compile Include="LetturaTestoAggiornato.vb" />
+    <Compile Include="WGLettoreSchermo.Silenzio.vb" />
+    <Compile Include="Logger.vb" />
+    <Compile Include="ConfigLettore.vb" />
+    <Compile Include="VoceLettore.vb" />
+    <Compile Include="RuoliPredefiniti.vb" />
+    <Compile Include="WGLettoreSchermo.Elenchi.vb" />
+    <Compile Include="WGLettoreSchermo.Applicazioni.vb" />
+    <Compile Include="AgganciLettore.vb" />
+    <Compile Include="CodaVoce.vb" />
+    <Compile Include="CodaOperazioni.vb" />
+    <Compile Include="ComLettore.vb" />
+    <Compile Include="LetturaAlberi.vb" />
+    <Compile Include="FinestraCerca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LetturaTabelle.vb" />
+    <Compile Include="DescrittoreElementi.vb" />
+    <Compile Include="DiagnosticaAlbero.vb" />
+    <Compile Include="EventoLettore.vb" />
+    <Compile Include="FiltroEventi.vb" />
+    <Compile Include="GestoreFocusUia.vb" />
+    <Compile Include="GestoreSelezioneUIA.vb" />
+    <Compile Include="GestoriEventiUia.vb" />
+    <Compile Include="ImpostazioniLettore.vb" />
+    <Compile Include="LetturaAttributi.vb" />
+    <Compile Include="LetturaCampi.vb" />
+    <Compile Include="LetturaOcrSchermo.vb" />
+    <Compile Include="MenuVirtuali.vb" />
+    <Compile Include="NavigatoreOggetti.vb" />
+    <Compile Include="NavigazioneWeb.vb" />
+    <Compile Include="NomiAffidabili.vb" />
+    <Compile Include="RegoleRuoli.vb" />
+    <Compile Include="SegnaleAccessibilita.vb" />
+    <Compile Include="SupportoSistema.vb" />
+    <Compile Include="UscitaBraille.vb" />
+    <Compile Include="WatchdogAutomazione.vb" />
+    <Compile Include="WGLettoreSchermo.Estensioni.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="NativoLettore.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="WGLettoreSchermo.vb" />
+    <Compile Include="SuoniLettore.vb" />
+    <Compile Include="FinestraElementi.vb" />
+    <Compile Include="AppModules\AppModuleLettore.vb" />
+    <Compile Include="AppModules\GestoreAppModule.vb" />
+    <Compile Include="AppModules\ExplorerAppModule.vb" />
+    <Compile Include="AppModules\ThunderbirdAppModule.vb" />
+    <Compile Include="AppModules\TeamsAppModule.vb" />
+    <Compile Include="AppModules\BrowserAppModule.vb" />
+    <Compile Include="AppModules\CalcolatriceAppModule.vb" />
+    <Compile Include="WGLettoreSchermo.AppModule.vb" />
+    <Compile Include="WGLettoreSchermo.Lavori.vb" />
+    <Compile Include="SupportoLavori.vb" />
+    <Compile Include="AiutoInProcesso.vb" />
+    <Compile Include="IndiceAiuto.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Dati\emoji-it.txt">
+      <LogicalName>emoji-it.txt</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NAudio">
+      <Version>2.4.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="UIA">
+      <Guid>{930299CE-9965-4DEC-B0F4-A54848D4B667}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="UIAutomationClient">
+      <Guid>{944DE083-8FB8-45CF-BCB7-C477ACB2F897}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

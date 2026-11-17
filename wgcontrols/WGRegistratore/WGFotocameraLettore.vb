@@ -78,8 +78,7 @@ Public NotInheritable Class LettoreVideoInterno
             Dim da As String = FfmpegUtil.Secondi(_inizio)
 
             ' l'audio
-            _buffer = New BufferedWaveProvider(New WaveFormat(48000, 16, 2))
-            _buffer.BufferDuration = TimeSpan.FromSeconds(4)
+            _buffer = New BufferedWaveProvider(New WaveFormat(48000, 16, 2), TimeSpan.FromSeconds(4))
             _buffer.DiscardOnBufferOverflow = True
             Dim infoAudio As ProcessStartInfo = FfmpegUtil.Prepara("-hide_banner -loglevel error -re -ss " & da & " -i " & FfmpegUtil.Virgolette(percorso) & " -vn -f s16le -ar 48000 -ac 2 pipe:1")
             _audio = Process.Start(infoAudio)
