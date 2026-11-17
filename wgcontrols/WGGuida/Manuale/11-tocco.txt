@@ -1,0 +1,83 @@
+﻿Usare WinGabriel con le dita
+
+Se il tuo computer è dotato di uno schermo touchscreen, ovvero uno schermo utilizzabile tramite il tocco delle dita, puoi adoperare WinGabriel anche in assenza di una tastiera. La superficie dello schermo è completamente liscia e priva di tasti fisici da individuare: sono i movimenti delle dita, noti come gesti, a impartire i comandi al programma.
+
+Se hai già utilizzato un iPhone con VoiceOver o uno smartphone Android con TalkBack, molti di questi gesti ti sembreranno familiari. In caso contrario, non preoccuparti: si tratta di pochi comandi che si apprendono rapidamente.
+
+Qualche parola per capirsi
+
+Per "swipe" o "scorrimento rapido" si intende l'azione di appoggiare il dito sullo schermo, farlo scorrere rapidamente in una direzione e sollevarlo. Ad esempio, uno scorrimento verso destra consiste nell'appoggiare il dito, trascinarlo con velocità verso destra per pochi centimetri e infine staccarlo.
+
+Il "doppio tocco" corrisponde invece a due pressioni brevi e consecutive eseguite nello stesso punto dello schermo.
+
+I gesti con un dito
+
+Scorrimento rapido verso destra: passa all'elemento successivo. Scorrimento rapido verso sinistra: ritorna all'elemento precedente. Si tratta dei gesti più frequenti, utilizzati per navigare tra menu, elenchi e qualsiasi altro elemento.
+
+Doppio tocco: attiva l'elemento selezionato, consentendo di aprirlo, sceglierlo o confermarne la selezione. Funziona esattamente come il tasto Invio.
+
+Mantenere il dito premuto facendolo scorrere senza sollevarlo: la voce sintetizzata descrive il contenuto sottostante in tempo reale man mano che il dito si sposta. Questa funzione è utile per esplorare lo schermo e comprenderne la disposizione.
+
+Scorrimento rapido verso l'alto o verso il basso: all'interno di elenchi e menu, la voce legge in sequenza le azioni eseguibili sull'elemento selezionato, come "Apri", "Elimina" o "Sposta". Terminato l'elenco, la lettura riprende dalla prima voce. Quando ascolti l'azione desiderata, esegui un doppio tocco per attivarla.
+
+In corrispondenza dei cursori, come quelli del volume o della luminosità, lo scorrimento verso l'alto incrementa il valore, mentre quello verso il basso lo riduce.
+
+[smart]
+Sul desktop e nella schermata iniziale, lo scorrimento rapido verso l'alto apre il menu delle opzioni.
+[/smart]
+
+I gesti con due dita
+
+Doppio tocco con due dita: equivale alla pressione del tasto Esc, chiudendo la schermata corrente per tornare alla precedente.
+
+Scorrimento rapido di due dita verso il basso: avvia la lettura continua dall'elemento corrente fino alla fine.
+
+[smart]
+Scorrimento rapido di due dita verso l'alto: riporta alla schermata principale, ossia alla schermata iniziale se utilizzi il computer in modalità tablet, oppure al desktop in modalità standard. Se il desktop non è attivo, conduce al menu delle applicazioni.
+
+Scorrimento rapido di due dita verso destra: passa all'applicazione aperta successiva. Scorrimento rapido di due dita verso sinistra: ritorna all'applicazione precedente.
+
+Triplice tocco rapido con due dita: apre la schermata del multitasking, ovvero l'elenco delle applicazioni in esecuzione.
+[/smart]
+
+[classica]
+Scorrimento rapido di due dita verso l'alto: riconduce al menu principale.
+[/classica]
+
+I gesti con tre dita
+
+All'interno dei campi di testo, come nell'editor o nel browser, lo scorrimento rapido di tre dita verso l'alto o verso il basso controlla il rotore. Il rotore determina la modalità di lettura del testo: per righe, paragrafi, parole o singoli caratteri. All'interno del browser, consente inoltre di selezionare gli elementi della pagina su cui spostarsi, quali intestazioni o collegamenti. Una volta impostata la modalità tramite il rotore, gli scorrimenti con un dito verso destra e sinistra consentono la navigazione secondo il criterio scelto.
+
+[smart]
+All'esterno dei campi di testo e del browser, i gesti effettuati con tre dita assolvono ad altre funzioni:
+
+scorrimento rapido di tre dita verso il basso: apre il centro notifiche;
+
+scorrimento rapido di tre dita verso l'alto: in modalità tablet apre il pannello del centro di controllo e lo stesso gesto ne determina la chiusura; quando il computer non si trova in modalità tablet, apre il centro di controllo in formato menu;
+
+scorrimento rapido di tre dita verso sinistra o verso destra: consente di cambiare pagina nella schermata iniziale.
+
+Quando ti trovi all'interno di un campo di testo o del browser, i gesti a tre dita sono riservati al rotore. In tale circostanza, per accedere al centro notifiche o al centro di controllo, occorre avviare il gesto dal margine superiore dello schermo, ovvero dalla porzione più alta corrispondente alla barra di stato dei dispositivi mobili, dove solitamente sono visibili l'orario e lo stato della batteria.
+[/smart]
+
+La tastiera su schermo
+
+Qualora sia necessario immettere del testo in un campo e non sia collegata alcuna tastiera fisica, WinGabriel visualizza una tastiera virtuale sullo schermo.
+
+Sono disponibili due modalità di immissione, selezionabili nelle impostazioni relative al tocco.
+
+Digitazione standard: sposta il dito sulla tastiera finché non viene pronunciata la lettera desiderata, quindi esegui un doppio tocco per digitarla.
+
+Digitazione a tocco: sposta il dito sulla tastiera fino ad ascoltare la lettera desiderata, dopodiché solleva il dito per digitarla immediatamente. Questa modalità è più rapida ma richiede un certo grado di pratica.
+
+Le impostazioni del tocco
+
+Le opzioni relative al tocco sono accessibili all'interno delle Impostazioni, seguendo il percorso "Mouse, touch e digitazione vocale", quindi "Touch e Mouse" e infine "Touch". Da qui è possibile:
+
+attivare o disattivare il riconoscimento dei gesti;
+
+consentire a WinGabriel di adattarsi automaticamente alle caratteristiche dello schermo;
+
+bloccare l'orientamento dello schermo in posizione verticale o orizzontale;
+
+configurare la tastiera su schermo e selezionare la modalità di scrittura preferita.

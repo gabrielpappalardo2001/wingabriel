@@ -1,0 +1,47 @@
+﻿Prima di cominciare
+
+Benvenuto nel manuale di WinGabriel.
+
+WinGabriel è un programma pensato per chi non vede o vede poco. Con WinGabriel puoi compiere quasi tutte le operazioni possibili al computer: leggere e scrivere la posta elettronica, redigere lettere e documenti, ascoltare la radio e la musica, leggere i giornali, gestire la rubrica e l'agenda, cercare una farmacia di turno e conoscere le previsioni meteorologiche. Puoi fare tutto questo senza guardare lo schermo, poiché WinGabriel ti guida vocalmente in ogni operazione.
+
+Il principio fondamentale di WinGabriel è semplice: un unico programma caratterizzato da una modalità di funzionamento coerente. I comandi appresi in una sezione restano validi in tutte le altre. Una volta compreso il funzionamento di un menu, saprai utilizzarli tutti. Dopo aver imparato a leggere un messaggio di posta, sarai subito in grado di consultare un articolo di giornale o un documento. Per questo motivo, trascorsi i primi giorni, l'utilizzo di WinGabriel diventa semplice e intuitivo.
+
+Come è strutturato questo manuale
+
+Il manuale è suddiviso in capitoli, ciascuno dedicato a un singolo argomento.
+
+I primi capitoli illustrano le basi: l'avvio, i tasti necessari, l'uso dei menu, degli elenchi e dei campi di testo. È consigliabile leggerli con attenzione almeno una volta, poiché costituiscono il fondamento di tutte le sezioni successive.
+
+[smart]
+Seguono i capitoli relativi alla modalità smart attualmente in uso: la scrivania, la schermata principale per l'uso del computer come tablet, le applicazioni aperte simultaneamente, il centro notifiche, il centro di controllo e la funzione di ricerca.
+[/smart]
+
+[classica]
+Seguono i capitoli relativi alla modalità classica attualmente in uso: il menu di avvio, il centro di controllo e la ricerca dei file.
+[/classica]
+
+Successivamente sono presenti i capitoli dedicati alle singole funzioni: il programma di scrittura, la posta, la rubrica, l'agenda, le note, i dati riservati, la gestione dei file, il lettore multimediale per musica e video, il browser per la navigazione in rete, i giornali, la radio, il traduttore, l'intelligenza artificiale e la salute.
+
+La parte finale contiene le sezioni dedicate alle impostazioni, alla protezione dei dati, alla risoluzione dei problemi e un promemoria con i tasti principali.
+
+Non è necessario leggere tutto
+
+Non occorre leggere il manuale dall'inizio alla fine. Puoi consultarlo all'occorrenza, individuando il capitolo di tuo interesse proprio come faresti con un dizionario. Se invece hai tempo e curiosità, leggerlo integralmente ti permetterà di scoprire molte funzioni utili che potresti non conoscere ancora.
+
+[smart]
+Questo manuale descrive esclusivamente la modalità smart, ovvero quella attiva in questo momento. Qualora in futuro decidessi di passare alla modalità classica, il manuale si adatterà automaticamente per descriverla.
+[/smart]
+
+[classica]
+Questo manuale descrive esclusivamente la modalità classica, ovvero quella attiva in questo momento. Qualora in futuro decidessi di passare alla modalità smart, il manuale si adatterà automaticamente per descriverla.
+[/classica]
+
+Come vengono indicati i tasti
+
+Quando devi premere un tasto, questo viene indicato per esteso, esattamente come viene pronunciato dalla voce guida, ad esempio "Invio", "Esc", "freccia giù".
+
+Quando è necessario premere due tasti contemporaneamente, essi vengono elencati in sequenza. Ad esempio, la dicitura "Control F1" indica di tenere premuto il tasto Control e, contemporaneamente, premere il tasto F1, rilasciandoli poi entrambi.
+
+Se utilizzi uno schermo tattile, ovvero uno schermo interattivo gestito con le dita, ti verranno descritti anche i relativi gesti da compiere.
+
+Buona lettura e buon lavoro con WinGabriel.

@@ -1,0 +1,149 @@
+﻿La radio, la televisione e YouTube
+
+Con WinGabriel puoi ascoltare migliaia di stazioni radiofoniche di tutto il mondo, i canali televisivi e i video di YouTube. Li trovi tutti nel {menu}, alla voce "Web". L'ascolto di qualsiasi contenuto avviene tramite il lettore multimediale, utilizzando i consueti comandi.
+
+La radio
+
+Nel menu Web scegli "Radio". Il sottomenu della radio comprende le seguenti opzioni:
+
+"Cerca una radio": per digitare il nome di un'emittente o un genere specifico, come "jazz", "notizie" o "musica classica";
+
+"Tutte le radio italiane";
+
+"Radio per regione": per accedere alle emittenti della tua regione;
+
+"Radio per genere": suddivise per tipologia di musica o programmi;
+
+"Radio internazionali": emittenti estere;
+
+"Ascolto radio attuale": indica quale stazione stai ascoltando e, qualora l'emittente lo trasmetta, il titolo del programma o del brano in onda;
+
+"Scrivi indirizzo": per aggiungere manualmente una radio non presente in elenco;
+
+"Radio preferite": l'elenco delle emittenti salvate;
+
+"Radio ascoltate di recente";
+
+"Le più ascoltate".
+
+Ascoltare una radio
+
+Seleziona un'emittente e premi Invio per avviare la riproduzione.
+
+Quando la radio trasmette i metadati relativi al brano o al programma, WinGabriel te li comunica a ogni variazione.
+
+Premendo il tasto Alt su un'emittente puoi: avviarla, copiarne l'indirizzo o quello del sito web correlato, e consultare le informazioni relative (paese, lingua, qualità, genere e stato della trasmissione).
+
+Aggiungere una radio
+
+Se un'emittente non è presente nell'elenco:
+
+1. Seleziona "Scrivi indirizzo".
+
+2. Inserisci il nome della radio e l'URL dello streaming, che solitamente inizia con "http" e si può reperire sul sito ufficiale dell'emittente.
+
+3. WinGabriel ti chiederà se desideri condividere l'emittente con l'archivio pubblico per renderla disponibile anche agli altri utenti. La scelta è facoltativa.
+
+Nel menu delle opzioni del menu principale è inoltre presente la voce "Aggiorna elenco radio", utile per scaricare l'elenco più recente delle emittenti.
+
+La televisione
+
+Nel menu Web scegli "WebTV". Il menu comprende: "Elenco Canali", "Canali Preferiti" e "Canali Recenti".
+
+Seleziona un canale e premi Invio per avviarlo immediatamente. In caso di interruzione del flusso, WinGabriel tenterà autonomamente di ristabilire la connessione prima di segnalare eventuali problemi.
+
+YouTube
+
+YouTube è una piattaforma che ospita milioni di video tra lezioni, concerti, documentari, ricette e interviste, molti dei quali fruibili ottimamente anche solo tramite l'ascolto. WinGabriel ti permette di riprodurli senza inserimenti pubblicitari e senza necessità di autenticazione.
+
+Nel menu Web seleziona "YouTube". Le voci disponibili sono:
+
+"Ricerca": per cercare contenuti video;
+
+"Scrivi URL": per aprire direttamente un video di cui possiedi l'indirizzo, ad esempio ricevuto via email;
+
+"Preferiti": per accedere a video, canali e playlist salvati;
+
+"Iscrizioni": per consultare i canali che segui;
+
+"Cronologia": per visualizzare la cronologia delle visualizzazioni e delle ricerche effettuate;
+
+"Aggiorna";
+
+"Impostazioni".
+
+Iscrizioni e cronologia con il tuo account
+
+Se hai già effettuato l'accesso al tuo account Google nel browser di WinGabriel, selezionando "Iscrizioni" o "Cronologia" il programma ti informerà e ti chiederà se desideri utilizzare i dati online del tuo account YouTube oppure quelli salvati localmente sul computer. Rispondendo affermativamente, WinGabriel caricherà la pagina di YouTube tramite il browser in una scheda in background, mostrandoti il relativo elenco. Le tue credenziali e i dati di accesso rimarranno circoscritti al browser e non verranno condivisi con nessun altro modulo.
+
+Accedendo alle iscrizioni online visualizzerai i video più recenti pubblicati dai canali a cui sei iscritto, analogamente alla pagina "Iscrizioni" di YouTube. Per ogni elemento vengono indicati titolo, canale, durata e data di pubblicazione; premendo Invio si avvia la riproduzione. Nel menu delle opzioni, sia per le iscrizioni sia per la cronologia, sono disponibili le funzioni "Informazioni sul video" per approfondire i dettagli del contenuto, e "Ordinamento" per disporre l'elenco secondo vari criteri (dal più recente al meno recente, per titolo, per canale, dal più lungo o dal più corto, come su YouTube). Sempre nel menu delle opzioni troverai "Elenco dei canali a cui sei iscritto": premendo Invio su una voce si aprirà il canale corrispondente, le cui opzioni includono "Annulla l'iscrizione" e "Segui i nuovi video su questo computer" (quest'ultima aggiunge il canale al monitoraggio di WinGabriel per ricevere notifiche sulle nuove pubblicazioni). La cronologia online raccoglie gli ultimi video visualizzati su YouTube, anche da altri dispositivi, e premendo Invio è possibile riprodurli.
+
+L'ordine dei video si sceglie dalle opzioni, con "Ordinamento": come su YouTube, dai più recenti o dai più vecchi, per titolo, per canale, per durata. YouTube dice solo "3 giorni fa", quindi per metterli in ordine giusto WinGabriel prende la data esatta di ogni video dal feed pubblico del suo canale; per i video che non stanno più nel feed (ci sono solo gli ultimi quindici di ogni canale) la data esatta la legge yt-dlp, fino a quaranta video; quelli che restano senza data esatta si ordinano con la data stimata dal "quanto tempo fa", e quelli senza nessuna data vanno in fondo. Per leggere YouTube yt-dlp ha bisogno di un motore JavaScript: WinGabriel scarica da solo Deno, accanto al programma, la prima volta che parte dopo l'aggiornamento, insieme agli altri componenti, e lo usa sia per le chiamate a yt-dlp sia per l'ascolto dei video. Per le iscrizioni online si parte dai video pubblicati più di recente; l'ordine che scegli per le iscrizioni, per la cronologia e per le playlist si ricorda da una volta all'altra.
+
+Se la lettura non dovesse andare a buon fine, WinGabriel ti avviserà chiedendoti se preferisci passare ai dati salvati sul computer. Se non hai effettuato l'accesso nel browser, il passaggio ai dati locali avverrà automaticamente senza richieste.
+
+Quando individui un canale, ad esempio tramite la ricerca, e selezioni "Iscriviti al canale" dal relativo menu, WinGabriel effettuerà l'iscrizione tramite il tuo account YouTube (se autenticato nel browser) aggiungendo contestualmente il canale al monitoraggio locale. Le modalità di gestione sono: "Chiedi ogni volta" (per richiedere conferma per l'account), "Online" (per procedere direttamente) e "Offline" (per seguire il canale esclusivamente in locale). Lo stesso principio si applica alla voce "Annulla iscrizione al canale". A seguito dell'iscrizione, WinGabriel verificherà nuovamente l'elenco dei tuoi canali per accertarsi che la registrazione su YouTube sia andata a buon fine, notificandoti eventuali anomalie.
+
+Per evitare richieste ripetute, puoi accedere a "Impostazioni", quindi "Iscrizioni e nuovi video" e infine "Iscrizioni online o offline". Le opzioni previste sono tre: "Chiedi ogni volta", "Online" e "Offline". Se opti per "Online", WinGabriel controllerà la presenza di nuovi video anche tramite il tuo account, leggendo la pagina delle iscrizioni di YouTube e notificandoti le nuove uscite mediante gli avvisi e il centro notifiche, analogamente a quanto avviene per le iscrizioni salvate sul computer. La prima verifica online non segnalerà alcun contenuto come nuovo per evitare di generare un affollamento di notifiche. Se selezioni "Online" ma non hai effettuato l'accesso nel browser, WinGabriel ti informerà della mancata autenticazione senza apportare modifiche.
+
+Cercare un video
+
+1. Seleziona "Ricerca".
+
+2. Digita i termini di ricerca desiderati, ad esempio "concerto di Natale", e premi Invio.
+
+3. WinGabriel ti chiederà di specificare la tipologia di contenuto: contenuti misti, solo video, solo playlist o solo canali (solitamente l'opzione predefinita "Video" è la più indicata).
+
+4. Seleziona un risultato e premi Invio per avviare l'ascolto.
+
+Premendo il tasto Alt su un risultato avrai accesso a: riproduci, informazioni, ordinamento, filtro per durata, cambia tipo di ricerca, copia l'indirizzo, riassumi con l'intelligenza artificiale, visualizza i commenti, vai al canale, aggiungi ai preferiti, pagina successiva.
+
+I preferiti e la cronologia
+
+L'archivio dei preferiti è suddiviso in tre sezioni: video, canali e playlist. Ciascuna sezione può essere ordinata e organizzata in categorie.
+
+La cronologia memorizza i video, i canali e le playlist visualizzati, oltre alle ricerche effettuate, consentendoti di ripeterle rapidamente senza doverle digitare nuovamente.
+
+Iscriversi a un canale
+
+Un canale raccoglie i video pubblicati da un singolo utente o da un'organizzazione. L'iscrizione è equiparabile all'abbonamento a una pubblicazione periodica: WinGabriel ti avviserà non appena il canale renderà disponibile un nuovo video. Le iscrizioni vengono memorizzate localmente sul tuo computer senza necessità di disporre di un account.
+
+Le playlist
+
+Una playlist è una raccolta ordinata di video, come ad esempio tutte le puntate di una trasmissione. È possibile visualizzarla, effettuarne la ricerca interna e riprodurla integralmente, sia in sequenza sia in modalità casuale. Il lettore provvederà a passare automaticamente da un video all'altro.
+
+Il tuo account, le playlist online e i mi piace
+
+Se hai effettuato l'accesso a YouTube nel browser di WinGabriel, nel menu comparirà la voce "Il tuo account", che ti consentirà di accedere alle tue playlist, ai video contrassegnati con "Mi piace", alla cronologia e alle iscrizioni. Tramite il menu delle opzioni potrai aggiungere o rimuovere il "Mi piace" a un video, oppure gestirne l'inclusione nelle tue playlist. La scrittura o la risposta ai commenti non è supportata, poiché si tratta di una funzionalità soggetta a frequenti modifiche da parte di YouTube che ne comprometterebbero l'affidabilità.
+
+I nuovi video dei canali
+
+Per verificare la presenza di nuovi contenuti nei canali a cui sei iscritto, WinGabriel sfrutta il feed pubblico di ciascun canale: si tratta di una modalità rapida, indipendente dall'account e in grado di fornire la data esatta di pubblicazione. In caso di mancata risposta del feed, verrà adottato il metodo di controllo alternativo descritto in precedenza.
+
+I filtri delle ricerche
+
+I filtri impostati, come ad esempio la data di caricamento, la qualità o la presenza di trasmissioni in diretta, si applicano anche alle ricerche effettuate all'interno di un singolo canale o di una playlist, oltre che alla ricerca generale.
+
+La descrizione dei video
+
+All'interno delle informazioni di un video, la sezione "Descrizione" viene presentata suddivisa in paragrafi. I collegamenti ipertestuali vengono convertiti nella dicitura "link a" seguita dal nome del sito, evitando che la sintesi vocale pronunci gli indirizzi URL carattere per carattere. Nel menu delle opzioni sono disponibili l'elenco dei link (apribili nel browser o copiabili), i capitoli del video (individuati dalle righe che iniziano con un'indicazione oraria, utili per avviare la riproduzione da punti specifici) e gli hashtag, che consentono di avviare una ricerca dedicata.
+
+I commenti
+
+Per ciascun commento viene indicato se si tratta di un messaggio in evidenza o pubblicato dal creatore del video, l'autore, la data, il numero di "Mi piace" e delle risposte. Premendo Invio su un commento che presenta delle risposte si accederà alla conversazione, con una voce distinta per ciascuna replica. Tramite le opzioni è possibile leggere integralmente un commento, copiarlo e modificare l'ordinamento visualizzando per primi i commenti più rilevanti o quelli più recenti.
+
+Le impostazioni di YouTube
+
+La configurazione è suddivisa in quattro aree:
+
+"Player e riproduzione": per definire il lettore da utilizzare per i video, attivare SponsorBlock per saltare automaticamente le sponsorizzazioni interne ai video (con relative notifiche) e abilitare la lettura automatica dei titoli dei capitoli;
+
+"Ricerca": per impostare il criterio di ricerca predefinito;
+
+"Ordinamento e filtri": per definire l'ordine dei risultati e i filtri di durata;
+
+"Iscrizioni e nuovi video": per stabilire le modalità e le tempistiche di ricerca dei nuovi contenuti nei canali seguiti.
+
+Quando i video non partono
+
+YouTube aggiorna frequentemente le proprie specifiche tecniche. Se i video dovessero improvvisamente interrompere la riproduzione, seleziona la voce "Aggiornamento" nel menu di YouTube: WinGabriel provvederà ad aggiornare il modulo di interfaccia con la piattaforma, risolvendone nella maggior parte dei casi il problema.

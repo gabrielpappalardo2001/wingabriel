@@ -1,0 +1,34 @@
+﻿Gli avvisi di sistema
+@smart
+
+Chi guarda lo schermo si accorge a colpo d'occhio se internet non funziona più o se il disco è quasi pieno. Chi non vede, invece, spesso se ne accorge troppo tardi, magari nel momento meno opportuno. Per questo motivo WinGabriel controlla queste cose al posto tuo e ti avvisa.
+
+Cosa controlla WinGabriel
+
+La connessione a internet. Quando la connessione si interrompe, la voce ti avvisa dicendo "Connessione a internet persa". Quando si ripristina, ti dice "Connessione a internet ripristinata", specificando anche il tipo di collegamento: tramite Wi-Fi, indicando il nome della rete, oppure via cavo, tramite telefono o rete cellulare. Se passi da una rete all'altra, te lo segnala comunque.
+
+Prima di mandarti un avviso, WinGabriel attende qualche secondo per avere la certezza che la situazione sia effettivamente cambiata, evitando così di disturbarti per ogni minima interruzione.
+
+La memoria. La memoria è lo spazio in cui il computer memorizza i dati su cui sta lavorando in quel momento. Quando è quasi piena, il sistema rallenta. WinGabriel ti avvisa quando la memoria utilizzata supera la soglia che hai impostato e, se hai molte applicazioni aperte, ti ricorda che puoi chiudere quelle non necessarie premendo F10.
+
+I dischi. Il disco è il supporto su cui sono salvati i tuoi file. Quando lo spazio libero su un disco scende al di sotto della soglia stabilita, WinGabriel ti avvisa e ti suggerisce di svuotare il cestino o di eliminare i file che non ti servono più.
+
+Per evitare di risultare troppo assillante, ciascun avviso viene ripetuto al massimo ogni quindici minuti (ogni ora nel caso del disco), finché la situazione non si risolve.
+
+Dove arrivano gli avvisi
+
+Gli avvisi compaiono nel centro notifiche, sotto forma di notifiche dell'applicazione "Sistema". Se hai attivato la modalità "Non disturbare", arriveranno in silenzio.
+
+Premendo Invio su una notifica, WinGabriel ti reindirizza direttamente alla sezione pertinente: alle impostazioni Wi-Fi per la connessione, alla schermata del multitasking per la memoria e al cestino per il disco.
+
+Come regolare gli avvisi
+
+Vai su Impostazioni, seleziona "Sistema", poi ancora "Sistema" e infine "Avvisi di connessione, memoria e disco". Da qui puoi configurare le seguenti opzioni:
+
+per la connessione: puoi decidere se attivare o disattivare gli avvisi;
+
+per la memoria: puoi definire la percentuale di utilizzo oltre la quale desideri ricevere la notifica (ottanta, ottantacinque, novanta o novantacinque percento, oppure disattivare gli avvisi);
+
+per il disco: puoi scegliere la percentuale di spazio libero al di sotto della quale vuoi essere avvisato (cinque, dieci, quindici o venti percento, oppure nessun avviso).
+
+All'interno dello stesso menu è presente anche la voce "Stato attuale", che offre una panoramica immediata della situazione corrente relativa alla connessione, alla memoria utilizzata e allo spazio libero su ciascun disco.

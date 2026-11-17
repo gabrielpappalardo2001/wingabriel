@@ -1,0 +1,77 @@
+﻿La posta: tenerla in ordine
+
+Con il tempo, nella casella di posta si accumulano molti messaggi. Le cartelle e le regole ti aiutano a tenerli in ordine. Le regole, anzi, provvedono automaticamente senza che tu debba fare nulla.
+
+Le cartelle
+
+Le cartelle servono a suddividere i messaggi, proprio come i raccoglitori di un archivio: una per la banca, una per il medico, una per la famiglia.
+
+Nel menu della posta, la voce "Altre cartelle" mostra le sezioni della tua casella. Di ciascuna viene indicato il numero totale dei messaggi e quanti sono ancora da leggere. Premendo Invio su una cartella si apre l'elenco dei relativi messaggi, che si consulta allo stesso modo della posta in arrivo.
+
+Queste cartelle sono le stesse che vedi sullo smartphone e sugli altri computer: se ne crei una qui, la troverai anche sugli altri dispositivi.
+
+Creare e gestire le cartelle
+
+All'interno dell'elenco delle cartelle, premendo il tasto Alt puoi:
+
+creare una nuova cartella;
+
+rinominare una cartella;
+
+spostare una cartella all'interno di un'altra;
+
+eliminare una cartella.
+
+Una nuova cartella viene creata inizialmente allo stesso livello delle altre principali. Se desideri inserirla dentro un'altra cartella, creala prima e spostala in un secondo momento.
+
+Le cartelle principali, vale a dire posta in arrivo, posta inviata, bozze, posta eliminata e posta indesiderata, non possono essere eliminate.
+
+Quando elimini una cartella, vengono cancellati anche tutti i messaggi che contiene. Per questo motivo WinGabriel richiede sempre una conferma prima di procedere.
+
+Spostare i messaggi nelle cartelle
+
+Per spostare un messaggio in una cartella: posizionati sul messaggio, premi Alt, seleziona "Sposta in una cartella", scegli la destinazione desiderata e premi Invio.
+
+Le regole
+
+Le regole sono istruzioni impartite una sola volta, che WinGabriel applica autonomamente a tutti i messaggi in arrivo.
+
+Ecco alcuni esempi di regole:
+
+"sposta nella cartella Banca tutti i messaggi provenienti dalla banca";
+
+"segna come letti gli avvisi del condominio";
+
+"elimina la pubblicità di quel negozio".
+
+Creare una regola
+
+1. Nel menu della posta seleziona "Impostazioni" e quindi "Regole".
+
+2. Scegli di creare una nuova regola.
+
+3. WinGabriel ti chiede quale parte del messaggio prendere in considerazione: il mittente, l'oggetto, il corpo (cioè il testo del messaggio) oppure il destinatario.
+
+4. Successivamente ti chiede il criterio di confronto: "Contiene", "Uguale a", "Inizia con", "Finisce con". Per la quasi totalità delle regole l'opzione ideale è "Contiene". È disponibile anche "Espressione regolare", riservata agli utenti esperti.
+
+5. Ti viene quindi chiesto di assegnare un nome alla regola e di inserire il testo da cercare, come ad esempio l'indirizzo email della banca.
+
+6. Infine, ti viene chiesto quale azione compiere sui messaggi trovati: contrassegnarli come letti o non letti, spóstarli in una cartella, segnarli come indesiderati oppure eliminarli. Se opti per lo spostamento, ti verrà chiesto di specificare la cartella di destinazione.
+
+Gestire le regole
+
+Nella stessa sezione, denominata "Regole", trovi l'elenco delle tue regole. Ciascuna di esse può essere modificata, disattivata, riattivata o eliminata. Una regola disattivata non viene cancellata: rimane memorizzata, pronta per essere eventualmente riattivata in futuro.
+
+Come lavorano le regole
+
+Le regole si applicano ai messaggi non ancora letti poco dopo l'apertura della posta in arrivo. I messaggi già letti non subiscono alcuna modifica.
+
+Le regole agiscono direttamente sulla tua casella di posta: un messaggio spostato da una regola risulterà spostato anche sul telefono.
+
+Le regole basate sul testo del messaggio entrano in azione soltanto quando apri il messaggio stesso, poiché è in quel momento che il testo viene effettivamente scaricato.
+
+Quando una regola individua e gestisce un messaggio, le regole successive vengono saltate. Se lo desideri, puoi modificare questo comportamento per ogni singola regola.
+
+I destinatari recenti
+
+Nel menu della posta, la voce "Destinatari recenti" raccoglie gli indirizzi delle persone a cui hai scritto. Tramite il menu delle opzioni puoi rimuovere un singolo indirizzo oppure svuotare l'intero elenco.

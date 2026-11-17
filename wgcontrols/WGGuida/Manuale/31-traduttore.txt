@@ -1,0 +1,69 @@
+﻿Il traduttore
+
+Il traduttore trasforma un testo da una lingua a un'altra. Ti permette di comprendere una lettera ricevuta dall'estero, un articolo in inglese o le istruzioni di un apparecchio scritte in un'altra lingua.
+
+Aprire il traduttore
+
+Nel {menu} seleziona "Traduttore". Si aprirà un menu con le seguenti voci:
+
+"Scrivi o incolla il testo da tradurre";
+
+"Traduci il testo degli appunti";
+
+"Traduci un file";
+
+"Lingua di destinazione";
+
+"Impostazioni del traduttore".
+
+Tradurre un testo
+
+1. Seleziona "Scrivi o incolla il testo da tradurre".
+
+2. Si aprirà un campo di inserimento. Digita il testo oppure incollalo premendo Control V se lo avevi copiato in precedenza.
+
+3. Premi Invio.
+
+4. La traduzione apparirà in un'area di lettura. Potrai scorrerla utilizzando i tasti freccia e copiarla all'occorrenza.
+
+Tradurre il testo copiato
+
+Se hai già copiato un testo, ad esempio da un messaggio o da una pagina web, seleziona "Traduci il testo degli appunti": WinGabriel provvederà a tradurlo all'istante, senza passaggi intermedi.
+
+Tradurre un documento intero
+
+Seleziona "Traduci un file" e individua il documento sul computer. WinGabriel lo tradurrà integralmente.
+
+Puoi farlo anche direttamente dalla gestione file: posizionati sul documento, premi Alt e seleziona "Traduci".
+
+La lingua
+
+La voce "Lingua di destinazione" indica la lingua in cui desideri tradurre il testo, che solitamente è l'italiano. Tuttavia, puoi sceglierne un'altra; ad esempio, se devi scrivere a un parente all'estero, potrai scrivere in italiano e tradurre il testo nella sua lingua.
+
+Di norma, WinGabriel riconosce automaticamente la lingua di partenza.
+
+I due metodi di traduzione
+
+Nelle impostazioni del traduttore, alla voce "Motore di traduzione", puoi scegliere tra due opzioni.
+
+Google, online. Conosce qualsiasi lingua e offre la traduzione migliore. Richiede una connessione a internet e il testo da tradurre viene inviato a Google.
+
+Offline, senza connessione. Funziona direttamente sul tuo computer supportando più di cinquanta lingue. Il testo non lascia mai il tuo dispositivo. La prima volta che traduci da una lingua all'altra, WinGabriel scaricherà i componenti necessari; dopodiché, funzionerà anche in assenza di internet. Questa è la soluzione ideale per i documenti riservati e per quando non si dispone di una connessione.
+
+Le altre impostazioni
+
+"Rilevamento della lingua": se attivo, consente a WinGabriel di riconoscere in autonomia la lingua del testo. Se disattivato, verrà utilizzata la lingua impostata alla voce "Lingua dei testi quando il rilevamento è disattivato".
+
+"Elimina i modelli offline scaricati": libera lo spazio di archiviazione occupato sul disco dai file per la traduzione senza connessione. Sarà possibile scaricarli nuovamente in caso di necessità.
+
+Il traduttore nelle altre sezioni del programma
+
+Il traduttore è accessibile anche in altre aree di WinGabriel:
+
+nei campi di testo, premendo Alt, per tradurre quanto scritto o per sostituirlo direttamente con la traduzione;
+
+nei messaggi di posta elettronica e negli articoli visualizzati all'interno di un campo, premendo sempre Alt;
+
+nel browser, utilizzando la combinazione Control Shift U, per tradurre un'intera pagina.
+
+Il programma utilizzerà ovunque la lingua e la modalità di traduzione impostate in questa sezione.

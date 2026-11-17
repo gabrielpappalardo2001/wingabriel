@@ -1,0 +1,89 @@
+﻿Le due modalità di WinGabriel
+
+WinGabriel offre due diverse modalità di utilizzo: la modalità classica e la modalità smart. Sta a te scegliere quale adoperare.
+
+[smart]
+In questo momento stai utilizzando la modalità smart.
+[/smart]
+
+[classica]
+In questo momento stai utilizzando la modalità classica.
+[/classica]
+
+[classica]
+La modalità classica
+
+La modalità classica è la versione tradizionale di WinGabriel, quella che tantissime persone utilizzano da anni.
+
+Il funzionamento è molto semplice: all'avvio compare il menu iniziale. Da qui puoi accedere a una funzione, ad esempio la posta, e poi aprire un singolo messaggio. Premendo Esc si torna indietro di un passo alla volta, fino a rientrare nel menu iniziale. Si procede quindi una cosa alla volta, una dopo l'altra, proprio come quando si attraversano le stanze lungo un corridoio.
+
+È un modo di lavorare semplice e ordinato, con cui è davvero difficile perdersi. Anche nella modalità classica l'editor consente di tenere aperti più testi contemporaneamente e il browser più pagine alla volta.
+
+Esiste inoltre un'altra modalità, la modalità smart, in cui è possibile tenere aperte più funzioni nello stesso momento e passare dall'una all'altra, come si fa con le applicazioni di uno smartphone. Se desideri provarla, puoi attivarla nelle Impostazioni alla voce "Modalità". Una volta attivata, anche questo manuale si aggiornerà per illustrarti la modalità smart.
+[/classica]
+
+[smart]
+La modalità smart
+
+Nella modalità smart ogni funzione di WinGabriel diventa un'applicazione, come quelle di un telefono o di un tablet. Le varie applicazioni restano aperte contemporaneamente, una affiancata all'altra.
+
+Questo significa che puoi iniziare a scrivere una lettera, lasciarla a metà per consultare l'agenda o ascoltare il giornale radio, e poi riprenderla esattamente da dove l'avevi lasciata, senza dover chiudere nulla per passare da un'attività all'altra.
+
+La modalità smart offre anche:
+
+la scrivania, ossia la schermata che vedi all'avvio;
+
+la home, per quando usi il computer come un tablet;
+
+il menu applicazioni, che si apre e si chiude con il tasto Windows;
+
+il multitasking, ovvero l'elenco delle applicazioni aperte;
+
+il centro notifiche, dove arrivano tutti gli avvisi;
+
+il pannello del centro di controllo, per regolare rapidamente Wi-Fi, volume e altre opzioni quando usi il computer come tablet;
+
+la ricerca globale in tutto il programma.
+
+Tutto questo viene spiegato nei capitoli seguenti.
+
+Esiste anche la modalità classica, quella di sempre, in cui si svolge una sola operazione alla volta partendo dal menu iniziale. Se preferisci ritornarci, puoi selezionarla nelle Impostazioni.
+
+La prova guidata
+
+Per prendere confidenza con i tasti della modalità smart è disponibile una prova guidata. La procedura ti accompagna nell'uso dei nuovi tasti, uno per volta: a ogni passaggio ti indica cosa premere e attende che tu lo faccia davvero.
+
+I passaggi previsti sono: aprire il menu applicazioni, aprire l'editor, tornare alla scrivania, rientrare nell'editor con Control F10, passare da un'applicazione all'altra, aprire il multitasking con F10 e chiudere l'editor con Control F4.
+
+Se un passaggio non viene completato entro un minuto, la prova te lo ripete una volta e poi prosegue comunque. Non è un esame, ma serve soltanto per fare pratica.
+
+Puoi ripetere la prova in qualsiasi momento: entra nelle Impostazioni, seleziona "Sistema" e scegli "Prova guidata dei tasti".
+[/smart]
+
+Come cambiare modalità
+
+[smart]
+Per cambiare modalità segui questi passaggi:
+
+1. Apri il menu applicazioni premendo il tasto Windows.
+
+2. Seleziona "Impostazioni" e premi Invio.
+
+3. Seleziona "Sistema" e premi Invio.
+
+4. Scegli la voce "Modalità" e premi Invio.
+
+5. Seleziona "Classica" oppure "Smart" e premi Invio.
+[/smart]
+
+[classica]
+Per cambiare modalità segui questi passaggi:
+
+1. Nel menu iniziale seleziona "Impostazioni" e premi Invio.
+
+2. Seleziona la prima voce, "Modalità", e premi Invio.
+
+3. Scegli "Smart" oppure "Classica" e premi Invio.
+[/classica]
+
+La nuova modalità sarà attiva dal successivo avvio di WinGabriel. Il cambio non può avvenire mentre il programma è aperto, perché nelle due modalità le funzioni sono organizzate in modo diverso. Di conseguenza, dopo aver effettuato la scelta, chiudi WinGabriel e riaprilo.

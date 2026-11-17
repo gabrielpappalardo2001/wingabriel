@@ -1,0 +1,121 @@
+﻿I tuoi dati, le copie di sicurezza e la riservatezza
+
+Con il tempo, all'interno di WinGabriel si accumulano molti elementi importanti: i messaggi di posta elettronica, i contatti della rubrica, gli appuntamenti e le note. Questo capitolo spiega dove vengono conservati, come metterli al sicuro creando delle copie e chi può accedervi.
+
+Dove sono i tuoi dati
+
+I tuoi dati sono custoditi in una cartella del computer situata accanto al programma. Non è richiesta alcuna operazione specifica, poiché WinGabriel gestisce tutto in autonomia.
+
+Che cosa non si trova nella cartella dei dati
+
+Nella cartella dei dati si trovano soltanto i tuoi dati personali: la posta, la rubrica, gli appuntamenti, le note, gli spartiti scaricati e riconosciuti e così via. Tutto il resto sta altrove.
+
+La configurazione, cioè le tue impostazioni, si trova nei dati locali del tuo utente di Windows, nella cartella WinGabriel\config, se il programma è installato. Se invece è portatile, si trova nella cartella config, accanto al programma.
+
+I suoni e i programmi che WinGabriel scarica, cioè il SoundFont e l'orchestra, il riconoscimento degli spartiti, il traduttore ed eSpeak, stanno insieme al programma: in Programmi\WinGabriel, se è installato, oppure nella cartella del programma portatile. Se WinGabriel parte senza i privilegi di amministratore e non può scrivere in Programmi, li tiene invece nei dati locali del tuo utente.
+
+Spostare la cartella dei dati non sposta la configurazione, i suoni e i programmi. Se aggiorni da una versione precedente, WinGabriel li trasferisce da solo al primo avvio, senza sovrascrivere nulla.
+
+Spostare i dati in un'altra cartella
+
+Se lo desideri, puoi memorizzare i dati in una posizione differente, ad esempio in una cartella che si sincronizza automaticamente con internet, così da poterli recuperare anche su un altro computer.
+
+1. Accedi a "Impostazioni", seleziona "Applicazioni", poi "File" e infine "Cartella dati dell'applicazione".
+
+2. Seleziona la nuova cartella.
+
+3. WinGabriel chiederà se desideri trasferire anche i dati già esistenti e mostrerà l'avanzamento dell'operazione.
+
+All'interno della cartella scelta, WinGabriel creerà una sottocartella dedicata per archiviare tutti i file necessari. I tuoi file personali rimarranno separati e non verranno modificati dal programma.
+
+Per ritrovare i tuoi dati su un altro computer in modo più semplice e sicuro, è disponibile la sincronizzazione tramite cloud, descritta nel capitolo successivo.
+
+Le copie di sicurezza
+
+Una copia di sicurezza, nota anche come backup, consiste in una duplicazione completa di tutti i dati. Risulta utile in caso di guasti o furti del computer, o qualora si verifichi un imprevisto, permettendo di ripristinare ogni elemento.
+
+Le copie di sicurezza sono gestibili dalle Impostazioni: accedi a "Sistema", seleziona "Cloud" e infine "Backup e ripristino". Questa sezione è sempre attiva, indipendentemente dall'utilizzo del cloud. Le opzioni disponibili sono:
+
+"Esegui subito il backup": crea una copia immediata;
+
+"Cartella dove salvare i backup": definisce la destinazione delle copie;
+
+"Backup automatico": stabilisce la frequenza delle copie automatiche;
+
+"Conservazione dei backup": determina il periodo di conservazione delle copie meno recenti;
+
+"Ripristina i dati da un backup": consente di recuperare i dati da una copia;
+
+"Informazioni sui backup": mostra la data e l'ora dell'ultima copia effettuata.
+
+Fare una copia
+
+Seleziona "Esegui subito il backup". WinGabriel raccoglierà tutti i dati e le impostazioni in un unico archivio compresso, indicando al termine il numero di file salvati e la posizione della copia. Se è stata abilitata la copia dei backup sul cloud, l'archivio verrà trasmesso anche lì.
+
+Nella copia non sono compresi i suoni e i programmi scaricati: non sono dati personali e, se servono, WinGabriel li scarica di nuovo.
+
+Le copie automatiche
+
+Tramite la voce "Backup automatico" è possibile impostare la creazione di una copia giornaliera, settimanale, mensile o disattivare la funzione.
+
+La copia automatica viene eseguita in background, senza interrompere il lavoro. Per verificare che sia stata completata, è sufficiente consultare la sezione "Informazioni sui backup".
+
+Quanto tempo tenere le copie
+
+L'opzione "Conservazione dei backup" permette di definire per quanti giorni mantenere le copie. Le versioni più datate verranno eliminate automaticamente per evitare di occupare spazio sul disco, sebbene alcune copie vengano comunque conservate poiché disporre di una copia meno recente è preferibile a non averne alcuna.
+
+Un consiglio importante
+
+Si consiglia di memorizzare le copie su un supporto di archiviazione distinto da quello principale del computer, come una chiavetta USB, un disco esterno o il servizio cloud di WinGabriel, illustrato nel capitolo successivo. Se le copie risiedono sullo stesso disco e questo si danneggia, andranno persi sia i dati originali sia i backup.
+
+Recuperare i dati da una copia
+
+1. Seleziona "Ripristina i dati da un backup".
+
+2. Verrà mostrato l'elenco delle copie disponibili, ordinate dalla più recente, con l'indicazione della data e delle dimensioni. Scegli quella desiderata.
+
+3. Si aprirà un menu contenente le seguenti opzioni:
+
+"Ripristina tutto il backup": recupera l'interezza dei dati;
+
+"Elimina questo backup": cancella la copia selezionata, previa conferma;
+
+una voce specifica "Ripristina solo" per ciascun file incluso nella copia (ad esempio, esclusivamente la rubrica, gli appuntamenti o la posta elettronica). Se un file appartiene a una determinata sezione, la voce lo specificherà chiaramente.
+
+Se è necessario recuperare un singolo elemento, seleziona il file specifico, lasciando inalterati tutti gli altri dati.
+
+4. WinGabriel richiederà una conferma. Prima di procedere con la sostituzione, verrà comunque creata una copia di sicurezza dello stato attuale dei dati.
+
+5. Al termine, chiudi e riapri WinGabriel, poiché i dati recuperati vengono caricati all'avvio.
+
+Eliminare un backup
+
+Periodicamente può essere utile effettuare un'operazione di pulizia. Seleziona la copia dall'elenco dei backup e scegli "Elimina questo backup". Ti verrà chiesto di confermare l'operazione, poiché una copia eliminata non può essere recuperata. Le copie obsolete vengono comunque rimosse automaticamente secondo i criteri impostati.
+
+Le copie di sicurezza sul cloud
+
+È possibile inviare le copie sul cloud per conservarle al sicuro al di fuori del computer. Tale configurazione si gestisce in "Cloud" e successivamente "Backup sul cloud", come descritto nel capitolo successivo. Sul cloud viene mantenuto un unico backup, corrispondente al più recente.
+
+Recuperare i dati su un computer nuovo
+
+Se si utilizza un nuovo computer, la procedura guidata al primo avvio fornirà supporto: dopo aver attivato la sincronizzazione ed effettuato l'accesso al proprio account Filen, se sul cloud è presente un backup, il sistema ne proporrà il recupero. Accettando la proposta, WinGabriel scaricherà e ripristinerà i dati, avendo cura di salvare preventivamente una copia di quelli eventualmente già presenti. Questa operazione può essere eseguita anche in un secondo momento accedendo a "Cloud", "Backup sul cloud" e "Backup presenti sul cloud".
+
+Le password
+
+Le password degli account di posta elettronica e le chiavi dei servizi sono protette in modo da poter essere lette esclusivamente sul proprio computer e tramite il proprio utente Windows. Qualora qualcuno copiasse i dati su un altro computer, non sarebbe in grado di decrittografarle.
+
+Gli altri dati, come i messaggi, i contatti e gli appuntamenti, non beneficiano dello stesso livello di protezione. Se si sceglie di mantenere la cartella dei dati all'interno di un servizio di archiviazione online, occorre considerare che quest'ultimo ne conserverà una copia. Grazie alla sincronizzazione di WinGabriel, i file vengono trasferiti su Filen in forma cifrata, risultando accessibili unicamente all'utente tramite la propria password.
+
+I dati riservati godono di un ulteriore livello di protezione basato su una password dedicata, come spiegato nel capitolo specifico.
+
+Chi può vedere quello che fai
+
+WinGabriel non trasmette a terzi alcuna informazione sull'attività svolta dall'utente e non registra le operazioni eseguite.
+
+Il programma si collega a internet esclusivamente per i servizi utilizzati direttamente dall'utente: caselle di posta elettronica, notizie, previsioni meteo, mappe, stazioni radio, YouTube, farmacie, servizi di traduzione e intelligenza artificiale quando operano online, controllo degli aggiornamenti e, previo consenso, il servizio cloud Filen per la sincronizzazione e i backup.
+
+All'interno dei messaggi di posta, il caricamento automatico delle immagini remote viene bloccato. Tali elementi sono spesso utilizzati dai mittenti per verificare l'avvenuta apertura di un messaggio, il momento in cui è stato letto e la posizione del destinatario.
+
+Una regola d'oro
+
+Nessun istituto bancario, ente pubblico o azienda seria richiederà mai la password tramite e-mail, SMS o telefonata. Se qualcuno dovesse richiederla, si tratta quasi certamente di un tentativo di truffa. Nel dubbio, è opportuno non rispondere e non aprire alcun collegamento, contattando direttamente la propria banca attraverso un canale di comunicazione noto.

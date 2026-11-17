@@ -1,0 +1,43 @@
+﻿Le attese, le domande e i messaggi
+
+In questo capitolo viene spiegato come si comporta WinGabriel durante i tempi di attesa, quando si verifica un problema o quando il programma ha una segnalazione da mostrarti.
+
+Le attese
+
+Alcune operazioni richiedono un po' di tempo, come scaricare la posta o un file, cercare le reti Wi-Fi o creare una copia di sicurezza dei dati.
+
+In questi casi WinGabriel non ti lascia nell'incertezza: ti comunica che cosa sta facendo (ad esempio "Ricerca delle reti Wi-Fi") ed emette un segnale acustico discreto che si ripete per tutta la durata dell'operazione. In questo modo sai sempre che il programma sta lavorando e non si è bloccato.
+
+Se l'attesa si prolunga, la voce ti ricorda di tanto in tanto di attendere. Quando possibile, ti indica anche la percentuale di avanzamento: ad esempio, "50 per cento" significa che il processo è giunto a metà.
+
+Durante l'attesa:
+
+i tasti Freccia giù o Freccia su ripetono l'operazione in corso;
+
+il tasto Esc interrompe l'operazione, se è possibile farlo. In questo caso il lavoro viene arrestato definitivamente e non semplicemente nascosto.
+
+C'è un'unica eccezione: la ricerca dei file nel computer. Poiché cercare un file nell'intero sistema può richiedere molto tempo, per non farti attendere la ricerca viene eseguita in sottofondo mentre svolgi altre attività. Troverai maggiori dettagli nel capitolo dedicato alla ricerca.
+
+Le domande
+
+Quando si verifica un problema, WinGabriel non si limita a mostrare un messaggio di errore, ma ti pone una domanda e ti suggerisce come procedere.
+
+Ecco due esempi:
+
+"Impossibile eliminare il file: vuoi riprovare?"
+
+"Il Wi-Fi è disattivato: vuoi attivarlo?"
+
+Ogni domanda si presenta come un breve menu con due opzioni: "Sì" e "No". Puoi spostarti con le frecce e confermare premendo Invio. Premere Esc equivale a rispondere "No".
+
+Quando una risposta potrebbe comportare una perdita di dati (ad esempio l'eliminazione definitiva di un file o lo svuotamento del cestino), la domanda lo specifica chiaramente prima della scelta. Ascoltala sempre con attenzione fino in fondo.
+
+I messaggi
+
+A volte WinGabriel deve soltanto fornirti un'informazione, senza richiedere alcuna decisione: ad esempio lo stato della batteria, i dettagli su una rete Wi-Fi o la conferma che un'operazione è terminata.
+
+In questi casi compare un messaggio che la voce legge subito. Puoi riascoltarlo usando le frecce; per chiuderlo, premi Invio oppure Esc.
+
+Niente elenchi vuoti
+
+WinGabriel non apre mai elenchi vuoti contenenti solo diciture come "nessun elemento" o "cartella vuota". Se non c'è nulla da mostrare, ti avvisa con un messaggio e l'elenco non viene nemmeno aperto. In questo modo, quando un elenco si apre, hai la certezza che contenga effettivamente qualcosa.

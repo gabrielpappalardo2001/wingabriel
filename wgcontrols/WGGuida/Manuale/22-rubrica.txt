@@ -1,0 +1,97 @@
+﻿La rubrica
+
+La rubrica è il luogo in cui conservi i numeri di telefono, gli indirizzi di posta elettronica e gli indirizzi di casa delle persone che conosci. È l'equivalente digitale della vecchia rubrica telefonica, ma con il vantaggio di non usurarsi e di non poter essere smarrita.
+
+Aprire la rubrica
+
+[smart]
+Nel menu delle applicazioni seleziona "Organizer" e successivamente "Rubrica". Se utilizzi il computer in modalità tablet, troverai la rubrica anche nel dock della schermata principale.
+[/smart]
+
+[classica]
+Nel menu iniziale seleziona "Organizer" e successivamente "Rubrica".
+[/classica]
+
+Il menu della rubrica comprende le seguenti voci: nuovo contatto, elenco dei contatti, cerca un contatto, preferiti, categorie, rubriche, sincronizza la rubrica, impostazioni.
+
+Aggiungere un contatto
+
+1. Seleziona "Nuovo contatto" e premi Invio.
+
+2. Verrà visualizzata una serie di campi: nome, cognome, azienda, numeri di telefono, indirizzi di posta elettronica, indirizzo di casa e ulteriori informazioni. Spostati da un campo all'altro utilizzando il tasto freccia giù.
+
+3. Inserisci unicamente i dati necessari: non è obbligatorio compilare ogni campo.
+
+4. Al termine, premi Invio per salvare il contatto.
+
+Consultare i contatti
+
+Seleziona "Elenco dei contatti": potrai ascoltare l'elenco completo dei tuoi contatti, ordinati alfabeticamente. Per scorrerli, usa i tasti freccia. Premendo una lettera della tastiera, verrai posizionato direttamente sul primo contatto che inizia con quella determinata lettera.
+
+Premi Invio su un contatto per ascoltare tutte le informazioni ad esso associate.
+
+Premendo il tasto Alt su un contatto è possibile:
+
+modificarlo, ad esempio per aggiornare un numero di telefono;
+
+chiamarlo con il telefono collegato in Bluetooth, selezionando "Chiama": il procedimento è descritto nel capitolo sul telefono;
+
+eliminarlo (previa richiesta di conferma da parte di WinGabriel);
+
+aggiungerlo ai preferiti o rimuoverlo da essi.
+
+Per eliminare contemporaneamente più contatti, selezionali tramite il tasto Shift e successivamente seleziona "Elimina".
+
+Cercare un contatto
+
+Quando il numero dei contatti è elevato, ricorrere alla ricerca risulta più efficiente.
+
+1. Seleziona "Cerca un contatto".
+
+2. Scegli "Nuova ricerca", digita il nome (o anche solo una parte di esso) e premi Invio.
+
+3. WinGabriel mostrerà i risultati corrispondenti.
+
+La funzione "Ricerche recenti" consente di ripetere una ricerca effettuata in precedenza senza doverla digitare nuovamente.
+
+I preferiti
+
+I preferiti sono i contatti a cui ci si rivolge con maggiore frequenza, quali familiari, amici stretti o il proprio medico. Inserendoli tra i preferiti, sarà possibile individuarli istantaneamente senza dover scorrere l'intera rubrica.
+
+Le categorie
+
+Le categorie permettono di suddividere i contatti in gruppi tematici, come ad esempio "Famiglia", "Lavoro" o "Salute". È possibile creare nuove categorie, modificarne il nome e assegnare ciascun contatto al gruppo di appartenenza.
+
+Più rubriche
+
+È possibile gestire più rubriche distinte, ad esempio una per uso personale e una per l'ambito professionale. Accedendo alla voce "Rubriche" e premendo il tasto Alt, è possibile:
+
+creare una nuova rubrica;
+
+rinominarla;
+
+associarla a una casella di posta elettronica per attivarne la sincronizzazione;
+
+proteggerla mediante password;
+
+impostarla come rubrica predefinita, ovvero la destinazione automatica dei nuovi contatti;
+
+eliminarla.
+
+Importare ed esportare i contatti dal telefono
+
+La sezione "Rubriche" consente inoltre di importare ed esportare i contatti servendosi di un file in formato vCard, uno standard riconosciuto dalla quasi totalità dei dispositivi mobili e dei programmi di posta elettronica.
+
+Per trasferire i contatti dal telefono a WinGabriel, è sufficiente esportarli dal dispositivo mobile in un file vCard, copiarlo sul computer e avviarne l'importazione all'interno di WinGabriel. Analogamente, è possibile compiere l'operazione inversa esportando la rubrica da WinGabriel per importarla sul telefono.
+
+La rubrica durante la composizione di un messaggio
+
+Quando si redige un messaggio di posta elettronica, non è necessario ricordare gli indirizzi a memoria: nel campo del destinatario è sufficiente premere il tasto Alt e selezionare "Cerca il destinatario in rubrica".
+
+La sincronizzazione
+
+La sincronizzazione assicura che la rubrica di WinGabriel sia sempre allineata con quella del proprio provider di posta elettronica e, di conseguenza, con quella del telefono. Aggiungendo un contatto sul telefono, questo comparirà automaticamente in WinGabriel e viceversa; analogamente, l'eliminazione di un contatto ne comporterà la rimozione da entrambi i dispositivi.
+
+Le impostazioni di sincronizzazione sono gestibili sia nella sezione omonima delle preferenze della rubrica, sia nelle impostazioni della posta elettronica. È possibile eseguire una sincronizzazione immediata oppure definire un intervallo di tempo per l'aggiornamento automatico, variabile da cinque minuti a una volta al giorno.
+
+Questa funzionalità è compatibile con i servizi che adottano formati aperti, denominati CardDAV per i contatti e CalDAV per i calendari. Non è invece supportata per i contatti e i calendari di Google e Microsoft, poiché tali aziende richiedono ai software procedure di registrazione specifiche. La gestione della posta elettronica tramite Google e Microsoft continua comunque a funzionare regolarmente.

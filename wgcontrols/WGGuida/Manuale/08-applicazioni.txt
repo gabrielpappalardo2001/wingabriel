@@ -1,0 +1,90 @@
+﻿Il menu applicazioni e le applicazioni aperte
+@smart
+
+Nella modalità smart, qualunque elemento tu apra diventa un'applicazione: la posta, l'editor, una cartella di file, il browser, la radio. Le applicazioni rimangono aperte finché non decidi di chiuderle. Puoi passare dall'una all'altra in qualsiasi momento, e ciascuna ti aspetta esattamente nel punto in cui l'avevi lasciata.
+
+Questo capitolo spiega come aprire le applicazioni, come passare da una all'altra e come chiuderle.
+
+Il menu applicazioni
+
+Il menu applicazioni è l'elenco di tutte le funzioni disponibili in WinGabriel. Comprende le seguenti voci: Editor, Gestione file, Media player, Musica, Organizer, Mail, Telefono, Web, Traduttore, Salute, Altre funzioni, Intelligenza artificiale, Centro di controllo, Aggiornamento, Impostazioni, Manuale, Informazioni sul programma e infine Esci.
+
+A sua volta, l'Organizer raggruppa la rubrica, l'agenda, le note e i dati riservati.
+
+Aprire e chiudere il menu applicazioni
+
+Per aprire il menu applicazioni, premi il tasto Windows e rilascialo. Il tasto Windows si trova nell'angolo inferiore sinistro, tra il tasto Control e il tasto Alt, ed è contrassegnato dal simbolo di Windows.
+
+Esistono diversi modi per chiudere il menu applicazioni: premere il tasto Esc, premere nuovamente il tasto Windows oppure premere la combinazione Control F4. Alla chiusura, verrai riportato all'applicazione utilizzata in precedenza.
+
+Il menu applicazioni si comporta come qualsiasi altra applicazione: quando non serve, rimane chiuso.
+
+Aprire un'applicazione
+
+Nel menu applicazioni, seleziona una voce utilizzando i tasti freccia e premi Invio. Si aprirà una nuova applicazione corrispondente alla voce selezionata.
+
+Se l'applicazione è già aperta, WinGabriel non ne avvierà una seconda copia, ma ti condurrà direttamente a quella esistente. Ad esempio, qualora la posta fosse già aperta e tu selezionassi nuovamente "Mail", verrai reindirizzato alla casella di posta nello stato in cui l'avevi lasciata.
+
+Passare da un'applicazione all'altra
+
+Quando sono aperte più applicazioni, sono disponibili tre metodi per passare dall'una all'altra.
+
+Primo metodo: la combinazione Control freccia destra porta all'applicazione successiva, mentre Control freccia sinistra a quella precedente. Una voce di sintesi vocale enuncia il nome dell'applicazione e la posizione in cui era stata lasciata. Giunto al termine dell'elenco, ricominciando dall'inizio, udirai un segnale acustico distintivo.
+
+Secondo metodo: la combinazione Control F10 riporta immediatamente all'ultima applicazione utilizzata. Premendola di nuovo, tornerai alla posizione precedente. Questa funzione risulta particolarmente utile quando si lavora contemporaneamente con due applicazioni, ad esempio durante la copia di contenuti da un messaggio di posta a un documento.
+
+Il terzo metodo è il multitasking, descritto di seguito.
+
+Il multitasking
+
+Premendo il tasto F10 si attiva il multitasking, che mostra l'elenco di tutte le applicazioni aperte, ordinate dalla più recente alla meno recente.
+
+L'elenco si apre posizionandosi direttamente sull'applicazione utilizzata subito prima di quella attuale. Pertanto, premendo F10 e subito dopo Invio, si ritorna all'applicazione precedente.
+
+All'interno del multitasking:
+
+i tasti freccia giù e freccia su consentono di scorrere le applicazioni aperte;
+
+il tasto Invio apre l'applicazione selezionata;
+
+il tasto Alt apre il menu delle opzioni, che permette di chiudere l'applicazione selezionata oppure tutte le applicazioni insieme, fatta eccezione per la scrivania e la home.
+
+Nella parte superiore del multitasking, se presente, compare anche l'ultima notifica ricevuta.
+
+Il multitasking tramite gesti
+
+Se utilizzi uno schermo touch, puoi aprire il multitasking toccando rapidamente lo schermo tre volte con due dita.
+
+Per chiudere un'applicazione utilizzando i gesti:
+
+1. Scorri con un dito verso destra o verso sinistra fino a trovare l'applicazione che desideri chiudere.
+
+2. Fai scorrere un dito dal basso verso l'alto. La voce guida pronuncerà "Chiudi".
+
+3. Tocca rapidamente lo schermo due volte. L'applicazione verrà chiusa e l'elenco si riaprirà mostrando le applicazioni rimaste.
+
+Chiudere un'applicazione
+
+Per chiudere l'applicazione attiva, premi la combinazione Control F4.
+
+L'applicazione verrà chiusa in modo graduale, come se eseguissi la chiusura manuale passo dopo passo tramite il tasto Esc. Nel caso in cui stia scrivendo un testo senza averlo salvato, WinGabriel ti chiederà come procedere. Annullando tale richiesta, il processo di chiusura verrà interrotto senza alcuna perdita di dati.
+
+Una volta completata la chiusura, verrai riportato all'applicazione da cui era stata avviata. Se ad esempio l'avevi aperta dalla scrivania, tornerai alla scrivania. Qualora quest'ultima non fosse più disponibile, verrai reindirizzato alla scrivania o alla home.
+
+La scrivania e la home sono elementi speciali e non si chiudono come le normali applicazioni: la loro chiusura equivale infatti alla fine della sessione di WinGabriel.
+
+Riapertura automatica delle applicazioni precedenti
+
+Se lo desideri, WinGabriel può riaprire automaticamente all'avvio le applicazioni che erano rimaste aperte durante la sessione precedente. Per attivare questa opzione, accedi alle Impostazioni, seleziona "Sistema", poi di nuovo "Sistema", e infine scegli "Riapri all'avvio le applicazioni lasciate aperte".
+
+Le applicazioni si caricheranno silenziosamente in background. Davanti a te rimarrà sempre visibile la scrivania o la home, pronte per l'uso immediato. Le applicazioni riaperte saranno disponibili nel multitasking e richiamabili all'occorrenza.
+
+Se all'avvio scegli di leggere le notizie di WinGabriel, le applicazioni della sessione precedente si riapriranno soltanto dopo la chiusura delle notizie stesse.
+
+Eccessivo numero di applicazioni aperte
+
+Ciascuna applicazione aperta consuma una porzione di memoria del computer. Qualora la memoria disponibile dovesse ridursi, WinGabriel ti avviserà ricordandoti che è possibile utilizzare il tasto F10 per chiudere le applicazioni che non servono più. Questa soglia di avviso è configurabile nelle Impostazioni, come illustrato nel capitolo dedicato agli avvisi di sistema.
+
+Applicazioni separate
+
+Nelle Impostazioni, alla voce "Sistema" e successivamente "Sistema", è presente anche l'opzione "Applicazioni separate". Quando questa funzione è attiva, il sistema opera secondo le modalità descritte in questo capitolo. Disattivandola, WinGabriel adotterà un comportamento più simile alla modalità classica: le funzioni non rimarranno aperte contemporaneamente e sarà possibile tornare indietro tramite il tasto Esc.

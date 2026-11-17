@@ -1,0 +1,157 @@
+﻿L'intelligenza artificiale
+
+L'intelligenza artificiale è un programma molto avanzato, residente su potenti computer connessi a internet. È possibile porle domande in forma scritta, esattamente come si farebbe con una persona, e ricevere risposte immediate. Possiede una vasta conoscenza, sa redigere testi con efficacia ed è in grado di riassumere documenti molto lunghi in poche righe.
+
+Un aspetto fondamentale da tenere a mente è che può commettere errori, anche quando le sue risposte appaiono particolarmente convincenti. È opportuno considerarla un valido supporto, verificando sempre le informazioni in occasione di questioni importanti.
+
+Prima di cominciare: la chiave
+
+WinGabriel può interfacciarsi con tre servizi di intelligenza artificiale: Gemini, sviluppato da Google, Groq e OVHcloud, che offre modelli europei. Per utilizzare Gemini e Groq è necessaria una chiave, ovvero un codice segreto di grandi dimensioni che viene fornito gratuitamente dal servizio al termine della registrazione sul rispettivo sito web. OVHcloud, invece, non richiede alcuna chiave né registrazione, come spiegato più avanti.
+
+Per inserire la chiave:
+
+1. Accedi alle Impostazioni, seleziona "Applicazioni", poi "Intelligenza artificiale" e infine "Motore AI predefinito".
+
+2. Seleziona "Gemini" oppure "Groq".
+
+3. Scegli "Come ottenere la chiave API": WinGabriel fornirà istruzioni dettagliate su dove e come reperirla. In caso di difficoltà con la registrazione sul sito, è consigliabile farsi assistere da qualcuno.
+
+4. Una volta ottenuta la chiave, seleziona "Imposta chiave API" e incollala nell'apposito campo.
+
+5. Scegli "Imposta come motore AI predefinito".
+
+All'interno dello stesso menu sono inoltre disponibili le voci "Modello predefinito" e "Rimuovi chiave API".
+
+Qualora si tenti di utilizzare l'intelligenza artificiale senza aver prima configurato la chiave, WinGabriel segnalerà la mancanza e chiederà se si desidera procedere subito all'inserimento.
+
+La chiave è personale, al pari delle chiavi di casa, e non deve essere ceduta a nessuno. WinGabriel provvede a custodirla in modo sicuro all'interno del computer.
+
+I modelli europei di OVHcloud
+
+OVHcloud è un'azienda europea che ospita in Europa diversi modelli di intelligenza artificiale, fra cui quelli di Mistral, e li mette a disposizione con un'API gratuita. È una scelta pensata per chi preferisce che i propri testi restino all'interno di un servizio europeo.
+
+L'API di OVHcloud non richiede né una chiave né una registrazione: basta sceglierla. Il servizio gratuito ha però un limite molto basso di richieste al minuto. Se ne fai troppe in fretta, WinGabriel attende autonomamente il momento giusto e riprova, quindi la risposta potrebbe arrivare dopo qualche decina di secondi.
+
+Per usarla:
+
+1. Accedi alle Impostazioni, seleziona "Applicazioni", poi "Intelligenza artificiale" e infine "Motore AI predefinito".
+
+2. Seleziona "OVHcloud, modelli europei".
+
+3. Seleziona "Imposta come motore AI predefinito". Da quel momento le domande verranno inviate ai modelli di OVHcloud.
+
+4. Con "Modello predefinito" scegli quale modello utilizzare: nell'elenco compaiono i modelli europei disponibili in quel momento.
+
+5. Per smettere di usarlo, apri di nuovo lo stesso menu e seleziona "Non usare più OVHcloud".
+
+OVHcloud viene utilizzato solo dopo che lo hai scelto tu: finché non lo fai, nessun testo viene inviato al suo servizio. Una volta attivo, funziona come gli altri motori: per le conversazioni, per riassumere un file e per riscrivere un file nella gestione file. Se il motore predefinito non risponde, WinGabriel prova automaticamente con gli altri che hai configurato.
+
+I modelli di OVHcloud lavorano esclusivamente sul testo: non possono analizzare immagini, audio e documenti non testuali, per i quali è necessario Gemini. Non possono essere impiegati nemmeno per la dettatura vocale e per la lettura ad alta voce con l'intelligenza artificiale.
+
+Aprire l'intelligenza artificiale
+
+Nel {menu} seleziona "Intelligenza artificiale". Si aprirà un menu contenente le seguenti voci:
+
+"Nuova conversazione";
+
+"Conversazioni recenti";
+
+"Conversazioni preferite";
+
+"Tutte le conversazioni";
+
+"Riassumi un file";
+
+"Riassumi un video";
+
+"Verifica consumo giornaliero".
+
+Fare una domanda
+
+1. Seleziona "Nuova conversazione".
+
+2. Digita la tua domanda e premi Invio.
+
+3. La risposta arriverà nel giro di pochi secondi; consulta il testo utilizzando i tasti freccia. Quando hai finito di leggerla, premi Invio: si aprirà subito il campo per la domanda successiva, così il botta e risposta proseguirà senza passare dal menu. Una volta inviata la domanda, il campo si chiuderà e, quando arriverà la nuova risposta, potrai premere nuovamente Invio per continuare.
+
+Premendo Esc dalla risposta, invece, tornerai al menu della conversazione, dove troverai tutte le domande, le risposte e la voce "Scrivi nuova domanda". Se premi Esc mentre scrivi una domanda, tornerai allo stesso menu senza inviare nulla. Il tasto Invio funziona allo stesso modo anche quando riapri dal menu una risposta già ricevuta.
+
+4. È possibile proseguire la conversazione ponendo ulteriori domande. L'intelligenza artificiale conserverà memoria degli scambi precedenti, tenendone conto nelle risposte successive.
+
+Alcuni consigli per formulare domande efficaci:
+
+sii preciso, specificando esattamente ciò che desideri;
+
+spiega il contesto della situazione;
+
+indica il formato in cui preferisci ricevere la risposta.
+
+Ad esempio, anziché digitare "aiutami con il condominio", scrivi: "Scrivimi una lettera gentile ma decisa all'amministratore del condominio, per chiedere di riparare l'ascensore rotto da due settimane. Massimo dieci righe."
+
+Nel corso della conversazione è anche possibile allegare un file, affinché l'intelligenza artificiale lo analizzi e risponda basandosi sul suo contenuto. Premendo il tasto Alt è possibile salvare l'ultima risposta all'interno di un file.
+
+Le conversazioni salvate
+
+Tutte le conversazioni vengono archiviate automaticamente e sono consultabili nelle sezioni "Conversazioni recenti", "Conversazioni preferite" e "Tutte le conversazioni".
+
+Premendo il tasto Alt su una conversazione è possibile aprirla per riprenderla, aggiungerla o rimuoverla dai preferiti, oppure eliminarla definitivamente.
+
+Riassumere
+
+La funzione "Riassumi un file" richiede la selezione di un documento e ne restituisce una sintesi testuale in poche righe.
+
+La funzione "Riassumi un video" richiede l'inserimento dell'indirizzo di un filmato di YouTube e ne fornisce una descrizione dei contenuti, evitando la necessità di ascoltarlo integralmente.
+
+L'opzione "Riassumi con l'intelligenza artificiale" è accessibile anche all'interno della gestione file, nei risultati di ricerca di YouTube, negli articoli di giornale e nella modalità di lettura del browser.
+
+Nella gestione file è disponibile anche "Riscrivi con IA", che riscrive un file di testo secondo le tue istruzioni: questa funzione è descritta nel capitolo sulla gestione file.
+
+Quante domande puoi fare
+
+I servizi gratuiti prevedono un limite giornaliero di richieste. La voce "Verifica consumo giornaliero" consente di monitorare il numero di domande effettuate nella giornata odierna, suddivise tra Gemini e Groq. Per OVHcloud non è disponibile un conteggio: se raggiungi il limite, WinGabriel te lo segnalerà e attenderà prima di riprovare.
+
+Descrivere le immagini
+
+L'intelligenza artificiale è in grado di fornire descrizioni delle immagini.
+
+All'interno della gestione file, posizionandosi su una fotografia, è sufficiente premere il tasto Alt e selezionare "Descrivi l'immagine" per ottenere una spiegazione di ciò che essa raffigura.
+
+Nel browser, posizionandosi su un'immagine priva di descrizione, premendo il tasto Alt è possibile richiederne la generazione.
+
+Si ricorda tuttavia che si tratta di una descrizione elaborata da un sistema automatico. Per informazioni di natura critica, quali documenti, bollette o indicazioni su confezioni di medicinali, è sempre opportuno richiedere la conferma di una persona.
+
+Scrivere con la voce
+
+ Nei campi di testo è possibile utilizzare la dettatura vocale, parlando anziché digitare sulla tastiera: WinGabriel trascriverà le parole pronunciate. La funzione di dettatura è accessibile tramite il menu delle opzioni dei campi, attivabile con il tasto Alt.
+
+Il motore di riconoscimento vocale può essere configurato nelle Impostazioni, accedendo alla voce "Mouse, touch e digitazione vocale" e successivamente a "Digitazione vocale":
+
+Gemini o Groq: operano tramite connessione internet e offrono un livello di comprensione molto elevato;
+
+Parakeet: elabora l'audio direttamente sul computer, senza necessità di connessione a internet, garantendo che la voce non venga trasmessa all'esterno. Al primo utilizzo, WinGabriel provvederà a scaricare i componenti necessari.
+
+L'assistente vocale Minerva
+
+Minerva è l'assistente vocale integrata in WinGabriel. Quando attivata, rimane in ascolto silenzioso fino alla pronuncia della frase "Ehi Minerva", dopodiché recepirà la richiesta per eseguirla o fornire una risposta.
+
+È possibile richiederle di aprire una specifica sezione del programma, impartire comandi o porre domande, esattamente come avverrebbe in una conversazione scritta.
+
+Minerva si configura accedendo alle Impostazioni, alla voce "Applicazioni", poi "Intelligenza artificiale" e infine "Assistente vocale".
+
+"Attivazione": consente di accendere o spegnere l'assistente Minerva.
+
+In seguito, è possibile scegliere il sistema di riconoscimento per la frase "Ehi Minerva": Vosk, caratterizzato da una maggiore leggerezza, oppure Parakeet, più preciso ma più esigente in termini di risorse di sistema.
+
+Si procede poi selezionando la qualità del riconoscimento: bassa, che richiede circa sessanta megabyte ed è adatta alla quasi totalità dei computer, oppure alta, che richiede circa un gigabyte e duecento megabyte, consigliata per i computer dotati di ampia memoria.
+
+Infine, viene selezionato il sistema deputato all'interpretazione delle richieste:
+
+Gemini, che riceve direttamente l'audio della voce;
+
+Groq, che provvede prima alla trascrizione delle parole e successivamente alla loro interpretazione;
+
+oppure il computer in modalità autonoma, senza connessione a internet: in questo scenario, Minerva comprenderà esclusivamente i comandi nativi del programma.
+
+Una prudenza importante
+
+Tutti i dati scritti o dettati a Gemini, a Groq e a OVHcloud vengono trasmessi ai rispettivi server remoti su internet. Si raccomanda tassativamente di non inserire password, numeri di carte di pagamento o informazioni relative alla salute propria o di terzi. Per tali tipologie di dati riservati sono predisposti appositi spazi protetti che non lasciano mai il computer dell'utente.

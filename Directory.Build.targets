@@ -1,0 +1,18 @@
+<Project>
+  <!--
+    Nella cartella Debug restano solo i programmi e le DLL: niente .xml di documentazione, niente .pdb
+    (simboli di debug), niente .config delle DLL. Il WinGabriel.exe.config non è toccato: ce l'ha il progetto
+    principale (App.config) e serve al programma.
+    Senza .pdb le segnalazioni d'errore nei log non dicono più il numero di riga (per esempio
+    "iniziale.vb:riga 3388"): per riaverlo, mettere DebugType a portable qui sotto.
+    Le cartelle Release non cambiano.
+  -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DocumentationFile></DocumentationFile>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <!-- Vuota tornerebbe ai valori predefiniti (.pdb, .xml, .pri, .dll.config, .exe.config): un'estensione che non esiste. -->
+    <AllowedReferenceRelatedFileExtensions>.nessuno</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+</Project>

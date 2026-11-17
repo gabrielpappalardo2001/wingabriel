@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E865B3F6-1E6E-44F3-AD29-0A1858658C73}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>wgcontrols</RootNamespace>
+    <AssemblyName>wgcontrols</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DefineConstants>_MYFORMS=False</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PreferNativeArm64>true</PreferNativeArm64>
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <Optimize>true</Optimize>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DefineConstants>_MYFORMS=False</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>false</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|Win32'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM64'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM64'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <WarningLevel>0</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="BouncyCastle.Cryptography">
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=3.5.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.3.5.1\lib\net46\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.5.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocumentFormat.OpenXml.Framework.3.5.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.13.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.13.0\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="MediaDevices">
+      <HintPath>..\packages\MediaDevices.1.10.0\lib\net48\MediaDevices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ML.OnnxRuntime, Version=1.28.0.0, Culture=neutral, PublicKeyToken=f27f157f0a5b7bb6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ML.OnnxRuntime.Managed.1.28.0\lib\netstandard2.0\Microsoft.ML.OnnxRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="MisakiSharp, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MisakiSharp.2.2.0\lib\netstandard2.0\MisakiSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.10.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\WGDati\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="sherpa-onnx, Version=1.13.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\org.k2fsa.sherpa.onnx.1.13.8\lib\net45\sherpa-onnx.dll</HintPath>
+    </Reference>
+    <Reference Include="SymSpell">
+      <HintPath>..\packages\SymSpell.6.7.3\lib\netstandard2.0\SymSpell.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System">
+      <HintPath>..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8.1\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\WGDati\bin\Debug\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <!-- Il lettore di PDF di Windows (WinRT) si usa per riflessione (vedi PreparazioneScansione.RenderizzaPdf), senza il Windows.winmd del
+         Windows SDK, che farebbe fallire la generazione dei serializzatori XML. Servono solo questi due riferimenti. -->
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime" />
+    <Reference Include="System.Runtime.WindowsRuntime">
+      <HintPath>$(WINDIR)\Microsoft.NET\Framework64\v4.0.30319\System.Runtime.WindowsRuntime.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.ZipFile.4.3.0\lib\net46\System.IO.Compression.ZipFile.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="UglyToad.PdfPig, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Core, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.DocumentLayoutAnalysis, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.DocumentLayoutAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Fonts, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokenization, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.Tokenization.dll</HintPath>
+    </Reference>
+    <Reference Include="UglyToad.PdfPig.Tokens, Version=0.1.14.0, Culture=neutral, PublicKeyToken=605d367334e74123, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\WinGabriel\WinGabriel\bin\Debug\UglyToad.PdfPig.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AvvioComune.vb" />
+    <Compile Include="RilascioFirmato.vb" />
+    <Compile Include="WGVolumeWindows.vb" />
+    <Compile Include="WGNoStandby.vb" />
+    <Compile Include="WGServiceInterop.vb" />
+    <Compile Include="IntegrazioneWindows.vb" />
+    <Compile Include="AvvioAmministratore.vb" />
+    <Compile Include="IWGControlloConSchede.vb" />
+    <Compile Include="Logging.vb" />
+    <Compile Include="MenuState.vb" />
+    <Compile Include="My Project\Application1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="WGAI.vb" />
+    <Compile Include="WGAudio.vb" />
+    <Compile Include="WGCampi.vb" />
+    <Compile Include="WGCampiMovimento.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGCampoMovimento.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGCampoMovimentoImpostazioni.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGCampoTesto.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGCampoTesto.Stampa.vb">
+      <DependentUpon>WGCampoTesto.vb</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGCampoTestoRender.vb" />
+    <Compile Include="WGCentroDiControllo.vb" />
+    <Compile Include="WGCentroDiControllo.ConversioneMp3.vb">
+      <DependentUpon>WGCentroDiControllo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGCentroDiControllo.Spartiti.vb">
+      <DependentUpon>WGCentroDiControllo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGCentroDiControllo.Youtube.vb">
+      <DependentUpon>WGCentroDiControllo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGCentroDiControllo.Modelli.vb">
+      <DependentUpon>WGCentroDiControllo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGCloudFile.vb" />
+    <Compile Include="WGConfig.vb" />
+    <Compile Include="WGContenitore.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WGDettatura.vb" />
+    <Compile Include="WGDizionario.vb" />
+    <Compile Include="WGDomanda.vb" />
+    <Compile Include="WGModalitaAscolto.vb" />
+    <Compile Include="WGEmogi.vb" />
+    <Compile Include="WGFileDialog.vb" />
+    <Compile Include="WGCampi.Word.vb" />
+    <Compile Include="WGGuida.vb" />
+    <Compile Include="WGImpostazioniComuni.vb" />
+    <Compile Include="WGMotoreBrowser.vb" />
+    <Compile Include="WGPredizione.vb" />
+    <Compile Include="WGReteEccezione.vb" />
+    <Compile Include="WGRuntimeWebView2.vb" />
+    <Compile Include="WGSincronizzazioneCloud.vb" />
+    <Compile Include="WGTastieraTouk.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGTasto.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGTouk.vb" />
+    <Compile Include="WGTrascrittoreVocale.vb" />
+    <Compile Include="WgWebView2.vb" />
+    <Compile Include="WGWordLayoutMotore.vb" />
+    <Compile Include="WGList.vb" />
+    <Compile Include="WGListaView.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGMenu.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WGMenuLista.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="sintesivocale.vb" />
+    <Compile Include="WGLettoreArticoli.vb" />
+    <Compile Include="WGCampo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGCampo.Stampa.vb">
+      <DependentUpon>WGCampo.vb</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGMenuOpzioni.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WgMessaggi.vb" />
+    <Compile Include="WGMpv.vb" />
+    <Compile Include="WGBraille.vb" />
+    <Compile Include="WGBrailleDisplay.vb" />
+    <Compile Include="WGBrailleHid.vb" />
+    <Compile Include="WGBrailleHims.vb" />
+    <Compile Include="WGBrailleLouis.vb" />
+    <Compile Include="WGBrailleRilevamento.vb" />
+    <Compile Include="WGCampoMovimento.Braille.vb" />
+    <Compile Include="WGWord.Braille.vb" />
+    <Compile Include="WGProcessoInCorso.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGSuoni.vb" />
+    <Compile Include="WGWordPress.vb" />
+    <Compile Include="WGUscitaBassaLatenza.vb" />
+    <Compile Include="WGTraduttore.vb" />
+    <Compile Include="WGTema.vb" />
+    <Compile Include="WGScrivania.vb" />
+    <Compile Include="WGGriglia.vb" />
+    <Compile Include="WGGriglia.Menu.vb" />
+    <Compile Include="WGCestino.vb" />
+    <Compile Include="WGRiproduzione.vb" />
+    <Compile Include="WGModalita.vb" />
+    <Compile Include="WGRecenti.vb" />
+    <Compile Include="WGRicerca.vb" />
+    <Compile Include="WGGui.vb" />
+    <Compile Include="WGSessione.vb" />
+    <Compile Include="WGScreenReader.vb" />
+    <Compile Include="WGAvvisiSistema.vb" />
+    <Compile Include="WGUscitaAudio.vb" />
+    <Compile Include="EnumeratoreAudio.vb" />
+    <Compile Include="WGCuffieBluetooth.vb" />
+    <Compile Include="WGStatoDispositivo.vb" />
+    <Compile Include="WGLuminosita.vb" />
+    <Compile Include="WGPannelloControllo.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGLettoreHtml.vb" />
+    <Compile Include="WGEspeak.vb" />
+    <Compile Include="sintesivocale.Espeak.vb" />
+    <Compile Include="WGPaginaNascosta.vb" />
+    <Compile Include="WGHome.vb" />
+    <Compile Include="WGAccoglienza.vb" />
+    <Compile Include="WGTestoFile.vb" />
+    <Compile Include="WGModalitaTablet.vb" />
+    <Compile Include="WGContenitore.Applicazioni.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WGTastiera.vb" />
+    <Compile Include="WGUtils.vb" />
+    <Compile Include="WGGestoreTasti.vb" />
+    <Compile Include="WGAiutiAmbiente.vb" />
+    <Compile Include="WGFfmpeg.vb" />
+    <Compile Include="WGWord.Editing.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Esportazione.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Formattazione.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Indice.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.MenuFormattazione.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.ImportaHtml.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.ModalitaCampo.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Rientro.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Posta.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.NavigazioneLettura.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.NavigazioneTesto.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.NoteCommenti.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.Segnalibri.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.TestoTools.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGConversioneMp3.vb" />
+    <Compile Include="WGWord.Stampa.vb">
+      <DependentUpon>WGWord.vb</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWord.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWordData.vb" />
+    <Compile Include="WGWordGestoreMovimento.vb" />
+    <Compile Include="WGWordImpostazioni.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWordInternal.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWordIntestazionePiediPaginaNote.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWordRender.vb" />
+    <Compile Include="WGWordTrovaSostituisci.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WGWordSqlite.vb" />
+    <Compile Include="WGWordUtils.vb" />
+    <Compile Include="WGYoutubePlayer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WGMenu.resx">
+      <DependentUpon>WGMenu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WGCampo.resx">
+      <DependentUpon>WGCampo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WGMenuLista.resx">
+      <DependentUpon>WGMenuLista.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WgMessaggi.resx">
+      <DependentUpon>WgMessaggi.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application1.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="FSAPILib">
+      <Guid>{F152C4EF-B92F-4139-A901-E8F1E28CC8E0}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WGFtp\WGFtp.vbproj">
+      <Project>{87b625b4-95ae-45b7-99e9-9c90b17b677a}
+</Project>
+      <Name>WGFtp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGDb\WGDb.vbproj">
+      <Project>{e0e32dd4-a90c-41bd-813e-f25f127cff0a}</Project>
+      <Name>WGDb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGStampante\WGStampante.vbproj">
+      <Project>{b3e91a72-4c8d-4f1a-9b6e-8a2d7c5f1e30}</Project>
+      <Name>WGStampante</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGUscitaDiretta\WGUscitaDiretta.vbproj">
+      <Project>{d4a8f1b2-7c3e-4b59-a6d0-2e9f5c1b8a73}</Project>
+      <Name>WGUscitaDiretta</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.Managed.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.Managed.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.Managed.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.Managed.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets" Condition="Exists('..\packages\Microsoft.ML.OnnxRuntime.1.28.0\build\netstandard2.0\Microsoft.ML.OnnxRuntime.targets')" />
+</Project>

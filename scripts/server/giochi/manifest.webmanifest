@@ -1,0 +1,18 @@
+{
+  "name": "Giochi di WinGabriel",
+  "short_name": "Giochi",
+  "description": "Burraco, monopoli, briscola e scopa, anche contro altri giocatori.",
+  "lang": "it",
+  "id": "/giochi/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1b5e3a",
+  "theme_color": "#1b5e3a",
+  "icons": [
+    { "src": "icona-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

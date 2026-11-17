@@ -1,0 +1,102 @@
+﻿# Build
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rtifacts/
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.obj
+*.idb
+*.ipdb
+*.iobj
+*.ncb
+*.sbr
+*.bsc
+
+# Visual Studio
+.vs/
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.rsuser
+*.VC.db
+*.VC.VC.opendb
+*.aps
+
+# NuGet
+**/packages/*
+!**/packages/build/
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+# Test / coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+TestResult.xml
+
+# Publish / installer
+[Pp]ublish/
+[Dd]ist/
+*.msi
+*.msix
+*.appx
+*.appxbundle
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+*.cache
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# liblouis del braille (LGPL), da distribuire con il programma
+!wgcontrols/WGBraille/liblouis64.dll
+
+# Segreti: non devono mai finire nel repository pubblico
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.ppk
+*.kdbx
+*.pri
+id_rsa*
+id_ed25519*
+*.secret
+*.segreto
+*.destinatario
+msmtprc
+wp-config.php
+settings.local.php
+/gabriel-sito.conf
+*.visti.txt
+
+# Archivi e sorgenti di terzi
+*.zip
+*.7z
+nvda-master/
+
+# Segreto incorporato della libreria di cifratura: solo sul computer di chi compila
+wgcontrols/WGCifraturaNativa/WGSegreto.h
+
+# Python
+__pycache__/
+*.pyc

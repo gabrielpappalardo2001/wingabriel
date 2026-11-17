@@ -1,0 +1,95 @@
+﻿La posta: scrivere e spedire
+
+Questo capitolo spiega come comporre un nuovo messaggio, come rispondere a chi ha scritto, come allegare un file e come effettuare l'invio.
+
+Scrivere un messaggio nuovo
+
+1. Nel menu della posta seleziona "Nuovo messaggio" e premi Invio.
+
+2. Se disponi di più caselle di posta, WinGabriel chiederà da quale casella effettuare l'invio. Effettua la scelta e premi Invio.
+
+3. Si aprirà una serie di campi disposti in verticale. Utilizza il tasto freccia giù per passare al campo successivo e freccia su per tornare a quello precedente.
+
+I campi disponibili sono i seguenti:
+
+"A": inserisci qui l'indirizzo di posta del destinatario;
+
+"Altri destinatari": per inviare lo stesso messaggio a più persone, inserisci qui gli ulteriori indirizzi;
+
+"Cc", che significa copia carbone: i destinatari in copia ricevono il messaggio e tutti possono vedere che lo hanno ricevuto;
+
+"Ccn", che significa copia carbone nascosta: i destinatari in copia nascosta ricevono il messaggio senza che gli altri lo sappiano. Questa opzione è utile quando si scrive a un gruppo di persone che non si conoscono tra loro;
+
+"Oggetto": sintetizza in poche parole l'argomento del messaggio, ad esempio "Auguri di buon compleanno";
+
+"Messaggio": inserisci qui il testo principale.
+
+Non è obbligatorio compilare tutti i campi: sono sufficienti il destinatario, l'oggetto e il testo del messaggio.
+
+Scrivere l'indirizzo
+
+Gli indirizzi di posta elettronica contengono sempre il simbolo della chiocciola. Per digitarla, tieni premuto il tasto Alt di destra e premi la lettera ò.
+
+Se non ricordi un indirizzo, non è necessario digitarlo manualmente: mentre ti trovi nel campo apposito, premi Alt e seleziona "Cerca il destinatario in rubrica". Puoi anche scegliere tra i contatti a cui hai scritto di recente.
+
+Spedire il messaggio
+
+Una volta terminata la stesura, premi Alt e seleziona "Invia". Il messaggio verrà spedito e una voce di sintesi vocale lo confermerà.
+
+Due modalità di scrittura del testo
+
+Il testo del messaggio può essere redatto in due modi differenti. La modalità preferita si imposta nelle opzioni di WinGabriel, accedendo a "Applicazioni", quindi a "Posta" e infine a "Scrittura dei messaggi".
+
+L'editor testuale consente di scrivere un testo semplice, privo di formattazione. È la soluzione più intuitiva e risulta ideale per la maggior parte dei messaggi.
+
+L'editor di documenti mette invece a disposizione tutte le funzioni avanzate di WinGabriel: grassetto, titoli, elenchi, tabelle e immagini. Il messaggio manterrà la formattazione applicata.
+
+Utilizzando l'editor di documenti, il testo occupa l'intero schermo. Se ti posizioni all'inizio del testo e premi nuovamente freccia su, verrai ricondotto ai campi del destinatario e dell'oggetto.
+
+Per effettuare l'invio dall'editor di documenti sono disponibili due procedure: premere Invio per tre volte consecutive oppure premere il tasto Esc. Si aprirà un piccolo menu con tre opzioni: invia il messaggio, salva come bozza, elimina. Eventuali righe vuote generate premendo Invio tre volte verranno rimosse automaticamente prima dell'invio.
+
+Non esiste un comando rapido per l'invio immediato senza passare per il menu. Si tratta di una misura di sicurezza deliberata, poiché un messaggio spedito non può più essere richiamato.
+
+Scrivere con il supporto dell'intelligenza artificiale
+
+Se hai configurato l'intelligenza artificiale, nel menu delle opzioni troverai la voce "Scrivi il testo con l'intelligenza artificiale". Sarà sufficiente descrivere brevemente ciò che desideri comunicare, ad esempio "una lettera gentile al condominio per chiedere la riparazione dell'ascensore", e l'intelligenza artificiale genererá il testo per te. Ricordati di rileggerlo sempre prima di procedere all'invio.
+
+Allegare un file
+
+Per allegare un file a un messaggio, come una fotografia o un documento:
+
+1. Durante la composizione del messaggio, premi Alt e seleziona "Allegati".
+
+2. Individua e seleziona il file sul computer tramite il gestore di file.
+
+Dalla stessa voce è possibile rimuovere un allegato prima di effettuare l'invio.
+
+Nota bene: molti fornitori di posta elettronica non accettano messaggi di grandi dimensioni, generalmente superiori a venticinque megabyte. I file video, ad esempio, superano spesso questo limite.
+
+Le bozze
+
+Una bozza è un messaggio iniziato ma non ancora spedito. Viene salvato sia sul computer sia nella cartella "Bozze" della tua casella di posta, così da risultare accessibile anche da smartphone.
+
+Per recuperare una bozza:
+
+1. Nel menu della posta seleziona "Bozze".
+
+2. Seleziona il messaggio, premi Alt e scegli "Riprendi la scrittura".
+
+Il destinatario, l'oggetto, il testo e gli allegati verranno ripristinati esattamente nello stato in cui li avevi lasciati.
+
+Rispondere a un messaggio
+
+Mentre stai leggendo un messaggio o ti trovi posizionato su di esso nell'elenco, premi Alt per visualizzare tre opzioni.
+
+"Rispondi": consente di scrivere al mittente del messaggio. Il destinatario e l'oggetto saranno già preimpostati, mentre il testo originale apparirà nella parte inferiore. Sarà sufficiente scrivere la risposta e procedere all'invio.
+
+"Rispondi a tutti": indirizza la risposta al mittente e a tutti gli altri destinatari che avevano ricevuto il messaggio originario.
+
+"Inoltra": permette di inviare il messaggio, completi di eventuali allegati, a un nuovo destinatario, che dovrai specificare.
+
+Queste tre funzioni operano su un singolo messaggio alla volta. Nel caso in cui tu abbia selezionato più messaggi utilizzando il tasto Shift, WinGabriel lo segnalerà senza eseguire alcuna azione.
+
+Le liste di discussione
+
+Se ricevi messaggi da una lista di discussione, ovvero un gruppo di utenti che comunica collettivamente, la risposta verrà inviata automaticamente all'intera lista senza la necessità di ulteriori operazioni.

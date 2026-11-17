@@ -1,0 +1,107 @@
+﻿La tastiera
+
+Una tastiera comprende più di cento tasti, ma per utilizzare WinGabriel ne bastano pochi. Sono sempre gli stessi e mantengono la medesima funzione in ogni sezione del programma. In questo capitolo li esamineremo uno per uno.
+
+Le frecce
+
+Le quattro frecce si trovano in basso a destra sulla tastiera, disposte a forma di T capovolta.
+
+Le frecce Su e Giù servono a scorrere le voci di un menu, gli elementi di un elenco o le righe di un testo. A ogni pressione, la voce guida ti legge l'elemento su cui ti trovi.
+
+Nei testi, le frecce Destra e Sinistra consentono di spostarsi di un singolo carattere alla volta.
+
+[smart]
+Negli elenchi organizzati a griglia, come la scrivania o la schermata principale, le frecce Destra e Sinistra permettono di spostarsi di lato, verso l'elemento adiacente.
+[/smart]
+
+Invio
+
+Il tasto Invio serve a confermare. Apre la voce di menu selezionata, apre un messaggio, avvia un brano o conferma quello che hai digitato in un campo di testo. Puoi considerarlo come il tasto del «sì, procedi».
+
+Esc
+
+Il tasto Esc si trova nell'angolo in alto a sinistra della tastiera. Serve a tornare indietro: chiude la schermata corrente e ti riporta al passaggio precedente. Esc non cancella mai nulla. Se c'è un'attesa che è possibile interrompere, il tasto Esc la blocca. Puoi considerarlo come il tasto del «basta, torna indietro».
+
+Il tasto Alt di sinistra
+
+Il tasto Alt di sinistra si trova subito a sinistra della barra spaziatrice. Apre il menu delle opzioni, ossia l'elenco delle azioni disponibili nel punto in cui ti trovi.
+
+Le opzioni disponibili variano a seconda della sezione. Nell'elenco dei messaggi di posta elettronica, ad esempio, trovi «Rispondi», «Inoltra», «Elimina». In un documento trovi le opzioni per il carattere, il paragrafo e le tabelle. Nel riproduttore multimediale trovi i comandi per la pausa, il volume e la velocità.
+
+Ricorda questo consiglio: quando non sai come procedere, premi il tasto Alt. Nella maggior parte dei casi la soluzione si trova lì.
+
+Il tasto Alt di destra
+
+Il tasto Alt di destra, posizionato a destra della barra spaziatrice, sulle tastiere italiane si chiama anche AltGr. Serve unicamente a inserire alcuni simboli. Il più importante è la chiocciola degli indirizzi di posta elettronica, che si scrive tenendo premuto l'Alt di destra e premendo la lettera ò. Questo tasto non apre alcun menu e non ha altre funzioni.
+
+Shift: selezionare più elementi insieme
+
+Il tasto Shift (o Maiusc) è quello che si usa per digitare le lettere maiuscole. In WinGabriel svolge anche un'altra funzione: negli elenchi permette di selezionare più elementi contemporaneamente. Questa procedura si chiama selezione multipla.
+
+Funziona così:
+
+1. Premi il tasto Shift e rilascialo subito. La voce guida ti avviserà che la selezione multipla è attiva.
+
+2. Spostati con le frecce direzionali: ogni elemento su cui ti posizioni verrà selezionato.
+
+3. Premi il tasto Alt e scegli l'operazione desiderata, ad esempio «Elimina». L'azione verrà applicata a tutti gli elementi selezionati.
+
+4. Premi di nuovo il tasto Shift e rilascialo per disattivare la selezione multipla.
+
+Finché la selezione multipla è attiva, il tasto Invio non apre alcun elemento. Per ripristinare il funzionamento normale, premi di nuovo Shift.
+
+Insert
+
+Il tasto Insert ti ricorda la posizione corrente, indicando il nome della schermata e l'elemento selezionato. È il tasto ideale da premere se ti sei distratto.
+
+Control da solo
+
+Se premi il tasto Control e lo rilasci subito, senza premere nessun altro tasto, la voce guida smette di parlare. Risulta molto utile quando un messaggio è lungo e hai già ascoltato quello che ti serviva.
+
+F1
+
+Il tasto F1 è il primo della fila in alto. Fornisce una breve guida sulla schermata in cui ti trovi.
+
+Control F1
+
+Tenendo premuto il tasto Control e premendo F1 puoi consultare questo manuale da qualsiasi sezione del programma.
+
+F6
+
+Il tasto F6 apre il centro di controllo — da cui verificare lo stato della batteria, la connessione a Internet e le attività in corso — in qualsiasi punto del programma.
+
+Il tasto delle maiuscole bloccate
+
+Quando premi il tasto del blocco maiuscole, posizionato sopra il tasto Shift di sinistra, la voce guida segnala se è stato attivato o disattivato. In questo modo si evita di scrivere una password interamente in lettere maiuscole per errore.
+
+[smart]
+I tasti della modalità smart
+
+Nella modalità smart sono presenti alcuni tasti aggiuntivi, utili per spostarsi tra le varie applicazioni. Verranno spiegati nel dettaglio nei capitoli seguenti, ma eccone un riepilogo:
+
+il tasto Windows, premuto da solo, apre il menu delle applicazioni; premuto di nuovo, lo chiude;
+
+Control Alt D ti porta alla scrivania, oppure alla schermata principale se utilizzi il computer in modalità tablet;
+
+Control freccia destra e Control freccia sinistra ti portano rispettivamente all'applicazione aperta successiva e a quella precedente;
+
+F10 apre la gestione delle attività (multitasking), ossia l'elenco delle applicazioni aperte;
+
+Control F10 ti riporta subito all'ultima applicazione utilizzata;
+
+Control F4 chiude l'applicazione al momento in uso;
+
+Windows S apre la funzione di ricerca di WinGabriel;
+
+Windows A apre il centro di controllo;
+
+Windows N apre il centro notifiche.
+[/smart]
+
+[classica]
+Nella modalità classica non servono altri tasti: si parte dal menu iniziale, si accede alle opzioni con Invio e si torna indietro con Esc, un passo alla volta.
+[/classica]
+
+Control Tab
+
+Nell'editor di testo e nel navigatore web puoi tenere aperti più documenti o più pagine contemporaneamente. La combinazione Control Tab ti permette di passare dall'uno all'altro.

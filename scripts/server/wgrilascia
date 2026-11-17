@@ -1,0 +1,463 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# wgrilascia - i rilasci di WinGabriel e di WGLettore sul sito.
+#
+# Ogni rilascio è una cartella che non si tocca più: rilasci/<prodotto>/v/<versione>/ con dentro f/ (i file) e manifest.json
+# (percorso, dimensione, impronta SHA-256 di ogni file). Due puntatori firmati dicono quale rilascio scaricare:
+# rilasci/<prodotto>/stable.txt e beta.txt (prima riga il JSON, seconda riga la firma RSA in base64). Si tiene solo la
+# versione che almeno un puntatore indica. La firma la fa il programma di pubblicazione sul computer di chi pubblica:
+# qui non c'è nessuna chiave privata.
+#
+# Si usa da ssh, come root, dal programma di pubblicazione:
+#   wgrilascia prepara  <prodotto> <versione> <id>     crea il rilascio dalla base + i file caricati in staging/<id>
+#   wgrilascia pubblica <prodotto> <canale> <id>       mette il puntatore firmato (staging/<id>/puntatore.txt)
+#   wgrilascia stato    <prodotto>                     stampa i puntatori e le versioni presenti
+#   wgrilascia base     <prodotto> [radice]            i file di riferimento con dimensione e impronta
+# Il vecchio sistema (le cartelle wingabriel/ e wglettore/ lette con DownloadFile.php) non si aggiorna più: i programmi scaricano solo
+# i file del rilascio indicato dal puntatore firmato. I pacchetti zip li fa wgpacchetti dal rilascio stabile.
+# Il puntatore può avere anche "nome": il nome della versione scelto da chi pubblica, che è quello che WinGabriel mostra.
+
+import datetime
+import fcntl
+import hashlib
+import json
+import os
+import pwd
+import re
+import shutil
+import subprocess
+import sys
+
+SITO = '/var/www/html/wingabriel.net'
+RIL = SITO + '/rilasci'
+PRODOTTI = ('wingabriel', 'wglettore')
+CANALI = ('stable', 'beta')
+
+# Nella cartella del rilascio non entrano i file del server del vecchio sistema.
+ESCLUSI_NOMI = {'downloadfile.php', 'downloadfile.php.bak-etag', '.htaccess', 'web.config', 'logwingabriel.txt', '.user.ini', 'downloadfile.aspx', 'global.asax'}
+ESCLUSI_ESTENSIONI = ('.pdb', '.php', '.aspx', '.asax', '.bak', '.tmp', '.wgtmp')
+ESCLUSI_PARTI = ('.bak-',)
+
+# Nel manifest (l'elenco che l'aggiornatore confronta con i file installati) valgono le stesse regole del vecchio elenco:
+# niente x86 e x64 (si scaricano con il pacchetto zip, tranne libmpv), niente file di configurazione o di sviluppo.
+MANIFEST_CARTELLE_ESCLUSE = ('app_data', 'bin', 'obj', 'x86', 'x64', '.git', '.vs', 'properties')
+MANIFEST_ESTENSIONI_ESCLUSE = ('.config', '.cs', '.vb', '.pdb', '.aspx', '.asax', '.resx', '.vbproj', '.csproj', '.sln', '.user', '.php')
+
+
+def errore(testo, codice=1):
+    sys.stderr.write('ERRORE: %s\n' % testo)
+    sys.exit(codice)
+
+
+def oggi():
+    return datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+
+def formato_data(secondi):
+    return datetime.datetime.fromtimestamp(int(secondi), datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+
+
+def prodotto_valido(p):
+    if p not in PRODOTTI:
+        errore('prodotto sconosciuto: %s' % p)
+    return p
+
+
+def versione_valida(v):
+    if not re.match(r'^[0-9A-Za-z][0-9A-Za-z._-]{0,40}$', v or ''):
+        errore('versione non valida: %s' % v)
+    return v
+
+
+def id_valido(i):
+    if not re.match(r'^[0-9A-Za-z_-]{3,60}$', i or ''):
+        errore('identificativo non valido: %s' % i)
+    return i
+
+
+def cartelle(prodotto):
+    base = '%s/%s' % (RIL, prodotto)
+    return base, base + '/v', base + '/staging'
+
+
+def proprietario():
+    st = os.stat(SITO)
+    return st.st_uid, st.st_gid
+
+
+def sistema_permessi(percorso):
+    uid, gid = proprietario()
+    for radice, cartelle_, file_ in os.walk(percorso):
+        try:
+            os.chown(radice, uid, gid)
+            os.chmod(radice, 0o2755)
+        except OSError:
+            pass
+        for f in file_:
+            p = os.path.join(radice, f)
+            try:
+                st = os.lstat(p)
+                if st.st_uid != uid or st.st_gid != gid:
+                    os.chown(p, uid, gid)
+                if (st.st_mode & 0o777) != 0o644 and not os.path.islink(p):
+                    os.chmod(p, 0o644)
+            except OSError:
+                pass
+
+
+def sha256_file(percorso):
+    h = hashlib.sha256()
+    with open(percorso, 'rb') as f:
+        while True:
+            blocco = f.read(1024 * 1024)
+            if not blocco:
+                break
+            h.update(blocco)
+    return h.hexdigest()
+
+
+def leggi_puntatore(prodotto, canale):
+    base, _, _ = cartelle(prodotto)
+    p = '%s/%s.txt' % (base, canale)
+    if not os.path.isfile(p):
+        return None
+    try:
+        with open(p, 'rb') as f:
+            riga = f.read().split(b'\n', 1)[0]
+        return json.loads(riga.decode('utf-8'))
+    except Exception:
+        return None
+
+
+def versioni_presenti(prodotto):
+    _, v, _ = cartelle(prodotto)
+    if not os.path.isdir(v):
+        return []
+    return sorted(d for d in os.listdir(v) if os.path.isdir('%s/%s' % (v, d)) and not d.endswith('.tmp'))
+
+
+def escluso_dal_rilascio(nome_file):
+    n = nome_file.lower()
+    if n in ESCLUSI_NOMI:
+        return True
+    if n.endswith(ESCLUSI_ESTENSIONI):
+        return True
+    for parte in ESCLUSI_PARTI:
+        if parte in n:
+            return True
+    return False
+
+
+def costruisci_manifest(prodotto, versione, radice_f, manifest_precedente):
+    cache = {}
+    if manifest_precedente:
+        for voce in manifest_precedente.get('file', []):
+            cache[voce['p']] = voce
+        for voce in manifest_precedente.get('libmpv', []):
+            for arch in ('x86', 'x64'):
+                if arch in voce:
+                    cache[voce[arch]['u']] = {'s': voce[arch]['s'], 'h': voce[arch]['h'], 'm': voce['m']}
+
+    def impronta(rel, percorso, st):
+        vecchia = cache.get(rel)
+        if vecchia and vecchia.get('s') == st.st_size and vecchia.get('mt') == int(st.st_mtime):
+            return vecchia['h']
+        return sha256_file(percorso)
+
+    voci = []
+    dirs = []
+    tutti = {}
+    for radice, nomi_dir, nomi_file in os.walk(radice_f):
+        rel_dir = os.path.relpath(radice, radice_f).replace(os.sep, '/')
+        if rel_dir == '.':
+            rel_dir = ''
+        nomi_dir[:] = sorted(nomi_dir)
+        for nome in sorted(nomi_file):
+            percorso = os.path.join(radice, nome)
+            rel = (rel_dir + '/' + nome) if rel_dir else nome
+            st = os.stat(percorso)
+            tutti[rel] = (percorso, st)
+    # file normali
+    for rel in sorted(tutti):
+        percorso, st = tutti[rel]
+        parti = rel.split('/')
+        if any(p.lower() in MANIFEST_CARTELLE_ESCLUSE or p.startswith('.') for p in parti[:-1]):
+            continue
+        nome = parti[-1]
+        if nome.lower() in ESCLUSI_NOMI or nome.lower().endswith(MANIFEST_ESTENSIONI_ESCLUSE):
+            continue
+        h = impronta(rel, percorso, st)
+        voci.append({'p': rel, 's': st.st_size, 'h': h, 'm': formato_data(st.st_mtime), 'mt': int(st.st_mtime)})
+        d = '/'.join(parti[:-1])
+        while d:
+            if d not in dirs:
+                dirs.append(d)
+            d = '/'.join(d.split('/')[:-1])
+    # libmpv: nella radice dell'installazione, preso da x86 o x64 secondo l'architettura
+    libmpv = []
+    for rel in sorted(tutti):
+        if rel.startswith('x86/') and rel.count('/') == 1 and rel.split('/')[1].lower().startswith('libmpv'):
+            nome = rel.split('/')[1]
+            altro = 'x64/' + nome
+            if altro in tutti:
+                p86, s86 = tutti[rel]
+                p64, s64 = tutti[altro]
+                libmpv.append({
+                    'p': nome,
+                    'x86': {'u': rel, 's': s86.st_size, 'h': impronta(rel, p86, s86)},
+                    'x64': {'u': altro, 's': s64.st_size, 'h': impronta(altro, p64, s64)},
+                    'm': formato_data(max(s86.st_mtime, s64.st_mtime)),
+                    'mt': int(max(s86.st_mtime, s64.st_mtime)),
+                })
+    return {
+        'formato': 1,
+        'prodotto': prodotto,
+        'versione': versione,
+        'generato': oggi(),
+        'cartelle': sorted(dirs),
+        'file': voci,
+        'libmpv': libmpv,
+    }
+
+
+def scrivi_json_atomico(percorso, oggetto):
+    dati = json.dumps(oggetto, ensure_ascii=False, separators=(',', ':'), sort_keys=True).encode('utf-8')
+    tmp = percorso + '.tmp'
+    with open(tmp, 'wb') as f:
+        f.write(dati)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, percorso)
+    return hashlib.sha256(dati).hexdigest()
+
+
+def cmd_prepara(prodotto, versione, id_):
+    base, vdir, staging = cartelle(prodotto)
+    stage = '%s/%s' % (staging, id_)
+    if not os.path.isdir(stage):
+        errore('cartella di staging mancante: %s' % stage)
+    finale = '%s/%s' % (vdir, versione)
+    if os.path.exists(finale):
+        errore('la versione %s esiste già' % versione)
+    tmp = finale + '.tmp'
+    if os.path.exists(tmp):
+        shutil.rmtree(tmp)
+    os.makedirs(tmp + '/f')
+
+    # base: il rilascio stabile attuale (collegamenti fisici, non occupa spazio); se non c'è nessun rilascio si parte da vuoto
+    precedente = leggi_puntatore(prodotto, 'stable') or leggi_puntatore(prodotto, 'beta')
+    manifest_precedente = None
+    base_usata = 'nessuna'
+    if precedente and os.path.isdir('%s/%s/f' % (vdir, precedente['versione'])):
+        origine = '%s/%s' % (vdir, precedente['versione'])
+        subprocess.check_call(['cp', '-al', origine + '/f/.', tmp + '/f/'])
+        base_usata = precedente['versione']
+        try:
+            with open(origine + '/manifest.json', 'rb') as f:
+                manifest_precedente = json.loads(f.read().decode('utf-8'))
+        except Exception:
+            manifest_precedente = None
+
+    # file caricati: sostituiscono (con un nuovo file, mai scrivendo su quello che altri rilasci condividono)
+    caricati = 0
+    sorgente = stage + '/f'
+    if os.path.isdir(sorgente):
+        for radice, _, nomi in os.walk(sorgente):
+            for nome in nomi:
+                src = os.path.join(radice, nome)
+                rel = os.path.relpath(src, sorgente).replace(os.sep, '/')
+                if '..' in rel.split('/') or rel.startswith('/'):
+                    errore('percorso non valido: %s' % rel)
+                dest = os.path.join(tmp, 'f', rel)
+                os.makedirs(os.path.dirname(dest), exist_ok=True)
+                if os.path.lexists(dest):
+                    os.unlink(dest)
+                shutil.move(src, dest)
+                caricati += 1
+    # file da togliere
+    tolti = 0
+    elenco_tolti = stage + '/rimuovi.txt'
+    if os.path.isfile(elenco_tolti):
+        with open(elenco_tolti, 'r', encoding='utf-8') as f:
+            for riga in f:
+                rel = riga.strip().replace('\\', '/')
+                if not rel or '..' in rel.split('/') or rel.startswith('/'):
+                    continue
+                p = os.path.join(tmp, 'f', rel)
+                if os.path.isfile(p):
+                    os.unlink(p)
+                    tolti += 1
+
+    manifest = costruisci_manifest(prodotto, versione, tmp + '/f', manifest_precedente)
+    sha = scrivi_json_atomico(tmp + '/manifest.json', manifest)
+    os.rename(tmp, finale)
+    sistema_permessi(finale)
+
+    contatore = base + '/sequenza'
+    numero = 0
+    try:
+        with open(contatore, 'r') as f:
+            numero = int(f.read().strip() or '0')
+    except Exception:
+        numero = 0
+    for c in CANALI:
+        p = leggi_puntatore(prodotto, c)
+        if p and int(p.get('sequenza', 0)) > numero:
+            numero = int(p['sequenza'])
+    numero += 1
+    with open(contatore, 'w') as f:
+        f.write(str(numero))
+
+    print(json.dumps({
+        'prodotto': prodotto,
+        'versione': versione,
+        'manifestSha256': sha,
+        'sequenza': numero,
+        'base': base_usata,
+        'caricati': caricati,
+        'tolti': tolti,
+        'file': len(manifest['file']),
+    }))
+
+
+def cmd_pubblica(prodotto, canale, id_):
+    if canale not in CANALI:
+        errore('canale sconosciuto: %s' % canale)
+    base, vdir, staging = cartelle(prodotto)
+    stage = '%s/%s' % (staging, id_)
+    sorgente = stage + '/puntatore.txt'
+    if not os.path.isfile(sorgente):
+        errore('puntatore mancante: %s' % sorgente)
+    with open(sorgente, 'rb') as f:
+        contenuto = f.read()
+    righe = contenuto.split(b'\n')
+    if len(righe) < 2 or not righe[0] or not righe[1].strip():
+        errore('il puntatore deve avere due righe: dati e firma')
+    try:
+        dati = json.loads(righe[0].decode('utf-8'))
+    except Exception:
+        errore('il puntatore non è un JSON valido')
+    if dati.get('prodotto') != prodotto or dati.get('canale') != canale:
+        errore('il puntatore non è per %s/%s' % (prodotto, canale))
+    versione = versione_valida(dati.get('versione'))
+    cartella = '%s/%s' % (vdir, versione)
+    manifest = cartella + '/manifest.json'
+    if not os.path.isfile(manifest):
+        errore('la versione %s non esiste' % versione)
+    with open(manifest, 'rb') as f:
+        if hashlib.sha256(f.read()).hexdigest() != dati.get('manifestSha256'):
+            errore('l\'impronta del manifest non corrisponde al puntatore')
+    attuale = leggi_puntatore(prodotto, canale)
+    if attuale and int(dati.get('sequenza', 0)) < int(attuale.get('sequenza', 0)):
+        errore('la sequenza del puntatore (%s) è più vecchia di quella pubblicata (%s)' % (dati.get('sequenza'), attuale.get('sequenza')))
+    destinazione = '%s/%s.txt' % (base, canale)
+    tmp = destinazione + '.tmp'
+    with open(tmp, 'wb') as f:
+        f.write(righe[0] + b'\n' + righe[1].strip() + b'\n')
+        f.flush()
+        os.fsync(f.fileno())
+    uid, gid = proprietario()
+    os.chown(tmp, uid, gid)
+    os.chmod(tmp, 0o644)
+    os.replace(tmp, destinazione)
+
+    # si tiene solo la versione che un puntatore indica
+    usate = set()
+    for c in CANALI:
+        p = leggi_puntatore(prodotto, c)
+        if p:
+            usate.add(p['versione'])
+    rimosse = []
+    for v in versioni_presenti(prodotto):
+        if v not in usate:
+            shutil.rmtree('%s/%s' % (vdir, v), ignore_errors=True)
+            rimosse.append(v)
+    shutil.rmtree(stage, ignore_errors=True)
+
+    if canale == 'stable':
+        # gli zip nascono dal rilascio stabile
+        subprocess.call(['systemctl', 'start', '--no-block', 'wgpacchetti.service'])
+    print(json.dumps({'prodotto': prodotto, 'canale': canale, 'versione': versione, 'rimosse': rimosse, 'nome': dati.get('nome', '')}))
+
+
+def cmd_base(prodotto, solo_radice):
+    """I file del rilascio di riferimento (nessuno se non c'è ancora un rilascio) con dimensione e impronta."""
+    base, vdir, staging = cartelle(prodotto)
+    precedente = leggi_puntatore(prodotto, 'stable') or leggi_puntatore(prodotto, 'beta')
+    manifest = None
+    if precedente and os.path.isdir('%s/%s/f' % (vdir, precedente['versione'])):
+        radice = '%s/%s/f' % (vdir, precedente['versione'])
+        versione = precedente['versione']
+        try:
+            with open('%s/%s/manifest.json' % (vdir, precedente['versione']), 'rb') as f:
+                manifest = json.loads(f.read().decode('utf-8'))
+        except Exception:
+            manifest = None
+    else:
+        print(json.dumps({'prodotto': prodotto, 'versione': '', 'file': {}}))
+        return
+    cache = {}
+    if manifest:
+        for voce in manifest.get('file', []):
+            cache[voce['p']] = voce
+    risultato = {}
+    for r, nomi_dir, nomi_file in os.walk(radice):
+        rel_dir = os.path.relpath(r, radice).replace(os.sep, '/')
+        if rel_dir == '.':
+            rel_dir = ''
+        elif solo_radice:
+            nomi_dir[:] = []
+            continue
+        for nome in nomi_file:
+            if escluso_dal_rilascio(nome):
+                continue
+            rel = (rel_dir + '/' + nome) if rel_dir else nome
+            p = os.path.join(r, nome)
+            st = os.stat(p)
+            v = cache.get(rel)
+            if v and v.get('s') == st.st_size and v.get('mt') == int(st.st_mtime):
+                h = v['h']
+            else:
+                h = sha256_file(p)
+            risultato[rel] = {'s': st.st_size, 'h': h}
+    print(json.dumps({'prodotto': prodotto, 'versione': versione, 'file': risultato}, ensure_ascii=False))
+
+
+def cmd_stato(prodotto):
+    base, vdir, staging = cartelle(prodotto)
+    risultato = {'prodotto': prodotto}
+    for c in CANALI:
+        risultato[c] = leggi_puntatore(prodotto, c)
+    risultato['versioni'] = versioni_presenti(prodotto)
+    print(json.dumps(risultato, ensure_ascii=False))
+
+
+def main():
+    if len(sys.argv) < 3:
+        errore('uso: wgrilascia prepara|pubblica|stato ...', 2)
+    comando = sys.argv[1]
+    prodotto = prodotto_valido(sys.argv[2])
+    base, vdir, staging = cartelle(prodotto)
+    for c in (RIL, base, vdir, staging):
+        os.makedirs(c, exist_ok=True)
+    # nessuno legge la cartella di staging dal sito
+    nega = staging + '/.htaccess'
+    if not os.path.isfile(nega):
+        with open(nega, 'w') as f:
+            f.write('Require all denied\n')
+    blocco = open('/run/wgrilascia.lock', 'w')
+    fcntl.flock(blocco, fcntl.LOCK_EX)
+    if comando == 'prepara' and len(sys.argv) == 5:
+        cmd_prepara(prodotto, versione_valida(sys.argv[3]), id_valido(sys.argv[4]))
+    elif comando == 'pubblica' and len(sys.argv) == 5:
+        cmd_pubblica(prodotto, sys.argv[3], id_valido(sys.argv[4]))
+    elif comando == 'stato' and len(sys.argv) == 3:
+        cmd_stato(prodotto)
+    elif comando == 'base' and len(sys.argv) in (3, 4):
+        cmd_base(prodotto, len(sys.argv) == 4 and sys.argv[3] == 'radice')
+    else:
+        errore('uso: wgrilascia prepara <prodotto> <versione> <id> | pubblica <prodotto> <canale> <id> | stato <prodotto>', 2)
+
+
+if __name__ == '__main__':
+    main()

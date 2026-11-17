@@ -1,0 +1,24 @@
+Brani di Kevin MacLeod (https://incompetech.com), licenza Creative Commons Attribuzione 4.0
+(https://creativecommons.org/licenses/by/4.0/). Qui ce n'è un pezzo di ognuno, tagliato e portato in mono da
+scripts\citta\prepara-musica.py.
+
+melodica_1.mp3: "Carefree", Kevin MacLeod (incompetech.com), CC BY 4.0
+melodica_2.mp3: "Life of Riley", Kevin MacLeod (incompetech.com), CC BY 4.0
+melodica_3.mp3: "Sidewalk Shade", Kevin MacLeod (incompetech.com), CC BY 4.0
+melodica_4.mp3: "Bossa Antigua", Kevin MacLeod (incompetech.com), CC BY 4.0
+rock_1.mp3: "Malt Shop Bop", Kevin MacLeod (incompetech.com), CC BY 4.0
+rock_2.mp3: "Rocket Power", Kevin MacLeod (incompetech.com), CC BY 4.0
+rock_3.mp3: "Hitman", Kevin MacLeod (incompetech.com), CC BY 4.0
+rock_4.mp3: "Killing Time", Kevin MacLeod (incompetech.com), CC BY 4.0
+elettronica_1.mp3: "Pixelland", Kevin MacLeod (incompetech.com), CC BY 4.0
+elettronica_2.mp3: "Voxel Revolution", Kevin MacLeod (incompetech.com), CC BY 4.0
+elettronica_3.mp3: "Electrodoodle", Kevin MacLeod (incompetech.com), CC BY 4.0
+elettronica_4.mp3: "Blip Stream", Kevin MacLeod (incompetech.com), CC BY 4.0
+jazz_1.mp3: "Hep Cats", Kevin MacLeod (incompetech.com), CC BY 4.0
+jazz_2.mp3: "Bass Walker", Kevin MacLeod (incompetech.com), CC BY 4.0
+jazz_3.mp3: "I Knew a Guy", Kevin MacLeod (incompetech.com), CC BY 4.0
+jazz_4.mp3: "Lobby Time", Kevin MacLeod (incompetech.com), CC BY 4.0
+popolare_1.mp3: "Folk Round", Kevin MacLeod (incompetech.com), CC BY 4.0
+popolare_2.mp3: "Thatched Villagers", Kevin MacLeod (incompetech.com), CC BY 4.0
+popolare_3.mp3: "Fiddles McGinty", Kevin MacLeod (incompetech.com), CC BY 4.0
+popolare_4.mp3: "Jaunty Gumption", Kevin MacLeod (incompetech.com), CC BY 4.0

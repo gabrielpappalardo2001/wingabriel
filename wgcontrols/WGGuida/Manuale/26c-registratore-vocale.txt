@@ -1,0 +1,149 @@
+﻿Il registratore vocale
+
+Il registratore vocale registra la tua voce dal microfono. Ogni registrazione è una traccia di un progetto. Puoi sovrapporre più tracce, registrare sopra una base musicale e tenere tutto a tempo dall'inizio alla fine, senza sfasamenti. Alla fine esporti le tracce unite in un file mp3 o wav.
+
+Aprire il registratore
+
+Nel {menu} scegli "Musica", poi "Registratore vocale". Se hai già dei progetti si apre un menu con "Registrazione nuova" e "I miei progetti". Senza progetti si parte subito con una registrazione nuova.
+
+Si apre un controllo a schermo intero con una sola riga di testo. Invio avvia e ferma la registrazione, Alt apre le opzioni, AltGr apre il menu delle modifiche, Esc chiude. La riga non cambia mentre registri: se succede qualcosa, te lo dice la voce. Per sapere come stanno le cose, apri le opzioni e scegli "Stato". La voce dice il progetto, le tracce, il sottofondo, il microfono, i volumi, il metronomo e la compensazione della sincronia.
+
+Se il computer non ha nessun microfono, WinGabriel te lo dice.
+
+Registrare la voce
+
+1. Premi Invio, oppure apri le opzioni e scegli "Registra una traccia".
+
+2. Senti un beep, senza parole, e il microfono si apre subito dopo. Il beep non finisce nella registrazione.
+
+3. Parla o canta.
+
+4. Premi di nuovo Invio per finire. WinGabriel prepara la traccia in sottofondo, con una schermata di attesa, e poi dice il numero della traccia.
+
+Una registrazione più corta di un quinto di secondo viene scartata, e un messaggio lo spiega. Se premi Esc durante la registrazione, la traccia viene preparata e poi ti viene chiesto se salvare il progetto.
+
+Le tracce
+
+Ogni nuova registrazione è una traccia in più. Mentre registri senti le tracce già fatte e il sottofondo, se l'hai scelto. Conviene usare le cuffie: se la musica esce dagli altoparlanti, il microfono la riprende e la senti due volte.
+
+La riga del controllo dice dove sei, cioè la traccia nuova oppure una traccia già registrata, con la sua durata e, se non è quello normale, il volume. Freccia giù passa alla traccia dopo, freccia su a quella prima. L'ultima riga è la traccia nuova.
+
+Maiusc con le frecce seleziona più tracce. Canc elimina le tracce selezionate o, senza selezione, quella su cui sei. Durante la registrazione non si elimina niente.
+
+La barra spaziatrice ascolta tutte le tracce insieme, con il sottofondo, e di nuovo premuta si ferma. Inserisci apre la scelta del microfono.
+
+Il menu delle modifiche
+
+AltGr, il tasto Alt di destra, premuto e rilasciato da solo, apre il menu "Modifica la traccia", come in Word.
+
+"Elimina traccia", che diventa "Elimina le tracce selezionate" se ne hai selezionate più d'una;
+
+"Sposta traccia più in alto" e "Sposta traccia più in basso", che scambiano la traccia con quella vicina. Compaiono solo quando lo spostamento è possibile;
+
+"Modifica volume" chiede il volume in percento. Il valore normale è cento. Va da zero a quattrocento. Se la voce esce troppo bassa, alzalo qui.
+
+Sulla riga della traccia nuova il menu ha solo il volume, quello con cui viene registrata la voce. Il volume di ogni traccia si salva con il progetto e conta anche nell'esportazione.
+
+Le opzioni
+
+Alt apre il menu delle opzioni, con le voci che servono in quel momento. Durante la registrazione restano solo "Ferma la registrazione", "Stato" e "Aiuto".
+
+"Registra una traccia", che durante la registrazione diventa "Ferma la registrazione";
+
+"Stato";
+
+"Ascolta le tracce" o "Ferma l'ascolto", se ci sono tracce; senza tracce ma con un sottofondo, "Ascolta il sottofondo";
+
+"Elimina le tracce selezionate o la traccia corrente" ed "Esporta", quando ci sono tracce;
+
+"Scegli il sottofondo". Se ce n'è già uno compaiono "Cambia il sottofondo" e "Togli il sottofondo";
+
+"Microfono", utile se hai più dispositivi, per esempio il microfono del computer e quello delle cuffie;
+
+"Livello del microfono";
+
+"Calibra la sincronia";
+
+"Tempo del metronomo", "Battiti per battuta" e "Registra con il metronomo" oppure "Registra senza metronomo";
+
+"Aiuto".
+
+I volumi della voce e del sottofondo, la ripetizione della base e la sincronia a mano non stanno nelle opzioni. Si cambiano da "Configurazione", nel menu Musica, oppure da Impostazioni, Applicazioni, Musica.
+
+Il metronomo
+
+Il metronomo dà un colpo a ogni battito, più acuto sul primo della battuta. Con "Tempo del metronomo" scegli i battiti al minuto, da trenta a trecento. Con "Battiti per battuta" scegli quanti sono, da uno a dodici. Con "Registra con il metronomo" lo senti mentre registri, insieme alle tracce e al sottofondo. Il primo colpo cade nell'istante in cui parte la registrazione. Anche qui, meglio le cuffie.
+
+Salvare il progetto
+
+Quando premi Esc e il progetto ha delle modifiche, si apre un menu con tre voci.
+
+"Salva il progetto" ti chiede il nome. Il progetto resta nei dati di WinGabriel;
+
+"Esci senza salvare" chiude il registratore e butta le modifiche;
+
+"Torna al registratore" lascia tutto com'è.
+
+Se nella richiesta del nome premi Esc, il progetto resta salvato come "Registrazione senza nome" con la data e l'ora, e non perdi niente. Per riprendere il lavoro apri il registratore e scegli "I miei progetti": il progetto si riapre con le sue tracce, i volumi e il sottofondo.
+
+Esportare in mp3 o wav
+
+Dalle opzioni scegli "Esporta". Tre passaggi.
+
+1. Scegli la cartella. Il selettore parte dalla scelta delle risorse. Non esiste una cartella predefinita: la scegli ogni volta.
+
+2. Scrivi il nome del file. Come proposta c'è il nome del progetto, oppure "Registrazione vocale".
+
+3. Scegli il formato, "mp3" o "wav".
+
+WinGabriel unisce tutte le tracce, con i volumi che hai impostato e con il sottofondo se c'è, e scrive un file solo. L'mp3 è in alta qualità, a trecentoventi kilobit al secondo. Se Windows non riesce a scrivere l'mp3, il file viene salvato in wav e un messaggio lo dice. Alla fine un messaggio indica dove si trova il file. Se il nome esiste già, il nuovo file prende un numero.
+
+Controllare il microfono
+
+Prima di una registrazione importante scegli "Livello del microfono". Per tre secondi WinGabriel ascolta: parla come farai durante la registrazione. Poi ti dice se il livello è troppo basso, troppo alto o buono, e indica il picco in decibel. Se è basso, avvicinati al microfono o alza il volume nelle impostazioni di Windows. Se è troppo alto, allontanati o abbassalo: altrimenti il suono si deforma.
+
+Registrare con il sottofondo
+
+1. Apri le opzioni e scegli "Scegli il sottofondo". Vanno bene i file mp3, wav, wma, m4a, aac, flac e aiff.
+
+2. Con "Ascolta il sottofondo" senti la base prima di registrare.
+
+3. Metti le cuffie.
+
+4. Avvia la registrazione. La base parte dall'inizio e il microfono si apre.
+
+Il sottofondo ha un suo volume, da Configurazione, che resta anche nel file esportato.
+
+Perché non c'è sfasamento
+
+Il microfono e l'uscita audio sono due dispositivi con due orologi indipendenti, che non vanno esattamente alla stessa velocità. Se li facessi partire insieme e unissi i file alla fine, la voce sarebbe sempre più in ritardo con il passare dei minuti. WinGabriel evita il problema. Mentre registri, a ogni pezzetto di voce che arriva abbina il punto esatto di quello che stai ascoltando. Alla fine usa questi punti per mettere ogni istante della voce al suo posto, correggendo anche la piccola differenza di velocità tra i due orologi. La voce resta a tempo anche nelle registrazioni lunghe.
+
+Resta un ritardo fisso, che nessun programma conosce senza misurarlo: il tempo che servono al microfono e alla scheda audio per elaborare il suono. Di solito sono pochi millisecondi. Con certi dispositivi, per esempio quelli Bluetooth, sono molti di più. Si corregge in due modi.
+
+Calibrare la sincronia
+
+"Calibra la sincronia" misura il ritardo da sola.
+
+1. Avvicina gli altoparlanti al microfono e alza un poco il volume. Con le cuffie la misura non funziona, perché il microfono non sente niente.
+
+2. Apri le opzioni e scegli "Calibra la sincronia". WinGabriel ti chiede di stare in silenzio.
+
+3. Il computer emette sei colpi secchi dagli altoparlanti e li ascolta con il microfono. Misura il tempo tra il momento in cui il colpo doveva uscire e quello in cui il microfono lo ha sentito.
+
+4. Alla fine dice di quanti millisecondi anticiperà la voce nelle prossime registrazioni, e salva il valore. Se non sente i colpi, ti consiglia di avvicinare gli altoparlanti al microfono e di riprovare.
+
+Regolare a mano
+
+Chi usa le cuffie regola il valore a mano da Configurazione. Registra una prova e ascoltala. Se la voce è in ritardo, anticipala di cinque millisecondi alla volta. Se è in anticipo, ritardala. La voce dello stato dice il valore in uso.
+
+Se qualcosa non va
+
+"Non è stato possibile usare il microfono" vuol dire che un altro programma occupa il microfono, oppure che Windows non permette a WinGabriel di usarlo. Controlla i permessi del microfono nelle impostazioni della privacy di Windows;
+
+la voce è troppo bassa o troppo alta. Usa "Livello del microfono", oppure cambia il volume della traccia con AltGr;
+
+la voce è in ritardo rispetto alla musica. Esegui "Calibra la sincronia" oppure regola i millisecondi a mano;
+
+il sottofondo non si apre. Windows potrebbe non riconoscere il formato del file. Prova con un file mp3 o wav;
+
+dopo Esc la traccia non compare subito. WinGabriel sta ancora preparando l'ultima registrazione: aspetta la richiesta di salvataggio.

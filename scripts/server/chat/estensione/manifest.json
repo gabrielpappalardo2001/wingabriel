@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Verifica la chat di WinGabriel",
+  "short_name": "Verifica chat",
+  "version": "1.0.0",
+  "description": "Controlla che la pagina e il programma della chat di WinGabriel siano quelli ufficiali, firmati da chi rilascia WinGabriel, e avvisa se il sito serve qualcosa di diverso.",
+  "content_scripts": [
+    {
+      "matches": ["https://wingabriel.net/chat/*", "https://chat.wingabriel.net/*"],
+      "js": ["verifica.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "verifica-chat@wingabriel.net", "strict_min_version": "115.0" }
+  }
+}

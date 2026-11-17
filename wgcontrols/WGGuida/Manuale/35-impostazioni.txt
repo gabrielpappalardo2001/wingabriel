@@ -1,0 +1,251 @@
+﻿Le impostazioni
+
+Le impostazioni servono ad adattare WinGabriel ai tuoi gusti e alle tue abitudini: la velocità della voce, i suoni, il modo di leggere i numeri e molte altre cose.
+
+Non devi modificarle tutte subito. WinGabriel funziona perfettamente anche così com'è, ma quando qualcosa non ti soddisfa, qui puoi personalizzarlo.
+
+Aprire le impostazioni
+
+Nel {menu} seleziona "Impostazioni" e premi Invio.
+
+[smart]
+Le trovi anche nella prima pagina della schermata iniziale.
+[/smart]
+
+Ogni voce apre un sottomenu. Le modifiche diventano operative immediatamente, senza bisogno di salvare.
+
+Molte voci mostrano già la loro configurazione attuale. Ad esempio, la dicitura "Conferma dell'uscita con applicazioni aperte: disattiva" indica che la richiesta di conferma è disattivata, permettendoti di sapere subito quale parametro stai per modificare.
+
+Per evitare confusione tra le numerose opzioni, le impostazioni sono suddivise in categorie. Accedendo a "Impostazioni" troverai, nell'ordine:
+
+"Sistema": il funzionamento generale di WinGabriel, l'avvio, gli aggiornamenti, il cloud e le impostazioni di Windows;
+
+"Connessioni": Wi-Fi, Bluetooth e audio;
+
+"Voce e audio": la sintesi vocale, i suoni e le periferiche audio;
+
+"Lettura e scrittura": le modalità di lettura dei testi e il supporto durante la digitazione;
+
+"Mouse, touch e digitazione vocale": le modalità di interazione con il computer alternative alla tastiera;
+
+"Applicazioni": la configurazione delle singole applicazioni, dal browser alla posta elettronica;
+
+"Lettore di schermo": la scelta del lettore di schermo da utilizzare al di fuori di WinGabriel;
+
+"Impostazioni lettore di schermo": questa voce appare esclusivamente se hai scelto WinGabriel come lettore di schermo predefinito, e serve a regolarne i parametri interni.
+
+Ecco il dettaglio dei contenuti di ciascuna categoria.
+
+Sistema
+
+Questa categoria è denominata anche "Sistema e avvio" e comprende:
+
+[smart]
+"Sistema": per regolare il funzionamento della modalità smart, descritto in dettaglio più avanti;
+
+"Scrivania": per scegliere il comportamento della scrivania all'avvio e tramite la combinazione Control Alt D;
+[/smart]
+
+[classica]
+"Modalità": per passare alla modalità smart (il capitolo dedicato alle modalità ne illustra le differenze);
+[/classica]
+
+"Menu": la struttura e il comportamento dei menu;
+
+"Avvio": le azioni eseguite all'accensione del computer e all'apertura di WinGabriel;
+
+"Aggiornamento": la ricerca di nuove versioni di WinGabriel;
+
+"Cloud": la gestione dell'account Filen, la sincronizzazione tra computer, i backup e le copie di sicurezza (se hai effettuato l'accesso saranno visibili ulteriori opzioni, a cui è dedicato un apposito capitolo);
+
+"Configurazione guidata": per ripetere in qualsiasi momento la procedura di configurazione iniziale, che comprende la scelta tra installazione e versione portatile, la cartella dei dati, la voce e la sincronizzazione;
+
+"Installazione di WinGabriel": per installare il programma, configurare le icone e consentire l'avvio come amministratore senza richieste, oppure per disinstallarlo e ripristinare la versione portatile. Con l'installazione WinGabriel viene copiato in Programmi\WinGabriel, insieme ai suoni e ai programmi scaricati, mentre la configurazione di ciascun utente di Windows si trova nei dati locali, nella cartella WinGabriel\config; nella versione portatile la configurazione si trova nella cartella config, accanto al programma;
+
+"Impostazioni di Windows": alcune regolazioni del sistema operativo accessibili direttamente.
+
+[smart]
+La voce "Sistema" della modalità smart
+
+Qui si configurano i parametri della modalità smart:
+
+"Modalità": per passare alla modalità classica;
+
+"Applicazioni separate": per mantenere le applicazioni aperte contemporaneamente e passare dall'una all'altra con le frecce destra e sinistra abbinate al tasto Control;
+
+"Volume della musica mentre parla la sintesi": il livello di riduzione del volume della musica durante la riproduzione vocale di WinGabriel;
+
+"Riapri all'avvio le applicazioni lasciate aperte";
+
+"Avvisi di connessione, memoria e disco", descritti nel capitolo dedicato;
+
+"Conferma dell'uscita con applicazioni aperte": disattivata per impostazione predefinita;
+
+"Notifiche, non disturbare";
+
+"Suono delle notifiche per applicazione";
+
+"Prova guidata dei tasti", per fare pratica con i comandi della modalità smart;
+
+"Guida delle applicazioni";
+
+"Scrivania all'avvio e con Control Alt D": per attivare o disattivare l'uso della scrivania.
+[/smart]
+
+Menu
+
+Parametri relativi all'aspetto e al comportamento dei menu:
+
+lo stile e la dimensione dei caratteri, utili per chi ha ancora un residuo visivo;
+
+la navigazione ciclica: se attiva, raggiunta l'ultima voce di un menu si riparte automaticamente dalla prima;
+
+la lettura del titolo del menu da parte della sintesi vocale;
+
+la comunicazione del numero totale di voci presenti nel menu.
+
+Avvio
+
+"Avvio del programma": per impostare l'avvio automatico di WinGabriel all'accensione del computer;
+
+"Suoni e volume all'avvio";
+
+"Volume preferito all'avvio": il livello audio predefinito all'avvio di WinGabriel.
+
+Aggiornamento
+
+La ricerca di nuove versioni del programma.
+
+Impostazioni di Windows
+
+Regolazioni del computer gestite direttamente da WinGabriel, senza la necessità di aprire le finestre di Windows:
+
+la luminosità dello schermo;
+
+il volume generale del computer;
+
+la gestione del risparmio energetico;
+
+la possibilità di consentire la sospensione (standby) del computer mentre WinGabriel è in esecuzione;
+
+lo svuotamento del cestino.
+
+Connessioni
+
+La gestione di Wi-Fi, Bluetooth e della periferica di riproduzione audio (altoparlanti o cuffie). Il capitolo "Wi-Fi, Bluetooth e audio" fornisce una spiegazione completa.
+
+Voce e audio
+
+Questa categoria raggruppa tre sezioni: sintesi vocale, suoni e audio.
+
+Sintesi vocale
+
+La sintesi vocale rappresenta la voce di WinGabriel. Qui puoi selezionare il motore di lettura, la voce, la velocità e il volume.
+
+I motori di lettura disponibili sono eSpeak, le voci di Windows oppure nessuno. eSpeak è una voce estremamente leggera e veloce, concepita per gli utenti non vedenti. Al primo avvio di WinGabriel, se eSpeak non è presente, il programma provvede a scaricarlo autonomamente mostrando una finestra di stato (il pacchetto pesa circa dodici megabyte); terminato il download, eSpeak diventa la voce predefinita. Il componente non viene installato nel sistema operativo: i suoi file risiedono nella cartella espeak, all'interno della cartella del programma, e non richiedono alcuna operazione da parte tua. Se preferisci le voci di Windows, seleziona "Usa le voci di Windows" come motore di lettura: da quel momento WinGabriel non scaricherà più eSpeak automaticamente. Per quanto riguarda eSpeak, sono disponibili diverse voci italiane, sia maschili che femminili, oltre al supporto per altre lingue. La conversione in formato MP3, invece, utilizza sempre le voci di Windows.
+
+Sono previste due configurazioni separate: una per l'utilizzo quotidiano del programma e una per la conversione dei testi in file MP3. In questo modo, ad esempio, potrai utilizzare una voce rapida per il lavoro di tutti i giorni e una voce più lenta e rilassata per la creazione di audiolibri.
+
+Suoni
+
+I segnali acustici con cui WinGabriel fornisce avvisi senza l'uso della voce. È possibile attivarli o disattivarli, regolarne il volume e personalizzare il suono di attesa utilizzando un file audio a scelta.
+
+Audio
+
+La gestione di altoparlanti e microfono: selezione dei dispositivi e regolazione dei relativi volumi.
+
+Lettura e scrittura
+
+Questa sezione comprende le voci "Lettura" e "Scrittura".
+
+Lettura
+
+Modalità di lettura dei testi da parte di WinGabriel:
+
+"Lettura punteggiatura": il livello di dettaglio nella lettura dei segni di interpunzione;
+
+"Lettura dei numeri": i numeri possono essere letti per intero, cifra per cifra, a coppie o a gruppi di tre. La lettura cifra per cifra risulta particolarmente comoda per numeri di telefono e codici;
+
+le impostazioni relative a file di testo e documenti Word, come la pausa tra le righe durante la lettura continua, il numero di note lette durante lo scorrimento e la lettura dell'intestazione al cambio di pagina.
+
+Scrittura
+
+Il supporto vocale fornito da WinGabriel durante la digitazione:
+
+"Eco digitazione": determina ciò che la voce ripete mentre scrivi. Puoi scegliere tra caratteri, parole, entrambi o disattivare la funzione;
+
+la lettura della punteggiatura durante la digitazione;
+
+la lettura della password durante l'inserimento. È consigliabile mantenere disattivata questa opzione per motivi di sicurezza.
+
+Mouse, touch e digitazione vocale
+
+Touch e mouse, oppure Mouse
+
+Se il tuo computer è dotato di schermo touch, questa sezione raccoglie le impostazioni per i gesti e la tastiera su schermo, descritte nel capitolo sull'uso tramite gesti tattili. In caso contrario, vi troverai le impostazioni del mouse.
+
+Digitazione vocale
+
+Il sistema di riconoscimento vocale utilizzato per la dettatura: Gemini, Groq oppure Parakeet (quest'ultimo funzionante anche senza connessione internet).
+
+Applicazioni
+
+Qui sono racchiuse le impostazioni specifiche per le singole applicazioni:
+
+Browser
+
+La configurazione del browser: gestione della pubblicità, cronologia, lingua, traduzioni, password e permessi dei siti web.
+
+Traduttore
+
+Le modalità e le lingue di traduzione, illustrate nel capitolo dedicato al traduttore.
+
+Lettore multimediale
+
+I parametri di riproduzione: volume, durata dei salti in avanti e indietro, messaggi vocali, velocità di riproduzione e modalità di apertura dei file musicali e video.
+
+YouTube
+
+Le impostazioni relative a YouTube, descritte nel capitolo corrispondente.
+
+Podcast
+
+Il paese della ricerca e delle classifiche dei podcast, descritto nel capitolo dei podcast.
+
+Quotidiani
+
+La gestione degli avvisi per i nuovi articoli, la frequenza di controllo, il numero massimo di articoli da segnalare e il sistema di estrazione del testo dalle pagine web.
+
+Posta
+
+Le modalità di apertura dei messaggi (tramite l'editor testuale di WinGabriel, l'editor di documenti o il browser integrato per i messaggi in formato grafico) e le modalità di composizione (con l'editor testuale o l'editor di documenti).
+
+File
+
+"Ordinamento file e cartelle";
+
+"Eliminazione dei file": spostamento nel cestino o eliminazione definitiva;
+
+"Apertura dei file di testo": scelta del programma predefinito;
+
+"Icona sul desktop": per creare o rimuovere il collegamento di WinGabriel sul desktop di Windows;
+
+"Cartella dati dell'applicazione": la posizione in cui WinGabriel archivia i dati personali (argomento trattato nel capitolo sui dati).
+
+Stampante
+
+La stampante predefinita da utilizzare per la stampa di documenti o pagine.
+
+Intelligenza artificiale
+
+La scelta del servizio da utilizzare, l'inserimento delle chiavi di accesso e la configurazione dell'assistente vocale Minerva, argomenti trattati nel capitolo sull'intelligenza artificiale.
+
+Lettore di schermo
+
+Permette di selezionare il lettore di schermo da utilizzare al di fuori di WinGabriel: automatico, JAWS, NVDA o Assistente vocale di Windows.
+
+All'avvio di WinGabriel, i lettori di schermo esterni vengono disattivati per evitare conflitti tra flussi vocali sovrapposti. Alla chiusura di WinGabriel, è possibile configurare il riavvio automatico del lettore precedentemente impostato, così da avere sempre la voce attiva.
+
+Le copie di sicurezza
+
+Le copie di sicurezza sono gestite all'interno del cloud: accedi a "Sistema", seleziona "Cloud" e infine "Backup e ripristino". Questa voce è sempre disponibile, anche se non hai effettuato l'accesso a Filen. Il capitolo sui dati e le copie di sicurezza spiega l'argomento in modo dettagliato.

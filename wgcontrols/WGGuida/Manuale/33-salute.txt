@@ -1,0 +1,77 @@
+﻿La salute: farmaci e farmacie
+
+Il foglietto illustrativo dei medicinali, comunemente chiamato bugiardino, è stampato con caratteri piccolissimi ed è molto lungo. Per chi ha problemi di vista, risulta impossibile da leggere. La sezione Salute di WinGabriel provvede a leggerlo ad alta voce e ti aiuta inoltre a trovare una farmacia aperta.
+
+Un'avvertenza importante: WinGabriel consulta le informazioni ufficiali dell'Agenzia Italiana del Farmaco, ma non sostituisce in alcun modo il parere di un medico o di un farmacista. In presenza di qualsiasi dubbio sui farmaci, rivolgiti sempre al tuo medico o al farmacista di fiducia.
+
+Aprire la sezione salute
+
+Nel {menu} seleziona "Salute". Si aprirà un menu contenente le seguenti voci:
+
+"Cerca un farmaco";
+
+"Farmaci preferiti";
+
+"Farmaci consultati di recente";
+
+"Farmacie aperte adesso";
+
+"Tutte le farmacie di un comune";
+
+"Bugiardini scaricati";
+
+"Opzioni".
+
+Cercare un farmaco
+
+1. Seleziona "Cerca un farmaco", quindi "Nuova ricerca".
+
+2. Digita il nome del farmaco. È possibile inserire anche il principio attivo, ossia la sostanza terapeutica, la ditta produttrice o il codice AIC, ovvero il numero identificativo riportato sulla confezione.
+
+3. Premi Invio. WinGabriel elencherà i farmaci corrispondenti alla ricerca.
+
+4. Individua il farmaco di tuo interesse e premi Invio.
+
+La funzione "Ricerche recenti" consente di ripetere rapidamente una ricerca effettuata in precedenza.
+
+Il menu del farmaco
+
+Selezionando un farmaco, si apre un menu con le seguenti opzioni:
+
+"Informazioni": i dati principali relativi al medicinale;
+
+"Leggi il bugiardino": l'intero foglietto illustrativo, dall'inizio alla fine;
+
+"Foglio illustrativo per sezioni": il foglietto suddiviso in parti, per consentire di raggiungere immediatamente le informazioni desiderate, quali indicazioni terapeutiche, modalità d'assunzione ed effetti indesiderati;
+
+"Leggi il riassunto delle caratteristiche del prodotto": un documento di carattere tecnico destinato ai medici;
+
+"Confezioni e prezzi";
+
+"Aggiungi ai preferiti" oppure "Rimuovi dai preferiti".
+
+I documenti vengono scaricati la prima volta e salvati sul computer, così da poter essere consultati istantaneamente anche nelle successive aperture, persino in assenza di connessione a internet.
+
+La voce "Bugiardini scaricati" del menu principale elenca tutti i documenti memorizzati. Da qui è possibile eliminarne uno o cancellarli tutti.
+
+I preferiti e i recenti
+
+Puoi aggiungere ai preferiti i medicinali di uso comune per poterli ritrovare immediatamente, senza doverli cercare ogni volta.
+
+La voce "Farmaci consultati di recente" mostra invece gli ultimi prodotti visualizzati.
+
+Le farmacie
+
+"Farmacie aperte adesso" indica quali esercizi sono operativi in un determinato momento nel comune inserito.
+
+"Tutte le farmacie di un comune" elenca tutti gli esercizi presenti nell'area specificata, completi di indirizzo e, ove disponibili, di orari di apertura.
+
+Le opzioni
+
+All'interno della voce "Opzioni" sono disponibili:
+
+"Guida ai termini usati in questa sezione": un glossario che spiega i termini più complessi, come principio attivo, posologia e controindicazioni;
+
+"Aggiorna l'archivio dei farmaci" e "Aggiorna l'elenco delle farmacie": funzioni per scaricare i dati più aggiornati;
+
+"Cancella le ricerche recenti".

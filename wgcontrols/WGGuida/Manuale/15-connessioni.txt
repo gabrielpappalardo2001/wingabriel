@@ -1,0 +1,125 @@
+﻿Wi-Fi, Bluetooth e audio
+
+Il computer si collega a diversi dispositivi: alla rete domestica, alle cuffie, agli altoparlanti, al telefono. In Windows queste impostazioni si gestiscono tramite finestre che la sintesi vocale di WinGabriel non è in grado di leggere. Per questo motivo, WinGabriel integra una gestione autonoma di tutte queste funzioni, permettendoti di operare interamente con la voce senza uscire dal programma.
+
+Dove si trovano
+
+Tutte le opzioni relative alle connessioni si trovano nel menu Impostazioni, alla voce "Connessioni".
+
+[smart]
+Per maggiore rapidità, puoi accedere al Wi-Fi, al Bluetooth e all'audio anche dalla barra di stato sul desktop oppure, quando utilizzi il computer in modalità tablet, dal pannello del centro di controllo.
+[/smart]
+
+Il Wi-Fi
+
+Il Wi-Fi è la connessione a Internet senza fili.
+
+Quando apri la sezione Wi-Fi, WinGabriel verifica che sia attivo, cerca le reti disponibili nelle vicinanze e le elenca in ordine di potenza del segnale, dalla più forte alla più debole.
+
+Per ciascuna rete vengono comunicate le seguenti informazioni:
+
+il nome della rete;
+
+se sei attualmente connesso a essa;
+
+la potenza del segnale in percentuale: valori più alti indicano una ricezione migliore;
+
+il tipo di protezione (protetta da password, aperta o rete aziendale);
+
+se la rete è già memorizzata nel computer.
+
+Collegarsi a una rete
+
+1. Scorri l'elenco delle reti con i tasti freccia e posizionati su quella a cui desideri connetterti.
+
+2. Premi Invio.
+
+3. Se la rete è protetta e non è mai stata utilizzata in precedenza, WinGabriel ti richiederà la password. Digitala e premi Invio. La password della rete domestica è solitamente indicata su un'etichetta applicata sotto il modem.
+
+Se la connessione non va a buon fine, WinGabriel ne spiegherà il motivo, segnalando ad esempio che la password potrebbe essere errata o che il segnale della rete è troppo debole, chiedendoti quindi se desideri reinserire la password e riprovare. Le password errate non vengono salvate.
+
+Se premi Invio su una rete alla quale sei già connesso, ne verranno lette le informazioni.
+
+Le opzioni del Wi-Fi
+
+Premendo il tasto Alt su una rete si apre il menu delle opzioni, le cui voci variano a seconda dello stato della rete selezionata:
+
+"Collegati alla rete" oppure "Disconnetti dalla rete";
+
+"Informazioni sulla rete", che mostra segnale, tipo di protezione e stato;
+
+"Dimentica la rete", per rimuovere la rete e la relativa password dal computer (previa richiesta di conferma da parte di WinGabriel);
+
+"Aggiorna l'elenco delle reti", per effettuare una nuova ricerca;
+
+"Collegati a una rete nascosta";
+
+"Spegni il Wi-Fi".
+
+Le reti nascoste
+
+Alcune reti non trasmettono il proprio nome. Per connetterti a una di queste:
+
+1. Premi il tasto Alt e seleziona "Collegati a una rete nascosta".
+
+2. Digita il nome della rete esattamente come configurato, rispettando maiuscole e minuscole.
+
+3. Seleziona il tipo di protezione, che solitamente corrisponde a "WPA2 personale".
+
+4. Inserisci la password.
+
+Le reti aziendali
+
+Le reti di università, uffici e ospedali, come ad esempio eduroam, richiedono un nome utente e una password anziché la sola password. WinGabriel ti guiderà nell'inserimento di entrambi; il nome utente viene fornito dall'ente che gestisce la rete.
+
+Alcune di queste reti richiedono un certificato personale al posto delle credenziali tradizionali. In tal caso, la rete non potrà essere utilizzata e la sintesi vocale ti avviserà di ciò.
+
+Quando le reti non compaiono
+
+Windows 11 mostra le reti Wi-Fi esclusivamente alle applicazioni autorizzate ad accedere alla posizione. Se la localizzazione è disattivata, WinGabriel ti avviserà e ti chiederà se desideri attivarla: rispondendo affermativamente, l'operazione verrà eseguita in autonomia.
+
+In alcuni casi potrebbe essere necessaria l'autorizzazione dell'amministratore del computer. Verrà quindi aperta una finestra di dialogo di Windows per la conferma; la voce ti avviserà e ti indicherà di premere la combinazione Alt + S per acconsentire. Questa è l'unica finestra di Windows che WinGabriel non è in grado di bypassare.
+
+Il Bluetooth
+
+Il Bluetooth consente di collegare al computer dispositivi senza fili quali cuffie, altoparlanti, tastiere e telefoni.
+
+Aprendo la sezione Bluetooth viene mostrato l'elenco dei dispositivi già associati al computer, ciascuno con il rispettivo stato (collegato o non collegato). In fondo all'elenco è presente la voce "Associa un nuovo dispositivo".
+
+Associare un dispositivo nuovo
+
+L'associazione consiste nella prima configurazione che permette a un dispositivo di essere riconosciuto dal computer, e va eseguita una sola volta.
+
+1. Imposta il dispositivo in modalità di associazione seguendo le istruzioni del produttore (solitamente tenendo premuto il pulsante di accensione per alcuni secondi fino a un segnale acustico o vocale).
+
+2. In WinGabriel seleziona "Associa un nuovo dispositivo" e premi Invio.
+
+3. WinGabriel effettuerà una ricerca della durata di circa dieci secondi, al termine della quale elencherà i dispositivi rilevati.
+
+4. Seleziona il tuo dispositivo e premi Invio.
+
+5. Se il dispositivo genera un codice, la voce te lo leggerà. Se invece richiede l'inserimento di un PIN, WinGabriel ti solleciterà a digitarlo: spesso si tratta di "0000" oppure "1234".
+
+Le opzioni del Bluetooth
+
+Premendo il tasto Alt su un dispositivo è possibile accedere a: informazioni sul dispositivo, rimozione dell'associazione, connessione o disconnessione, reindirizzamento dell'audio alle cuffie, selezione della periferica di riproduzione audio, associazione di un nuovo dispositivo, aggiornamento dell'elenco e disattivazione del Bluetooth.
+
+Collegare le cuffie
+
+Se le cuffie Bluetooth sono già state associate, per connetterti è sufficiente accenderle, avvicinarle al computer e premere Invio sulla voce corrispondente nell'elenco Bluetooth. Le cuffie si connetteranno e l'audio verrà immediatamente reindirizzato su di esse.
+
+Dove senti l'audio
+
+La voce "Dove ascoltare l'audio" elenca tutte le uscite audio disponibili: gli altoparlanti del computer, le cuffie cablate e le cuffie o gli altoparlanti Bluetooth (inclusi quelli associati ma non ancora connessi). Seleziona la periferica desiderata con i tasti freccia e premi Invio.
+
+Questa opzione è accessibile sia dal menu "Connessioni" sia dalle opzioni del Bluetooth.
+
+[smart]
+È inoltre disponibile nella barra di stato del desktop e, in modalità tablet, nel pannello del centro di controllo. Dalla barra di stato, premendo Invio sulla voce dell'audio, la riproduzione passerà istantaneamente dagli altoparlanti alle cuffie e viceversa. Nel caso in cui siano presenti unicamente gli altoparlanti, WinGabriel tenterà autonomamente di connettere le cuffie Bluetooth associate.
+[/smart]
+
+Alcuni modelli di cuffie Bluetooth compaiono due volte nell'elenco, e uno di questi riporta la dicitura "vivavoce". La modalità vivavoce è destinata alle chiamate telefoniche e offre una qualità audio inferiore; la voce te lo ricorderà. Per l'ascolto di file musicali e della sintesi vocale di WinGabriel, seleziona l'altra opzione.
+
+Ogni volta che la sorgente audio cambia, la voce ti avviserà pronunciando, ad esempio, "Audio su Cuffie".
+
+Se le cuffie vengono speinte o si allontanano eccessivamente dal computer, la voce ti informerà con il messaggio "Cuffie scollegate, audio su Altoparlanti", e la sintesi vocale di WinGabriel tornerà a essere riprodotta dagli altoparlanti integrati, garantendo che il computer non rimanga mai privo di voce.

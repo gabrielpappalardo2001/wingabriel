@@ -1,0 +1,77 @@
+﻿Menu, elenchi e campi
+
+WinGabriel si compone di tre elementi fondamentali: i menu, gli elenchi e i campi. Una volta compreso il loro funzionamento, sarà facile spostarsi all'interno dell'intero programma. Questo capitolo ne illustra ogni dettaglio.
+
+I menu
+
+Un menu consiste in un elenco di opzioni disposte in sequenza verticale.
+
+All'apertura di un menu, la voce guida ne pronuncia il nome e indica il numero di voci presenti, per poi leggere la prima opzione.
+
+Ecco come utilizzare un menu:
+
+freccia giù passa alla voce successiva;
+
+freccia su torna alla voce precedente;
+
+Invio seleziona la voce evidenziata;
+
+Esc chiude il menu e torna indietro.
+
+Se conosci il nome della voce desiderata, puoi premere la sua lettera iniziale per posizionarti direttamente sulla prima voce che comincia con quel carattere. Ad esempio, all'interno del {menu}, premendo la lettera I si passa subito alla voce "Impostazioni".
+
+Molti menu memorizzano l'ultima voce selezionata: alla riapertura successiva, il cursore si posizionerà direttamente in quel punto. In questo modo, se si accede di frequente alla stessa sezione, la si può ritrovare immediatamente.
+
+Gli elenchi
+
+Un elenco è strutturato in modo analogo a un menu, ma anziché opzioni contiene elementi veri e propri: messaggi di posta elettronica, file, contatti della rubrica, brani musicali o notizie.
+
+La gestione di un elenco è identica a quella di un menu: le frecce consentono di spostarsi, con Invio si apre l'elemento evidenziato e con Esc si torna indietro.
+
+Per eseguire un'operazione su un elemento (ad esempio per eliminarlo, spostarlo o copiarlo), è sufficiente premere il tasto Alt sinistro: si aprirà così il menu delle opzioni contenente tutte le azioni disponibili.
+
+Gli elenchi particolarmente estesi, come una casella di posta contenente migliaia di messaggi, vengono caricati gradualmente. Non occorre compiere alcuna azione: man mano che si scorre la lista, la sezione successiva viene caricata automaticamente.
+
+Anche all'interno degli elenchi è possibile selezionare più elementi contemporaneamente mediante il tasto Maiusc, come illustrato nel capitolo dedicato alla tastiera. La selezione viene mantenuta anche durante lo scorrimento da una porzione all'altra dell'elenco. Ad esempio, si può selezionare un messaggio all'inizio, uno al centro e uno alla fine, per poi eliminarli tutti insieme con un'unica operazione.
+
+I gesti tattili
+
+Se si utilizza uno schermo tattile, all'interno di elenchi e menu è disponibile una funzionalità aggiuntiva del tutto simile a quella presente sui telefoni cellulari.
+
+Facendo scorrere un dito verso l'alto o verso il basso sullo schermo, la voce guida leggerà in sequenza le operazioni disponibili per l'elemento selezionato, come ad esempio "Apri", "Elimina" o "Sposta". Una volta raggiunta l'ultima voce, la lettura ricomincerà dalla prima. Quando la voce pronuncia l'azione desiderata, occorre toccare rapidamente due volte lo schermo per eseguirla.
+
+Queste opzioni corrispondono a quelle reperibili nel menu accessibile tramite il tasto Alt.
+
+I campi
+
+Un campo è uno spazio destinato alla digitazione del testo. All'apertura di un campo, la voce guida ne legge l'intestazione, che indica le informazioni da inserire: ad esempio un nome, un indirizzo o un termine da cercare.
+
+È sufficiente digitare i caratteri mediante la tastiera. Durante la digitazione, la voce riprodurrà le singole lettere o le parole intere, a seconda delle preferenze definite nelle impostazioni di scrittura. Una volta completato l'inserimento, occorre premere Invio per confermare.
+
+Alcuni campi consentono l'inserimento dei soli numeri, mentre altri risultano obbligatori: qualora vengano lasciati vuoti, WinGabriel segnalerà la necessità di completarli.
+
+Nei campi previsti per la password, la voce guida non pronuncerà i caratteri digitati, in modo da tutelare la riservatezza nei confronti delle persone vicine. È comunque possibile modificare tale impostazione all'interno delle opzioni di scrittura.
+
+Anche per i campi è disponibile un menu delle opzioni, accessibile premendo il tasto Alt. Ad esempio, in un campo che richiede la selezione di un file, verrà offerta la scelta del documento; in un campo riservato all'indirizzo e-mail, saranno disponibili la rubrica e gli indirizzi usati di recente. Nei campi di testo sono inoltre presenti le funzioni di dettatura, traduzione, controllo ortografico e le opzioni di copia e incolla.
+
+I gruppi di campi
+
+In talune circostanze, WinGabriel richiede l'inserimento di più informazioni contemporaneamente. Ad esempio, per la creazione di un nuovo contatto vengono richiesti il nome, il cognome, il numero di telefono e l'indirizzo. In questi casi, i campi vengono presentati in sequenza, uno sotto l'altro.
+
+Freccia giù e freccia su consentono di spostarsi da un campo all'altro, mentre la voce guida legge l'intestazione di ciascun elemento. Dopo aver compilato le informazioni necessarie, premendo Invio sull'ultimo campo si confermano tutti i dati inseriti.
+
+Premendo il tasto Esc, il gruppo di campi si chiude. Se sono stati inseriti dei dati, WinGabriel chiederà preliminarmente se si desidera salvarli.
+
+Leggere un testo
+
+I messaggi di posta elettronica, gli articoli, i documenti e i capitoli del presente manuale vengono visualizzati in un campo di sola lettura, consultabile e ascoltabile ma non modificabile.
+
+La lettura avviene tramite i seguenti comandi:
+
+freccia giù e freccia su leggono le singole righe;
+
+freccia destra e freccia sinistra leggono i singoli caratteri;
+
+Ctrl insieme a freccia destra o sinistra legge le parole.
+
+Nei documenti dotati di formattazione, la voce guida segnala inoltre la presenza di titoli, elenchi e testi in grassetto.

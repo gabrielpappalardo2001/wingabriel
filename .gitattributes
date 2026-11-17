@@ -1,0 +1,4 @@
+# Gli script che girano sul server (Linux) restano con i fine riga di Linux anche in questa cartella di Windows.
+*.sh text eol=lf
+scripts/server/attesa/*.py text eol=lf
+scripts/server/arbitro/* text eol=lf

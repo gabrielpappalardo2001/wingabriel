@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D0DD6DD-B949-4057-ADA6-3CE680A755AE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>WGBrowser</RootNamespace>
+    <AssemblyName>WGBrowser</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>WGBrowser.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>WGBrowser.xml</DocumentationFile>
+    <DefineConstants>_MYFORMS=True</DefineConstants>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.WebView2.Core">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.4191.47\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\wgcontrols\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="WGPlayerMpv, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WGPlayerMpv\bin\Debug\WGPlayerMpv.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WGAlberoAccessibilita.vb" />
+    <Compile Include="WGAriaMonitor.vb" />
+    <Compile Include="WGBrowser.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGBrowserGestori.vb" />
+    <Compile Include="WGCaratteri.vb" />
+    <Compile Include="WGCdpInterazione.vb" />
+    <Compile Include="WGCursorVirtuale.vb" />
+    <Compile Include="WGDevTools.vb" />
+    <Compile Include="WGDownloadBrowser.vb" />
+    <Compile Include="WGLayoutPagina.vb" />
+    <Compile Include="WGNavigatoreDOM.vb" />
+    <Compile Include="WGPaginaWeb.vb" />
+    <Compile Include="WGPagineNascoste.vb" />
+    <Compile Include="WGSchedaBrowser.vb" />
+    <Compile Include="WGSchedaBrowser.WordPress.vb" />
+    <Compile Include="WGSchedaBrowser.Azioni.vb">
+      <DependentUpon>WGSchedaBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGSchedaBrowser.Contenuti.vb">
+      <DependentUpon>WGSchedaBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGFormule.vb" />
+    <Compile Include="WGSchedaBrowser.Traduzione.vb">
+      <DependentUpon>WGSchedaBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGBrowser.Touch.vb">
+      <DependentUpon>WGBrowser.vb</DependentUpon>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WGSchedaBrowser.CampiTouch.vb">
+      <DependentUpon>WGSchedaBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGSchedaBrowser.Tastiera.vb">
+      <DependentUpon>WGSchedaBrowser.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WGServiziBrowser.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="WGBrowserAgente.js">
+      <LogicalName>WGBrowser.WGBrowserAgente.js</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\wgcontrols\wgcontrols.vbproj">
+      <Project>{e865b3f6-1e6e-44f3-ad29-0a1858658c73}</Project>
+      <Name>wgcontrols</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGStampante\WGStampante.vbproj">
+      <Project>{b3e91a72-4c8d-4f1a-9b6e-8a2d7c5f1e30}</Project>
+      <Name>WGStampante</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGNotifiche\WGNotifiche.vbproj">
+      <Project>{0f4f0a10-5734-4e42-8029-45f74e805511}</Project>
+      <Name>WGNotifiche</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGBrowserManager\WGBrowserManager.vbproj">
+      <Project>{8b675240-ddcc-4a62-8504-aa2d440dce0b}</Project>
+      <Name>WGBrowserManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WGOcr\WGOcr.vbproj">
+      <Project>{4719f433-39a0-4225-881a-6ab05970f54e}</Project>
+      <Name>WGOcr</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a pacchetti NuGet che non sono presenti in questo computer. Usare il ripristino dei pacchetti NuGet per scaricarli. Il file mancante e' {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.4191.47\build\Microsoft.Web.WebView2.targets'))" />
+  </Target>
+</Project>

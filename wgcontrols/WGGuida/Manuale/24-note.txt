@@ -1,0 +1,59 @@
+﻿Le note
+
+Le note servono per annotare rapidamente qualcosa da ricordare: la lista della spesa, un numero di telefono sentito alla radio, un'idea, un pensiero. Sono come i bigliettini attaccati al frigorifero, ma non si perdono mai.
+
+Aprire le note
+
+[smart]
+Nel menu delle applicazioni seleziona "Organizer" e poi "note". Se utilizzi il computer come un tablet, le note sono la prima applicazione della schermata iniziale.
+[/smart]
+
+[classica]
+Nel menu iniziale seleziona "Organizer" e poi "note".
+[/classica]
+
+Il menu delle note comprende: nuova nota, consulta le note, cerca le note, impostazioni.
+
+Scrivere una nuova nota
+
+1. Seleziona "Nuova nota" e premi Invio.
+
+2. WinGabriel richiede un titolo. Digita poche parole che ti aiutino a ritrovare la nota, ad esempio "Spesa di sabato", e premi Invio.
+
+3. Scrivi il testo della nota.
+
+4. Una volta terminato, premi Esc per uscire. Se WinGabriel chiede se desideri salvare, rispondi di sì.
+
+Esistono due modalità di scrittura per le note, configurabili nelle relative impostazioni:
+
+l'editor semplice, rapido e ideale per testi brevi;
+
+l'editor di documenti, dotato di formattazione, per note più lunghe e curate.
+
+Leggere le note
+
+Seleziona "Consulta le note": ascolterai l'elenco di tutte le note accompagnate dal rispettivo titolo. Premi Invio su una nota per aprirla e leggerla.
+
+Premendo il tasto Alt su una nota è possibile:
+
+modificare il titolo;
+
+modificare il testo;
+
+eliminarla;
+
+ordinare l'elenco: dalla più recente alla meno recente, dalla meno recente alla più recente, oppure in ordine alfabetico, da A a Z o da Z a A.
+
+È presente anche la voce "Compattazione dati", utile per riorganizzare l'archivio delle note quando diventa particolarmente voluminoso. Questa operazione non altera il contenuto delle note, ma si limita a fare pulizia.
+
+Cercare una nota
+
+Seleziona "Cerca le note". La ricerca può essere effettuata in due modi:
+
+per parola: digitando un termine, WinGabriel individua le note che lo contengono nel titolo o nel testo;
+
+per data: qualora si ricordi all'incirca il periodo in cui è stata scritta la nota.
+
+Le note del giorno
+
+Dal calendario, accessibile tramite le "Altre funzioni", è possibile scrivere una nota associata a una data specifica e consultare quelle relative a quel giorno. Si tratta di un metodo semplice per tenere un diario.

@@ -1,0 +1,99 @@
+﻿I podcast
+
+I podcast sono programmi a puntate da ascoltare quando vuoi: interviste, racconti, notizie, storia, scienza, umorismo. Con WinGabriel puoi cercarli, seguirli, ascoltarli e scaricarli sul computer, senza doverti registrare da nessuna parte.
+
+Li trovi nel {menu}, alla voce "Web", e nel menu "Podcast".
+
+Il menu dei podcast
+
+"Cerca": scrivi il nome di un podcast, di un autore o un argomento, per esempio "storia" o "Alessandro Barbero". La ricerca mostra fino a duecento risultati tra quelli presenti nel catalogo;
+
+"Classifiche": i duecento podcast più ascoltati del tuo paese, in generale o per categoria. Le categorie sono: arte e cultura, economia, umorismo, istruzione, narrativa, governo, salute e benessere, storia, bambini e famiglia, tempo libero, musica, notizie, religione e spiritualità, scienza, società e cultura, sport, tecnologia, true crime, film e TV;
+
+"Seguiti": i podcast che segui;
+
+"Nuovi episodi": i nuovi episodi da ascoltare dei podcast che segui. Questa voce è presente solo se segui almeno un podcast;
+
+"Preferiti": i podcast che hai aggiunto ai preferiti;
+
+"Recenti": gli ultimi duecento episodi che hai ascoltato;
+
+"Scaricati": gli episodi scaricati sul computer, che puoi ascoltare anche senza connessione a internet. Questa voce è presente solo se hai scaricato qualcosa;
+
+"Paese": il paese di riferimento per le classifiche e la ricerca. Di solito è l'Italia; puoi sceglierne altri quindici, tra cui Svizzera, Stati Uniti, Regno Unito, Francia, Germania e Spagna. La stessa impostazione si trova in Impostazioni, Applicazioni, Podcast.
+
+Gli elenchi di podcast
+
+I risultati di ricerca, le classifiche, i podcast seguiti e i preferiti sono elenchi analoghi agli altri di WinGabriel. Ogni elemento mostra il titolo, l'autore e la categoria, oltre a indicare se segui il podcast o se lo hai aggiunto ai preferiti.
+
+Premendo Invio su un podcast si apre l'elenco dei suoi episodi. Premendo il tasto Alt si accede alle opzioni, che variano a seconda dell'elenco in cui ti trovi:
+
+"Segui", nei risultati, nelle classifiche e nei preferiti; "Smetti di seguire", nei seguiti;
+
+"Aggiungi ai preferiti", nei risultati, nelle classifiche e nei seguiti; "Togli dai preferiti", nei preferiti;
+
+"Informazioni": mostra titolo, autore, categoria, numero di episodi, descrizione e sito web.
+
+Le opzioni si applicano ai podcast selezionati nell'elenco oppure, se non ne hai selezionato alcuno, a quello su cui ti trovi.
+
+Gli episodi
+
+Aprire un podcast carica l'elenco di tutti i suoi episodi, partendo dal più recente. Non ci sono limiti: se un podcast ha tremila episodi, li vedrai tutti, compresi i più vecchi. Ogni elemento mostra titolo, data e durata, e indica se l'episodio è già stato ascoltato o scaricato.
+
+Premendo Invio su un episodio ne avvii l'ascolto; se ne hai selezionati più di uno, verranno riprodotti in sequenza. Gli episodi scaricati vengono letti dal file sul computer, gli altri da internet. La riproduzione sfrutta il lettore multimediale di WinGabriel e ne segue le regole: se lo hai configurato nelle opzioni del lettore, l'ascolto avverrà in sottofondo o nel lettore a schermo intero; in caso contrario, WinGabriel te lo chiederà ogni volta. Nel lettore trovi i comandi consueti: pausa, salto in avanti e indietro, velocità e volume.
+
+Le opzioni disponibili premendo Alt sugli episodi:
+
+"Riproduci tutti": ascolta tutti gli episodi dell'elenco in sequenza, nell'ordine in cui compaiono. Verrà considerato come ascoltato solo il primo;
+
+"Scarica": scarica sul computer gli episodi selezionati;
+
+"Elimina il download": rimuove dal computer gli episodi scaricati che hai selezionato. Questa voce compare solo se nell'elenco è presente qualche episodio scaricato e, prima di procedere, viene richiesta una conferma;
+
+"Informazioni sull'episodio": titolo, data, durata, stagione, numero, dimensione e descrizione;
+
+"Informazioni sul podcast";
+
+"Segui" o "Smetti di seguire", a seconda dello stato attuale del podcast;
+
+"Aggiungi ai preferiti" o "Togli dai preferiti", allo stesso modo;
+
+"Dal più vecchio" o "Dal più recente": inverte l'ordine dell'elenco. L'ordinamento "Dal più vecchio", combinato con "Riproduci tutti", è utile per ascoltare un podcast a puntate fin dall'inizio.
+
+Seguire un podcast
+
+Seguire un podcast permette di non perdere le nuove puntate. Tramite la voce "Nuovi episodi", WinGabriel controlla gli ultimi cinque episodi di ogni podcast che segui e ti mostra quelli che non hai ancora ascoltato, partendo dal più recente. Se un podcast non risponde viene ignorato, mentre gli altri vengono mostrati regolarmente.
+
+Un episodio viene considerato ascoltato nel momento in cui lo avvii e scompare automaticamente dall'elenco dei nuovi episodi.
+
+I recenti
+
+La sezione "Recenti" raccoglie gli ultimi duecento episodi ascoltati, provenienti da qualsiasi podcast. Ogni elemento indica anche il rispettivo podcast. Tramite le opzioni puoi aprire il podcast di un episodio, rimuovere dall'elenco gli episodi selezionati o svuotarlo completamente; in quest'ultimo caso, WinGabriel chiederà una conferma.
+
+Scaricare gli episodi
+
+Scegliendo "Scarica", gli episodi vengono salvati nella cartella dei podcast all'interno dei dati di WinGabriel, organizzati per podcast e con la data inclusa nel nome. Durante il download viene mostrata la percentuale di completamento ed è possibile annullare l'operazione; i file incompleti non vengono conservati. Se un episodio è già stato scaricato, non viene scaricato nuovamente. Al termine, un messaggio indica quanti episodi sono stati scaricati e, in caso di errori, ne spiega il motivo.
+
+Dalla voce "Scaricati" puoi ascoltare gli episodi anche senza connessione a internet. Premendo Invio si avvia la riproduzione dell'episodio selezionato o di quelli evidenziati. Nelle opzioni trovi "Riproduci tutti", "Informazioni" (che indica anche la posizione del file) ed "Elimina dal computer", che richiede una conferma.
+
+Gli episodi possono occupare molto spazio: un'ora di parlato corrisponde solitamente a una dimensione compresa tra cinquanta e cento megabyte.
+
+Podcast e cloud
+
+L'elenco dei podcast seguiti e preferiti, insieme a quello degli episodi ascoltati, è salvato nella cartella dei podcast dei dati di WinGabriel e viene sincronizzato con gli altri computer, analogamente alle altre cartelle di dati, qualora la sincronizzazione sia attiva. I file degli episodi scaricati rimangono invece unicamente sul computer su cui sono stati salvati.
+
+Da dove vengono i podcast
+
+La ricerca e le classifiche utilizzano il catalogo pubblico dei podcast, che non richiede né un account né una chiave di accesso. Gli episodi vengono letti direttamente tramite i feed dei podcast, cioè dai siti dei rispettivi editori; per questo motivo, un podcast potrebbe sparire o cambiare indirizzo senza che WinGabriel possa evitarlo.
+
+Se qualcosa non va
+
+"Non riesco a collegarmi": controlla la connessione a internet e riprova;
+
+"Il feed di questo podcast non si legge": il sito del podcast sta riscontrando un problema o ha cambiato indirizzo. Prova con un altro podcast o riprova più tardi;
+
+"Questo podcast non ha episodi da ascoltare": il podcast non ha ancora pubblicato episodi o li ha rimossi;
+
+un podcast non compare in una classifica: le classifiche vengono aggiornate quotidianamente e variano in base al paese; prova a effettuare una ricerca o a cambiare paese;
+
+l'ascolto non parte: verifica le opzioni del lettore multimediale e assicurati che le relative librerie siano state scaricate.

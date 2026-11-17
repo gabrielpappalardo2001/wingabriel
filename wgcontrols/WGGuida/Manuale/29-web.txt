@@ -1,0 +1,111 @@
+﻿Il menu Web: enciclopedia, giornali, libri, luoghi e meteo
+
+Per le cose di tutti i giorni non serve usare il browser. WinGabriel mette a disposizione percorsi più semplici, privi di pubblicità e di sorprese, per consultare l'enciclopedia, i giornali e i libri, cercare un esercizio commerciale o una farmacia, e verificare le previsioni meteorologiche.
+
+Le trovi nel {menu}, alla voce "Web". Il menu Web contiene: Wikipedia, Quotidiani online, Biblioteche online, Ricerca di luoghi e attività, Meteo, WebTV, Radio, Podcast, YouTube e Browser.
+
+La televisione, la radio e YouTube dispongono di un capitolo dedicato, così come il browser.
+
+Wikipedia
+
+Wikipedia è la più grande enciclopedia al mondo, redatta collettivamente da un'enorme comunità di utenti e gratuita per chiunque.
+
+1. Seleziona "Wikipedia" e successivamente "Ricerca".
+
+2. Digita l'argomento di tuo interesse, ad esempio "Giuseppe Garibaldi", e premi Invio.
+
+3. WinGabriel ti mostrerà i risultati corrispondenti. Scegli la voce desiderata e premi Invio per aprirla.
+
+Nelle impostazioni di configurazione di Wikipedia puoi stabilire le modalità di lettura delle voci: in un'interfaccia testuale, semplice e lineare, oppure tramite il browser, completo di tabelle e collegamenti ipertestuali.
+
+I giornali
+
+La sezione "Quotidiani online" consente di leggere la stampa periodica, selezionando in autonomia gli articoli di proprio gradimento.
+
+Il menu dei quotidiani comprende:
+
+"Elenco quotidiani": l'insieme dei giornali aggiunti personalmente;
+
+"Quotidiani preferiti" e "Quotidiani recenti";
+
+"Quotidiani consigliati": una selezione di testate pronte per l'aggiunta;
+
+"Categorie": per suddividere i giornali in gruppi tematici, quali ad esempio "Notizie", "Sport", "Tecnologia";
+
+"Scrivi indirizzo quotidiano": per inserire una nuova testata.
+
+Aggiungere un giornale
+
+1. Seleziona "Scrivi indirizzo quotidiano".
+
+2. Inserisci il nome della testata seguito dall'indirizzo del rispettivo sito web, ad esempio www.corriere.it.
+
+3. Premi Invio. WinGabriel provvederà a estrarre autonomamente l'elenco degli articoli.
+
+Leggere gli articoli
+
+Seleziona un giornale e premi Invio per ascoltare l'elenco dei titoli degli articoli. Premi Invio su un titolo specifico per accedere alla lettura. Il testo viene presentato in versione pulita, priva di inserzioni pubblicitarie e di elementi di navigazione superflui.
+
+Qualora preferissi visualizzare l'articolo nella sua impaginazione originale sul sito del giornale, corredato di immagini e collegamenti, premi il tasto Alt in corrispondenza del titolo e seleziona "Apri nel browser": l'articolo verrà caricato all'interno del browser di WinGabriel.
+
+Premendo il tasto Alt su un quotidiano è possibile modificarlo, rimuoverlo, trasferirlo in un'altra categoria, inserirlo tra i preferiti o copiarne l'indirizzo.
+
+In caso di tempo limitato, è inoltre possibile richiedere un riassunto dell'articolo generato tramite intelligenza artificiale.
+
+Gli avvisi relativi ai nuovi articoli
+
+WinGabriel offre la possibilità di verificare periodicamente la presenza di nuove pubblicazioni e di inviare una notifica. Al momento dell'avviso è possibile procedere immediatamente alla lettura, posticiparla oppure disattivare le notifiche. Tale opzione è gestibile nel menu Impostazioni, accedendo a "Applicazioni" e successivamente a "Quotidiani".
+
+Le biblioteche
+
+La sezione "Biblioteche online" permette di leggere e ascoltare opere letterarie gratuite attraverso tre piattaforme distinte:
+
+LibriVox: audiolibri interpretati da lettori volontari. Si tratta di opere classiche disponibili in numerose lingue, italiano incluso. La riproduzione avviene tramite un apposito lettore multimediale che memorizza l'ultimo punto d'ascolto raggiunto;
+
+Wikisource: testi digitalizzati destinati alla lettura, quali romanzi, componimenti poetici e documenti storici;
+
+Internet Archive: un vasto archivio comprendente libri, registrazioni audio, trasmissioni storiche e riviste.
+
+Ciascuna biblioteca consente di effettuare ricerche per titolo o autore, e di fruire direttamente all'interno di WinGabriel del materiale reperito.
+
+Cercare negozi, uffici e servizi
+
+La funzione "Ricerca di luoghi e attività" permette di individuare esercizi commerciali, uffici, farmacie, ristoranti e ulteriori servizi. La ricerca può essere condotta secondo tre modalità:
+
+"Cerca in un comune": digitando il nome della località;
+
+"Cerca vicino a un indirizzo": inserendo un indirizzo specifico, ad esempio "via Roma 1 Poggibonsi";
+
+"Cerca un'attività per nome": specificando il comune e la denominazione dell'esercizio.
+
+È inoltre possibile filtrare i risultati tramite "Ricerca per categorie" (esercizi commerciali, uffici, strutture sanitarie) oppure optando per "Cerca tutte le attività".
+
+Ove disponibili, verranno comunicati anche gli orari di apertura.
+
+Questi dati provengono da OpenStreetMap, un progetto di mappatura geografica realizzato su base volontaria. Il livello di dettaglio può variare notevolmente da una zona all'altra; l'eventuale assenza di un'informazione non ne implica necessariamente l'inesistenza nella realtà.
+
+Il meteo
+
+Il menu relativo alle condizioni meteorologiche comprende:
+
+"Meteo per città": per inserire il nome di una località;
+
+"Meteo posizione attuale": per conoscere la situazione climatica del luogo in cui ci si trova;
+
+"Comuni preferiti" e "Comuni recenti".
+
+Una volta selezionata una località, è possibile ascoltare:
+
+le condizioni meteorologiche attuali, relative al momento della consultazione;
+
+una panoramica generale del tempo previsto per la giornata odierna;
+
+le previsioni per l'arco dei sette giorni successivi;
+
+il bollettino meteorologico odierno suddiviso per fasce orarie;
+
+le informazioni relative allo stato del mare più vicino, utili per frequentatori di spiagge e diportisti.
+
+Premendo il tasto Alt è possibile aggiornare le previsioni, cambiare località o aggiungere il comune ai preferiti.
+
+Qualora il sistema non fosse in grado di rilevare automaticamente la posizione corrente, è sempre possibile digitare manualmente il nome della città.

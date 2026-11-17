@@ -1,0 +1,237 @@
+﻿Gli spartiti musicali
+
+WinGabriel può suonare uno spartito. Puoi aprire un file PDF, la foto di uno spartito stampato oppure un file in formato musicale e ascoltarlo con strumenti di alta qualità: tutte le parti insieme, come un'orchestra o un gruppo, oppure una alla volta, ad esempio solo il violino o solo la mano destra del pianoforte. Il brano può anche essere salvato in un file MP3.
+
+Cosa serve
+
+Per riprodurre gli spartiti servono suoni di alta qualità, identici a quelli degli strumenti musicali. Se non sono ancora presenti, aprendo "Spartiti musicali", WinGabriel ti chiederà se vuoi scaricarli o scegliere un tuo file SoundFont. Non appena saranno pronti, il menu andrà avanti da solo.
+
+Per ascoltare gli spartiti con il suono di un'orchestra vera, scaricala dal menu "Spartiti musicali" o da "Strumenti musicali": si tratta di circa cinquecento megabyte da scaricare una sola volta. Con l'orchestra installata, ogni parte suonerà con lo strumento corretto in base al nome o all'indicazione: "Violini primi" con i violini primi, "Flauti" con i flauti, "Corni" con i corni, "Timpani" con i timpani, "Violoncello" con il violoncello solista e così via. Le parti per cui l'orchestra non ha uno strumento specifico saranno riprodotte con i suoni generali.
+
+Per i PDF e le fotografie serve inoltre un programma di riconoscimento, Audiveris, che legge le note stampate sulla pagina. WinGabriel lo cerca nel computer; se non lo trova, lo scarica da internet una sola volta (circa duecento megabyte), lo conserva insieme al programma, nella cartella audiveris, e lo usa senza aprire finestre. Il download fa parte del processo di riconoscimento: parte in sottofondo e puoi seguirne l'avanzamento, con la percentuale, dal centro di controllo.
+
+Aprire uno spartito
+
+1. Nel {menu} seleziona "Musica", poi "Spartiti musicali".
+
+2. Seleziona "Apri uno spartito" e scegli il file tramite il selettore di WinGabriel. Il selettore parte dall'elenco delle unità disco: scegli l'unità e poi le cartelle. Sono accettati:
+
+i file PDF e le immagini (PNG, JPG, TIF, BMP): vengono riconosciuti e l'operazione può richiedere dieci minuti o più. Per questo motivo il processo si avvia in sottofondo; WinGabriel ti avviserà con un messaggio e potrai continuare a usare il resto del programma. Dal centro di controllo, alla voce relativa al riconoscimento dello spartito, potrai verificare lo stato della lettura tramite percentuale, pagina corrente e tempo rimanente; da lì potrai anche annullare l'operazione. Una volta finito, WinGabriel ti chiederà se vuoi ascoltare lo spartito. Il risultato viene salvato: riaprire lo stesso file non richiederà un nuovo riconoscimento;
+
+i file MusicXML (MXL, MUSICXML, XML): sono spartiti digitali esportati dai programmi di notazione musicale. Si aprono all'istante e sono i più precisi;
+
+i file MIDI (MID, MIDI).
+
+3. Se il PDF contiene più brani, dopo la domanda sull'ascolto WinGabriel ti fa scegliere quale spartito aprire. Un titolo scritto in grande su una pagina segna l'inizio di un brano diverso, e il programma lo tratta come uno spartito a parte. Compare l'elenco "Spartito 1", "Spartito 2" e così via, ciascuno con il suo titolo. Di ogni spartito scegli se ascoltarlo o salvarlo in un file MusicXML. Dalle opzioni dell'elenco, "Salva tutti gli spartiti in file MusicXML separati" scrive un file per ognuno. Il selettore della cartella parte dalla scelta delle risorse. Questa divisione funziona dove c'è testo da leggere, cioè nei PDF esportati da un programma di notazione. Nelle scansioni, che sono solo immagini, i brani non si separano così.
+
+Quando lo spartito è pronto, compare un messaggio con il titolo e il numero di strumenti, e si apre l'ambiente di ascolto: un controllo a schermo intero con il titolo del brano anziché un menu. Il tasto Invio avvia e ferma la riproduzione, Esc chiude e Alt apre il menu delle opzioni, che resta visibile sopra il controllo finché non selezioni una voce o premi Esc. Per i file MIDI, il messaggio indica anche se il file è multitraccia o a traccia singola e quante tracce contiene. Se il file non specifica quale strumento debba suonare una traccia, sarà WinGabriel a sceglierlo, e il messaggio spiegherà il criterio: prima in base al nome della traccia ("Flute", "Violins 2", "Corni"), poi secondo il registro, cioè l'altezza media delle note. Con poche parti, la più acuta va ai violini e la più grave ai violoncelli; con molte parti, procedendo dagli acuti ai gravi, si usano flauti, oboi, clarinetti, violini, viole, corni, violoncelli e contrabbassi. Un file con una sola parte viene eseguito al pianoforte. Le percussioni e le tracce che dichiarano esplicitamente lo strumento non vengono modificate. Lo strumento di ogni parte può comunque essere cambiato in seguito dalle opzioni.
+
+Cercare negli archivi
+
+Nel menu "Spartiti musicali" seleziona "Cerca negli archivi", digita ciò che cerchi, ad esempio "beethoven symphony 5" oppure "quinta sinfonia di beethoven" (visto che gli archivi usano titoli in inglese, WinGabriel cerca traducendo anche le parole italiane più comuni), e attendi: la ricerca partirà contemporaneamente in tutti gli archivi e potrà essere annullata. I risultati compaiono in un elenco in cui ogni voce indica titolo, formato (MusicXML, PDF o MIDI) e archivio di provenienza. I PDF sono meno affidabili perché richiedono il riconoscimento: se la ricerca trova file MusicXML o MIDI, l'elenco mostrerà solo quelli, mentre i PDF si potranno aggiungere premendo Alt e selezionando "Mostra formati PDF". Se ci sono solo file PDF, saranno visibili fin da subito. Gli archivi sono:
+
+Nel menu "Spartiti musicali" troverai anche "Spartiti scaricati", l'elenco dei brani scaricati dagli archivi, e "Spartiti riconosciuti", l'elenco di quelli che WinGabriel ha già elaborato da un PDF o da una foto, ordinati dai più recenti: basterà sceglierne uno per aprirlo subito, senza ripetere il riconoscimento.
+
+OpenScore e music21 su GitHub: spartiti digitali in formato MusicXML, ovvero canzoni, quartetti d'archi, sinfonie orchestrali e corali di Bach. L'elenco dei file viene scaricato una volta sola, salvato per trenta giorni e consultato in locale;
+
+Mutopia: file PDF e MIDI di spartiti scritti al computer;
+
+Wikimedia Commons: file PDF e MIDI. Alcuni PDF potrebbero essere libri o riviste anziché spartiti: se un PDF non ha righi musicali, WinGabriel ti avviserà che non è uno spartito;
+
+Internet Archive: file MIDI. In questo caso un risultato corrisponde a una raccolta con più file: selezionandola si aprirà l'elenco dei file MIDI inclusi, mettendo in cima quelli che contengono le parole cercate nel nome;
+
+BitMidi: file MIDI.
+
+Le parole vanno cercate così come compaiono negli archivi, scritti quasi sempre in inglese o nella lingua del compositore: "symphony", "sonata", "quartet". Un numero va cercato come parola intera: "5" troverà la sinfonia n. 5 e non l'opera 55.
+
+Se selezioni un risultato, WinGabriel scaricherà il file, avvisandoti con un messaggio in caso di errore. Dopodiché lo aprirà in base al formato: un PDF si leggerà come gli altri, lavorando in sottofondo e con la domanda finale; un file MusicXML o MIDI sarà suonato subito. I file scaricati restano nella cartella degli spartiti, perciò selezionare di nuovo lo stesso risultato non richiederà un altro download.
+
+Quanto è affidabile il riconoscimento
+
+Riconoscere uno spartito stampato è un'operazione complessa, anche per un software specializzato. Con stampe pulite, ad alta risoluzione e ben allineate, il risultato è di solito eccellente. Con scansioni storte, sfocate, foto scattate con il telefono, manoscritti o pagine molto fitte, possono verificarsi errori: note sbagliate, ritmi alterati o righi saltati. Se qualcosa suona in modo strano, prova a usare un file migliore o, se c'è, il file MusicXML dello stesso brano. Se il programma non trova alcuna nota, WinGabriel te lo segnalerà.
+
+Preparazione della scansione
+
+Quando il PDF è una scansione, prima di avviare il riconoscimento WinGabriel elabora ogni pagina per avere la massima precisione possibile. Estrae le immagini così come sono state scansionate, senza ridisegnarle e conservandone la qualità; misura poi la distanza tra le linee del rigo e adatta la pagina alla dimensione ideale per la lettura, toglie ombre e sfumature affinché lo sfondo diventi bianco e le note nere, e raddrizza la pagina, dato che anche una leggera inclinazione può causare errori nelle note. Una pagina girata di lato viene rimessa in piedi. Una pagina capovolta viene girata, quando dai righi si capisce che è sottosopra; con pagine molto storte o con righi poco chiari, qualcuna può restare capovolta. Le pagine così preparate vengono elaborate come un unico brano. I PDF che non sono scansioni, cioè quelli esportati da un programma di notazione, sono elaborati direttamente perché sono già perfetti. Se la preparazione dovesse fallire, WinGabriel userà il file originale.
+
+Prima di riconoscere una scansione, WinGabriel la ripulisce: rimuove i bordi neri, le ombre della scansione e i residui di sporco, riattacca le linee del rigo spezzate o sbiadite ed esclude le pagine senza righi, come copertine e pagine di testo. Se le immagini del PDF sono in un formato non estraibile, WinGabriel ne farà il rendering usando il lettore PDF di Windows. Se nell'intero PDF non ci sono righi musicali, il programma te lo dirà subito: non è uno spartito, ma probabilmente un libro.
+
+Le diteggiature
+
+Se sullo spartito stampato ci sono i numeri delle dita, WinGabriel prova a leggerli. Restano nel file come indicazioni di diteggiatura, collegate alle note, e finiscono anche nell'esportazione in MusicXML. All'apertura un messaggio dice quante ne ha trovate. La lettura è parziale: i numeri piccoli vicino alle teste di nota sono difficili da vedere, quindi qualcuno può mancare. Gli spartiti riconosciuti prima di questa funzione non le hanno. Per averle, riconoscili di nuovo.
+
+Il tempo del brano
+
+WinGabriel cerca l'indicazione di tempo e la usa. Nei PDF esportati da un programma di notazione legge il testo della pagina. Un numero accanto a una figura, come "semiminima = 120", vale quel numero. Una parola come Allegro, Andante o Adagio vale un tempo medio per quel carattere. Se la figura accanto al numero non si legge, si assume una semiminima. Il valore trovato si salva con lo spartito e si cambia sempre da "Tempo del brano". Nelle scansioni, dove non c'è testo, resta il valore predefinito di centoventi semiminime al minuto.
+
+Come WinGabriel riduce gli errori di riconoscimento
+
+La sola lettura di una pagina può contenere imprecisioni. Per questo, oltre al controllo delle note descritto più avanti, WinGabriel fa quattro verifiche indipendenti:
+
+il confronto con l'immagine della pagina: alla fine del riconoscimento, WinGabriel prende la pagina in bianco e nero, cancella i righi e tutti i simboli riconosciuti dal programma, e controlla se resta dell'inchiostro dentro un rigo. Di ciò che rimane, segnala solo gli elementi che cambierebbero il suono: un segno pieno grande come una testa di nota (possibile nota mancante) e una legatura tra due note uguali sullo stesso rigo (legatura di valore mancante, per cui le due note andrebbero suonate come una sola). Scritte come "cresc." o "a 2", corone e legature di espressione non vengono segnalate perché sono quasi sempre falsi allarmi. Vengono anche evidenziate le poche note lette dal programma con sicurezza molto bassa, di solito qualche decina in un'intera partitura orchestrale. Ogni dubbio è associato alla battuta e alla parte corrette, e lo troverai nell'elenco dei controlli. Con una stampa pulita, questo controllo troverà pochissimo o niente: è pensato apposta per le scansioni;
+
+la doppia lettura: una scansione viene letta due volte, a due scale diverse della stessa pagina. È raro che gli errori delle due letture avvengano nello stesso punto. Quando apri lo spartito, WinGabriel le confronta battuta per battuta: dove coincidono, la battuta è considerata sicura; dove differiscono, ne tiene una sola se è l'unica a far quadrare i conti di durate, estensione e tonalità; se entrambe o nessuna sono corrette, sceglie quella più confermata dall'immagine; se neanche questo basta, il programma non rischia e lascia un dubbio nell'elenco. Anche un PDF esportato da un programma di notazione viene letto due volte: la prima a 300 punti per pollice, come farebbe Audiveris, e la seconda usando pagine renderizzate da WinGabriel con il lettore PDF di Windows a una scala maggiore, visto che in una partitura orchestrale un rigo è piccolo e le note misurano poco più di una dozzina di punti;
+
+la lettura dei caratteri del PDF, per i file PDF esportati da software di notazione (Sibelius, Dorico, MuseScore, Finale): in questi PDF ogni testa di nota, pausa, chiave, diesis e stanghetta corrisponde a un carattere di un font musicale con la sua posizione esatta, mentre Audiveris converte comunque la pagina in immagine prima di rileggerla. WinGabriel impara da solo a riconoscere i simboli: se Audiveris ha trovato una testa di nota nello stesso punto, quel carattere è una testa di nota; se succede quasi sempre (nove volte su dieci), il carattere entra nell'alfabeto del font. Poi, per ogni battuta di ogni parte, ricava l'altezza di ogni nota in base alla posizione rispetto alle cinque linee del rigo e alla chiave, confrontandola con lo spartito elaborato. Se in un PDF coincidono meno di 85 battute su 100, i due dati non sono allineati e non viene fatta alcuna azione. Quando invece coincidono, WinGabriel corregge direttamente perché la soluzione è certa: se una battuta è vuota nello spartito letto ma nel PDF c'è un accordo di minime, questo viene ricostruito per l'intera durata della battuta; se nel PDF c'è una codina senza nota, la nota vicina diventa una croma anziché una semiminima; se una sola nota ha un'altezza diversa, viene corretta. Tutto il resto che non coincide crea un dubbio nell'elenco dei controlli, come le note aggiunte in una cadenza per oboe, scritte in piccolo e saltate da Audiveris. Se le altezze coincidono con il PDF, un salto ampio o una nota fuori estensione non sono più segnalati come errori, perché corretti. Sul primo movimento della Quinta Sinfonia di Beethoven, le teste di nota del PDF coincidono con lo spartito letto in 3972 battute su 4075; le correzioni riguardano 68 battute vuote ricostruite, 5 codine e 1 altezza (in quelle 68 battute lo spartito letto era in silenzio mentre il brano prevede un accordo: il controllo delle durate non le rileva perché una battuta vuota non ha durate da verificare);
+
+il confronto con un'altra fonte: selezionando l'opzione "Confronta con un'altra lettura" puoi indicare un'altra edizione dello stesso brano, con partitura e parti staccate, oppure il file MusicXML fatto da un programma di riconoscimento diverso. Se è un PDF o un'immagine, sarà elaborato in sottofondo come gli altri e, alla fine, il confronto partirà da solo. Vale la stessa regola: l'altra lettura si usa solo se è chiaramente superiore, mentre il resto resta un dubbio. Le due letture devono avere per forza lo stesso numero di parti.
+
+Al termine del confronto, un messaggio ti indicherà quante battute coincidono, quante sono state desunte dall'altra lettura e quante permangono in dubbio. Il riconoscimento di pagine contenenti più brani all'interno dello stesso file non esegue il confronto con l'immagine, poiché non è possibile stabilire a quale brano appartenga ciascuna pagina.
+
+Le correzioni automatiche sicure
+
+Confrontando una partitura autentica, pagina per pagina, con quanto era stato originariamente letto dal programma di riconoscimento, sono emersi errori ricorrenti che possono essere corretti con assoluta certezza, poiché lo spartito stesso, espresso in forma differente, ne convalida la forma corretta. All'apertura di uno spartito riconosciuto, WinGabriel correggerà autonomamente questi problemi prima di qualsiasi altra operazione, informandoti sul numero di interventi effettuati:
+
+una pausa di intera battuta occupa l'intera durata della misura, indipendentemente dal tempo musicale. Il riconoscimento le attribuiva talvolta una durata anomala, come tre quarti in un tempo di due quarti, facendo risultare la battuta troppo lunga;
+
+una nota isolata all'interno di una battuta, letta con un punto che ne altererebbe il valore temporale, perde il punto: l'unico modo per inserirla correttamente nella misura è privarla del punto, che del resto non è presente nell'immagine. Questo inconveniente si verificava con le minime del flauto e dei clarinetti;
+
+una pausa isolata in una battuta riempie l'intera misura;
+
+tre crome dopo una pausa di croma formavano una terzina, perché la scritta "cresc." sotto il rigo veniva scambiata per un 3. Se eliminando la terzina le note scritte riempiono esattamente la battuta, mentre con la terzina questo non accade, allora la terzina va tolta. Nel primo movimento della Quinta di Beethoven non c'è alcuna terzina;
+
+talvolta il riconoscimento imposta la suddivisione del tempo a zero, falsando di conseguenza tutte le durate successive: nella Quinta si verificavano venti battute consecutive su tutti i righi in cui le minime duravano quanto un quarto, facendo suonare il brano più corto e fuori tempo. WinGabriel ripristina la suddivisione al valore originario e corregge ogni durata in base al valore effettivo della nota ("minima", "croma"), che era corretto;
+
+a una voce secondaria, come la seconda o la terza, a cui manca la pausa finale, viene aggiunta la pausa mancante; è il caso, ad esempio, di due flauti sullo stesso rigo con un solo suono nel secondo quarto. L'inserimento di una pausa non comporta la creazione di nuove note.
+
+Il valore scritto della nota viene utilizzato soltanto se permette di far quadrare i conti della battuta; in caso contrario, non si modifica nulla. Le durate si correggono esclusivamente nelle battute polifoniche a voce singola. Nel primo movimento della Quinta, questi interventi riducono i dubbi segnalati dal controllo da 77 a 17, senza introdurne di nuovi; le restanti segnalazioni dell'elenco costituiscono dubbi effettivi.
+
+Il controllo dello spartito
+
+Nessun programma è in grado di decifrare una partitura orchestrale complessa senza commettere errori: alcune note o durate risulteranno inevitabilmente errate. Chi non ha sott'occhio la partitura non può accorgersene a vista, e per rilevarlo all'ascolto occorrerebbe l'orecchio assoluto. Per questa ragione WinGabriel non si affida esclusivamente all'ascolto, ma effettua una verifica automatica su tutti gli elementi passibili di controllo certo. Dalle opzioni seleziona "Controlla lo spartito e trova i dubbi". La funzione verifica:
+
+la durata: in ogni battuta e in ogni voce le note devono coprire esattamente l'estensione temporale della battuta. Un errore ritmico in una nota emerge quasi sempre in questo modo;
+
+l'estensione: ogni strumento possiede una nota limite inferiore e una superiore; una nota che fuoriesce da tale estensione rappresenta quasi certamente un errore;
+
+le alterazioni: una nota estranea alla tonalità, priva di diesis o bemolle espliciti, corrisponde il più delle volte a un'alterazione non riconosciuta;
+
+i salti: un intervallo superiore a due ottave tra due note consecutive nella medesima voce denota quasi sempre un errore di ottava.
+
+Il risultato consiste in un elenco di dubbi, ordinati per battuta e corredati da una descrizione puntuale, come ad esempio "Battuta 41, Violino primo: la voce 1 dura 5 quarti invece di 4, è troppo lunga". L'elenco include anche le criticità emerse dal confronto con l'immagine originale e tra diverse letture, quali "una nota è stata letta con incertezza" o "le due letture dello spartito non coincidono". Cliccando su una segnalazione si apre direttamente la battuta corrispondente.
+
+Un limite di cui bisogna tenere conto: il sistema di controllo non è in grado di rilevare un errore in una nota che abbia la durata corretta, rientri nella tonalità e rispetti l'estensione dello strumento (ad esempio un re al posto di un mi). In questi casi gli unici riscontri possibili sono il confronto visivo con l'immagine della pagina e la comparazione con un'altra lettura; se neppure questi strumenti evidenziano l'anomalia, l'unico rimedio resta la verifica visiva sulla pagina stampata da parte di un essere umano. È pertanto consigliabile sottoporre a controllo almeno i passaggi cruciali, ricordando che un elenco vuoto significa semplicemente "nessun errore rilevabile", e non l'assenza totale di errori.
+
+La correzione automatica
+
+Se selezioni "Correggi automaticamente gli errori sicuri", WinGabriel corregge in autonomia unicamente i dubbi che ammettono una soluzione univoca o quasi, lasciando inalterati gli altri. Il file originale non viene mai modificato. Le correzioni possibili sono tre:
+
+una voce la cui durata non torna, qualora modificando una sola nota secondo gli errori di lettura più frequenti (un punto in più o in meno, una durata dimezzata o raddoppiata) i conti tornino. Se le soluzioni possibili sono due o più, WinGabriel non interviene e il dubbio rimane insoluto;
+
+una voce troppo corta che non può essere sistemata con il metodo precedente: in questo caso vengono aggiunte pause in coda, senza che ciò comporti la creazione di nuove note;
+
+una nota al di fuori dell'estensione strumentale che rientra nei ranghi se trasposta di una o più ottave.
+
+Non vengono invece corretti i diesis o i bemolle mancanti né i salti ampi, poiché potrebbero essere intenzionali e un intervento automatico rischierebbe di introdurre un errore.
+
+Al termine del processo si apre un resoconto dettagliato di tutte le modifiche apportate, espresso in forma estesa, ad esempio "Battuta 41, Violino primo: la voce 1 non tornava: la nota Fa 4 passa da croma a croma puntata, perché è l'unico cambio che fa tornare il conto". Selezionando una voce dall'elenco si apre la battuta per eventuali verifiche o correzioni manuali. Qualora la correzione automatica non risultasse convincente, l'opzione "Annulla la correzione automatica" ripristina lo spartito allo stato iniziale. Dopo la correzione conviene ripetere il "Controlla lo spartito" per esaminare i dubbi residui.
+
+Un'automazione può comunque sbagliare, poiché sceglie la modifica più probabile e non quella assoluta. Per questo motivo l'elenco rimane completo e la funzione di annullamento è sempre disponibile.
+
+Correggere una battuta
+
+La funzione di correzione è operativa sui file MusicXML, inclusi quelli generati dal riconoscimento ottico. Si attiva dall'elenco dei dubbi oppure tramite il comando "Correggi una battuta": basta selezionare la parte e digitare il numero della battuta.
+
+La battuta viene presentata sotto forma di menu che elenca le note in sequenza, ad esempio "Re diesis 5, semiminima", "Pausa di croma" oppure "Nello stesso accordo, Fa 4, semiminima". Selezionando una singola nota è possibile:
+
+modificarne l'altezza: digitando la nota desiderata, come "do 4", "re diesis 5" o "mi bemolle 3". Il numero indica l'ottava, assumendo il do centrale come do 4;
+
+modificarne la durata: scegliendo un valore compreso tra la semibreve e la semibiscroma, anche puntato;
+
+convertirla in pausa;
+
+aggiungere una nota o una pausa subito dopo;
+
+eliminarla.
+
+In fondo al menu figurano le opzioni "Ascolta questa battuta", che permette di riprodurre esclusivamente la battuta e la parte in fase di correzione, "Aggiungi una nota in fondo" e "Aggiungi una pausa in fondo". Dopo ogni modifica la battuta si riaggiorna e l'ascolto riflette immediatamente le correzioni apportate. Per validare una modifica è sufficiente ascoltare la battuta o lanciare nuovamente il controllo dello spartito: la durata delle battute deve risultare corretta.
+
+Le modifiche vengono memorizzate: WinGabriel non altera il file di origine ma salva una versione corretta, e alla successiva apertura del file segnalerà il caricamento della versione precedentemente modificata.
+
+La trasposizione degli strumenti
+
+Negli spartiti orchestrali alcuni strumenti vengono notati a un'altezza diversa rispetto al suono reale: il clarinetto in si bemolle suona un tono sotto rispetto alla scrittura, il corno in fa una quinta sotto, il sassofono contralto una sesta maggiore sotto e il contrabbasso un'ottava sotto. Se la partitura lo specifica, WinGabriel applica la trasposizione automaticamente. Nel caso di un riconoscimento da scansione, invece, il programma non può saperlo: occorre quindi selezionare dalle opzioni "Imposta la trasposizione di una parte", indicare la parte e scegliere lo strumento dall'elenco oppure specificare il numero di semitoni. Da quel momento la parte suonerà all'altezza corretta e l'impostazione verrà salvata nello spartito.
+
+Esportare in MusicXML
+
+La funzione "Esporta in MusicXML" consente di salvare la partitura, comprensiva dei dubbi corretti e delle trasposizioni applicate, come file MusicXML, in una cartella che scegli ogni volta partendo dalla scelta delle risorse. Scegliendo "Esporta in MusicXML compresso" si ottiene il formato mxl, che richiede meno spazio di archiviazione. Entrambi i formati sono compatibili con qualsiasi software di notazione musicale.
+
+Ascoltare lo spartito
+
+L'interfaccia di controllo consiste in una singola riga che mostra il titolo del brano. Per avviare o interrompere la riproduzione si usano il tasto Invio o la barra spaziatrice, mentre il tasto Alt apre le opzioni. La riga di stato non subisce variazioni durante l'esecuzione, evitando così interruzioni vocali indesiderate.
+
+I comandi da tastiera:
+
+Invio o barra spaziatrice: avvia e interrompe la riproduzione; alla ripartenza, il brano riprende dal punto esatto in cui era stato fermato;
+
+freccia sinistra e freccia destra: consentono di spostarsi alla battuta precedente o successiva; se ci si trova già oltre l'inizio della battuta, la freccia sinistra riporta inizialmente all'inizio della stessa;
+
+freccia giù e freccia su: passano da uno strumento all'altro, come Pagina giù e Pagina su, ciascuno da solo; dopo l'ultimo si torna a sentire tutti insieme. La velocità non ha un tasto. Si cambia dalle opzioni, con "Più veloce" e "Più lento", dal cinquanta al duecento per cento, e l'altezza delle note resta invariata;
+
+Pagina su e Pagina giù: consentono di passare da uno strumento all'altro, facendolo suonare in solitaria; dopo l'ultimo strumento, l'ascolto torna a comprendere l'insieme della partitura;
+
+Inizio: riavvia l'esecuzione dall'inizio;
+
+Esc: chiude lo spartito e riconduce al menu principale.
+
+Gli strumenti e il tempo di uno spartito riconosciuto
+
+Quando una partitura viene ricavata da un PDF, il sistema di riconoscimento non è in genere in grado di identificare gli strumenti associati alle singole parti: solitamente assegna a tutte l'etichetta "Voice" e le fa riprodurre con il timbro di un coro. Il riconoscimento da solo non rileva il tempo musicale. WinGabriel lo ricava dal testo del PDF, quando c'è, e in mancanza di indicazioni adotta il valore predefinito di 120 semiminime al minuto, che potrebbe discostarsi notevolmente da quello reale. Se il PDF proviene dall'esportazione di un software di notazione, conterrà del testo incorporato: WinGabriel leggerà i nomi indicati all'inizio dei righi nella prima pagina (ad esempio "2 Flutes", "2 Clarinets in Bb", "2 Horns in Eb", "Violins 1") assegnandoli alle parti in sequenza dall'alto verso il basso. Il programma riconosce le denominazioni in italiano, inglese, tedesco e francese, anche al plurale, e deduce la trasposizione da espressioni quali "in si bemolle", "in mi bemolle" o "in fa". Se il numero di nomi corrisponde a quello delle parti, li utilizza tutti; in caso contrario, passa alla modalità successiva. Nel caso di una scansione, invece, la pagina contiene esclusivamente immagini prive di testo leggibile. I tentativi di estrarre i nomi dall'immagine tramite riconoscimento ottico dei caratteri (OCR) si sono rivelati inefficaci, poiché eventuali errori ortografici nei nomi indurrebbero il lettore di spartiti a interpretare male i righi, frammentandoli in decine di parti distinte. Per questo motivo, nelle scansioni gli strumenti vengono identificati in base all'ordine e all'estensione, secondo le modalità descritte di seguito.
+
+All'apertura di un file MusicXML in cui nessuna parte dispone di un'etichetta strumentale, WinGabriel tenta di riconoscere gli strumenti autonomamente, notificandolo all'utente. Il programma ricerca un organico che corrisponda al numero di parti e i cui registri rientrino nell'estensione tipica degli strumenti: in presenza di dodici parti riconoscerà l'orchestra classica (flauti, oboi, clarinetti, fagotti, corni, trombe, timpani, due violini, viole, violoncelli e contrabbassi, con le relative trasposizioni beethoveniane), mentre con quattro parti individuerà un quartetto d'archi. Se nessun organico standard risulta compatibile, assegnerà a ciascuna parte lo strumento la cui estensione si avvicina maggiormente all'altezza delle note scritte. Questa assegnazione viene salvata nello spartito e può essere modificata in qualsiasi momento. Le opzioni disponibili per la configurazione sono:
+
+"Assegna uno strumento": permette di selezionare prima la famiglia (ad esempio "Archi") e successivamente lo strumento specifico (ad esempio "Violoncello"). La parte assumerà la nuova denominazione e il timbro acustico corrispondente;
+
+"Assegna un organico": se la partitura rispetta l'ordine orchestrale, un unico comando consente di configurare tutte le parti simultaneamente. Gli organici disponibili sono l'orchestra classica a dodici parti (flauti, oboi, clarinetti, fagotti, corni, trombe, timpani, violini primi e secondi, viole, violoncelli e contrabbassi), il quartetto d'archi e il pianoforte a due parti. L'organico orchestrale classico applica automaticamente le trasposizioni di Beethoven: clarinetti in si bemolle, corni in mi bemolle e contrabbassi un'ottava sotto. Se il numero delle parti non coincide, WinGabriel avviserà l'utente senza apportare modifiche;
+
+"Tempo del brano": consente di selezionare un'indicazione agogica (come Andante o Allegro) oppure di digitare direttamente il numero di semiminime al minuto. Nel caso di un metro basato sulla minima, frequente in molte sinfonie, il valore della minima va raddoppiato: ad esempio, una minima a 108 corrisponde a una semiminima a 216.
+
+Le impostazioni scelte vengono memorizzate insieme alle correzioni e incluse nell'esportazione in formato MusicXML.
+
+Le ripetizioni, i ritornelli e le parentesi di finale vengono interpretati sulla base del riscontro della maggioranza delle parti: nelle scansioni, infatti, una singola parte potrebbe scambiare una legatura di espressione per una parentesi di finale, alterando la struttura delle battute. Per questa ragione, un segno viene ritenuto valido solo se confermato dalla maggior parte delle parti. Eventuali battute lette in modo errato (più lunghe o più corte) da una sola parte non influiscono sulle altre.
+
+Uno strumento alla volta o tutti insieme
+
+All'apertura del brano tutte le parti suonano simultaneamente, ciascuna con il proprio timbro corretto, desunto dalle indicazioni della partitura o, in loro assenza, dal nome della parte stessa (come "Violino", "Flauto" o "Pianoforte"). Le parti di batteria utilizzano il set di percussioni. Selezionando dal menu opzioni la voce "Ascolta una parte sola, da un elenco" si accede all'elenco completo delle parti, corredate di nome e strumento associato; scegliendone una, la parte selezionata si isolerà e verrà riproduzione immediatamente (se il lettore era fermo). La prima opzione dell'elenco, "Tutte le parti insieme", consente di ripristinare la riproduzione corale. In alternativa, i comandi "Elenco delle parti", "Parte successiva da sola", "Parte precedente da sola" e "Suona tutte le parti insieme" permettono di gestire l'ascolto rapido senza interrompere il flusso della riproduzione, qualora il brano sia in esecuzione.
+
+Le opzioni
+
+Il tasto Alt apre il menu delle opzioni, che mostra in modo dinamico esclusivamente i comandi pertinenti al contesto: ad esempio, "Ferma" compare solo durante la riproduzione e "Avvia" unicamente a brano fermo; le voci per il cambio di strumento appaiono solo se lo spartito ne prevede più di uno; "Dall'inizio" è disponibile solo se non ci si trova già all'inizio del brano; infine, i comandi "Più veloce" e "Più lento" vengono nascosti quando si raggiungono i limiti consentiti. Le opzioni comprendono:
+
+"Avvia" oppure "Ferma";
+
+"Stato": fornisce informazioni sul titolo, sullo stato di riproduzione, sulla battuta corrente rispetto al totale, sullo strumento in ascolto e sulla velocità impostata;
+
+"Ascolta uno strumento": consente di isolare uno strumento scelto da un elenco; "Tutti gli strumenti" ripristina la riproduzione d'insieme, mentre "Strumento successivo" e "Strumento precedente" permettono di scorrerli in sequenza;
+
+"Dall'inizio";
+
+"Più veloce" e "Più lento";
+
+per i file MusicXML, inclusi quelli derivati dal riconoscimento di PDF: "Controlla", "Confronta con un'altra lettura", "Correggi una battuta", "Correggi gli errori sicuri" (che si trasforma in "Annulla la correzione automatica" dopo l'applicazione), "Assegna uno strumento", "Assegna un organico", "Trasponi uno strumento", "Tempo del brano", "Esporta in MusicXML" ed "Esporta compresso";
+
+"Salva in mp3";
+
+"Altro spartito";
+
+"Aiuto".
+
+Il volume e il riverbero non si cambiano da questo menu, ma vanno configurati nella sezione "Configurazione" del menu Musica oppure tramite il percorso Impostazioni, Applicazioni, Musica.
+
+Salvare in mp3
+
+Con "Salva in mp3" lo spartito ricomincia dall'inizio e tutto ciò che ascolti, con le parti, la velocità e i volumi che hai impostato, viene registrato. Al termine del brano, WinGabriel salva automaticamente il file mp3 in alta qualità, a trecentoventi kilobit al secondo, indicandoti la cartella in cui è stato archiviato. Se desideri interrompere e salvare prima della fine, seleziona nuovamente la stessa opzione. Prima di cominciare WinGabriel ti fa scegliere la cartella, partendo dalla scelta delle risorse. La scelta vale solo per quella volta. La registrazione parte con un beep, senza parole. Se vuoi registrare solo una sezione specifica, ad esempio per esercitarti, selezionala in anticipo: il nome del file generato conterrà sia il titolo sia il nome della parte.
+
+Cosa si sente e cosa no
+
+Si sentono le note con la loro altezza, durata e intensità, i cambi di tempo, le legature, le ripetizioni con le relative seconde volte e gli staccati. Non vengono invece riprodotti gli abbellimenti, come trilli e appoggiature, e i testi cantati non vengono letti.
+
+Se qualcosa non va
+
+"Non è stato possibile riconoscere lo spartito": la pagina è eccessivamente sfocata o scura, oppure non contiene uno spartito musicale. Prova a utilizzare un file di qualità migliore;
+
+"Non è stato possibile scaricare": verifica la connessione a internet e riprova;
+
+lo strumento non è quello corretto: il file non specifica lo strumento e il nome della parte non offre indizi, pertanto WinGabriel utilizza il pianoforte di default;
+
+l'audio presenta dei saltuari scatti: chiudi le altre applicazioni che impegnano pesantemente le risorse del computer.

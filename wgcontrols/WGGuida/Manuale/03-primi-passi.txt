@@ -1,0 +1,81 @@
+﻿I primi passi
+
+Questo capitolo ti accompagna nei primi minuti di utilizzo di WinGabriel: cosa succede all'apertura del programma, come comunica con te e come si chiude.
+
+Quando WinGabriel si apre
+
+All'apertura di WinGabriel, il programma ti pone prima di tutto alcune domande, se necessarie. Le domande compaiono sempre per prime, prima di qualsiasi altra operazione, così da permetterti di rispondere in tutta calma, senza altre voci sovrapposte.
+
+A tutte le domande si risponde allo stesso modo: con le frecce direzionali si seleziona "Sì" oppure "No" e si preme Invio. Premendo Esc è come rispondere di no.
+
+Le domande possibili sono tre.
+
+La prima domanda riguarda l'aggiornamento. Se è disponibile una nuova versione di WinGabriel, il programma ti chiede se vuoi installarla subito. Se rispondi sì, WinGabriel scarica la nuova versione e si chiude per consentire l'installazione. Se rispondi no, il programma si avvia normalmente e potrai aggiornarlo in un secondo momento.
+
+La seconda domanda è il benvenuto con la scelta della modalità. Compare una sola volta: la prima volta che installi WinGabriel oppure, se lo usavi già, la prima volta che apri la versione aggiornata con le nuove funzioni, ovvero quella che ha introdotto la modalità smart. In seguito non ti verrà più riproposta: se cambi idea, la modalità si modifica dalle Impostazioni. La schermata di benvenuto ti chiede quale modalità preferisci: la modalità classica, ovvero il WinGabriel di sempre, oppure la modalità smart, quella nuova. Il capitolo dedicato alle modalità ne spiega le differenze. Se scegli la modalità smart, il programma ti propone anche una breve guida pratica ai nuovi tasti, che dura pochi minuti.
+
+La terza domanda riguarda le novità su WinGabriel. Se ci sono nuove notizie sul programma, WinGabriel ti chiede se vuoi leggerle subito. Se rispondi sì, le notizie si aprono immediatamente, mentre il resto rimarrà in attesa fino a quando non avrai terminato la lettura.
+
+[smart]
+Superate le domande, viene mostrata la prima schermata: la scrivania. Se stai usando il computer in modalità tablet, cioè senza tastiera, al posto della scrivania compare la home. Sia alla scrivania sia alla home è dedicato un capitolo a parte in questo manuale.
+[/smart]
+
+[classica]
+Superate le domande, viene mostrato il menu iniziale. Il menu iniziale contiene l'elenco di tutte le funzionalità di WinGabriel ed è sempre il punto di partenza. Al menu iniziale è dedicato un capitolo a parte in questo manuale.
+[/classica]
+
+La voce di WinGabriel
+
+Da quel momento in poi WinGabriel comunica con te a voce: ti indica dove ti trovi, cosa c'è a schermo e cosa è appena successo.
+
+All'interno di WinGabriel non serve alcun lettore di schermo. Anzi, se all'avvio del programma NVDA, JAWS o l'Assistente vocale di Windows sono attivi, WinGabriel li disattiva automaticamente, per evitare che due voci sovrapposte risultino incomprensibili. Lo stesso accade quando ritorni su WinGabriel dopo aver utilizzato un altro programma.
+
+Due tasti ti saranno utili fin da subito.
+
+Il tasto Control, premuto e rilasciato subito, tace la voce. È molto utile quando il programma sta leggendo un testo lungo che non ti interessa ascoltare.
+
+Il tasto Insert ti ripete dove ti trovi: il nome della schermata e l'elemento selezionato. È comodo se ti sei distratto e non ricordi più la tua posizione.
+
+Una sola finestra
+
+WinGabriel utilizza un'unica finestra a schermo intero. Quando apri un elemento, questo prende il posto di quello precedente. Quando lo chiudi, ritrovi ciò che si trovava sotto, proprio come quando si rimuove un foglio da una pila. Non ci sono finestre nascoste dietro altre e non c'è rischio di perdersi.
+
+Usare temporaneamente un altro programma
+
+A volte può servirti utilizzare temporaneamente un altro programma di Windows che non fa parte di WinGabriel. Per farlo, premi il tasto Windows insieme alla lettera D.
+
+WinGabriel si riduce a icona e attiva il tuo lettore di schermo preferito, garantendoti la sintesi vocale anche negli altri programmi. Puoi scegliere il lettore di schermo preferito nelle Impostazioni, alla voce "Lettore di schermo".
+
+Quando ritorni su WinGabriel, il programma si riapre a schermo intero e disattiva nuovamente il lettore di schermo, riprendendo a utilizzare la propria voce.
+
+Come chiudere WinGabriel
+
+[smart]
+Per chiudere WinGabriel ci sono due modi: scegliere "Esci" dal menu applicazioni oppure premere Esc sulla scrivania o sulla home.
+[/smart]
+
+[classica]
+Per chiudere WinGabriel ci sono due modi: scegliere "Esci" dal menu iniziale oppure premere Esc mentre sei nel menu iniziale.
+[/classica]
+
+Si apre il menu di uscita, che ti propone queste scelte:
+
+uscire semplicemente da WinGabriel;
+
+uscire e attivare NVDA, JAWS oppure l'Assistente vocale, per proseguire l'uso del computer con un lettore di schermo;
+
+spegnere il computer;
+
+riavviare il computer;
+
+non uscire e ritornare a quello che stavi facendo.
+
+Se un lettore di schermo è già attivo, il menu si posiziona automaticamente su "Esci", quindi ti basta premere Invio.
+
+Se stai scrivendo un testo e non l'hai ancora salvato, prima di uscire WinGabriel ti chiede cosa desideri fare: salvarlo, scartarlo oppure annullare l'uscita. Nessun testo andrà perso a tua insaputa.
+
+Se è in corso un'operazione prolungata, per esempio la copia di alcuni file o un download, WinGabriel te lo ricorda e ti chiede se desideri davvero interromperla.
+
+[smart]
+Se ci sono più applicazioni aperte, WinGabriel le chiude tutte, una alla volta. Se desideri che prima ti chieda conferma e ti indichi quali applicazioni sono aperte, puoi attivare l'opzione nelle Impostazioni: entra in "Sistema", poi ancora in "Sistema" e scegli "Conferma dell'uscita con applicazioni aperte". Di default questa conferma è disattivata.
+[/smart]

@@ -1,0 +1,85 @@
+﻿Il lettore multimediale, per la tua musica e per Navidrome
+
+Il lettore multimediale è la libreria multimediale di WinGabriel. Raccoglie in un unico posto i brani che preferisci, quelli ascoltati di recente e, se lo possiedi, la musica proveniente da un server Navidrome.
+
+Il lettore multimediale ha sostituito la voce "Ascolto file multimediali", precedentemente situata nella gestione file. I brani preferiti, la cronologia e le impostazioni definite in precedenza sono rimasti invariati.
+
+Il menu del lettore multimediale
+
+Nel {menu} seleziona "Lettore multimediale". Si aprirà un menu contenente le seguenti voci:
+
+"Brani preferiti": i brani contrassegnati, organizzati in categorie per una migliore gestione;
+
+"Brani recenti": i brani ascoltati di recente;
+
+"Navidrome": la musica del tuo server. Questa voce appare esclusivamente dopo aver stabilito la connessione con il server;
+
+"Brani scaricati": i brani scaricati da Navidrome e salvati sul computer, fruibili anche in assenza di connessione;
+
+"Opzioni": le impostazioni relative all'apertura dei file e all'ordinamento dei brani.
+
+Le opzioni
+
+Nella sezione "Opzioni" trovi:
+
+"Apertura dei file multimediali": consente di scegliere se riprodurre sempre in sottofondo, aprire sempre il lettore o richiedere l'azione a ogni utilizzo;
+
+"Ordine dei brani preferiti": per data di aggiunta, in ordine alfabetico o per durata;
+
+"Ordine dei brani recenti": dal più recente o in ordine alfabetico;
+
+"Opzioni avanzate": l'accesso per configurare il collegamento al server Navidrome.
+
+Collegare un server Navidrome
+
+Navidrome è un'applicazione che consente di archiviare la propria musica su un computer o su un server e di riprodurla ovunque. Se disponi di un server di questo tipo, WinGabriel ti permette di ascoltarne e gestirne i contenuti.
+
+Seleziona "Opzioni", poi "Opzioni avanzate", quindi "Server Navidrome" e infine "Collega il server". WinGabriel richiederà tre informazioni:
+
+l'indirizzo del server, ad esempio 192.168.1.10:4533 oppure https://musica.miosito.it;
+
+il nome utente;
+
+la password.
+
+WinGabriel tenterà immediatamente la connessione. Se l'operazione va a buon fine, i dati e la password verranno memorizzati e nel menu del lettore multimediale comparirà la voce "Navidrome". In caso di fallimento, verrà comunicata la causa dell'errore: indirizzo errato, password non valida o server non raggiungibile.
+
+La password non viene memorizzata in chiaro, ma protetta tramite le credenziali del tuo utente Windows. Qualora trasferisca WinGabriel su un altro computer, sarà necessario reinserire la password.
+
+Dalle medesime opzioni è possibile verificare lo stato della connessione, modificarla o scollegare il server.
+
+Ascoltare e gestire la musica di Navidrome
+
+All'interno della sezione "Navidrome" trovi:
+
+"Cerca": ricerca simultanea di brani, album e artisti;
+
+"Artisti": l'elenco degli artisti. Premendo Invio su un artista se ne visualizzeranno gli album;
+
+"Album": suddivisi in aggiunti di recente, ascoltati di recente, più ascoltati, casuali, in ordine alfabetico, per artista, preferiti e più votati;
+
+"Tutti i brani": l'intera libreria raccolta in un unico elenco, che può comprendere migliaia di brani. Al primo accesso, WinGabriel scaricherà tutti i contenuti dal server (mostrando una schermata di attesa) e ne conserverà una copia locale: le volte successive l'elenco si aprirà istantaneamente. Tramite l'opzione "Aggiorna l'elenco dal server" sarà possibile riscaricare i dati;
+
+"Generi": i generi musicali presenti sul server. Premendo Invio su un genere se ne visualizzeranno gli album;
+
+"Playlist": le playlist del server e la possibilità di crearne di nuove;
+
+"Preferiti": brani, album e artisti contrassegnati sul server;
+
+"Brani casuali": una selezione di cinquanta brani casuali;
+
+"In ascolto ora": i contenuti riprodotti in tempo reale dagli altri utenti del server;
+
+"Radio del server": le stazioni radio internet configurate su Navidrome;
+
+"Gestione libreria": consente di avviare la ricerca di nuovi brani sul server, di aggiornare l'intera libreria e di monitorare l'avanzamento dell'operazione.
+
+All'interno di un elenco di brani, premendo Invio verrà riprodotto esclusivamente il brano selezionato. Se sono stati contrassegnati più brani, verranno riprodotti quelli scelti. Per ascoltare l'intero elenco, utilizza la voce "Riproduci tutti" disponibile nelle opzioni.
+
+Negli elenchi di artisti è possibile riprodurre tutti i brani associati, anche in modalità casuale. Nelle liste di brani è inoltre presente l'opzione "Riproduci tutti in ordine casuale".
+
+Tramite il comando "Scarica" è possibile salvare sul computer i brani selezionati, mentre con "Scarica tutti" si scarica l'intero elenco; negli elenchi degli album è disponibile la voce "Scarica gli album selezionati". Durante il download è possibile interrompere l'operazione premendo Esc: il brano in corso verrà completato, mentre i successivi saranno annullati. I file verranno salvati nella cartella Navidrome/Scaricati all'interno dei dati di WinGabriel, organizzati per artista e album, e saranno consultabili nella sezione "Brani scaricati", da cui è anche possibile eliminarli dal computer.
+
+Ulteriori azioni sono accessibili tramite il menu delle opzioni dell'elenco: riprodurre la selezione o l'intera lista, aggiungere o rimuovere elementi dai preferiti, inserire i brani in una playlist, assegnare una valutazione da una a cinque stelle, visualizzare le informazioni del brano oppure aprire l'album o l'artista corrispondente. Nelle playlist è inoltre possibile rimuovere i brani.
+
+Un limite da tenere presente: Navidrome conteggia come riprodotto esclusivamente il primo brano di ogni sessione di ascolto.

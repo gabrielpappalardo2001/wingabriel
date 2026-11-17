@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32"><Configuration>Debug</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32"><Configuration>Release</Configuration><Platform>Win32</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A3C5E21-94B8-4D06-8F12-C0E5B7D9A144}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>WGCifraturaNativa</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup>
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
+    <IntDir>$(MSBuildProjectDirectory)\obj\$(Platform)\$(Configuration)\</IntDir>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='Win32'"><TargetName>WGCifratura32</TargetName></PropertyGroup>
+  <PropertyGroup Condition="'$(Platform)'=='x64'"><TargetName>WGCifratura64</TargetName></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BufferSecurityCheck>true</BufferSecurityCheck>
+      <DebugInformationFormat>None</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ModuleDefinitionFile>WGCifratura.def</ModuleDefinitionFile>
+      <AdditionalDependencies>bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="WGCifratura.cpp" />
+    <None Include="WGCifratura.def" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <!-- WGSegreto.h (il segreto incorporato) non è nel repository: se manca se ne crea uno con byte casuali. -->
+  <Target Name="CreaSegretoSeManca" BeforeTargets="ClCompile" Condition="!Exists('$(MSBuildProjectDirectory)\WGSegreto.h')">
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;$r=[Security.Cryptography.RandomNumberGenerator]::Create(); $a=New-Object byte[] 32; $b=New-Object byte[] 32; $r.GetBytes($a); $r.GetBytes($b); $f={param($x) ($x | ForEach-Object { '0x{0:X2}' -f $_ }) -join ','}; Set-Content -Encoding ASCII -Path '$(MSBuildProjectDirectory)\WGSegreto.h' -Value ('#pragma once', ('static const BYTE PA[32] = {' + (&amp; $f $a) + '};'), ('static const BYTE PB[32] = {' + (&amp; $f $b) + '};'))&quot;" />
+  </Target>
+</Project>

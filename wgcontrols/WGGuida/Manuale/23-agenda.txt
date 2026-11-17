@@ -1,0 +1,95 @@
+﻿L'agenda
+
+L'agenda ti aiuta a ricordare gli impegni: la visita dal medico, il compleanno di un amico, la riunione di condominio. Ti avvisa quando un impegno si avvicina, così non te lo dimentichi.
+
+Aprire l'agenda
+
+[smart]
+Nel menu delle applicazioni seleziona "Organizer" e poi "Agenda". Se utilizzi il computer in modalità tablet, troverai l'agenda anche nel dock della schermata iniziale.
+[/smart]
+
+[classica]
+Nel menu iniziale seleziona "Organizer" e poi "Agenda".
+[/classica]
+
+Il menu dell'agenda contiene le seguenti voci: nuovo appuntamento, consulta, cerca, categorie, agende, configurazione.
+
+Aggiungere un appuntamento
+
+1. Seleziona "Nuovo appuntamento" e premi Invio.
+
+2. Si aprirà una serie di campi. Passa dall'uno all'altro utilizzando la freccia giù e compila quelli necessari:
+
+il titolo, ad esempio "Visita dal dentista";
+
+la data;
+
+l'ora;
+
+la durata;
+
+una descrizione, se desideri aggiungere dettagli;
+
+la categoria, ad esempio "Salute";
+
+il preavviso, ossia con quale anticipo desideri ricevere la notifica, ad esempio un'ora prima o un giorno prima.
+
+3. Al termine, premi Invio per salvare.
+
+Gli appuntamenti che si ripetono
+
+Alcuni impegni sono ricorrenti: un compleanno ogni anno, la lezione in palestra ogni settimana, l'assunzione di un farmaco ogni giorno. Quando crei l'appuntamento, puoi impostare la ripetizione giornaliera, settimanale, mensile o annuale, in modo da doverlo inserire una sola volta.
+
+Consultare gli appuntamenti
+
+Seleziona "Consulta" per visualizzare gli appuntamenti giorno per giorno oppure in un unico elenco complessivo. Puoi anche filtrare la visualizzazione per una specifica categoria.
+
+Premi Invio su un appuntamento per ascoltarne tutti i dettagli.
+
+Premendo il tasto Alt su un appuntamento potrai modificarlo, eliminarlo o contrassegnarlo come completato. È inoltre presente un comando per segnare contemporaneamente tutte le attività come completate.
+
+Cercare
+
+La funzione "Cerca" individua un appuntamento a partire da una parola contenuta nel titolo.
+
+La ricerca ti aiuta anche a trovare uno spazio libero nel tuo programma, ad esempio quando devi fissare un nuovo impegno e vuoi verificare la tua disponibilità, tenendo conto dei tuoi giorni lavorativi e delle pause.
+
+Gli avvisi
+
+Quando un appuntamento si avvicina, WinGabriel ti invia una notifica in base al preavviso impostato.
+
+Alla ricezione dell'avviso, puoi aprire immediatamente l'appuntamento oppure posticiparlo di dieci, quindici, trenta o sessanta minuti. Un avviso posticipato si ripresenterà dopo il tempo stabilito, mentre un avviso ignorato non verrà più mostrato.
+
+[smart]
+Le notifiche dell'agenda compaiono anche nel centro notifiche.
+[/smart]
+
+Categorie e agende
+
+Le categorie suddividono gli appuntamenti per tipologia (lavoro, salute, famiglia) e consentono di visualizzare esclusivamente quelli di un determinato gruppo.
+
+Analogamente alla rubrica, puoi gestire più agende separate. Una di queste è designata come predefinita, ed è quella in cui verranno salvati i nuovi appuntamenti.
+
+La configurazione
+
+La voce "Configurazione" raccoglie le impostazioni dell'agenda, suddivise in quattro sezioni:
+
+gestione del tempo: i giorni lavorativi, l'orario di lavoro, le pause e le fasce orarie non disponibili, utilizzate dall'agenda per il calcolo dei momenti liberi;
+
+appuntamenti: la categoria e la durata predefinite proposte durante la creazione di un nuovo appuntamento;
+
+avvisi: il preavviso standard e le azioni da compiere per gli appuntamenti passati;
+
+ricerca e visualizzazione: l'ordinamento degli appuntamenti (per data, nome o oggetto) e l'orizzonte temporale da considerare durante la ricerca di giorni liberi.
+
+La sincronizzazione
+
+Analogamente alla rubrica, l'agenda può essere sincronizzata con il calendario del tuo provider di posta elettronica, purché supporti il formato aperto CalDAV. Tramite la configurazione puoi avviare una sincronizzazione immediata, definire la frequenza degli aggiornamenti automatici e assegnare una categoria specifica agli appuntamenti di ciascun calendario.
+
+Le guide dell'agenda
+
+Ciascun menu dell'agenda dispone di una guida dedicata, accessibile premendo il tasto Alt e selezionando la voce "Guida", che illustra le funzioni del menu in cui ti trovi.
+
+Il calendario
+
+All'interno della sezione "Altre funzioni" è disponibile il calendario, che consente di selezionare una data qualsiasi per visualizzare o creare gli appuntamenti di quel giorno, come descritto nel capitolo dedicato alle altre funzioni.

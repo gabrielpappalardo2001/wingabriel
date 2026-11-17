@@ -1,0 +1,122 @@
+[
+ {
+  "file": "melodica_1",
+  "stile": "melodica",
+  "titolo": "Carefree",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "melodica_2",
+  "stile": "melodica",
+  "titolo": "Life of Riley",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "melodica_3",
+  "stile": "melodica",
+  "titolo": "Sidewalk Shade",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "melodica_4",
+  "stile": "melodica",
+  "titolo": "Bossa Antigua",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "rock_1",
+  "stile": "rock",
+  "titolo": "Malt Shop Bop",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "rock_2",
+  "stile": "rock",
+  "titolo": "Rocket Power",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "rock_3",
+  "stile": "rock",
+  "titolo": "Hitman",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "rock_4",
+  "stile": "rock",
+  "titolo": "Killing Time",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "elettronica_1",
+  "stile": "elettronica",
+  "titolo": "Pixelland",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "elettronica_2",
+  "stile": "elettronica",
+  "titolo": "Voxel Revolution",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "elettronica_3",
+  "stile": "elettronica",
+  "titolo": "Electrodoodle",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "elettronica_4",
+  "stile": "elettronica",
+  "titolo": "Blip Stream",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "jazz_1",
+  "stile": "jazz",
+  "titolo": "Hep Cats",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "jazz_2",
+  "stile": "jazz",
+  "titolo": "Bass Walker",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "jazz_3",
+  "stile": "jazz",
+  "titolo": "I Knew a Guy",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "jazz_4",
+  "stile": "jazz",
+  "titolo": "Lobby Time",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "popolare_1",
+  "stile": "popolare",
+  "titolo": "Folk Round",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "popolare_2",
+  "stile": "popolare",
+  "titolo": "Thatched Villagers",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "popolare_3",
+  "stile": "popolare",
+  "titolo": "Fiddles McGinty",
+  "autore": "Kevin MacLeod"
+ },
+ {
+  "file": "popolare_4",
+  "stile": "popolare",
+  "titolo": "Jaunty Gumption",
+  "autore": "Kevin MacLeod"
+ }
+]

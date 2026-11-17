@@ -1,0 +1,57 @@
+﻿Aggiornamenti e informazioni sul programma
+
+WinGabriel è in costante evoluzione: vengono introdotte nuove funzioni e risolti eventuali problemi. Per disporre sempre della versione più recente e performante, è opportuno effettuare periodicamente gli aggiornamenti. Questo capitolo illustra le relative procedure.
+
+L'aggiornamento all'avvio
+
+All'avvio di WinGabriel, qualora sia disponibile una nuova versione, il programma visualizza immediatamente una richiesta prima di qualsiasi altra operazione: "Vuoi aggiornare?".
+
+Confermando la richiesta, WinGabriel provvederà a scaricare e installare la nuova versione. Durante il download, la sintesi vocale comunicherà l'avanzamento del processo.
+
+Se invece si sceglie di rifiutare, WinGabriel si avvierà normalmente e la richiesta verrà riproposta in seguito.
+
+Aggiornamento manuale
+
+È inoltre possibile verificare la presenza di aggiornamenti in qualsiasi momento.
+
+Dal {menu} selezionare "Aggiornamento", che comprende due opzioni:
+
+"Aggiorna il programma": verifica la disponibilità di nuove versioni e, in caso positivo, procede all'installazione;
+
+"Torna alla versione precedente": consente di ripristinare la versione precedentemente in uso qualora si riscontrino problemi con quella corrente.
+
+All'interno delle Impostazioni, accedendo alle sezioni "Sistema" e successivamente "Aggiornamento", è possibile configurare le modalità e la frequenza di ricerca dei nuovi aggiornamenti, nonché la ricezione delle comunicazioni relative a WinGabriel.
+
+Le notizie di WinGabriel
+
+Periodicamente, gli sviluppatori di WinGabriel pubblicano comunicazioni informative riguardanti nuove funzionalità, risoluzioni di problemi e suggerimenti utili.
+
+All'avvio del programma, in presenza di messaggi non ancora letti, verrà chiesto se si desidera consultarli. Rispondendo di sì, le notizie verranno aperte immediatamente, sospendendo temporaneamente le altre attività fino alla conclusione della lettura.
+
+Informazioni sul programma
+
+All'interno del {menu} è presente la voce "Informazioni sul programma".
+
+[smart]
+Questa opzione è accessibile anche dalla seconda pagina della schermata principale.
+[/smart]
+
+Il menu comprende le seguenti voci:
+
+"Informazioni su WinGabriel": indica la versione in uso e i recapiti per contattare l'assistenza o gli sviluppatori;
+
+"Ultime notizie": raccoglie le comunicazioni più recenti su WinGabriel;
+
+"Notizie da leggere": elenca i messaggi non ancora aperti;
+
+"Condizioni d'uso": specifica le norme che regolano l'utilizzo del software;
+
+"Informativa sulla privacy": descrive le modalità di trattamento dei dati personali.
+
+Pur risultando talvolta complesse, le condizioni d'uso e l'informativa sulla privacy sono redatte a tutela dell'utente e si consiglia di leggerle almeno una volta.
+
+La schermata di benvenuto
+
+La schermata di benvenuto viene visualizzata una sola volta: al primo avvio successivo all'installazione di WinGabriel oppure, per gli utenti esistenti, in occasione della prima apertura della versione dotata delle nuove funzionalità e della modalità smart. Gli aggiornamenti successivi non ripropongono questa schermata. Tale procedura permette di selezionare la modalità operativa (classica o smart), modificabile in seguito tramite le Impostazioni. Se si opta per la modalità smart, il programma offre una sessione di prova guidata dei tasti per facilitare l'apprendimento.
+
+Anche la schermata di benvenuto viene presentata con priorità rispetto ad altre attività, insieme alle restanti richieste preliminari all'avvio.

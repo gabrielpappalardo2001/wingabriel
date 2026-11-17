@@ -1,0 +1,139 @@
+﻿La posta: leggere i messaggi
+
+Questo capitolo spiega come leggere i messaggi ricevuti, aprire gli allegati e cercare un messaggio specifico.
+
+Il menu della posta
+
+Dal {menu} selezionare "Mail" e premere Invio. Si aprirà il menu della posta, contenente le seguenti voci:
+
+Nuovo messaggio, per scrivere;
+
+Posta in arrivo, i messaggi ricevuti;
+
+Posta inviata, i messaggi spediti;
+
+Bozze, i messaggi iniziati e non ancora spediti;
+
+Posta eliminata, i messaggi cancellati;
+
+Posta indesiderata, messaggi pubblicitari e sospetti;
+
+Altre cartelle, le cartelle create autonomamente;
+
+Cerca, per trovare un messaggio;
+
+Destinatari recenti, i contatti a cui si è scritto;
+
+Impostazioni.
+
+Aprire la posta in arrivo
+
+Selezionare "Posta in arrivo" e premere Invio. WinGabriel chiederà se visualizzare solo i messaggi non letti o tutti i messaggi. Effettuare la scelta e premere Invio.
+
+L'elenco dei messaggi
+
+I messaggi sono ordinati dal più recente al meno recente. Per ciascun elemento, la voce indica il mittente, l'oggetto (l'argomento del messaggio), la data e lo stato di lettura.
+
+È possibile scorrere i messaggi utilizzando i tasti freccia giù e freccia su.
+
+Durante il primo accesso a una cartella potrebbe essere necessario attendere qualche secondo affinché WinGabriel comunichi con il server. Nelle consultazioni successive, l'elenco comparirà immediatamente e si aggiornerà in autonomia.
+
+Leggere un messaggio
+
+Posizionandosi sul messaggio desiderato e premendo Invio, questo si aprirà in un campo di sola lettura:
+
+la freccia giù legge la riga successiva;
+
+la freccia su legge la riga precedente.
+
+Al termine della lettura, premendo Esc si tornerà all'elenco, esattamente sul messaggio appena aperto. Utilizzando la freccia giù si passerà al messaggio successivo.
+
+Durante la lettura, premendo il tasto Alt si accederà alle opzioni: Rispondi, Rispondi a tutti, Inoltra, Informazioni, Allegati, Elimina.
+
+La voce "Informazioni" riassume i dettagli del messaggio: mittente e relativo indirizzo, destinatario, eventuali indirizzi in copia, oggetto, data e numero di allegati.
+
+Messaggi semplici e messaggi con la grafica
+
+Alcuni messaggi presentano elementi grafici quali titoli, colori, tabelle e immagini. È possibile leggerli in tre modalità differenti:
+
+come testo semplice: viene riprodotto esclusivamente il testo, privo di titoli e tabelle. Rappresenta la modalità più rapida;
+
+come documento: il messaggio si apre nell'editor di WinGabriel preservando la formattazione originale, consentendo la navigazione tra i titoli e all'interno delle tabelle;
+
+nel browser: il messaggio si apre come pagina web all'interno di una versione ridotta del browser di WinGabriel, priva di schede e barra degli indirizzi. La navigazione avviene tramite i comandi consueti del browser: i tasti freccia per le righe, H per i titoli, K per i collegamenti e T per le tabelle. Premendo Alt si accede in alto alle opzioni Rispondi, Rispondi a tutti, Inoltra, allegati, informazioni e ad altre azioni relative al messaggio. I collegamenti si aprono nel browser predefinito e nessun contenuto viene scaricato da internet. Il tasto Esc chiude il messaggio. I messaggi composti da solo testo si aprono invece sempre nell'editor testuale.
+
+La modalità di visualizzazione predefinita si configura nelle Impostazioni di WinGabriel, seguendo il percorso "Applicazioni", "Posta" e infine "Apertura dei messaggi". Dal menu delle opzioni del singolo messaggio è comunque possibile aprirlo con una modalità differente, ad esempio come documento o tramite l'editor testuale.
+
+Le immagini eventualmente incluse nei messaggi non verranno mai scaricate da internet. Tali elementi sono spesso utilizzati dai mittenti per tracciare l'avvenuta apertura del messaggio, rilevando il momento e la posizione geografica. WinGabriel tutela la privacy dell'utente.
+
+Gli allegati
+
+Un allegato è un file trasmesso insieme al messaggio, quale una fotografia, un documento o una bolletta in formato PDF.
+
+Per aprire un allegato:
+
+1. Aprire il messaggio.
+
+2. Premere Alt e selezionare "Allegati" per visualizzare il relativo elenco.
+
+3. Selezionare l'allegato e premere Invio. Sarà possibile aprirlo, salvarlo in una cartella del computer o stamparlo.
+
+Gli allegati si aprono direttamente all'interno di WinGabriel: i documenti nell'editor, i file multimediali (audio e video) nel riproduttore e i file PDF convertiti in testo leggibile.
+
+Cercare un messaggio
+
+1. Nel menu della posta selezionare "Cerca". In presenza di più account, WinGabriel chiederà in quali caselle effettuare la ricerca.
+
+2. Selezionare "Nuova ricerca", digitare una parola chiave (come il nome del mittente o un termine presente nell'oggetto) e premere Invio.
+
+3. WinGabriel mostrerà l'elenco dei messaggi trovati.
+
+La ricerca viene effettuata nel mittente, nell'oggetto, nel destinatario e nel corpo dei messaggi.
+
+La voce "Ricerche recenti" consente di ripetere una ricerca precedentemente eseguita senza doverla digitare nuovamente.
+
+Avviando la ricerca dal menu delle opzioni di una specifica cartella, la ricerca verrà circoscritta esclusivamente a quella cartella.
+
+Ordinare l'elenco
+
+All'interno dell'elenco dei messaggi, premendo il tasto Alt si troverà la voce "Ordina i messaggi", che offre quattro opzioni: dal più recente, dal più vecchio, per oggetto, per mittente.
+
+Ordinando per oggetto, le risposte verranno posizionate accanto al messaggio originale, anche nel caso in cui il loro oggetto inizi con la dicitura "Re".
+
+Filtrare la visualizzazione dei messaggi
+
+Sempre dal menu delle opzioni, la funzione "Filtra i messaggi" consente di visualizzare un sottoinsieme di messaggi prendendo come riferimento quello attualmente selezionato:
+
+"Di questo mittente": mostra solo i messaggi provenienti dalla stessa persona;
+
+"Con questo oggetto": mostra esclusivamente i messaggi che condividono il medesimo oggetto;
+
+"Di questa conversazione": mostra unicamente i messaggi appartenenti allo stesso scambio comunicativo;
+
+"Per data": limita la visualizzazione ai messaggi odierni, degli ultimi sette giorni, degli ultimi trenta giorni o a partire da una data personalizzata.
+
+Per ripristinare la visualizzazione di tutti i messaggi, selezionare "Togli il filtro".
+
+Segnare come letti
+
+Un messaggio viene automaticamente contrassegnato come letto all'apertura. Nel menu delle opzioni è inoltre presente una voce per contrassegnare come letti tutti i messaggi contenuti nella cartella, funzione applicabile anche da telefono.
+
+Eliminare
+
+Per eliminare un messaggio, premere Alt e selezionare "Elimina". Per rimuovere più elementi contemporaneamente, selezionarli preventivamente utilizzando il tasto Shift, secondo le modalità descritte nel capitolo dedicato alla tastiera.
+
+I messaggi eliminati vengono spostati nella cartella "Posta eliminata". L'eliminazione definitiva da tale cartella comporterà la cancellazione permanente dei dati, come indicato esplicitamente dalla richiesta di conferma.
+
+Il menu delle opzioni include anche una voce per svuotare interamente una cartella, operazione che richiederà una conferma da parte di WinGabriel.
+
+Spostare in un'altra cartella
+
+Selezionare "Sposta in una cartella" dal menu delle opzioni e indicare la cartella di destinazione per completare lo spostamento del messaggio.
+
+La posta indesiderata
+
+La cartella della posta indesiderata raccoglie messaggi pubblicitari e potenzialmente sospetti. Qualora un messaggio indesiderato venga recapitato nella posta in arrivo, selezionare "Segna come indesiderata" per trasferirlo nell'apposita cartella. Viceversa, se un messaggio legittimo dovesse essere classificato erroneamente come indesiderata, selezionare "Non è indesiderata" per ricollocarlo nella posta in arrivo.
+
+Attenzione ai messaggi truffa
+
+Nessun istituto bancario, ente pubblico o azienda seria richiede la password tramite messaggi di posta elettronica. Se un messaggio invita a cliccare su un collegamento per accedere al proprio conto corrente, è necessario prestare la massima attenzione: il testo visibile del collegamento potrebbe non corrispondere alla destinazione effettiva. Nel dubbio, si raccomanda di non aprire il collegamento e di contattare telefonicamente la propria banca.

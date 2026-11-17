@@ -1,0 +1,102 @@
+﻿Il centro notifiche
+@smart
+
+Mentre lavori possono arrivare molte notifiche: un messaggio di posta, un appuntamento imminente, un file di cui è terminato il download, un'interruzione della connessione a internet. Il centro notifiche raccoglie tutti questi avvisi in un unico punto, così da non perderne neanche uno. Ciascun avviso prende il nome di notifica.
+
+Chi invia le notifiche
+
+Tutte le componenti di WinGabriel possono inviare notifiche:
+
+l'agenda, per gli appuntamenti imminenti;
+
+la posta, per i nuovi messaggi;
+
+i giornali, per i nuovi articoli;
+
+YouTube, per i nuovi video dei canali a cui sei iscritto;
+
+il browser, per i siti a cui hai concesso l'autorizzazione;
+
+il sistema, per quanto riguarda connessione, memoria e disco.
+
+Quando arriva una notifica
+
+Quando ricevi una notifica, viene riprodotto un segnale acustico e la sintesi vocale ne legge il testo.
+
+Se la notifica proviene da un'applicazione che non hai in primo piano in quel momento, la voce pronuncia anche il nome dell'applicazione e ti ricorda che puoi accedervi premendo F10.
+
+Come aprire il centro notifiche
+
+Esistono diversi modi per farlo:
+
+premere la combinazione di tasti Windows + N;
+
+eseguire uno scorrimento verso il basso con tre dita;
+
+dalla scrivania, premere Tab per spostarsi sulla barra di stato e selezionare l'ultima voce, "Centro notifiche", che indica anche il numero di notifiche non lette.
+
+L'ultima notifica ricevuta è disponibile anche in cima al multitasking, premendo F10.
+
+Com'è fatto
+
+Il centro notifiche è strutturato come un elenco. Le notifiche sono ordinate dalla più recente alla meno recente. Per ognuna di esse vengono annunciati il nome dell'applicazione mittente, l'ora e il testo. Le notifiche non ancora lette vengono opportunamente segnalate.
+
+Aprire una notifica
+
+Premi Invio sulla notifica oppure esegui un doppio tocco. WinGabriel eseguirà l'azione appropriata: ad esempio, aprirà l'agenda in corrispondenza dell'appuntamento o l'elenco dei messaggi da leggere.
+
+La notifica si apre come un'applicazione indipendente. Una volta chiusa, verrai riportato al punto in cui ti trovavi.
+
+Alcune notifiche dispongono di azioni speciali, come "Rispondi" o "Segna come completato". Per queste notifiche, premendo Invio si apre un menu contestuale con le seguenti voci:
+
+Apri;
+
+le azioni speciali della notifica;
+
+Rimanda di dieci minuti;
+
+Rimanda di un'ora;
+
+Elimina.
+
+Una notifica rimandata scompare temporaneamente per poi riapparire dopo l'intervallo di tempo selezionato, accompagnata dalla lettura vocale.
+
+Eliminare le notifiche tramite gesti
+
+All'interno dell'elenco delle notifiche, esegui uno scorrimento verso l'alto con un dito: la prima azione proposta sarà "Elimina". Effettua un doppio tocco per eliminare la notifica. Continuando a scorrere verso l'alto verranno presentate le altre azioni e, giunti all'ultima, la sequenza ricomincerà dalla prima.
+
+Il menu delle opzioni
+
+All'interno del centro notifiche, premendo il tasto Alt, sono disponibili le seguenti voci:
+
+le azioni relative alla notifica selezionata;
+
+la modalità non disturbare;
+
+la personalizzazione del suono delle notifiche per ciascuna applicazione;
+
+segna tutte come lette;
+
+elimina questa notifica;
+
+elimina tutte le notifiche. Prima di procedere all'eliminazione, WinGabriel chiederà una conferma e, successivamente, invierà un avviso.
+
+Se apri il centro notifiche quando non sono presenti elementi, WinGabriel ti informerà con un messaggio e l'elenco non verrà aperto.
+
+La modalità non disturbare
+
+Capita di voler evitare interruzioni: durante una telefonata, mentre si legge o nelle ore notturne. Per queste situazioni è prevista la modalità non disturbare.
+
+Quando questa funzione è attiva, le notifiche continuano ad arrivare e vengono archiviate nel centro notifiche in modo silenzioso, senza alcun segnale acustico o vocale.
+
+Può essere attivata per un'ora, per tre ore, fino alle otto del mattino successivo o fino a quando non deciderai di disattivarla. Allo scadere della modalità non disturbare, la voce ti comunicherà quante notifiche sono arrivate nel frattempo.
+
+La modalità non disturbare è accessibile da tre posizioni: nel menu delle opzioni del centro notifiche, nel pannello del centro di controllo quando utilizzi il computer in modalità tablet, e nelle Impostazioni, accedendo prima a "Sistema" e poi nuovamente a "Sistema".
+
+Un suono distinto per ogni applicazione
+
+Ogni applicazione può essere associata a un suono di notifica specifico. Dopo qualche giorno sarai in grado di riconoscere la provenienza di una notifica semplicemente ascoltando il suono, prima ancora che la voce ne effettui la lettura.
+
+I suoni disponibili sono: notifica, avviso, din, clic, collegamento, oppure nessun suono.
+
+Il suono si seleziona nelle Impostazioni, alla voce "Sistema", poi ancora "Sistema" e infine "Suono delle notifiche per applicazione", oppure direttamente dal menu delle opzioni del centro notifiche. Durante lo scorrimento dei suoni, è possibile ascoltarne un'anteprima premendo Invio.

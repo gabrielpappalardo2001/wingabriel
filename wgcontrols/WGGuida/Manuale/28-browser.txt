@@ -1,0 +1,181 @@
+﻿Il browser, per navigare su internet
+
+Il browser è il programma che serve a visitare i siti internet: il sito del comune, della banca, di un negozio, di un giornale. Il browser di WinGabriel ti legge le pagine con la sua voce e ti aiuta a muoverti al loro interno.
+
+I siti internet sono creati da persone diverse, e non tutti sono strutturati in modo ottimale per chi non vede. Il browser di WinGabriel fa del suo meglio per renderli comprensibili anche quando presentano delle criticità.
+
+Aprire il browser
+
+Nel {menu} scegli "Web" e poi "Browser". Si apre il menu del browser, con queste voci:
+
+"Scrivi indirizzo": per inserire l'indirizzo di un sito, per esempio www.comune.roma.it;
+
+"Preferiti": i siti che hai salvato per poterli consultare facilmente;
+
+"Cronologia": i siti che hai visitato in precedenza;
+
+"Configurazione": le impostazioni del browser.
+
+Anche i collegamenti presenti nei messaggi di posta si aprono all'interno del browser.
+
+La prima volta, qualora sul computer mancasse un componente di Windows necessario al browser, WinGabriel ti avviserà proponendoti di scaricarlo e installarlo.
+
+Leggere una pagina
+
+Per il browser di WinGabriel, una pagina internet equivale a una lettera da leggere riga per riga.
+
+freccia giù legge la riga successiva;
+
+freccia su legge la riga precedente;
+
+freccia destra e freccia sinistra leggono un carattere alla volta;
+
+Control con freccia destra o sinistra legge una parola alla volta;
+
+Control Home si sposta all'inizio della pagina, Control Fine alla fine;
+
+Pagina giù e Pagina su consentono di avanzare o retrocedere di quindici righe alla volta;
+
+Insert, oppure F8, legge l'intera pagina consecutivamente, a partire dal punto in cui ti trovi. Per interrompere la lettura, premi un tasto qualsiasi.
+
+Aprire un collegamento e premere un pulsante
+
+Quando la voce ti legge un collegamento, vale a dire un testo che conduce a un'altra pagina, oppure un pulsante, premi Invio o la barra spaziatrice per attivarli.
+
+Tab ti porta al collegamento o al pulsante successivo, mentre Shift Tab ti conduce al precedente.
+
+Saltare velocemente con le lettere
+
+Le pagine lunghe risultano più facili da consultare saltando da una sezione all'altra. Premendo una lettera, ti sposti al successivo elemento di una determinata categoria. Tenendo premuto Shift insieme alla lettera, ritorni a quello precedente.
+
+Le lettere più utili sono:
+
+H: il titolo successivo. I titoli suddividono la pagina in sezioni, analogamente ai capitoli di un libro. I numeri da 1 a 6 conducono ai titoli del rispettivo livello: 1 corrisponde al titolo principale;
+
+K: il collegamento successivo;
+
+B: il pulsante successivo;
+
+F: il campo di compilazione successivo, come ad esempio quello del nome o della ricerca;
+
+E: il campo di testo successivo;
+
+X: la casella di spunta successiva;
+
+T: la tabella successiva;
+
+L: l'elenco successivo;
+
+G: l'immagine successiva;
+
+R: la regione successiva, ossia una determinata area della pagina;
+
+N: il primo testo successivo a un gruppo di collegamenti. Solitamente rappresenta l'inizio del contenuto effettivo della pagina, posizionato dopo i menu.
+
+F7 apre l'elenco completo di tutti i titoli, i collegamenti, i pulsanti, i campi e delle altre componenti della pagina. Seleziona la voce desiderata dall'elenco e premi Invio per raggiungerla.
+
+Scrivere nei campi
+
+Quando arrivi su un campo, come quello di ricerca, premi Invio per accedervi, quindi procedi con la scrittura. Premi Invio per confermare o avviare la ricerca, oppure Esc per uscire dal campo.
+
+Nei campi che offrono suggerimenti durante la digitazione, puoi utilizzare i tasti freccia giù e freccia su per scorrere le opzioni.
+
+All'interno di un campo, premendo Alt, puoi accedere alle medesime funzioni dei campi di WinGabriel. La più utile è "Modifica il testo in un campo di WinGabriel": il testo si apre in un campo standard di WinGabriel, dotato di controllo ortografico e di tutte le altre funzionalità, e al momento della chiusura viene reinserito automaticamente nella pagina.
+
+Le tabelle
+
+All'interno delle tabelle, tieni premuti Control e Alt e utilizza i tasti freccia per spostarti da una casella all'altra. La sintesi vocale ti comunicherà anche le intestazioni di riga e di colonna.
+
+Tornare indietro e andare a un altro sito
+
+Backspace: ritorna alla pagina precedente.
+
+Shift Backspace: avanza alla pagina successiva.
+
+Alt Home: riporta alla pagina iniziale.
+
+Control R: aggiorna la pagina.
+
+Control L: richiede l'inserimento dell'indirizzo di un sito. Durante la digitazione, suggerisce i siti salvati nei preferiti e nella cronologia.
+
+Control F: cerca una parola all'interno della pagina. F3 ripete la ricerca per individuare le occorrenze successive.
+
+I preferiti e la cronologia
+
+Control D aggiunge la pagina corrente ai preferiti.
+
+Control B apre la sezione dei preferiti.
+
+Control H apre la cronologia, ossia l'elenco delle pagine visitate.
+
+Control J apre l'elenco dei file scaricati.
+
+Più pagine aperte contemporaneamente: le schede
+
+Il browser consente di mantenere aperte più pagine nello stesso momento. Ciascuna pagina è contenuta in una scheda, paragonabile all'etichetta di un raccoglitore.
+
+Control T apre una nuova scheda.
+
+Control W chiude la scheda corrente.
+
+Control Shift T riapre l'ultima scheda chiusa.
+
+Control Tab passa alla scheda successiva, Control Shift Tab alla precedente.
+
+Control Shift E visualizza l'elenco di tutte le schede aperte.
+
+Control Shift N apre una scheda in modalità privata: in questa sezione il browser non memorizza alcun dato, né le pagine visitate né le password.
+
+Leggere un articolo senza distrazioni
+
+Molte pagine presentano articoli circondati da banner pubblicitari e menu. Premendo Control Shift L si attiva la modalità di lettura: WinGabriel estrae unicamente l'articolo, comprensivo di titolo, autore e data, presentandotelo in un formato pulito e privo di pubblicità. Da questa schermata potrai inoltre richiederne un riassunto o copiarne il contenuto.
+
+Tradurre una pagina in un'altra lingua
+
+Se una pagina è redatta in inglese o in un'altra lingua straniera, premendo Control Shift U verrà tradotta nella tua lingua. Premendo nuovamente Control Shift U tornerai a visualizzare il testo originale. Anche a seguito della traduzione, i collegamenti e i pulsanti continueranno a funzionare regolarmente.
+
+Dalle impostazioni del configuratore del browser puoi stabilire se effettuare la traduzione automaticamente, se richiederne la conferma ogni volta oppure se procedere solo su tua esplicita richiesta.
+
+Le immagini
+
+Molte immagini presenti nelle pagine sono sprovviste di una descrizione testuale. Quando ti posizioni su un'immagine, premendo Alt puoi interrogare l'intelligenza artificiale affinché ne generi una descrizione o legga il testo in essa contenuto.
+
+Le password e i moduli
+
+Il browser è in grado di memorizzare le password dei siti e i tuoi dati personali per la compilazione automatica dei moduli, quali nome e indirizzo.
+
+Control Shift P inserisce una password salvata.
+
+Control Shift M compila il modulo utilizzando i tuoi dati.
+
+Le credenziali di accesso ai siti vengono archiviate in modalità protetta e sono incluse nel backup dei tuoi dati personali. In caso di reinstallazione di WinGabriel, le ritroverai intatte.
+
+I video
+
+I video di YouTube e quelli che il browser non è in grado di riprodurre vengono reindirizzati automaticamente al lettore multimediale di WinGabriel, senza interruzioni pubblicitarie. La combinazione Control Shift V forza il passaggio del video dalla pagina al player di WinGabriel, mentre Control Shift Y lo mantiene nel lettore nativo del sito.
+
+Quando il sito richiede l'utilizzo della tastiera
+
+Alcuni siti web operano come veri e propri programmi, dotati di menu e comandi da tastiera dedicati. Premendo F9, i comandi vengono inoltrati direttamente al sito e WinGabriel ti leggerà le variazioni a schermo. Premendo nuovamente F9, ripristinerai la normale navigazione della pagina.
+
+Le verifiche di sicurezza "non sono un robot"
+
+Prima di consentire l'accesso, alcuni siti richiedono di superare una verifica per dimostrare di essere utenti umani. Il browser ti avviserà non appena ne individuerà una. Premendo Control Shift K, verrai posizionato sulla casella di spunta oppure, qualora il controllo preveda il riconoscimento di immagini, sulla versione accessibile audio. Ascolta l'audio e digita ciò che hai udito.
+
+Il menu delle opzioni
+
+Il tasto Alt premuto singolarmente apre il menu delle opzioni della pagina.
+
+Il tasto Applicazioni, oppure Shift F10, apre il menu contestuale relativo all'elemento selezionato, offrendo anche le funzioni solitamente associate al mouse, quali il clic destro, il doppio clic o il trascinamento.
+
+La configurazione
+
+Dal menu di configurazione del browser è possibile regolare: il blocco dei contenuti pubblicitari, i siti in cui consentirne la visualizzazione, la gestione della cronologia, la lingua predefinita delle pagine, il browser predefinito per l'apertura dei link di posta elettronica, le impostazioni di traduzione, la descrizione automatica delle immagini, le password memorizzate, i dati per la compilazione dei moduli e i permessi concessi ai siti per l'utilizzo di microfono, fotocamera e geolocalizzazione.
+
+La schermata di configurazione è accessibile dal menu del browser, dal menu delle opzioni interno al browser e dalle Impostazioni di WinGabriel, alla voce "Applicazioni" e successivamente "Browser".
+
+Chiudere il browser
+
+Premi il tasto Esc. Nel caso in cui siano aperte più schede, sarà necessario premerlo due volte per evitare la chiusura accidentale dell'applicazione.
+
+All'interno del browser, il tasto F1 apre la guida completa, contenente l'elenco di tutti i comandi da tastiera.

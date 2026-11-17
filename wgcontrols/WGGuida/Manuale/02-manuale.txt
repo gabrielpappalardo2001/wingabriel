@@ -1,0 +1,85 @@
+﻿Come si usa questo manuale
+
+Il manuale si trova all'interno di WinGabriel. Puoi aprirlo in qualsiasi momento e da qualunque punto del programma, senza perdere il lavoro che stavi facendo.
+
+Come aprire il manuale
+
+Ci sono diversi modi per aprire il manuale.
+
+Il metodo più rapido consiste nel premere Control+F1. Tieni premuto il tasto Control, posizionato in basso a sinistra sulla tastiera, e premi il tasto F1, che è il primo a sinistra nella fila in alto. Il manuale si aprirà immediatamente, da qualunque punto del programma.
+
+Puoi aprirlo anche dal {menu}: scorri le voci con i tasti freccia fino a sentire "Manuale" e premi Invio.
+
+[smart]
+Lo trovi anche nel menu delle opzioni della scrivania e della home, oltre che nella seconda pagina della home se utilizzi il computer come tablet.
+
+Il manuale si apre come un'applicazione a parte. Ciò significa che, quando lo chiudi, ritorni esattamente al punto in cui ti trovavi.
+[/smart]
+
+[classica]
+Quando chiudi il manuale, ritorni esattamente al punto in cui ti trovavi.
+[/classica]
+
+Il tasto F1
+
+Il tasto F1 premuto da solo, senza il tasto Control, svolge una funzione diversa: fornisce un breve aiuto sulla schermata in cui ti trovi. Per esempio, nel riproduttore ti ricorda i comandi principali, mentre nel browser legge la guida alla navigazione.
+
+[smart]
+Sulla scrivania e sulla home, il tasto F1 apre direttamente il capitolo del manuale dedicato a quella sezione.
+[/smart]
+
+L'indice
+
+All'apertura del manuale viene visualizzato l'indice, ossia l'elenco di tutti i capitoli. Ciascun capitolo ha un numero e un titolo, ad esempio "Capitolo 4, La tastiera".
+
+Per spostarti nell'indice usa le frecce: la freccia giù per passare al capitolo successivo e la freccia su per tornare a quello precedente. Quando senti il capitolo che ti interessa, premi Invio per aprirlo.
+
+Come leggere un capitolo
+
+Il capitolo si apre in un campo di sola lettura: un testo che puoi ascoltare e scorrere, ma non modificare. È lo stesso tipo di riquadro che WinGabriel utilizza per leggere i messaggi di posta elettronica e gli articoli di giornale.
+
+Ecco i tasti per la lettura:
+
+la freccia giù legge la riga successiva;
+
+la freccia su legge la riga precedente;
+
+la freccia destra e la freccia sinistra leggono un carattere alla volta, ossia una singola lettera;
+
+Control insieme alla freccia destra o alla freccia sinistra permette di spostarsi di una parola alla volta;
+
+Control insieme alla freccia giù o alla freccia su permette di spostarsi di un paragrafo alla volta.
+
+Quando hai finito di leggere, premi Esc. Il capitolo si chiude e ritorni all'indice, esattamente sul capitolo che avevi scelto. In questo modo puoi passare facilmente a quello successivo premendo la freccia giù.
+
+Con lo schermo tattile
+
+Se utilizzi lo schermo con le dita, nell'indice fai scorrere il dito verso destra per andare al capitolo successivo e verso sinistra per tornare a quello precedente. Tocca due volte rapidamente lo schermo per aprire il capitolo. All'interno del capitolo, lo stesso gesto verso destra e verso sinistra legge il testo.
+
+Cercare una parola nel manuale
+
+Se non sai in quale capitolo si trova un determinato argomento, puoi cercarlo direttamente.
+
+Procedi in questo modo:
+
+1. Apri il manuale e rimani sull'indice.
+
+2. Premi il tasto Alt di sinistra, quello accanto alla barra spaziatrice. Si aprirà il menu delle opzioni.
+
+3. Seleziona "Cerca nel manuale" e premi Invio.
+
+4. Scrivi una o più parole, ad esempio "cuffie" oppure "password posta", e premi Invio.
+
+WinGabriel mostrerà l'elenco dei capitoli che contengono tutte le parole inserite. Non importa se scrivi in maiuscolo o in minuscolo e non contano gli accenti: scrivendo "citta" verrà trovata anche la parola "città".
+
+Per ogni capitolo trovato sentirai il titolo e un breve estratto del testo in cui compaiono le parole cercate. In questo modo capirai subito se si tratta del capitolo giusto. Premi Invio per aprirlo.
+
+Se nessun capitolo contiene le parole cercate, WinGabriel te lo segnala e ti chiede se desideri provare con altri termini.
+
+Chiudere il manuale
+
+Per chiudere il manuale, premi Esc quando ti trovi sull'indice.
+
+[smart]
+Puoi anche lasciarlo aperto e dedicarti ad altro, proprio come faresti con un libro appoggiato sul tavolo. Lo ritroverai tra le applicazioni aperte premendo il tasto F10.
+[/smart]

@@ -1,0 +1,109 @@
+﻿Il riproduttore, per ascoltare musica, radio e video
+
+Il riproduttore è la componente di WinGabriel dedicata alla riproduzione audio e video. Ti permette di ascoltare i brani presenti sul computer, le stazioni radio, i canali televisivi, i video di YouTube e gli audiolibri. Indipendentemente da ciò che stai ascoltando, i comandi sono sempre gli stessi: basta impararli una volta sola per poterli utilizzare in ogni situazione.
+
+Quando si apre
+
+Il riproduttore non dispone di una voce dedicata all'interno del {menu}. Si avvia automaticamente non appena selezioni un contenuto multimediale: un brano musicale tramite il gestore di file, un allegato audio nella posta elettronica, una trasmissione radiofonica, un video di YouTube o un audiolibro.
+
+[smart]
+Il riproduttore si apre come un'applicazione indipendente ed è accessibile tramite il selettore attività premendo F10.
+
+Se stai già ascoltando qualcosa e avvii un nuovo contenuto, WinGabriel ti chiederà come procedere: potrai scegliere "Riproduci dopo", per accodarlo al termine di quello in corso, oppure "Interrompi la riproduzione in corso", per ascoltarlo immediatamente. Premendo il tasto Esc l'operazione viene annullata e la riproduzione prosegue senza variazioni.
+[/smart]
+
+[classica]
+Se stai già ascoltando un contenuto e ne avvii un altro, quest'ultimo sostituirà immediatamente il precedente.
+[/classica]
+
+I tasti del riproduttore
+
+Barra spaziatrice: attiva la pausa e, se premuta nuovamente, riprende la riproduzione. È il comando che userai più di frequente, ad esempio nel caso in cui riceva una telefonata.
+
+Freccia destra: avanza di alcuni secondi. Freccia sinistra: retrocede di alcuni secondi.
+
+Pagina giù: compie un salto in avanti di maggiore durata. Pagina su: compie un salto all'indietro di maggiore durata.
+
+La durata di questi salti può essere configurata nelle Impostazioni, alla voce "Applicazioni" e successivamente "Lettore multimediale".
+
+Freccia su: aumenta il volume. Freccia giù: riduce il volume.
+
+Home: torna all'inizio del brano. Fine: si sposta quasi alla fine del brano.
+
+Esc: chiude il riproduttore e interrompe la riproduzione.
+
+F1: elenca tutti i comandi disponibili.
+
+Le domande al riproduttore
+
+Tenendo premuto il tasto Control di sinistra e combinandolo con una lettera, puoi interrogare il riproduttore per ottenere informazioni sullo stato della riproduzione:
+
+Control T comunica il tempo trascorso dall'inizio dell'ascolto;
+
+Control R comunica il tempo rimanente alla conclusione;
+
+Control D comunica la durata complessiva del brano;
+
+Control V comunica il livello del volume.
+
+Durante l'ascolto di una sequenza di brani:
+
+Control F passa al brano successivo;
+
+Control B ritorna al brano precedente.
+
+Il menu delle opzioni
+
+Premendo il tasto Alt di sinistra si apre il menu delle opzioni del riproduttore. Questo menu raccoglie tutte le funzioni associate ai tasti rapidi e offre ulteriori opzioni: pausa e riproduzione, elemento precedente e successivo, elenco degli elementi, spostamenti avanti e indietro, vai all'inizio e alla fine, tempo trascorso, tempo rimanente, durata, volume, velocità, ripetizione, ordine casuale e preferiti.
+
+Il volume
+
+La voce "Volume" apre un sottomenu che consente di: alzare il volume, abbassarlo, ripristinare il livello iniziale o conoscere il valore attuale.
+
+Il volume del riproduttore è indipendente sia da quello generale di Windows sia da quello della voce di WinGabriel. In questo modo puoi mantenere la musica a un livello basso e la voce guida a un volume elevato, o viceversa.
+
+La velocità
+
+La voce "Velocità" include un sottomenu con le seguenti opzioni: riproduzione accelerata, riproduzione rallentata, ritorno alla velocità normale e lettura della velocità corrente.
+
+Un ascolto leggermente accelerato risulta particolarmente utile con gli audiolibri e le registrazioni di lezioni lunghe, poiché permette di risparmiare tempo senza compromettere la comprensione.
+
+Tanti brani uno dopo l'altro
+
+Quando ascolti una sequenza di elementi consecutivi, come tutti i brani contenuti in una cartella o i capitoli di un audiolibro, questi vengono organizzati in una scaletta.
+
+La voce "Elenco degli elementi" mostra la scaletta numerata e indica quale traccia è in riproduzione. Se selezioni un elemento differente e premi Invio, la riproduzione si sposterà istantaneamente su quel punto.
+
+All'inizio di ogni nuovo elemento, WinGabriel annuncia il titolo e la posizione corrispondente, ad esempio "brano 4 di 12". Se lo ritieni opportuno, puoi disattivare questo annuncio tramite il menu delle opzioni. È inoltre possibile impostare se la riproduzione debba attendere il completamento dell'annuncio o avviarsi immediatamente.
+
+Al termine di un elemento, il riproduttore passa automaticamente a quello successivo. Giunto alla fine della scaletta, la riproduzione si interromperà con un apposito avviso. Se un elemento risulta non riproducibile (ad esempio un video rimosso o una stazione radio non attiva), WinGabriel ti informerà dell'impedimento e passerà all'elemento successivo.
+
+Ripetere e mescolare
+
+Il menu delle opzioni mette a disposizione tre modalità di gestione dell'ordine di riproduzione:
+
+"Ripeti sempre questo elemento": riproduce lo stesso brano continuativamente;
+
+"Ricomincia l'elenco quando finisce": al termine della scaletta, la riproduzione riprende dal primo brano;
+
+"Riproduci in ordine casuale": mescola i brani come un mazzo di carte. L'ordine originale non viene comunque perduto e potrà essere ripristinato.
+
+È possibile attivare una sola di queste modalità alla volta.
+
+I capitoli
+
+Molti contenuti video di lunga durata e audiolibri sono suddivisi in capitoli. La voce "Capitoli" elenca le sezioni disponibili indicando il punto di inizio di ciascuna. Selezionando un capitolo e premendo Invio potrai saltare direttamente a quel punto.
+
+Il segnalibro
+
+Gli audiolibri e i file audio di lunga durata memorizzano l'ultimo punto d'ascolto raggiunto. Quando li riaprirai, il riproduttore riprenderà esattamente da dove si era interrotto, comportandosi come un libro dotato di segnalibro.
+
+[smart]
+La musica e la voce di WinGabriel
+
+Durante la riproduzione, la voce sintetica di WinGabriel continuerà a parlarti. Per evitare sovrapposizioni, la musica si abbasserà temporaneamente di volume quando la sintesi vocale è attiva, per poi tornare al livello precedente. Il grado di attenuazione della musica può essere configurato accedendo a Impostazioni, selezionando "Sistema", poi nuovamente "Sistema" e infine la voce "Volume della musica mentre parla la sintesi".
+[/smart]
+
+Le cuffie
+
+Se colleghi delle cuffie Bluetooth mentre stai ascoltando un contenuto, l'audio verrà reindirizzato automaticamente verso di esse, per poi tornare agli altoparlanti non appena le spegnerai. Il capitolo "Wi-Fi, Bluetooth e audio" descrive dettagliatamente questa procedura.

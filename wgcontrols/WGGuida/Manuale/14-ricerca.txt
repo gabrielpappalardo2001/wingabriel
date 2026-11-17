@@ -1,0 +1,77 @@
+﻿La ricerca
+
+A volte ricordi benissimo una cosa, ma non sai dove si trovi.
+
+[smart]
+WinGabriel offre due tipi di ricerca: la ricerca interna al programma, per individuare le funzioni, e la ricerca nel computer, per trovare i file.
+
+La ricerca in WinGabriel
+
+Per aprirla premi Windows + S, ossia il tasto Windows insieme alla lettera S. Puoi trovarla anche nel menu delle opzioni all'interno del menu delle applicazioni.
+
+Digita una o più parole relative a ciò che cerchi e premi Invio. La ricerca esamina quattro ambiti:
+
+le applicazioni aperte, per accedervi immediatamente;
+
+le voci dei menu. Ad esempio, digitando "rubrica" trovi la rubrica, mentre scrivendo "backup" accedi alle impostazioni di backup. Se selezioni il risultato, WinGabriel eseguirà automaticamente tutti i passaggi necessari nei menu per raggiungere la funzione;
+
+gli elementi presenti sul desktop, inclusi quelli contenuti nelle cartelle;
+
+i file e le cartelle aperti di recente.
+
+Nota importante: la ricerca memorizza le voci dei menu man mano che questi vengono aperti. Se non hai mai aperto una determinata sezione, le sue voci non saranno ancora indicizzate. Le opzioni selezionate più frequentemente vengono posizionate in cima all'elenco.
+
+La ricerca non fa distinzione tra lettere maiuscole e minuscole e ignora gli accenti: scrivendo "citta" troverai anche "città".
+
+In fondo ai risultati è sempre presente un'ulteriore opzione che estende la ricerca delle stesse parole ai file del computer. Se la ricerca non dovesse produrre risultati, sarà WinGabriel stesso a proporti di cercare tra i file.
+[/smart]
+
+[classica]
+Per ritrovare un file all'interno del computer, WinGabriel mette a disposizione la funzione di ricerca dei file.
+[/classica]
+
+La ricerca dei file nel computer
+
+La ricerca dei file può essere avviata in diversi modi:
+
+dal {menu}, accedi a "Gestione file" e seleziona "Cerca file nel computer";
+
+dalla gestione file, quando ti trovi all'interno di una cartella: premi Alt e seleziona la ricerca per cercare in quella specifica cartella e in tutte quelle in essa contenute;
+
+[smart]
+dalla ricerca in WinGabriel, utilizzando l'ultima voce dei risultati.
+[/smart]
+
+Cosa scrivere
+
+Digita il nome del file che stai cercando, oppure soltanto una parte di esso.
+
+Puoi inserire più parole, in qualsiasi ordine. Ad esempio, digitando "fattura luce" verrà trovato il file "Luce, fattura di marzo".
+
+Gli utenti più esperti possono utilizzare anche i caratteri jolly di Windows: l'asterisco sostituisce un qualsiasi gruppo di caratteri, mentre il punto interrogativo sostituisce un singolo carattere. Ad esempio, inserendo l'asterisco seguito da ".docx" (cioè *.docx), verranno trovati tutti i documenti di Word.
+
+Dove cercare
+
+Dopo aver inserito il testo, WinGabriel ti chiederà dove effettuare la ricerca:
+
+soltanto nel nome dei file: è l'opzione più rapida;
+
+anche nel contenuto dei documenti: è un procedimento più lento, ma permette di rintracciare un file anche se ricordi soltanto una frase al suo interno. Questa funzione è compatibile con i file di testo semplice, i documenti di Word e di LibreOffice, i file PDF e le pagine web. I file di dimensioni superiori a trenta megabyte vengono esclusi.
+
+La ricerca opera in sottofondo
+
+La ricerca si avvia ed esegue il suo compito in autonomia, in sottofondo, consentendoti di continuare a lavorare senza dover attendere il completamento dell'operazione.
+
+Un messaggio ti indicherà dove consultare i risultati: nel centro di controllo, alla voce "Ricerca file". Puoi esaminarli anche mentre la ricerca è ancora in corso, poiché i nuovi risultati si aggiungeranno automaticamente in fondo all'elenco.
+
+Al termine della ricerca, l'avviso indicherà il numero complessivo dei file trovati.
+
+I risultati
+
+Nel centro di controllo, la voce "Ricerca file" rimane disponibile fino alla chiusura di WinGabriel, anche dopo il completamento delle ricerche. Da lì potrai riaprire i risultati di qualsiasi ricerca effettuata, interrompere un'operazione ancora in corso o avviarne una nuova.
+
+I risultati si aprono all'interno della gestione file, proprio come se si trattasse di una cartella. Ciascun file trovato può essere utilizzato come di consueto: è possibile aprirlo, copiarlo, tagliarlo, eliminarlo o rinominarlo.
+
+Per ogni risultato verranno indicati il nome, l'eventuale natura di cartella, l'avvenuto riscontro all'interno del contenuto e la cartella di appartenenza.
+
+Tramite il menu delle opzioni, accessibile con il tasto Alt, puoi anche aprire la cartella che contiene il file trovato, con quest'ultimo già selezionato.

@@ -1,0 +1,65 @@
+﻿I dati riservati
+
+I dati riservati sono come un cassetto chiuso a chiave in cui custodisci le informazioni che non devono essere viste da altri: le password dei siti web, i numeri delle carte di pagamento e dei documenti. Soltanto tu possiedi la chiave.
+
+La password dei dati riservati
+
+I dati riservati sono protetti da una password personale e diversa da tutte le altre.
+
+La prima volta che accedi ai dati riservati, WinGabriel ti chiederà di impostare questa password, che ti verrà richiesta a ogni successivo accesso.
+
+Sceglila con attenzione e memorizzala bene. Si tratta di un'operazione fondamentale: senza questa chiave nessuno potrà leggere le tue informazioni, neppure WinGabriel. Se dovessi dimenticarla, i dati andranno perduti per sempre. Per maggiore sicurezza, potresti scriverla su un foglio di carta da conservare in un luogo sicuro a casa tua.
+
+Puoi modificare la password in qualsiasi momento accedendo al menu dei dati riservati e selezionando la voce "Cambia password". Per completare l'operazione è necessario conoscere la password attuale.
+
+Aprire i dati riservati
+
+[smart]
+Nel menu delle applicazioni seleziona "Organizer" e successivamente "Dati riservati". Se utilizzi il computer in modalità tablet, li trovi anche nella seconda pagina della schermata principale.
+[/smart]
+
+[classica]
+Nel menu iniziale seleziona "Organizer" e successivamente "Dati riservati".
+[/classica]
+
+Una volta inserita la password, si aprirà un menu contenente le seguenti opzioni: inserisci un nuovo dato, consulta i dati, cerca i dati, cambia la password.
+
+Cosa puoi conservare
+
+Selezionando "Inserisci nuovo dato", WinGabriel ti chiederà quale tipo di informazione desideri memorizzare. Puoi scegliere tra:
+
+una carta di pagamento, come il bancomat o la carta di credito, salvando numero, data di scadenza, codice di sicurezza e nome dell'intestatario;
+
+le credenziali di accesso a un sito internet, indicando l'indirizzo web, il nome utente e la password;
+
+un documento di riconoscimento, come la carta d'identità, registrando il numero e gli altri dati rilevanti;
+
+un'altra informazione di qualsiasi tipo, associandole un nome a tua scelta;
+
+una nota protetta, ossia un testo libero dotato di titolo, ideale per tutto ciò che non rientra nelle categorie precedenti, come ad esempio le risposte alle domande di sicurezza della banca.
+
+Compila i campi richiesti e premi Invio per salvare.
+
+Consultare i dati
+
+Selezionando "Consulta i dati", ascolterai l'elenco delle informazioni salvate, in ordine alfabetico per nome. Premendo Invio su una voce potrai ascoltarne tutti i dettagli, disposti uno per riga.
+
+Premendo il tasto Alt su un elemento puoi:
+
+modificarne i valori o il nome;
+
+copiare l'intero dato negli appunti, oppure trasferire soltanto i campi selezionati tenendo premuto il tasto Shift;
+
+eliminare il dato.
+
+La funzione di copia negli appunti è particolarmente utile: ad esempio, puoi copiare la password di un sito e incollar-la direttamente nella pagina web premendo la combinazione Control V, evitando così di digitarla manualmente.
+
+Cercare un dato
+
+Seleziona "Cerca i dati" e digita una parola compresa nel nome dell'elemento che stai cercando.
+
+Alcune precauzioni
+
+WinGabriel non inserisce mai autonomamente questi dati all'interno di siti o moduli e non li trasmette a nessuno. Le informazioni rimangono al sicuro nel cassetto protetto finché non decidi di utilizzarle personalmente.
+
+Quando consulti i dati riservati, la sintesi vocale li leggerà ad alta voce e per intero. Ti consigliamo di farlo quando sei da solo o di indossare le cuffie, per evitare che altri possano ascoltare.

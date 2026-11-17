@@ -1,0 +1,125 @@
+﻿Per finire: il promemoria dei tasti
+
+Sei arrivato alla fine del manuale. Grazie per averlo letto, per intero o in parte.
+
+Un ultimo consiglio: un programma non si impara solo leggendo, ma soprattutto usandolo. Prova, sbaglia, torna indietro con Esc, premi Alt per scoprire cosa puoi fare. Con WinGabriel sbagliare non comporta rischi: prima di compiere qualsiasi operazione rilevante, il programma chiede sempre conferma e nessun file viene eliminato senza la tua approvazione. Puoi quindi esplorare in piena sicurezza.
+
+E se hai un dubbio, questo manuale è sempre a tua disposizione: basta premere Control F1.
+
+Qui di seguito trovi l'elenco riassuntivo dei tasti principali. Non è necessario impararli a memoria: li memorizzerai spontaneamente con l'utilizzo.
+
+I tasti validi ovunque
+
+Frecce: scorrono le voci, gli elementi e le righe.
+
+Invio: conferma, apre, avvia.
+
+Esc: torna indietro, chiude, interrompe un'operazione in corso.
+
+Alt di sinistra: apre il menu delle opzioni, mostrando le azioni disponibili.
+
+Shift, premuto e rilasciato: attiva e disattiva la selezione multipla di elementi.
+
+Insert: ripete la posizione corrente.
+
+Control, premuto e rilasciato: interrompe la voce dello screen reader.
+
+F1: la guida della schermata attuale.
+
+Control F1: questo manuale.
+
+F6: il centro di controllo.
+
+[smart]
+I tasti della modalità smart
+
+Tasto Windows: apre e chiude il menu delle applicazioni.
+
+Control Alt D: passa alla scrivania o alla schermata principale.
+
+Control freccia destra e Control freccia sinistra: passano all'applicazione aperta successiva e precedente.
+
+F10: la schermata del multitasking, ossia l'elenco delle applicazioni in esecuzione.
+
+Control F10: richiama l'ultima applicazione utilizzata.
+
+Control F4: chiude l'applicazione attiva.
+
+Windows S: la ricerca.
+
+Windows A: il centro di controllo.
+
+Windows N: il centro notifiche.
+
+I tasti della scrivania
+
+F2: rinomina un elemento.
+
+Canc: elimina un elemento.
+
+Control C, Control X, Control V: copia, taglia, incolla.
+
+Tab: la barra di stato.
+[/smart]
+
+I tasti del riproduttore
+
+Barra spaziatrice: attiva la pausa e riprende la riproduzione.
+
+Freccia destra e freccia sinistra: spostano avanti e indietro di qualche secondo.
+
+Pagina giù e Pagina su: eseguono un salto lungo in avanti e indietro.
+
+Freccia su e freccia giù: regolano il volume.
+
+Control T: indica il tempo trascorso. Control R: indica il tempo rimanente. Control D: indica la durata totale.
+
+Control F e Control B: passano al brano successivo e precedente.
+
+I tasti del browser
+
+H: il titolo successivo. K: il collegamento successivo. B: il pulsante successivo. F: il campo di inserimento successivo. T: la tabella successiva. Combinati con Shift, consentono di muoversi all'indietro.
+
+F7: apre gli elenchi delle sezioni della pagina.
+
+Backspace: torna alla pagina precedente.
+
+Control L: posiziona il cursore sulla barra degli indirizzi per digitare il sito.
+
+Control F: cerca una parola nella pagina.
+
+Control T: apre una nuova scheda. Control W: chiude la scheda corrente.
+
+Control Shift L: attiva la lettura dell'articolo senza pubblicità.
+
+Control Shift U: traduce la pagina.
+
+I gesti con le dita
+
+Scorrimento con un dito verso destra o verso sinistra: passa all'elemento successivo o precedente.
+
+Doppio tocco: apre, attiva, conferma.
+
+Doppio tocco con due dita: equivale al tasto Esc e torna indietro.
+
+Scorrimento con due dita verso il basso: avvia la lettura continua.
+
+[smart]
+Scorrimento con due dita verso l'alto: torna alla schermata principale o alla scrivania.
+
+Triplo tocco con due dita: apre il multitasking.
+
+Scorrimento con tre dita verso l'alto: apre il pannello del centro di controllo quando usi il computer come un tablet. Scorrimento con tre dita verso il basso: apre il centro notifiche.
+
+Scorrimento con tre dita lateralmente: cambia pagina nella schermata principale.
+[/smart]
+
+[classica]
+Scorrimento con due dita verso l'alto: torna al menu iniziale.
+[/classica]
+
+Un'ultima parola
+
+WinGabriel nasce da un'idea semplice: chi non vede deve poter utilizzare il computer in autonomia, svolgendo qualsiasi operazione al pari degli altri e senza dover chiedere aiuto. Ci auguriamo che questo manuale ti sia stato utile per raggiungere questo obiettivo.
+
+Buon lavoro con WinGabriel.

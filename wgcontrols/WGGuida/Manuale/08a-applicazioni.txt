@@ -1,0 +1,70 @@
+﻿Il menu iniziale
+@classica
+
+Il menu iniziale è il cuore della modalità classica. È la prima schermata che compare all'apertura di WinGabriel e costituisce il punto di partenza per qualsiasi operazione.
+
+Cosa contiene
+
+Il menu iniziale raccoglie tutte le funzioni di WinGabriel, disposte nel seguente ordine:
+
+Editor, per la scrittura di lettere e documenti;
+
+Gestione file, per la gestione dei file e delle cartelle del computer;
+
+Media player, per la riproduzione della musica preferita, dei brani ascoltati di recente e per l'accesso al server Navidrome;
+
+Musica, che raccoglie gli strumenti musicali, per suonare pianoforti, chitarre, organi, archi, fiati, batterie e altri strumenti usando i tasti della tastiera e registrare ciò che suoni, il registratore vocale, per registrare la propria voce anche sopra una base musicale, e gli spartiti musicali, per ascoltare uno spartito in formato PDF, MusicXML o MIDI, tutte le parti insieme o una alla volta;
+
+Organizer, che comprende rubrica, agenda, note e informazioni riservate;
+
+Mail, per la gestione della posta elettronica;
+
+Telefono, per effettuare e ricevere chiamate utilizzando il cellulare collegato via Bluetooth;
+
+Web, che offre accesso a Wikipedia, quotidiani, biblioteche, previsioni del tempo, radio, televisione, YouTube e al browser;
+
+Traduttore, per la traduzione di testi e documenti;
+
+Salute, per la gestione dei farmaci e la ricerca delle farmacie;
+
+Altre funzioni, che includono calendario, data e ora, informazioni sul sistema e opzioni di risparmio energetico;
+
+Intelligenza artificiale;
+
+Centro di controllo, per monitorare la batteria, lo stato della connessione e le attività in corso;
+
+Aggiornamento, per mantenere WinGabriel aggiornato;
+
+Impostazioni, per personalizzare il programma secondo le proprie esigenze;
+
+Manuale, ovvero questo documento;
+
+Informazioni sul programma;
+
+Esci, per chiudere WinGabriel.
+
+Come si usa
+
+Il menu iniziale si naviga come un qualsiasi menu standard:
+
+i tasti freccia giù e freccia su consentono di scorrere le voci;
+
+il tasto Invio permette di accedere alla voce selezionata;
+
+digitando una lettera ci si posiziona direttamente sulla prima voce che inizia con quel carattere.
+
+Andare avanti e tornare indietro
+
+La modalità classica prevede un'interazione sequenziale, un passo alla volta. Dal menu iniziale si accede a una funzione, ad esempio Mail. Da lì si entra nella posta in arrivo e infine in un singolo messaggio. Ogni pressione del tasto Invio corrisponde a un passo in avanti.
+
+Per tornare indietro si utilizza il tasto Esc. Ciascuna pressione di Esc fa retrocedere di un livello: dal messaggio all'elenco dei messaggi, da questo al menu della posta e infine al menu iniziale. È impossibile perdersi: premendo ripetutamente Esc si torna sempre al menu iniziale.
+
+Se si preme Esc trovandosi già nel menu iniziale, WinGabriel apre il menu di uscita, come descritto nel capitolo dedicato ai primi passi.
+
+Il menu delle opzioni
+
+Anche il menu iniziale dispone di un proprio menu delle opzioni, richiamabile con il tasto Alt di sinistra, che contiene i collegamenti alla guida e al manuale.
+
+Un consiglio
+
+Se non ricordi dove si trovi una determinata funzione, puoi consultare questo manuale: premi Control F1, poi Alt, seleziona "Cerca nel manuale" e digita il termine che stai cercando.

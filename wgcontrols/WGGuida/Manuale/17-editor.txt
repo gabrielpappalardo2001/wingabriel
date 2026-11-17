@@ -1,0 +1,97 @@
+﻿L'editor, per scrivere testi e documenti
+
+L'editor è la parte di WinGabriel che serve a scrivere: una lettera, un promemoria, un racconto o un documento di lavoro. È pensato per chi scrive ascoltando: non richiede di guardare lo schermo, ma descrive la pagina attraverso la voce sintetica.
+
+Aprire l'editor
+
+Nel {menu} seleziona "Editor" e premi Invio. Si apre un piccolo menu con due opzioni:
+
+"Nuovo testo" apre un documento di testo semplice, senza formattazione. È l'opzione più rapida e intuitiva, ideale per appunti, promemoria e lettere informali;
+
+"Nuovo documento di Microsoft Word" apre un documento formattato che supporta titoli, grassetto, elenchi e tabelle. Va utilizzato per la stesura di documenti più complessi.
+
+L'editor si attiva anche all'apertura di un documento tramite la gestione file, un allegato di posta elettronica o un'altra sezione del programma. In questi casi, WinGabriel chiede se si desidera aprire il file in sola lettura, per la sola consultazione, oppure in modifica, per apportare variazioni.
+
+L'editor è in grado di leggere e scrivere documenti in formato Word e LibreOffice, file di testo semplice e altri formati, oltre ad aprire i file PDF convertendoli in testo.
+
+Più testi aperti contemporaneamente
+
+L'editor consente di mantenere aperti più testi nello stesso momento. Per passare da un documento all'altro, premi Control Tab.
+
+Scrivere e spostarsi nel testo
+
+Digita i contenuti utilizzando la tastiera. Durante la scrittura, la voce pronuncia i singoli caratteri o le parole in base alle preferenze impostate.
+
+Per spostarsi all'interno del testo:
+
+la freccia giù e la freccia su consentono di muoversi di riga in riga, leggendone il contenuto;
+
+la freccia destra e la freccia sinistra spostano il cursore di un carattere alla volta, pronunciandolo;
+
+il tasto Control combinato con la freccia destra o sinistra sposta il cursore di una parola;
+
+Home e Fine portano rispettivamente all'inizio e alla fine della riga;
+
+Control Home e Control Fine spostano il cursore all'inizio e alla fine dell'intero testo.
+
+Per selezionare porzioni di testo, tieni premuto il tasto Shift muovendoti con le frecce. È possibile copiare la selezione con Control C, tagliarla con Control X e incollarla altrove con Control V. La combinazione Control A seleziona l'intero testo, mentre Control Z annulla l'ultima modifica effettuata.
+
+ Nei documenti formattati, durante gli spostamenti, la voce segnala eventuali variazioni di formattazione, come un titolo, il grassetto o una voce di elenco, permettendo di comprendere la struttura del documento senza richieste esplicite. Se questi annunci risultano superflui, possono essere disattivati nelle Impostazioni, accedendo alle sezioni "Lettura" e successivamente "Word".
+
+Il menu delle opzioni
+
+Il tasto Alt sinistro consente di accedere al menu delle opzioni, che raccoglie tutte le funzioni disponibili. Le voci principali sono descritte di seguito.
+
+Raggiungere un punto specifico
+
+La funzione "Vai a" consente di posizionarsi rapidamente in un punto preciso del documento, come una determinata riga o pagina, il titolo successivo, oppure l'elenco dei collegamenti o delle tabelle. La navigazione da un titolo all'altro rappresenta il metodo più efficiente per scorrere documenti lunghi, in modo analogo alla consultazione dei capitoli di un libro.
+
+Il carattere
+
+La sezione "Carattere" raggruppa le opzioni per grassetto, corsivo, sottolineato, dimensione, tipo e colore del carattere. Le modifiche si applicano al testo selezionato o, in mancanza di selezione, alla digitazione successiva.
+
+Il paragrafo
+
+La sezione "Paragrafo" gestisce l'allineamento del testo (a sinistra, al centro, a destra o giustificato) e i rientri. Ogni impostazione viene confermata vocalmente.
+
+Gli elenchi
+
+La voce "Elenchi e rientri" attiva gli elenchi puntati e numerati. Quando la funzione è attiva, la pressione del tasto Invio genera automaticamente una nuova voce dell'elenco. Per concludere l'elenco, è sufficiente accedere nuovamente alla voce di menu e disattivarlo.
+
+Le tabelle
+
+La voce "Tabelle" permette di inserire una tabella specificando il numero di righe e colonne desiderato. All'interno della tabella, i tasti freccia consentono di spostarsi tra le celle, mentre la voce indica la riga e la colonna correnti. È possibile aggiungere o rimuovere righe e colonne, unire più celle e definire la riga di intestazione.
+
+Collegamenti, note e immagini
+
+La voce "Collegamenti e note" consente di inserire collegamenti ipertestuali, note a piè di pagina e note di fine documento.
+
+Le immagini possono essere integrate associando una breve descrizione testuale, utile a chiarire il contenuto visivo per gli utenti che utilizzano la sintesi vocale.
+
+Il controllo ortografico
+
+Il correttore ortografico individua gli errori di scrittura suggerendo le correzioni opportune e riconosce inoltre alcuni errori grammaticali comuni, come la confusione tra "a" e "ha", solitamente non rilevati dai controlli standard.
+
+La dettatura
+
+Se preferisci l'immissione vocale alla digitazione da tastiera, il menu delle opzioni include la funzione di dettatura, che trascrive automaticamente quanto pronunciato. Il motore di riconoscimento vocale può essere configurato nelle Impostazioni, alla voce "Mouse, touch e digitazione vocale" e successivamente "Digitazione vocale", come approfondito nel capitolo dedicato all'intelligenza artificiale.
+
+Salvataggio
+
+Al termine del lavoro, è possibile salvare il documento tramite il menu delle opzioni, indicando la cartella di destinazione e il nome del file.
+
+La funzione "Esporta" permette di convertire e salvare il testo in diversi formati: PDF, ideale per la stampa e la condivisione; HTML, RTF, testo semplice, Markdown, ODT (LibreOffice) ed EPUB, formato dedicato ai libri elettronici.
+
+La voce "Informazioni sul documento" fornisce statistiche relative al numero di parole, caratteri e pagine redatte.
+
+Chiusura senza perdita di dati
+
+La pressione del tasto Esc chiude il documento. In presenza di modifiche non salvate, WinGabriel chiede l'azione desiderata: salvare, ignorare le modifiche oppure annullare l'operazione per tornare al testo.
+
+[smart]
+Lo stesso comportamento si verifica chiudendo l'editor con la combinazione Control F4 o uscendo da WinGabriel, scongiurando la perdita accidentale di qualsiasi lavoro.
+[/smart]
+
+[classica]
+Lo stesso comportamento si verifica uscendo da WinGabriel, scongiurando la perdita accidentale di qualsiasi lavoro.
+[/classica]

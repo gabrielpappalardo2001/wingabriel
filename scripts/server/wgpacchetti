@@ -1,0 +1,601 @@
+#!/bin/bash
+LOG=/var/log/wgpacchetti.log
+STATO_DIR=/var/lib/wgpacchetti
+STATO="$STATO_DIR/stato"
+VERIFICA="$STATO_DIR/ultima-verifica-completa"
+UNZIP_MANCANTE="$STATO_DIR/unzip-mancante"
+SITO=/var/www/html/wingabriel.net
+DESTINAZIONE="$SITO/download"
+PACCHETTI_NUGET=("SQLitePCLRaw.lib.e_sqlite3|2.1.11" "Microsoft.Web.WebView2|1.0.3856.49")
+NUGET_CACHE="$STATO_DIR/nuget"
+NUGET_INDIRIZZO="https://api.nuget.org/v3-flatcontainer"
+MANIFESTO="$STATO_DIR/runtimes-manifesto"
+declare -A CARTELLA
+LETTORE="$SITO/wglettore"
+RILASCI="$SITO/rilasci"
+
+# Gli zip nascono dall'ultimo rilascio stabile (cartella che non cambia mai a metà, senza i file del server). Finché non c'è un
+# rilascio stabile si usa la cartella del vecchio sistema, come prima.
+cartella_stabile() {
+  local P="$RILASCI/$1/stable.txt"
+  local V
+  [ -f "$P" ] || return 1
+  V=$(head -n 1 "$P" | sed -n 's/.*"versione":"\([^"]*\)".*/\1/p')
+  [ -n "$V" ] && [ -d "$RILASCI/$1/v/$V/f" ] || return 1
+  echo "$RILASCI/$1/v/$V/f"
+}
+STATO_LETTORE="$STATO_DIR/stato-lettore"
+
+errore() {
+  echo "$(date '+%Y-%m-%d %H:%M:%S') ERRORE: $1" >> "$LOG"
+}
+
+segnala_una_volta() {
+  local SEGNO="$STATO_DIR/segnalato-$1"
+  if [ ! -f "$SEGNO" ]; then
+    errore "$2"
+    touch "$SEGNO" 2>>"$LOG"
+  fi
+}
+
+azzera_segnalazione() {
+  rm -f "$STATO_DIR/segnalato-$1" 2>>"$LOG"
+}
+
+trova_cartella() {
+  find "$SORGENTE" -mindepth 1 -maxdepth 1 -type d -iname "$1" -printf '%f\n' -quit 2>>"$LOG"
+}
+
+esiste_nel_sito() {
+  find "$SORGENTE" -maxdepth 6 -type f -ipath "$SORGENTE/$1" -print -quit 2>>"$LOG"
+}
+
+prepara_pacchetto() {
+  local NOME="$1"
+  local VERSIONE="$2"
+  local ID
+  ID=$(echo "$NOME" | tr '[:upper:]' '[:lower:]')
+  local CACHE="$NUGET_CACHE/$ID-$VERSIONE"
+  if [ -f "$CACHE/.completo" ] && [ -f "$CACHE/.impronte" ]; then
+    return 0
+  fi
+  if [ "$UNZIP_DISPONIBILE" -eq 0 ]; then
+    segnala_una_volta "nuget-$ID" "unzip non installato, impossibile estrarre il pacchetto $NOME $VERSIONE"
+    return 1
+  fi
+  if ! mkdir -p "$NUGET_CACHE" 2>>"$LOG"; then
+    errore "impossibile creare $NUGET_CACHE"
+    return 1
+  fi
+  local LAVORO
+  if ! LAVORO=$(mktemp -d "$NUGET_CACHE/lavoro.XXXXXX" 2>>"$LOG"); then
+    errore "impossibile creare la cartella temporanea per $NOME"
+    return 1
+  fi
+  if ! curl -fsSL --retry 2 --max-time 300 -o "$LAVORO/pacchetto.nupkg" "$NUGET_INDIRIZZO/$ID/$VERSIONE/$ID.$VERSIONE.nupkg" 2>/dev/null; then
+    segnala_una_volta "nuget-$ID" "scaricamento di $NOME $VERSIONE da NuGet non riuscito, nuovo tentativo al prossimo giro"
+    rm -rf "$LAVORO"
+    return 1
+  fi
+  if ! unzip -qq -o "$LAVORO/pacchetto.nupkg" 'runtimes/win-x86/*' 'runtimes/win-x64/*' -d "$LAVORO/estratto" >/dev/null 2>&1; then
+    segnala_una_volta "nuget-$ID" "il pacchetto $NOME $VERSIONE non contiene runtimes/win-x86 e runtimes/win-x64"
+    rm -rf "$LAVORO"
+    return 1
+  fi
+  local A
+  for A in x86 x64; do
+    if [ -z "$(find "$LAVORO/estratto/runtimes/win-$A" -type f -print -quit 2>/dev/null)" ]; then
+      segnala_una_volta "nuget-$ID" "il pacchetto $NOME $VERSIONE non contiene file in runtimes/win-$A"
+      rm -rf "$LAVORO"
+      return 1
+    fi
+  done
+  local DLL
+  while IFS= read -r DLL; do
+    if [ "$(head -c 2 "$DLL")" != "MZ" ]; then
+      segnala_una_volta "nuget-$ID" "file non valido nel pacchetto $NOME $VERSIONE: ${DLL#$LAVORO/estratto/}"
+      rm -rf "$LAVORO"
+      return 1
+    fi
+  done < <(find "$LAVORO/estratto/runtimes" -type f -iname '*.dll')
+  if ! (cd "$LAVORO/estratto/runtimes" && find . -type f -printf '%P\n' | while IFS= read -r F; do echo "$F|$(sha256sum "$F" | cut -d' ' -f1)"; done) > "$LAVORO/estratto/.impronte" 2>>"$LOG"; then
+    errore "impossibile calcolare le impronte dei file del pacchetto $NOME $VERSIONE"
+    rm -rf "$LAVORO"
+    return 1
+  fi
+  rm -rf "$CACHE"
+  if ! mv "$LAVORO/estratto" "$CACHE" 2>>"$LOG" || ! touch "$CACHE/.completo" 2>>"$LOG"; then
+    errore "impossibile conservare il pacchetto $NOME $VERSIONE in $CACHE"
+    rm -rf "$LAVORO" "$CACHE"
+    return 1
+  fi
+  rm -rf "$LAVORO"
+  azzera_segnalazione "nuget-$ID"
+  return 0
+}
+
+dati_file() {
+  stat -c '%s|%Y' "$1" 2>/dev/null
+}
+
+copia_sostituendo() {
+  local ORIGINE="$1"
+  local DEST="$2"
+  mkdir -p "$(dirname "$DEST")" 2>>"$LOG" || return 1
+  cp -f "$ORIGINE" "$DEST.wgtmp" 2>>"$LOG" || { rm -f "$DEST.wgtmp"; return 1; }
+  chmod 644 "$DEST.wgtmp" 2>>"$LOG"
+  mv -f "$DEST.wgtmp" "$DEST" 2>>"$LOG" || { rm -f "$DEST.wgtmp"; return 1; }
+  return 0
+}
+
+assicura_runtime() {
+  declare -A M_SHA
+  declare -A M_DATI
+  declare -A M_ID
+  declare -A ATTUALI
+  local REL
+  local SHA
+  local DIM
+  local ORA
+  local PID
+  if [ -f "$MANIFESTO" ]; then
+    while IFS='|' read -r REL SHA DIM ORA PID; do
+      if [ -n "$REL" ] && [ -n "$SHA" ]; then
+        M_SHA[$REL]="$SHA"
+        M_DATI[$REL]="$DIM|$ORA"
+        M_ID[$REL]="$PID"
+      fi
+    done < "$MANIFESTO"
+  fi
+  local VOCE
+  local NOME
+  local VERSIONE
+  local ID
+  local CACHE
+  local RADICE
+  local RELPAC
+  local SHA_CACHE
+  local TROVATO
+  local DEST
+  local CAMBIATI=0
+  local VALIDI=" "
+  for VOCE in "${PACCHETTI_NUGET[@]}"; do
+    NOME="${VOCE%%|*}"
+    VERSIONE="${VOCE##*|}"
+    ID=$(echo "$NOME" | tr '[:upper:]' '[:lower:]')
+    CACHE="$NUGET_CACHE/$ID-$VERSIONE"
+    VALIDI="$VALIDI$ID-$VERSIONE "
+    if ! prepara_pacchetto "$NOME" "$VERSIONE"; then
+      for REL in "${!M_ID[@]}"; do
+        if [ "${M_ID[$REL]}" = "$ID" ]; then
+          ATTUALI[$REL]=1
+        fi
+      done
+      continue
+    fi
+    RADICE=$(trova_cartella runtimes)
+    if [ -z "$RADICE" ]; then
+      RADICE=runtimes
+    fi
+    while IFS='|' read -r RELPAC SHA_CACHE; do
+      [ -z "$RELPAC" ] && continue
+      TROVATO=$(esiste_nel_sito "runtimes/$RELPAC")
+      if [ -z "$TROVATO" ]; then
+        DEST="$SORGENTE/$RADICE/$RELPAC"
+        REL="${DEST#$SORGENTE/}"
+        if copia_sostituendo "$CACHE/runtimes/$RELPAC" "$DEST"; then
+          M_SHA[$REL]="$SHA_CACHE"
+          M_DATI[$REL]=$(dati_file "$DEST")
+          M_ID[$REL]="$ID"
+          ATTUALI[$REL]=1
+          CAMBIATI=1
+          azzera_segnalazione "copia-$ID"
+        else
+          segnala_una_volta "copia-$ID" "copia di runtimes/$RELPAC dal pacchetto $NOME $VERSIONE non riuscita"
+        fi
+        continue
+      fi
+      REL="${TROVATO#$SORGENTE/}"
+      if [ -z "${M_SHA[$REL]}" ]; then
+        if [ "$(sha256sum "$TROVATO" 2>/dev/null | cut -d' ' -f1)" = "$SHA_CACHE" ]; then
+          M_SHA[$REL]="$SHA_CACHE"
+          M_DATI[$REL]=$(dati_file "$TROVATO")
+          M_ID[$REL]="$ID"
+          ATTUALI[$REL]=1
+        fi
+        continue
+      fi
+      if [ "$(dati_file "$TROVATO")" != "${M_DATI[$REL]}" ] && [ "$(sha256sum "$TROVATO" 2>/dev/null | cut -d' ' -f1)" != "${M_SHA[$REL]}" ]; then
+        unset "M_SHA[$REL]" "M_DATI[$REL]" "M_ID[$REL]"
+        continue
+      fi
+      ATTUALI[$REL]=1
+      if [ "${M_SHA[$REL]}" != "$SHA_CACHE" ]; then
+        if copia_sostituendo "$CACHE/runtimes/$RELPAC" "$TROVATO"; then
+          M_SHA[$REL]="$SHA_CACHE"
+          M_DATI[$REL]=$(dati_file "$TROVATO")
+          M_ID[$REL]="$ID"
+          CAMBIATI=1
+          azzera_segnalazione "copia-$ID"
+        else
+          segnala_una_volta "copia-$ID" "aggiornamento di $REL dal pacchetto $NOME $VERSIONE non riuscito"
+        fi
+      else
+        M_DATI[$REL]=$(dati_file "$TROVATO")
+      fi
+    done < "$CACHE/.impronte"
+  done
+  for REL in "${!M_SHA[@]}"; do
+    if [ -n "${ATTUALI[$REL]}" ]; then
+      continue
+    fi
+    if [ -f "$SORGENTE/$REL" ] && { [ "$(dati_file "$SORGENTE/$REL")" = "${M_DATI[$REL]}" ] || [ "$(sha256sum "$SORGENTE/$REL" 2>/dev/null | cut -d' ' -f1)" = "${M_SHA[$REL]}" ]; }; then
+      if rm -f "$SORGENTE/$REL" 2>>"$LOG"; then
+        CAMBIATI=1
+      else
+        errore "impossibile togliere il file non piu' presente nei pacchetti: $REL"
+        continue
+      fi
+    fi
+    unset "M_SHA[$REL]" "M_DATI[$REL]" "M_ID[$REL]"
+  done
+  if [ "$CAMBIATI" -eq 1 ] && [ -n "$RADICE" ] && [ -d "$SORGENTE/$RADICE" ]; then
+    chown -R "$PROPRIETARIO" "$SORGENTE/$RADICE" 2>>"$LOG" || errore "impossibile assegnare $SORGENTE/$RADICE a $PROPRIETARIO"
+  fi
+  if ! {
+    for REL in "${!M_SHA[@]}"; do
+      echo "$REL|${M_SHA[$REL]}|${M_DATI[$REL]}|${M_ID[$REL]}"
+    done
+  } > "$MANIFESTO.tmp" 2>>"$LOG" || ! mv -f "$MANIFESTO.tmp" "$MANIFESTO" 2>>"$LOG"; then
+    errore "impossibile salvare $MANIFESTO"
+    rm -f "$MANIFESTO.tmp"
+  fi
+  local VECCHIA
+  for VECCHIA in "$NUGET_CACHE"/*/; do
+    [ -d "$VECCHIA" ] || continue
+    VECCHIA=$(basename "$VECCHIA")
+    case "$VALIDI" in
+      *" $VECCHIA "*) ;;
+      *) rm -rf "${NUGET_CACHE:?}/$VECCHIA" 2>>"$LOG" ;;
+    esac
+  done
+}
+
+impronta() {
+  {
+    find "$SORGENTE" -type f ! -iname '*.aspx' ! -iname '*.php' ! -iname '*.htaccess' ! -iname '*web.config' -printf '%P|%s|%T@\n' 2>>"$LOG"
+    find "$SORGENTE" -mindepth 1 -maxdepth 1 -type d -printf '%f/\n' 2>>"$LOG"
+  } | LC_ALL=C sort | sha256sum | cut -d' ' -f1
+}
+
+verifica_zip() {
+  local FILE="$1"
+  local COMPLETA="$2"
+  if [ ! -s "$FILE" ]; then
+    return 1
+  fi
+  if [ "$UNZIP_DISPONIBILE" -eq 0 ]; then
+    return 0
+  fi
+  if [ "$COMPLETA" -eq 1 ]; then
+    unzip -tqq "$FILE" >/dev/null 2>&1
+  else
+    unzip -qql "$FILE" >/dev/null 2>&1
+  fi
+}
+
+spazio_sufficiente() {
+  local NECESSARIO
+  local DISPONIBILE
+  NECESSARIO=$(du -sk "$SORGENTE" 2>>"$LOG" | cut -f1)
+  DISPONIBILE=$(df -Pk "$DESTINAZIONE" 2>>"$LOG" | awk 'NR==2 {print $4}')
+  if [ -z "$NECESSARIO" ] || [ -z "$DISPONIBILE" ]; then
+    errore "impossibile calcolare lo spazio libero in $DESTINAZIONE"
+    return 0
+  fi
+  NECESSARIO=$((NECESSARIO * ${#DA_RIGENERARE[@]} + 51200))
+  if [ "$DISPONIBILE" -lt "$NECESSARIO" ]; then
+    errore "spazio insufficiente in $DESTINAZIONE: liberi $DISPONIBILE KB, ne servono circa $NECESSARIO"
+    return 1
+  fi
+  return 0
+}
+
+crea_pacchetto() {
+  local ARCH="$1"
+  local NOME="${CARTELLA[$ARCH]}"
+  local ALTRA=x86
+  if [ "$ARCH" = "x86" ]; then
+    ALTRA=x64
+  fi
+  local NOME_ALTRA="${CARTELLA[$ALTRA]:-$ALTRA}"
+  local TEMPORANEO="$DESTINAZIONE/.wingabriel-$ARCH.zip.tmp"
+  local FINALE="$DESTINAZIONE/wingabriel-$ARCH.zip"
+  rm -f "$TEMPORANEO" 2>>"$LOG"
+  (cd "$SORGENTE" && zip -r -q -X -6 "$TEMPORANEO" . -x "$NOME_ALTRA/*" "./$NOME_ALTRA/*" "*.aspx" "*.php" "*.htaccess" "*web.config") 2>>"$LOG"
+  local ESITO=$?
+  if [ "$ESITO" -ne 0 ] && [ "$ESITO" -ne 12 ]; then
+    errore "creazione dello zip $ARCH non riuscita (codice $ESITO)"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  local LIBMPV
+  LIBMPV=$(find "$SORGENTE/$NOME" -type f -iname 'libmpv-2.dll' -print -quit 2>>"$LOG")
+  if [ -n "$LIBMPV" ]; then
+    if ! zip -q -j -X -6 "$TEMPORANEO" "$LIBMPV" 2>>"$LOG"; then
+      errore "aggiunta di $LIBMPV nella radice del pacchetto $ARCH non riuscita"
+    fi
+  else
+    errore "libmpv-2.dll non trovata in $SORGENTE/$NOME, pacchetto $ARCH creato senza"
+  fi
+  if ! verifica_zip "$TEMPORANEO" 1; then
+    errore "lo zip $ARCH appena creato non supera la verifica, il vecchio resta al suo posto"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  chown "$PROPRIETARIO" "$TEMPORANEO" 2>>"$LOG" || errore "impossibile assegnare lo zip $ARCH a $PROPRIETARIO"
+  chmod 644 "$TEMPORANEO" 2>>"$LOG" || errore "impossibile impostare i permessi dello zip $ARCH"
+  if ! mv -f "$TEMPORANEO" "$FINALE" 2>>"$LOG"; then
+    errore "sostituzione di wingabriel-$ARCH.zip non riuscita"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  return 0
+}
+
+impronta_lettore() {
+  find "$LETTORE" -type f -printf '%P|%s|%T@
+' 2>>"$LOG" | LC_ALL=C sort | sha256sum | cut -d' ' -f1
+}
+
+zip_lettore_valido() {
+  local FILE="$1"
+  if [ ! -s "$FILE" ]; then
+    return 1
+  fi
+  if command -v unzip >/dev/null 2>&1; then
+    unzip -tqq "$FILE" >/dev/null 2>&1
+    return $?
+  fi
+  return 0
+}
+
+crea_pacchetto_lettore() {
+  local FINALE="$DESTINAZIONE/wglettore.zip"
+  local TEMPORANEO="$DESTINAZIONE/.wglettore.zip.tmp"
+  rm -f "$TEMPORANEO" 2>>"$LOG"
+  (cd "$LETTORE" && zip -r -q -X -6 "$TEMPORANEO" .) 2>>"$LOG"
+  local ESITO=$?
+  if [ "$ESITO" -ne 0 ] && [ "$ESITO" -ne 12 ]; then
+    errore "creazione dello zip del lettore non riuscita (codice $ESITO)"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  if ! zip_lettore_valido "$TEMPORANEO"; then
+    errore "lo zip del lettore appena creato non supera la verifica, il vecchio resta al suo posto"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  chown "$PROPRIETARIO" "$TEMPORANEO" 2>>"$LOG" || errore "impossibile assegnare lo zip del lettore a $PROPRIETARIO"
+  chmod 644 "$TEMPORANEO" 2>>"$LOG" || errore "impossibile impostare i permessi dello zip del lettore"
+  if ! mv -f "$TEMPORANEO" "$FINALE" 2>>"$LOG"; then
+    errore "sostituzione di wglettore.zip non riuscita"
+    rm -f "$TEMPORANEO"
+    return 1
+  fi
+  return 0
+}
+
+# Il lettore sperimentale (cartella wglettore accanto a wingabriel) diventa download/wglettore.zip. Ha uno stato suo,
+# separato da quello dei pacchetti di WinGabriel, e non dipende dalle cartelle x86 e x64.
+gestisci_lettore() {
+  local RIL_L
+  if RIL_L=$(cartella_stabile wglettore); then
+    LETTORE="$RIL_L"
+  fi
+  if [ ! -d "$LETTORE" ] || [ -z "$(find "$LETTORE" -type f -print -quit 2>/dev/null)" ]; then
+    return 0
+  fi
+  local IMPRONTA_L
+  local VECCHIA_L=""
+  IMPRONTA_L=$(impronta_lettore)
+  if [ -z "$IMPRONTA_L" ]; then
+    errore "impossibile calcolare l'impronta dei file del lettore"
+    return 0
+  fi
+  if [ "$1" = "--inizializza" ]; then
+    echo "$IMPRONTA_L" > "$STATO_LETTORE" 2>>"$LOG" || errore "impossibile salvare lo stato in $STATO_LETTORE"
+    return 0
+  fi
+  if [ -f "$STATO_LETTORE" ]; then
+    VECCHIA_L=$(cat "$STATO_LETTORE" 2>>"$LOG")
+  fi
+  local FILE="$DESTINAZIONE/wglettore.zip"
+  local RIFARE=0
+  if [ "$FORZA" -eq 1 ] || [ "$IMPRONTA_L" != "$VECCHIA_L" ] || [ ! -f "$FILE" ]; then
+    RIFARE=1
+  elif ! zip_lettore_valido "$FILE"; then
+    errore "wglettore.zip danneggiato, viene ricreato"
+    RIFARE=1
+  fi
+  if [ "$RIFARE" -eq 0 ]; then
+    return 0
+  fi
+  if [ "$FORZA" -eq 0 ] && [ "$IMPRONTA_L" != "$VECCHIA_L" ]; then
+    sleep 10
+    if [ "$(impronta_lettore)" != "$IMPRONTA_L" ]; then
+      return 0
+    fi
+  fi
+  local PROPRIETARIO
+  PROPRIETARIO=$(stat -c '%U:%G' "$SITO" 2>>"$LOG")
+  if [ -z "$PROPRIETARIO" ]; then
+    errore "impossibile leggere il proprietario di $SITO"
+    return 0
+  fi
+  if [ ! -d "$DESTINAZIONE" ]; then
+    mkdir -p "$DESTINAZIONE" 2>>"$LOG" || { errore "impossibile creare $DESTINAZIONE"; return 0; }
+    chown "$PROPRIETARIO" "$DESTINAZIONE" 2>>"$LOG"
+  fi
+  if crea_pacchetto_lettore; then
+    echo "$IMPRONTA_L" > "$STATO_LETTORE" 2>>"$LOG" || errore "impossibile salvare lo stato in $STATO_LETTORE"
+  fi
+  return 0
+}
+
+FORZA=0
+if [ "$1" = "--forza" ]; then
+  FORZA=1
+fi
+
+exec 9>/run/wgpacchetti.lock || { errore "impossibile creare il blocco /run/wgpacchetti.lock"; exit 0; }
+if [ "$FORZA" -eq 1 ]; then
+  if ! flock -w 900 9; then
+    errore "rigenerazione forzata annullata: un'altra esecuzione non e' terminata entro 15 minuti"
+    exit 0
+  fi
+else
+  flock -n 9 || exit 0
+fi
+
+if ! mkdir -p "$STATO_DIR" 2>>"$LOG"; then
+  errore "impossibile creare $STATO_DIR"
+  exit 0
+fi
+
+gestisci_lettore "$1"
+
+if [ -d "$SITO/wingabriel" ]; then
+  SORGENTE="$SITO/wingabriel"
+elif [ -d /var/www/wingabriel.net/wingabriel ]; then
+  SORGENTE=/var/www/wingabriel.net/wingabriel
+else
+  segnala_una_volta sorgente "cartella dei file di WinGabriel non trovata in $SITO/wingabriel"
+  exit 0
+fi
+azzera_segnalazione sorgente
+if RIL_W=$(cartella_stabile wingabriel); then
+  SORGENTE="$RIL_W"
+fi
+
+ARCHITETTURE=()
+DESCRIZIONE=""
+for ARCH in x86 x64; do
+  NOME=$(trova_cartella "$ARCH")
+  if [ -n "$NOME" ]; then
+    CARTELLA[$ARCH]="$NOME"
+    ARCHITETTURE+=("$ARCH")
+    DESCRIZIONE="$DESCRIZIONE $ARCH=$NOME"
+    azzera_segnalazione "$ARCH"
+  else
+    segnala_una_volta "$ARCH" "manca la cartella $ARCH in $SORGENTE, il pacchetto $ARCH non viene generato"
+  fi
+done
+
+if [ "${#ARCHITETTURE[@]}" -eq 0 ]; then
+  exit 0
+fi
+
+UNZIP_DISPONIBILE=1
+if ! command -v unzip >/dev/null 2>&1; then
+  UNZIP_DISPONIBILE=0
+  if [ ! -f "$UNZIP_MANCANTE" ]; then
+    errore "unzip non installato, verifica degli zip disattivata"
+    touch "$UNZIP_MANCANTE" 2>>"$LOG"
+  fi
+else
+  rm -f "$UNZIP_MANCANTE"
+fi
+
+PROPRIETARIO=$(stat -c '%U:%G' "$SITO" 2>>"$LOG")
+if [ -z "$PROPRIETARIO" ]; then
+  errore "impossibile leggere il proprietario di $SITO"
+  exit 0
+fi
+
+assicura_runtime
+
+IMPRONTA=$(impronta)
+if [ -z "$IMPRONTA" ]; then
+  errore "impossibile calcolare l'impronta dei file"
+  exit 0
+fi
+IMPRONTA="$IMPRONTA|$DESCRIZIONE"
+
+if [ "$1" = "--inizializza" ]; then
+  echo "$IMPRONTA" > "$STATO" 2>>"$LOG" || errore "impossibile salvare lo stato in $STATO"
+  touch "$VERIFICA" 2>>"$LOG"
+  exit 0
+fi
+
+VECCHIA=""
+if [ -f "$STATO" ]; then
+  VECCHIA=$(cat "$STATO" 2>>"$LOG")
+fi
+
+CAMBIATO=0
+if [ "$FORZA" -eq 1 ] || [ "$IMPRONTA" != "$VECCHIA" ]; then
+  CAMBIATO=1
+fi
+
+COMPLETA=0
+if [ ! -f "$VERIFICA" ] || [ -n "$(find "$VERIFICA" -mmin +60 2>/dev/null)" ]; then
+  COMPLETA=1
+fi
+
+DA_RIGENERARE=()
+if [ "$CAMBIATO" -eq 1 ]; then
+  DA_RIGENERARE=("${ARCHITETTURE[@]}")
+else
+  for ARCH in "${ARCHITETTURE[@]}"; do
+    FILE="$DESTINAZIONE/wingabriel-$ARCH.zip"
+    if [ ! -f "$FILE" ]; then
+      DA_RIGENERARE+=("$ARCH")
+    elif ! verifica_zip "$FILE" "$COMPLETA"; then
+      errore "wingabriel-$ARCH.zip danneggiato, viene ricreato"
+      DA_RIGENERARE+=("$ARCH")
+    fi
+  done
+  if [ "$COMPLETA" -eq 1 ] && [ "$UNZIP_DISPONIBILE" -eq 1 ]; then
+    touch "$VERIFICA" 2>>"$LOG"
+  fi
+fi
+
+if [ "${#DA_RIGENERARE[@]}" -eq 0 ]; then
+  exit 0
+fi
+
+if [ "$CAMBIATO" -eq 1 ] && [ "$FORZA" -eq 0 ]; then
+  sleep 10
+  if [ "$(impronta)|$DESCRIZIONE" != "$IMPRONTA" ]; then
+    exit 0
+  fi
+fi
+
+if [ ! -d "$DESTINAZIONE" ]; then
+  if ! mkdir -p "$DESTINAZIONE" 2>>"$LOG"; then
+    errore "impossibile creare $DESTINAZIONE"
+    exit 0
+  fi
+  chown "$PROPRIETARIO" "$DESTINAZIONE" 2>>"$LOG" || errore "impossibile assegnare $DESTINAZIONE a $PROPRIETARIO"
+fi
+
+if ! spazio_sufficiente; then
+  exit 0
+fi
+
+PROCESSI=()
+for ARCH in "${DA_RIGENERARE[@]}"; do
+  crea_pacchetto "$ARCH" &
+  PROCESSI+=($!)
+done
+
+ERRORI=0
+for PROCESSO in "${PROCESSI[@]}"; do
+  wait "$PROCESSO" || ERRORI=1
+done
+
+if [ "$ERRORI" -eq 0 ] && [ "$CAMBIATO" -eq 1 ]; then
+  echo "$IMPRONTA" > "$STATO" 2>>"$LOG" || errore "impossibile salvare lo stato in $STATO"
+fi
+exit 0

@@ -1,0 +1,501 @@
+<h2>Guida per lo sviluppo di plugin per WinGabriel</h2>
+
+<h3>1. Panoramica</h3>
+<p>Un plugin per WinGabriel è una libreria dinamica (.NET Framework 4.8.1) che estende le funzionalità dell'ambiente grafico letto dalla sintesi vocale. Attraverso un plugin puoi aggiungere voci al menu principale, inserire comandi nel menu <strong>Altre funzioni</strong>, registrare azioni accessibili dalla scrivania, inviare notifiche, mostrare elenchi o moduli di inserimento dati e gestire impostazioni personalizzate.</p>
+<p>I plugin non devono creare finestre, form o controlli propri (ad esempio finestre WPF o WinForms). Gli elementi visivi propri del plugin non verrebbero letti dalla sintesi vocale di WinGabriel; l'interazione con l'utente deve avvenire esclusivamente tramite i servizi e le interfacce messi a disposizione dall'ambiente.</p>
+
+<h3>2. Creare un plugin, passo per passo</h3>
+<ol>
+  <li>Crea un nuovo progetto di tipo <strong>Libreria di classi (.NET Framework)</strong> impostando la versione del framework a <strong>.NET Framework 4.8.1</strong>.</li>
+  <li>Aggiungi il riferimento alla libreria <code>WGPlugin.dll</code>. Nella finestra delle proprietà del riferimento, imposta <strong>Copia localmente</strong> (Copy Local) su <code>False</code> (No). La libreria è già presente in WinGabriel e non va distribuita con il plugin.</li>
+  <li>Crea una classe pubblica con un costruttore pubblico senza parametri che eredita dalla classe astratta <code>WGPluginBase</code>.</li>
+  <li>Scrivi il codice del plugin realizzando le proprietà di identificazione e il metodo <code>Avvia</code>.</li>
+  <li>Compila il progetto per generare il file <code>.dll</code>.</li>
+  <li>Copia il file <code>.dll</code> ottenuto nella cartella dei plugin di WinGabriel.</li>
+</ol>
+
+<p>Di seguito trovi l'esempio completo di un plugin scritto in Visual Basic .NET che aggiunge una voce al menu <strong>Altre funzioni</strong>, saluta l'utente e conta gli accessi salvando il dato nelle impostazioni:</p>
+
+<pre><code>Imports System
+Imports WGPlugin
+
+Public Class PluginEsempio
+    Inherits WGPluginBase
+
+    Private _servizi As IWGServiziPlugin
+
+    Public Overrides ReadOnly Property Nome As String
+        Get
+            Return "Esempio"
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property Descrizione As String
+        Get
+            Return "Saluta e conta quante volte lo si è chiesto."
+        End Get
+    End Property
+
+    Public Overrides ReadOnly Property Autore As String
+        Get
+            Return "WinGabriel"
+        End Get
+    End Property
+
+    Public Overrides Sub Avvia(servizi As IWGServiziPlugin)
+        Try
+            _servizi = servizi
+            servizi.AggiungiVoceAltreFunzioni("Saluto", AddressOf Saluta)
+        Catch ex As Exception
+            servizi.RegistraErrore("PluginEsempio.Avvia", ex)
+        End Try
+    End Sub
+
+    Private Sub Saluta()
+        Try
+            Dim volte As Integer = 0
+            Integer.TryParse(_servizi.Leggi("volte"), volte)
+            volte += 1
+            _servizi.Scrivi("volte", volte.ToString())
+            _servizi.Messaggio("Ciao, saluto numero " & volte.ToString())
+        Catch ex As Exception
+            _servizi.RegistraErrore("PluginEsempio.Saluta", ex)
+        End Try
+    End Sub
+End Class</code></pre>
+
+<p>Spiegazione riga per riga del plugin di esempio:</p>
+<ul>
+  <li><code>Inherits WGPluginBase</code>: dichiara che la classe è un plugin riconosciuto da WinGabriel.</li>
+  <li><code>Nome</code>, <code>Descrizione</code>, <code>Autore</code>: forniscono le informazioni lette da WinGabriel nelle impostazioni.</li>
+  <li><code>Avvia(servizi)</code>: riceve l'istanza di <code>IWGServiziPlugin</code> con cui il plugin interagisce con l'ambiente. In questo metodo viene registrata la voce di menu.</li>
+  <li><code>servizi.AggiungiVoceAltreFunzioni("Saluto", AddressOf Saluta)</code>: inserisce nel menu <strong>Altre funzioni</strong> la voce "Saluto" collegandola alla routine <code>Saluta</code>.</li>
+  <li><code>_servizi.Leggi("volte")</code> e <code>_servizi.Scrivi(...)</code>: leggono e aggiornano il valore salvato nella configurazione di WinGabriel.</li>
+  <li><code>_servizi.Messaggio(...)</code>: mostra la risposta dell'utente gestita direttamente dalla sintesi vocale.</li>
+</ul>
+
+<p>Ecco la dichiarazione equivalente della sola classe del plugin espressa in C#:</p>
+<pre><code>using System;
+using WGPlugin;
+
+public class PluginEsempio : WGPluginBase
+{
+    private IWGServiziPlugin _servizi;
+
+    public override string Nome => "Esempio";
+    public override string Descrizione => "Saluta e conta quante volte lo si è chiesto.";
+    public override string Autore => "WinGabriel";
+
+    public override void Avvia(IWGServiziPlugin servizi)
+    {
+        try
+        {
+            _servizi = servizi;
+            servizi.AggiungiVoceAltreFunzioni("Saluto", Saluta);
+        }
+        catch (Exception ex)
+        {
+            servizi.RegistraErrore("PluginEsempio.Avvia", ex);
+        }
+    }
+
+    private void Saluta()
+    {
+        try
+        {
+            int volte = 0;
+            int.TryParse(_servizi.Leggi("volte"), out volte);
+            volte++;
+            _servizi.Scrivi("volte", volte.ToString());
+            _servizi.Messaggio("Ciao, saluto numero " + volte.ToString());
+        }
+        catch (Exception ex)
+        {
+            _servizi.RegistraErrore("PluginEsempio.Saluta", ex);
+        }
+    }
+}</code></pre>
+
+<h3>3. Dove va messo il plugin</h3>
+<p>I file <code>.dll</code> dei plugin vanno posizionati direttamente all'interno della cartella <code>plugin</code> dell'installazione. Non inserire le librerie dei plugin in sottocartelle. Se il plugin richiede librerie di terze parti (dipendenze extra), queste vanno posizionate nella sottocartella <code>plugin\librerie</code>.</p>
+<p>La posizione del percorso dipende dalla modalità di installazione di WinGabriel:</p>
+<ul>
+  <li>Installazione standard in Programmi: <code>C:\Program Files\WinGabriel\plugin</code> (oppure <code>Programmi\WinGabriel\plugin</code>).</li>
+  <li>Installazione senza permessi di scrittura in Programmi: <code>%LocalAppData%\WinGabriel\plugin</code>.</li>
+  <li>Versione portatile: la cartella <code>plugin</code> posizionata accanto all'eseguibile principale di WinGabriel.</li>
+</ul>
+
+<h3>4. Il ciclo di vita</h3>
+<p>All'avvio, WinGabriel legge la cartella <code>plugin</code>, carica i file consentiti, istanzia ogni classe pubblica non astratta che deriva da <code>WGPluginBase</code> e chiama il metodo <code>Avvia</code> una sola volta. Durante l'esecuzione di <code>Avvia</code>, il plugin registra le sue azioni e le sue voci di menu. Alla chiusura del programma, WinGabriel chiama il metodo <code>Arresta</code> per ogni plugin attivo.</p>
+<p>Se un plugin viene attivato a programma aperto (dalle Impostazioni o confermando l'avviso di sicurezza), il caricatore chiama immediatamente <code>Avvia</code> e le sue voci di menu compaiono senza riavviare WinGabriel. Quando un plugin viene disattivato o disinstallato, viene chiamato <code>Arresta</code>, le sue voci vengono rimosse dai menu e tutti i suoi servizi smettono di rispondere subito (le azioni precedentemente registrate non eseguono più alcuna operazione). Se un plugin viene riattivato, viene creata una nuova istanza della classe e viene richiamato <code>Avvia</code>.</p>
+<p>Se il metodo <code>Avvia</code> genera un'eccezione, il plugin viene bloccato, l'utente riceve un avviso e l'esecuzione di WinGabriel prosegue regolarmente. Le azioni del plugin (voci di menu, notifiche, comandi) sono protette: un'eccezione non rilevata durante la loro esecuzione viene intercettata, scritta nel registro e notificata all'utente.</p>
+
+<h3>5. I servizi (IWGServiziPlugin)</h3>
+<p>Ogni plugin riceve un'istanza dedicata dell'interfaccia <code>IWGServiziPlugin</code> all'interno del metodo <code>Avvia</code>. I membri principali forniti da questo servizio sono:</p>
+<ul>
+  <li><code>Id</code>: stringa contenente il nome del file della libreria senza estensione (es. <code>PluginEsempio</code>).</li>
+  <li><code>VersioneApi</code>: la versione dell'interfaccia in uso (sempre <code>"1.0"</code>).</li>
+  <li><code>CartellaDati</code>: il percorso completo di una cartella riservata al plugin in cui salvare file proprietari. La cartella viene creata automaticamente.</li>
+  <li><code>Firmato</code>: valore booleano che indica se il plugin è provvisto di firma digitale valida.</li>
+  <li><code>Parla(testo, interrompi)</code>: pronuncia una frase tramite la sintesi vocale.</li>
+  <li><code>Messaggio(testo)</code>: mostra una finestra di dialogo di WinGabriel che viene letta automaticamente dalla voce e attende la conferma dell'utente.</li>
+  <li><code>ChiediAsync(domanda)</code>: propone una domanda con risposte Sì/No (restituisce <code>True</code> se l'utente risponde Sì; l'uscita con Esc equivale a No).</li>
+  <li><code>ChiediTesto(titolo, predefinito, alTermine)</code>: mostra un campo di testo a riga singola.</li>
+  <li><code>ChiediTestoLungo(titolo, predefinito, alTermine)</code>: mostra un campo di testo multiriga (Invio va a capo, la conferma avviene uscendo con Esc e rispondendo Sì alla domanda di conferma).</li>
+  <li><code>EseguiConAttesaAsync(testoAttesa, lavoro)</code>: esegue una funzione asincrona mostrando e pronunciando un messaggio di attesa. Deve essere richiamato esclusivamente dal thread dell'interfaccia grafica.</li>
+  <li><code>AggiungiVoceMenuPrincipale(testo, azione)</code>: aggiunge una voce al menu principale dopo la voce "Altre funzioni". Le voci inserite compaiono e spariscono immediatamente senza riaprire il menu.</li>
+  <li><code>AggiungiVoceAltreFunzioni(testo, azione)</code>: inserisce una voce all'interno del menu "Altre funzioni". Il menu legge queste voci ogni volta che viene aperto.</li>
+  <li><code>RegistraFunzioneScrivania(nome, azione)</code>: rende disponibile un comando rapido sulla scrivania.</li>
+  <li><code>Notifica(testo, azione)</code>: pubblica un messaggio nel centro notifiche. Se viene passata un'azione, questa viene eseguita selezionando la notifica.</li>
+  <li><code>Leggi(chiave)</code> / <code>Scrivi(chiave, valore)</code>: leggono e scrivono impostazioni nella configurazione di WinGabriel. Le chiavi vengono salvate automaticamente con il prefisso <code>plugin_&lt;Id&gt;_</code>.</li>
+  <li><code>RegistraErrore(origine, ex)</code>: scrive un'eccezione nel registro degli errori di WinGabriel.</li>
+</ul>
+
+<p>I metodi <code>Messaggio</code>, <code>ChiediAsync</code>, <code>ChiediTesto</code>, <code>ChiediTestoLungo</code> e i metodi <code>Mostra</code> dei vari controlli eseguono automaticamente il passaggio al thread dell'interfaccia e possono essere chiamati da qualsiasi thread. Al contrario, <code>EseguiConAttesaAsync</code> richiede di essere invocato dal thread dell'interfaccia.</p>
+
+<h3>Controlli di WinGabriel per i plugin</h3>
+<p>I controlli si istanziano tramite i metodi della classe <code>IWGServiziPlugin</code> senza che compaia nulla a schermo. Tutte le configurazioni effettuate prima del metodo <code>Mostra</code> restano in memoria; il controllo visivo reale viene creato soltanto quando si chiama <code>Mostra</code>, sul thread dell'interfaccia. Dopo la chiamata a <code>Mostra</code>, eventuali modifiche (come l'aggiunta o rimozione di voci) vengono applicate direttamente al controllo visivo aperto. Tutte le azioni registrate sui controlli sono protette e l'eventuale eccezione viene scritta nel registro.</p>
+
+<h4>Menu (IWGMenuPlugin)</h4>
+<p>Creato con <code>servizi.NuovoMenu(titolo)</code>. Rappresenta il menu standard di WinGabriel. Permette di aggiungere voci tradizionali o opzioni accessibili premendo il tasto Alt.</p>
+<pre><code>Dim menu As IWGMenuPlugin = _servizi.NuovoMenu("Gestione")
+menu.Aggiungi("Esegui azione", AddressOf MiaAzione)
+menu.AggiungiDopo("Esegui azione", "Azione successiva", AddressOf SecondaAzione)
+menu.AggiungiOpzione("Azzera dati", AddressOf ResetAzione)
+menu.RimuoviVoce("Azione successiva")
+menu.RinominaVoce("Esegui azione", "Nuova voce")
+menu.Mostra()</code></pre>
+
+<h4>Elenco con identificatori (IWGElencoPlugin)</h4>
+<p>Creato con <code>servizi.NuovoElenco(titolo)</code>. Gestisce elenchi a selezione singola o multipla collegati a identificatori univoci. Può essere aperto anche tramite i metodi rapidi <code>MostraElencoConId</code> e <code>MostraElencoMultiplo</code> usando oggetti <code>WGVoceElenco</code>.</p>
+<pre><code>Dim elenco As IWGElencoPlugin = _servizi.NuovoElenco("Selezione Elementi")
+elenco.Multiplo = False
+elenco.Aggiungi("id1", "Primo Elemento")
+elenco.Aggiungi("id2", "Secondo Elemento")
+elenco.AlScelto = Sub(id As String)
+                    _servizi.Messaggio("Scelto identificatore: " & id)
+                 End Sub
+elenco.Mostra()</code></pre>
+
+<h4>Campo di testo grande (IWGCampoPlugin)</h4>
+<p>Creato con <code>servizi.NuovoCampo(titolo, testo, soloLettura)</code>. Utilizzato per visualizzare testi lunghi o per consentirne la modifica. È possibile usare anche le scorciatoie <code>MostraTesto</code>, <code>MostraHtml</code> o <code>ChiediTestoLungo</code>. Il testo modificato si legge tramite la proprietà <code>Testo</code> all'interno del delegato <code>AllaChiusura</code>.</p>
+<pre><code>Dim campo As IWGCampoPlugin = _servizi.NuovoCampo("Note", "Testo iniziale", False)
+campo.AllaChiusura = Sub()
+                         Dim finale As String = campo.Testo
+                         _servizi.Messaggio("Testo salvato: " & finale)
+                     End Sub
+campo.Mostra()</code></pre>
+
+<h4>Modulo a più campi (IWGCampiPlugin)</h4>
+<p>Creato con <code>servizi.NuovoModulo()</code>. Permette di richiedere più informazioni in una sola schermata (campi testo, numero, testo lungo, password, data, orario e campi multipli). La conferma avviene al completamento dell'ultimo campo o tramite il delegato <code>AlConferma</code>.</p>
+<pre><code>Dim modulo As IWGCampiPlugin = _servizi.NuovoModulo()
+modulo.AggiungiTesto("Nome utente", "utente", True, False, "")
+modulo.AggiungiPassword("Chiave di accesso", "pass", True, False, "")
+modulo.AlConferma = Sub()
+                        If modulo.ObbligatoriCompilati() Then
+                            Dim u As String = modulo.Valore("utente")
+                            modulo.Chiudi()
+                            _servizi.Messaggio("Dati confermati per " & u)
+                        End If
+                    End Sub
+modulo.Mostra()</code></pre>
+
+<h4>Griglia (IWGGrigliaPlugin)</h4>
+<p>Creata con <code>servizi.NuovaGriglia(titolo, elencoVoci)</code>. Dispone gli elementi su righe e colonne. <code>AlScelto</code> restituisce l'indice numerico (a partire da zero) dell'elemento selezionato.</p>
+<pre><code>Dim elementi As New List(Of String) From {"Icona 1", "Icona 2"}
+Dim griglia As IWGGrigliaPlugin = _servizi.NuovaGriglia("Scrivania", elementi)
+griglia.AlScelto = Sub(indice As Integer)
+                       _servizi.Messaggio("Selezionato elemento numero: " & indice.ToString())
+                   End Sub
+griglia.Mostra()</code></pre>
+
+<h3>Aggiungere voci a qualsiasi menu di WinGabriel</h3>
+<p>Ogni menu a voci di WinGabriel (rappresentato dalla classe <code>WGMenu</code>) possiede un titolo identificativo. Un istante prima che un menu si apra, WinGabriel lo rende disponibile ai plugin: ogni menu costituisce quindi fin da subito un punto d'innesto, riconosciuto tramite il suo titolo. Questo meccanismo garantisce la compatibilità anche con i menu che verranno aggiunti a WinGabriel in futuro, senza la necessità di aggiornare elenchi predefiniti o modificare il codice del plugin. Il confronto tra i titoli dei menu non distingue tra maiuscole e minuscole.</p>
+<p>Tra i titoli dei menu vi sono, a titolo di esempio: "Multimedia", "Musica", "Menù Organizer", "Altre funzioni", "Menu Impostazioni" e "Aggiornamento". Il menu iniziale del programma è identificato dal titolo "Menu principale" (sono considerati equivalenti anche i titoli "Menu applicazioni" e "Menù iniziale").</p>
+<p>Per conoscere i titoli dei menu che si sono aperti fino a quel momento è possibile invocare il metodo <code>MenuAperti()</code>. Un titolo relativo a un menu non ancora aperto può essere comunque utilizzato in fase di registrazione: la voce corrispondente comparirà automaticamente quando quel determinato menu verrà aperto dall'utente.</p>
+<p>Durante l'esecuzione del metodo <code>Avvia</code>, il plugin può fare uso di tre distinti servizi di registrazione:</p>
+<ul>
+  <li><code>AggiungiVoceAMenu(titoloMenu, testo, azione, dopoLaVoce opzionale)</code>: aggiunge una voce al menu specificato a ogni sua apertura. Se viene valorizzato il parametro facoltativo <code>dopoLaVoce</code>, la nuova voce verrà posizionata subito dopo quella indicata (qualora presente nel menu), altrimenti verrà inserita in fondo. Per il "Menu principale", la voce compare immediatamente anche se WinGabriel è già aperto.</li>
+  <li><code>AggiungiOpzioneAMenu(titoloMenu, testo, azione)</code>: funziona come il servizio precedente, ma aggiunge un'opzione che l'utente può attivare premendo il tasto Alt.</li>
+  <li><code>AlAperturaDiMenu(titoloMenu, azione As Action(Of IWGMenuPlugin))</code>: esegue la procedura specificata ogni volta che il menu sta per aprirsi, passando il menu stesso come parametro di tipo <code>IWGMenuPlugin</code>. All'interno di questa procedura, il plugin può chiamare i metodi <code>Aggiungi</code>, <code>AggiungiDopo</code>, <code>AggiungiOpzione</code>, <code>RimuoviVoce</code>, <code>RinominaVoce</code> e <code>Posiziona</code>. Questo servizio è utile per mostrare una voce solo al verificarsi di una condizione, oppure per rimuovere o rinominare voci presenti. Non deve mai essere chiamato il metodo <code>Mostra</code>, poiché l'apertura del menu è gestita direttamente da WinGabriel.</li>
+</ul>
+<p>L'esecuzione delle azioni associate alle voci è protetta: nel caso in cui il plugin generi un errore non gestito, questo viene registrato nel log dell'applicazione e all'utente viene mostrato un messaggio informativo, evitando l'interruzione o il blocco di WinGabriel.</p>
+<p>Quando un plugin viene disattivato o disinstallato, le sue voci non compaiono più nei menu che si aprono successivamente. Se la disattivazione avviene a menu già aperto, la voce rimane visibile fino alla sua chiusura, ma non eseguirà alcuna operazione se selezionata.</p>
+<p>Mentre per il "Menu principale" le voci possono essere inserite o rimosse anche mentre il menu è aperto, per tutti gli altri menu le modifiche hanno effetto a partire dall'apertura successiva.</p>
+<p><strong>Limitazioni e scorciatoie:</strong> i servizi descritti riguardano esclusivamente i menu basati su voci (<code>WGMenu</code>). Gli elenchi gestiti tramite identificatori (<code>WGMenuLista</code>) e le altre finestre del programma non costituiscono punti d'innesto. Per inserire rapidamente una voce nel menu "Altre funzioni", resta comunque valido l'uso della scorciatoia <code>AggiungiVoceAltreFunzioni</code>.</p>
+<p>Esempio completo in Visual Basic:</p>
+<pre><code>Imports WGPlugin
+
+Public Class PluginMenu
+    Inherits WGPluginBase
+
+    Public Overrides ReadOnly Property Nome As String
+        Get
+            Return "Esempio di menu"
+        End Get
+    End Property
+
+    Public Overrides Sub Avvia(servizi As IWGServiziPlugin)
+        ' Una voce dopo "Agenda" nel menu Organizer.
+        servizi.AggiungiVoceAMenu("Menù Organizer", "Promemoria a intervalli", AddressOf ApriPromemoria, "Agenda")
+
+        ' Una voce nel menu Multimedia solo se l'utente ha già concesso il permesso per le note: si decide a ogni apertura del menu.
+        servizi.AlAperturaDiMenu("Multimedia", Sub(menu As IWGMenuPlugin)
+                                                   If servizi.AccessoConcesso(WGPermessi.Note) Then
+                                                       menu.Aggiungi("Le mie note", AddressOf ApriMusica)
+                                                   End If
+                                               End Sub)
+    End Sub
+
+    Private Sub ApriPromemoria()
+        ' ...
+    End Sub
+
+    Private Sub ApriMusica()
+        ' ...
+    End Sub
+End Class</code></pre>
+
+<h3>6. Regole di interfaccia</h3>
+<ul>
+  <li><strong>Nessun controllo proprietario:</strong> non aprire mai form o finestre personalizzate. Usa esclusivamente i controlli forniti da <code>IWGServiziPlugin</code> per garantire la completa lettura da parte della sintesi vocale.</li>
+  <li><strong>Feedback costante:</strong> ogni informazione, esito o avviso all'utente deve passare da <code>Messaggio</code> (es. "Avviato", "Timer annullato").</li>
+  <li><strong>Uso limitato di Parla:</strong> il metodo <code>Parla</code> pronuncia il testo immediatamente ma non lascia traccia da rileggere. Usalo solo per messaggi estemporanei e preferisci <code>Messaggio</code> per tutte le conferme.</li>
+  <li><strong>Gestione delle attese:</strong> le operazioni lunghe devono essere avvolte in <code>EseguiConAttesaAsync</code>, in modo che WinGabriel mostri e annunci lo stato di caricamento.</li>
+  <li><strong>Segnalazione errori:</strong> comunica un errore con <code>Messaggio</code> senza chiedere conferme Sì/No.</li>
+  <li><strong>Elenchi vuoti:</strong> un elenco privo di elementi non deve essere aperto. Mostra prima un <code>Messaggio</code> che avvisa l'utente che non ci sono dati.</li>
+  <li><strong>Titoli essenziali:</strong> i titoli degli elenchi e dei menu devono contenere solo il nome del contenuto, senza istruzioni sui tasti da premere.</li>
+  <li><strong>Stile dei testi:</strong> scrivi messaggi brevi, chiari e in italiano naturale, formulati come verrebbero detti a voce.</li>
+</ul>
+
+<h3>7. Sicurezza, controlli e permessi</h3>
+
+<p>La sicurezza è una priorità per WinGabriel. Per proteggere i tuoi dati e garantire un funzionamento stabile, i plugin sono soggetti a controlli rigorosi e operano in un ambiente con permessi limitati. Questa sezione ti illustra come funziona il sistema di sicurezza e quali sono le regole che devi rispettare nello sviluppo dei tuoi plugin.</p>
+
+<h4>Firma del plugin</h4>
+<p>Ogni plugin, identificato dal file <code>nome.dll</code>, può essere accompagnato da un file <code>nome.dll.firma</code>. Questo file contiene la firma RSA SHA-256 del tuo plugin, codificata in Base64, generata con la chiave degli sviluppatori di WinGabriel (puoi usare il comando <code>firma-plugin</code> del programma <code>WGStrumenti</code>).</p>
+<ul>
+    <li>Un plugin correttamente firmato viene caricato senza richiedere alcuna conferma all'utente.</li>
+    <li>Se un plugin non è firmato, WinGabriel mostrerà un avviso all'utente. L'avviso specifica che il plugin non è stato creato dagli sviluppatori di WinGabriel, che il suo codice viene controllato e non può accedere ai dati dell'utente senza un permesso esplicito, ma può utilizzare Internet e mostrare messaggi. Il plugin verrà caricato solo se l'utente acconsente.</li>
+    <li>La decisione dell'utente è legata al contenuto specifico del file. Se il file <code>.dll</code> del plugin o una delle librerie nella cartella <code>plugin\librerie</code> cambia, anche di un solo byte, WinGabriel richiederà nuovamente la conferma all'utente, con una domanda specifica che indica la modifica del file.</li>
+    <li>Se un plugin era precedentemente firmato e ora non lo è più, la domanda di conferma sarà più seria, evidenziando il cambio di stato della firma.</li>
+    <li>Un plugin firmato che viene aggiornato ma mantiene una firma valida non richiederà ulteriori conferme.</li>
+    <li>È fondamentale che anche le librerie di cui il tuo plugin dipende, situate nella cartella <code>plugin\librerie</code>, abbiano una firma valida se il plugin principale è firmato.</li>
+</ul>
+
+<h4>Controllo del codice prima del caricamento</h4>
+<p>Prima di caricare qualsiasi plugin, WinGabriel esegue un'analisi dei metadati del file <code>.dll</code> (senza eseguirlo) per verificare che utilizzi solo un elenco ristretto e consentito di tipi del framework .NET. Questo controllo si applica a tutti i plugin e alle loro librerie, inclusi quelli firmati.</p>
+<ul>
+    <li>Se il codice del plugin tenta di utilizzare qualcosa di non consentito, il plugin non verrà caricato. Nelle impostazioni di WinGabriel, il suo stato apparirà come "codice non consentito" e i dettagli dell'infrazione verranno registrati nel registro di WinGabriel.</li>
+    <li>Lo scopo principale di questo controllo è impedire che un plugin possa leggere o scrivere file di WinGabriel o altri file del sistema, sia tramite le funzioni di .NET sia tramite quelle di Windows, poiché tali funzioni non sono esposte all'ambiente del plugin.</li>
+</ul>
+
+<h5>Tipi e funzionalità vietate (il plugin non si carica):</h5>
+<ul>
+    <li><strong>Accesso a file e cartelle:</strong> <code>System.IO.File</code>, <code>System.IO.Directory</code>, <code>System.IO.FileStream</code>, <code>System.IO.StreamReader</code> (su un file), <code>System.IO.FileInfo</code> e tipi simili; <code>Microsoft.VisualBasic.FileIO</code>, <code>My.Computer.FileSystem</code>, <code>FileOpen</code>.</li>
+    <li><strong>Rete:</strong> <code>System.Net</code> (tutti i tipi tranne <code>WebUtility</code>), <code>System.Net.Http.HttpClient</code>, <code>System.Net.WebClient</code>, socket.</li>
+    <li><strong>Registro di Windows:</strong> <code>Microsoft.Win32</code>.</li>
+    <li><strong>Processi:</strong> <code>System.Diagnostics.Process</code>.</li>
+    <li><strong>Riflessione e caricamento dinamico:</strong> <code>System.Reflection</code>, <code>Type.GetType</code>, <code>Activator</code>, <code>System.Reflection.Assembly.Load</code>, late binding di Visual Basic (con <code>Option Strict Off</code>).</li>
+    <li><strong>Codice nativo:</strong> P/Invoke con <code>DllImport</code>, <code>System.Runtime.InteropServices</code>, <code>System.Runtime.InteropServices.Marshal</code>.</li>
+    <li><strong>Puntatori e codice non verificabile:</strong> Uso di puntatori, codice <code>unsafe</code>.</li>
+    <li><strong>Interfacce utente grafiche:</strong> <code>System.Windows.Forms</code>, <code>System.Drawing</code>, WPF (Windows Presentation Foundation).</li>
+    <li><strong>Dati strutturati complessi:</strong> XML, database, serializzazione binaria.</li>
+    <li><strong>Terminazione applicazione:</strong> <code>System.Environment.Exit</code>.</li>
+    <li><strong>Uso di altri assembly di WinGabriel:</strong> Non puoi fare riferimento direttamente ad altri assembly interni di WinGabriel.</li>
+</ul>
+
+<h5>Tipi e funzionalità consentite:</h5>
+<ul>
+    <li><strong>Tipi base di System:</strong> stringhe, numeri, date, <code>System.Math</code>, <code>System.Random</code>, <code>System.Guid</code>, <code>System.Uri</code>, <code>System.Convert</code>, <code>System.Enum</code>, <code>System.Tuple</code>, <code>System.Func</code>, <code>System.Action</code> e simili.</li>
+    <li><strong>Collezioni:</strong> <code>System.Collections</code> e <code>System.Collections.Generic</code>.</li>
+    <li><strong>Query:</strong> <code>System.Linq</code>.</li>
+    <li><strong>Manipolazione testo:</strong> <code>System.Text</code> (<code>StringBuilder</code>, <code>Encoding</code>), <code>System.Text.RegularExpressions</code>.</li>
+    <li><strong>Cultura:</strong> <code>System.Globalization</code>.</li>
+    <li><strong>Threading e asincronia:</strong> <code>System.Threading</code> e <code>System.Threading.Tasks</code> (<code>Task</code>, <code>Timer</code>, <code>Thread</code>, <code>async/await</code>).</li>
+    <li><strong>Misurazione tempo:</strong> <code>System.Diagnostics.Stopwatch</code>.</li>
+    <li><strong>Flussi in memoria:</strong> <code>System.IO</code> <strong>soltanto</strong> per i flussi in memoria (<code>MemoryStream</code>, <code>StringReader</code>, <code>StringWriter</code>, <code>BinaryReader</code>, <code>BinaryWriter</code>). <code>System.IO.Path</code> è consentito per manipolare nomi di percorso senza accedere al file system.</li>
+    <li><strong>Crittografia (selettiva):</strong> Alcune classi di <code>System.Security.Cryptography</code> (<code>SHA256</code>, <code>SHA1</code>, <code>MD5</code>, <code>HMAC</code>, generatore di numeri casuali, <code>Rfc2898DeriveBytes</code>).</li>
+    <li><strong>Suoni di sistema:</strong> <code>System.Media.SystemSounds</code>.</li>
+    <li><strong>Utilità web:</strong> <code>System.Net.WebUtility</code>.</li>
+    <li><strong>Funzioni di base del runtime di Visual Basic:</strong> <code>Strings</code>, <code>Conversion</code>, <code>DateAndTime</code>, <code>IIf</code>.</li>
+</ul>
+
+<h5>Regole pratiche per lo sviluppo:</h5>
+<ul>
+    <li>Nei progetti Visual Basic non serve cambiare nessuna impostazione del progetto: il codice che Visual Basic genera da solo (il modello <code>My</code>) viene accettato. Restano però vietate le sue parti che toccano file, rete e sistema, come <code>My.Computer.FileSystem</code> e <code>My.Computer.Network</code>: usale tramite i servizi di WinGabriel.</li>
+    <li>Utilizza sempre <code>Option Strict On</code> per evitare il late binding e migliorare la robustezza del codice.</li>
+    <li>Le librerie di terze parti che includi nel tuo progetto sono soggette allo stesso controllo. Librerie che utilizzano funzionalità vietate come l'accesso a file, la rete o la riflessione (ad esempio, <code>Newtonsoft.Json</code>) non potranno essere utilizzate.</li>
+</ul>
+
+<h4>Funzioni sicure offerte da WinGabriel</h4>
+<p>Per permettere ai plugin di svolgere compiti comuni in modo sicuro, WinGabriel offre un set di funzioni specifiche tramite l'interfaccia <code>IWGServiziPlugin</code>, che sostituiscono le funzionalità vietate del framework.</p>
+
+<h5>Gestione dei file propri del plugin:</h5>
+<p>I file e le impostazioni di ogni plugin (quelle di Leggi e Scrivi) stanno nella cartella dei dati di WinGabriel, nella sottocartella plugin. Per questo si sincronizzano nel cloud e si esportano insieme agli altri dati: nelle impostazioni del cloud la cartella plugin si può includere o escludere come le altre.</p>
+<p>I plugin possono gestire i propri file di dati in una cartella dedicata e isolata. I nomi dei file devono essere semplici (lettere, numeri, punto, trattino, fino a 64 caratteri) e non possono contenere percorsi. I file sono limitati a 1 MB ciascuno, con un massimo di 5 MB totali per plugin.</p>
+<ul>
+    <li><code>LeggiFileDati(nome As String) As Byte()</code>: Legge il contenuto di un file. Restituisce <code>Nothing</code> se il file non esiste.</li>
+    <li><code>ScriviFileDati(nome As String, dati As Byte())</code>: Scrive o sovrascrive un file.</li>
+    <li><code>ElencaFileDati() As IList(Of String)</code>: Restituisce un elenco dei nomi dei file presenti nella cartella del plugin.</li>
+    <li><code>EliminaFileDati(nome As String)</code>: Elimina un file.</li>
+</ul>
+<p>Per piccole impostazioni persistenti, puoi continuare a usare i metodi <code>Leggi(chiave As String) As String</code> e <code>Scrivi(chiave As String, valore As String)</code>, che supportano chiavi fino a 64 caratteri e valori fino a 16 KB.</p>
+
+<h5>Accesso a Internet:</h5>
+<p>Il plugin può effettuare richieste HTTP sicure verso Internet.</p>
+<ul>
+    <li><code>ScaricaTestoAsync(url As String) As Task(Of String)</code>: Scarica il contenuto testuale di una risorsa web.</li>
+</ul>
+<p>Questa funzione ha le seguenti restrizioni:</p>
+<ul>
+    <li>Accetta solo indirizzi <code>https</code>.</li>
+    <li>Può connettersi solo a siti pubblici; indirizzi locali o privati (come <code>localhost</code>, <code>192.168.x.x</code>) sono rifiutati, anche in caso di reindirizzamento.</li>
+    <li>Utilizza solo la porta standard (443 per HTTPS).</li>
+    <li>La risposta è limitata a 2 MB.</li>
+    <li>Il tempo massimo di attesa per una risposta è di 15 secondi.</li>
+    <li>È consentito un massimo di 10 richieste al minuto.</li>
+    <li>La funzione restituisce <code>Nothing</code> se la richiesta non è consentita o non riesce.</li>
+</ul>
+
+<h5>Accesso ai dati di WinGabriel (con permesso dell'utente):</h5>
+<p>Per accedere a dati sensibili di WinGabriel come note, rubrica o agenda, il tuo plugin deve esplicitamente chiedere il permesso all'utente. I permessi sono rappresentati dalle costanti di <code>WGPermessi</code>: <code>Note</code>, <code>Rubrica</code>, <code>Agenda</code>.</p>
+<ul>
+    <li><code>RichiediAccessoAsync(permesso As String, motivo As String) As Task(Of Boolean)</code>: Richiede il permesso specificato all'utente. WinGabriel mostrerà un avviso con il <code>motivo</code> (un testo descrittivo fornito dal plugin, fino a 120 caratteri). Restituisce <code>True</code> se il permesso è stato concesso, <code>False</code> altrimenti. Se il permesso è già stato concesso, la funzione restituisce <code>True</code> senza chiedere nuovamente. Se l'utente rifiuta, la richiesta non verrà riproposta per la durata della sessione corrente.</li>
+    <li><code>AccessoConcesso(permesso As String) As Boolean</code>: Verifica se un permesso è già stato concesso, senza mostrare alcuna richiesta all'utente.</li>
+</ul>
+<p>Una volta ottenuto il permesso, puoi utilizzare le seguenti funzioni di sola lettura:</p>
+<ul>
+    <li><code>ElencaNote() As IList(Of WGVoceElenco)</code>: Restituisce l'identificatore e il titolo delle note dell'utente, fino a 200, dalla più recente. Non include le note protette da password.</li>
+    <li><code>LeggiNota(id As String) As String</code>: Restituisce il testo di una nota, dato il suo identificatore. Non legge le note protette da password.</li>
+    <li><code>CercaContatti(testo As String) As IList(Of WGContattoPlugin)</code>: Cerca contatti nella rubrica. Non accede alle rubriche protette da password. Restituisce un elenco di oggetti <code>WGContattoPlugin</code> (con proprietà <code>Nome</code>, <code>Telefono</code>, <code>Email</code>), fino a un massimo di 100 risultati.</li>
+    <li><code>LeggiAppuntamenti(da As DateTime, a As DateTime) As IList(Of WGVoceElenco)</code>: Restituisce gli appuntamenti in un intervallo di date (nel testo la data e l'oggetto), fino a un massimo di 200.</li>
+</ul>
+<p>Se il permesso necessario non è stato concesso, queste funzioni restituiranno un elenco vuoto o <code>Nothing</code>, senza generare errori.</p>
+
+<h5>Scrittura e dati protetti da password</h5><p>Oltre ai permessi di lettura (come <code>WGPermessi.Note</code>, <code>WGPermessi.Rubrica</code> e <code>WGPermessi.Agenda</code>), WinGabriel offre permessi specifici per la scrittura e per l'accesso a dati protetti da password.</p><p>Puoi richiedere questi permessi utilizzando la funzione <code>RichiediAccessoAsync(permesso As String, motivo As String) As Task(Of Boolean)</code>, esattamente come faresti per gli altri. L'utente ha sempre il controllo e può decidere di concedere o revocare i permessi in qualsiasi momento dalle impostazioni del plugin (sezione "Plugin", selezionando il tuo plugin e poi "Permessi"). Senza il permesso appropriato, le funzioni non eseguiranno alcuna operazione e restituiranno <code>False</code>, <code>Nothing</code> o un elenco vuoto, a seconda del loro tipo di ritorno.</p><h5>Permessi di scrittura</h5><p>I permessi di scrittura consentono al tuo plugin di aggiungere nuovi dati. È importante notare che un plugin non può modificare né cancellare i dati esistenti, ma solo aggiungerne di nuovi.</p><p>I permessi disponibili sono:</p><ul><li><code>WGPermessi.NoteScrittura</code></li><li><code>WGPermessi.RubricaScrittura</code></li><li><code>WGPermessi.AgendaScrittura</code></li></ul><p>Le funzioni che puoi usare per la scrittura sono:</p><ul><li><code>AggiungiNota(titolo As String, testo As String) As Boolean</code>: Per aggiungere una nota non protetta.</li><li><code>AggiungiContatto(contatto As WGContattoPlugin) As Boolean</code>: Per aggiungere un contatto nella rubrica predefinita. Il campo <code>Nome</code> del contatto può contenere sia il nome che il cognome. Questa funzione restituisce <code>False</code> se la rubrica predefinita è protetta da password.</li><li><code>AggiungiAppuntamento(oggetto As String, data As DateTime, oraInizio As String, oraFine As String, note As String) As Boolean</code>: Per aggiungere un appuntamento nell'agenda predefinita. Le ore devono essere nel formato "HH:mm" oppure possono essere vuote.</li></ul><p>Tieni presente che è consentito un massimo di 10 operazioni di scrittura al minuto.</p><h5>Permessi per i dati protetti da password</h5><p>Questi permessi ti consentono di accedere a note, rubriche e agende che l'utente ha protetto con una password.</p><p>I permessi specifici sono:</p><ul><li><code>WGPermessi.NoteProtette</code></li><li><code>WGPermessi.RubricaProtette</code></li><li><code>WGPermessi.AgendaProtette</code></li></ul><p>Anche con il permesso, il tuo plugin non riceverà mai le password. A ogni chiamata di una funzione che richiede l'accesso a dati protetti, WinGabriel aprirà un campo dedicato dove l'utente potrà inserire la password. Il titolo di questo campo includerà il nome del tuo plugin. Il tuo plugin riceverà solo i dati, mai la password stessa. Se l'utente annulla l'operazione o inserisce una password errata, non verrà letto alcun dato. Inoltre, un'agenda o una rubrica che era chiusa tornerà chiusa subito dopo la lettura.</p><p>Le funzioni disponibili per i dati protetti sono:</p><ul><li><code>ElencaNoteProtette() As IList(Of WGVoceElenco)</code>: Restituisce solo i titoli delle note protette, senza le password.</li><li><code>LeggiNotaProtettaAsync(id As String) As Task(Of String)</code></li><li><code>CercaContattiProtettiAsync(testo As String) As Task(Of IList(Of WGContattoPlugin))</code></li><li><code>LeggiAppuntamentiProtettiAsync(da As DateTime, a As DateTime) As Task(Of IList(Of WGVoceElenco))</code></li></ul><p>La password inserita dall'utente identifica la specifica rubrica o agenda da aprire. È consentito un massimo di 3 richieste di password al minuto.</p><p>È importante sapere che le funzioni di lettura normali (come <code>ElencaNote</code>, <code>LeggiNota</code>, <code>CercaContatti</code>, <code>LeggiAppuntamenti</code>) non leggeranno mai note, rubriche o agende protette da password, nemmeno se l'utente le avesse aperte manualmente in quella sessione di WinGabriel.</p>
+
+<h5>Revoca dei permessi:</h5>
+<p>L'utente ha il pieno controllo sui permessi concessi ai plugin. Può revocare un permesso in qualsiasi momento dalle impostazioni di WinGabriel, navigando su "Plugin", selezionando il plugin desiderato e poi "Permessi". La revoca ha effetto immediato. Quando un plugin viene disinstallato, tutti i permessi ad esso associati vengono automaticamente cancellati.</p>
+
+<h4>Limiti e interruttore automatico</h4>
+<p>Per garantire la stabilità e la reattività di WinGabriel, ogni plugin è soggetto a limiti di utilizzo per diverse operazioni, calcolati su base minuto. Le richieste che superano questi limiti vengono semplicemente scartate.</p>
+<ul>
+    <li>Messaggi mostrati: massimo 6 al minuto.</li>
+    <li>Notifiche inviate: massimo 6 al minuto.</li>
+    <li>Letture vocali con <code>Parla</code>: massimo 12 al minuto.</li>
+    <li>Controlli aperti (es. elenchi, input): massimo 20 al minuto.</li>
+    <li>Scritture di file propri del plugin: massimo 60 al minuto.</li>
+    <li>Salvataggi di impostazioni (con <code>Scrivi</code>): massimo 120 al minuto.</li>
+    <li>Richieste a Internet (con <code>ScaricaTestoAsync</code>): massimo 10 al minuto.</li>
+    <li>Letture di dati di WinGabriel (note, rubrica, agenda): massimo 30 al minuto.</li>
+    <li>Richieste di permesso: massimo 3 al minuto.</li>
+</ul>
+<p>Il metodo <code>Avvia</code> del tuo plugin deve completare la sua esecuzione entro 5 secondi.</p>
+<p>WinGabriel disattiverà automaticamente un plugin in queste circostanze:</p>
+<ul>
+    <li>Se il plugin genera 3 errori in un minuto (errori interni del plugin, errori registrati con <code>RegistraErrore</code>, o azioni che durano più di 10 secondi).</li>
+    <li>Se il plugin supera persistentemente i limiti, con 10 richieste scartate in un intervallo di due minuti.</li>
+    <li>Se il metodo <code>Avvia</code> impiega troppo tempo per completarsi.</li>
+</ul>
+<p>Quando un plugin viene disattivato, WinGabriel mostrerà un messaggio all'utente, che potrà riattivarlo manualmente dalle impostazioni. Un plugin può aggiungere al massimo 5 voci al menu principale di WinGabriel e un totale di 40 voci o opzioni a tutti gli altri menu.</p>
+<p>Le impostazioni salvate dal tuo plugin tramite il metodo <code>Scrivi</code> sono isolate e non interferiscono con le impostazioni di WinGabriel o quelle di altri plugin.</p>
+
+<h4>Elenco dei plugin bloccati</h4>
+<p>WinGabriel scarica automaticamente un elenco di plugin bloccati dagli sviluppatori di WinGabriel a ogni avvio e ogni 12 ore. Questo elenco è firmato con la stessa chiave utilizzata per i plugin e serve come ulteriore misura di sicurezza. Se un plugin è presente in questo elenco (identificato tramite l'impronta del file o il nome), non verrà caricato. Se è già attivo, verrà immediatamente disattivato.</p>
+<p>Questo meccanismo offre uno strumento aggiuntivo per gli sviluppatori di WinGabriel, che possono utilizzare il comando <code>revoca-plugin</code> del programma <code>WGStrumenti</code> per aggiungere plugin all'elenco. Un elenco bloccato con una firma non valida o più vecchio di quello già in uso viene scartato. Un plugin bloccato apparirà nelle impostazioni di WinGabriel con lo stato "bloccato".</p>
+
+<h4>Avvio sicuro</h4>
+<p>Durante la fase di caricamento dei plugin, WinGabriel tiene traccia di quale plugin sta caricando in quel momento. Se WinGabriel si chiude in modo anomalo durante il caricamento di un plugin (o nei 20 secondi successivi al caricamento) per due avvii consecutivi, il plugin responsabile viene automaticamente disattivato. Se non è possibile identificare il plugin specifico, nessun plugin verrà caricato per quell'avvio. L'utente viene sempre avvisato di queste azioni. È inoltre disponibile l'opzione di avvio <code>/senzaplugin</code> per avviare WinGabriel senza alcun plugin.</p>
+
+<h4>Limite noto</h4>
+<p>È importante notare che il controllo di sicurezza implementato si basa sull'analisi dei tipi e delle funzionalità consentite e non è un isolamento completo in un processo separato. Teoricamente, un file <code>.dll</code> scritto manualmente in linguaggio intermedio (IL) che utilizzi aritmetica sui puntatori nativi potrebbe, in linea di principio, leggere la memoria del processo di WinGabriel (sebbene non possa aprire file o accedere ad altre risorse esterne). Per questa ragione, il consiglio fondamentale per gli utenti rimane quello di attivare solo plugin di cui si fidano pienamente.</p>
+
+<h4>Esempio di plugin</h4>
+<p>Ecco un esempio completo di un plugin in Visual Basic che illustra l'utilizzo delle funzioni sicure di WinGabriel per accedere alle note dell'utente.</p>
+<pre><code>Imports WGPlugin
+
+Public Class PluginNoteDiOggi
+    Inherits WGPluginBase
+
+    Private _servizi As IWGServiziPlugin
+
+    Public Overrides ReadOnly Property Nome As String
+        Get
+            Return "Note di oggi"
+        End Get
+    End Property
+
+    Public Overrides Sub Avvia(servizi As IWGServiziPlugin)
+        Try
+            _servizi = servizi
+            servizi.AggiungiVoceAltreFunzioni("Note di oggi", AddressOf MostraNote)
+        Catch ex As Exception
+            servizi.RegistraErrore("PluginNoteDiOggi.Avvia", ex)
+        End Try
+    End Sub
+
+    Private Async Sub MostraNote()
+        Try
+            ' Se il permesso non c'è, WinGabriel lo chiede all'utente (e lo ricorda). Se l'utente rifiuta, si esce.
+            Dim concesso As Boolean = Await _servizi.RichiediAccessoAsync(WGPermessi.Note, "Per mostrarti le note")
+            If Not concesso Then Return
+            Dim note As IList(Of WGVoceElenco) = _servizi.ElencaNote()
+            If note.Count = 0 Then
+                _servizi.Messaggio("Non ci sono note.")
+                Return
+            End If
+            _servizi.MostraElencoConId("Note", note, AddressOf LeggiUnaNota)
+        Catch ex As Exception
+            _servizi.RegistraErrore("PluginNoteDiOggi.MostraNote", ex)
+        End Try
+    End Sub
+
+    Private Sub LeggiUnaNota(id As String)
+        Try
+            Dim testo As String = _servizi.LeggiNota(id)
+            If String.IsNullOrEmpty(testo) Then
+                _servizi.Messaggio("Non riesco a leggere questa nota.")
+            Else
+                _servizi.MostraTesto("Nota", testo)
+            End If
+        Catch ex As Exception
+            _servizi.RegistraErrore("PluginNoteDiOggi.LeggiUnaNota", ex)
+        End Try
+    End Sub
+
+End Class</code></pre>
+
+<h3>8. Gestione da parte dell'utente</h3>
+<p>Nelle Impostazioni di WinGabriel, alla voce <strong>Plugin</strong>, l'utente può consultare l'elenco dei plugin rilevati e il loro stato attuale (<em>attivo</em>, <em>disattivato</em>, <em>non firmato</em>, <em>non partito</em>, <em>bloccato</em>, <em>codice non consentito</em>). Dalla finestra è possibile:</p>
+<ul>
+  <li>Attivare o disattivare un plugin in tempo reale.</li>
+  <li>Vedere e revocare i permessi concessi al plugin (voce <strong>Permessi</strong>): la revoca vale subito.</li>
+  <li>Disinstallare un plugin: l'azione arresta la libreria e rimuove i file <code>nome.dll</code> e <code>nome.dll.firma</code> oltre alle preferenze salvate (la cartella dati del plugin viene invece conservata).</li>
+  <li>Visualizzare le informazioni dettagliate (nome, descrizione, autore, versione, firma, stato).</li>
+</ul>
+<p>Se un file <code>.dll</code> viene copiato nella cartella <code>plugin</code> a WinGabriel aperto, viene rilevato aprendo il menu Plugin e può essere attivato subito senza riavviare l'applicazione.</p>
+<p>In caso di malfunzionamenti gravi che impediscono l'avvio dell'ambiente, è possibile avviare WinGabriel da riga di comando passando il parametro <code>/senzaplugin</code>: il programma si avvierà ignorando tutti i plugin installati.</p>
+
+<h3>9. Versione e compatibilità</h3>
+<p>La versione dell'interfaccia <code>WGPluginApi.Versione</code> è fissata a <code>"1.0"</code> e non cambia mai. Il file di interfaccia <code>WGPlugin.vb</code> può ricevere soltanto aggiunte: non è consentito rimuovere membri, modificare i nomi, cambiare i tipi o alterare l'ordine dei parametri. In questo modo un plugin compilato con la versione 1.0 resta compatibile con le versioni successive di WinGabriel.</p>
+<p>WinGabriel carica esclusivamente librerie compilate con la versione 1.0 di <code>WGPlugin.dll</code>. Se la versione non corrisponde, il plugin viene ignorato e viene mostrato un messaggio all'utente. La versione specifica del plugin (definita tramite la proprietà <code>Versione</code>) è invece gestita a discrezione del singolo sviluppatore.</p>
+
+<h3>10. Registro degli errori</h3>
+<p>Per prevenire blocchi dell'applicazione, ogni metodo ed evento del plugin deve contenere un blocco <code>Try/Catch</code> che intercetta le eccezioni e le invia a <code>RegistraErrore</code>. Di seguito viene mostrata la struttura standard:</p>
+
+<pre><code>Private Sub MiaProcedura()
+    Try
+        ' Codice del plugin
+    Catch ex As Exception
+        _servizi.RegistraErrore("NomeClasse.MiaProcedura", ex)
+    End Try
+End Sub</code></pre>
+
+<h3>11. Problemi frequenti</h3>
+<ul>
+  <li><strong>Il plugin non compare nell'elenco:</strong> verifica che il file <code>.dll</code> si trovi direttamente nella cartella <code>plugin</code> (non in una sottocartella), che la classe sia <code>Public</code>, derivi da <code>WGPluginBase</code> e possieda un costruttore pubblico senza parametri. Se il file è stato copiato mentre WinGabriel era in esecuzione, apri la voce Plugin nelle Impostazioni per visualizzarlo e attivarlo.</li>
+  <li><strong>Stato "non firmato":</strong> indica che la libreria non possiede il file <code>.firma</code> sottoscritto dalla chiave ufficiale. È una condizione normale per i plugin terzi: è sufficiente confermare l'attivazione al primo avvio.</li>
+  <li><strong>Stato "non partito":</strong> si è verificata un'eccezione non gestita all'interno del metodo <code>Avvia</code>. Consulta il registro degli errori di WinGabriel per analizzare il problema.</li>
+  <li><strong>Versione non compatibile:</strong> il plugin è stato compilato facendo riferimento a una versione di <code>WGPlugin.dll</code> diversa dalla versione 1.0. Recompila il progetto includendo il riferimento corretto.</li>
+</ul>

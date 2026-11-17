@@ -1,0 +1,17 @@
+Include "HJConst.jsh"
+
+Void Function AutoStartEvent ()
+    CallLib ("WGJaws.dll", "Inizializza")
+EndFunction
+
+Void Function AutoFinishEvent ()
+    CallLib ("WGJaws.dll", "Chiudi")
+EndFunction
+
+Void Function SayString (string sText, int bFlush)
+    CallLib ("WGJaws.dll", "Invia", "SPEECH", sText)
+EndFunction
+
+Void Function BrailleString (string sText, int iPosition)
+    CallLib ("WGJaws.dll", "Invia", "BRAILLE", sText)
+EndFunction	

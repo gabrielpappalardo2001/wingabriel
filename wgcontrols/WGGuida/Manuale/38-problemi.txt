@@ -1,0 +1,81 @@
+﻿Quando qualcosa non funziona
+
+Anche i programmi migliori qualche volta presentano dei problemi. Quasi sempre non è colpa tua e la situazione si risolve in fretta. Questo capitolo raccoglie gli inconvenienti più comuni e spiega come risolverli.
+
+Prima di tutto
+
+Se una sezione di WinGabriel smette di funzionare, le altre continuano a operare normalmente. Premi Esc per uscire dalla parte che non risponde e prosegui con il resto del programma. Ad esempio, se le previsioni meteo non si caricano, la gestione della posta elettronica continuerà a funzionare.
+
+La tastiera non risponde
+
+A volte, quando il computer è particolarmente sovraccarico, Windows sottrae temporaneamente la tastiera a WinGabriel. Il programma si accorge della situazione e ripristina il controllo in autonomia nel giro di pochi secondi.
+
+Se dopo circa dieci secondi la tastiera non dà ancora segni di vita, chiudi WinGabriel e riavvialo.
+
+Non si sente la voce
+
+Verifica l'uscita audio: è possibile che il suono venga indirizzato a delle cuffie spente o a un altro dispositivo.
+
+[smart]
+Vai nelle Impostazioni, seleziona "Connessioni" e scegli "Dove ascoltare l'audio". Se utilizzi il computer in modalità tablet, puoi accedere alla stessa opzione anche dal pannello del centro di controllo, richiamandolo con uno scorrimento di tre dita verso l'alto.
+[/smart]
+
+[classica]
+Vai nelle Impostazioni, seleziona "Connessioni" e scegli "Dove ascoltare l'audio".
+[/classica]
+
+Se le cuffie Bluetooth si disconnettono, l'audio tornerà automaticamente sugli altoparlanti.
+
+Controlla anche il volume del computer: nelle Impostazioni, alla voce "Sistema" e successivamente "Impostazioni di Windows", troverai la sezione "Volume di sistema".
+
+Si sentono due voci contemporaneamente
+
+Se percepisci un'altra voce sovrapposta a quella di WinGabriel, significa che è rimasto attivo un lettore di schermo, come NVDA o JAWS. WinGabriel provvederà a disattivarlo autonomamente nel giro di un paio di secondi. Attendi un momento.
+
+Un'attesa interminabile
+
+Se un'operazione richiede molto tempo, solitamente significa che un server remoto su internet non sta rispondendo. Premi Esc per annullare l'operazione e riprova dopo qualche minuto. Quasi sempre, al secondo tentativo l'operazione andrà a buon fine.
+
+Internet non funziona
+
+[smart]
+Premi F6 per aprire il centro di controllo e seleziona l'opzione per verificare la connessione. Dopodiché, vai nelle Impostazioni, alla voce "Connessioni", e controlla lo stato del Wi-Fi: è attivo? Sei connesso alla rete corretta? In modalità tablet puoi verificare il Wi-Fi anche dal pannello del centro di controllo, utilizzando tre dita con uno scorrimento verso l'alto.
+[/smart]
+
+[classica]
+Premi F6 per aprire il centro di controllo e seleziona l'opzione per verificare la connessione. Dopodiché, vai nelle Impostazioni, alla voce "Connessioni", e controlla lo stato del Wi-Fi: è attivo? Sei connesso alla rete corretta?
+[/classica]
+
+Se risulti connesso alla rete giusta ma internet non funziona, prova a disconnetterti e a ricollegarti. Se ciò non dovesse bastare, puoi "dimenticare" la rete e stabilire una nuova connessione inserendo nuovamente la password.
+
+Se il problema persiste, spegni il modem di casa, attendi un minuto e riaccendilo.
+
+La posta non arriva
+
+1. Verifica che la connessione a internet sia attiva.
+
+2. Controlla i parametri della tua casella di posta: nel menu dedicato alla posta elettronica seleziona "Impostazioni", poi "Account", scegli il tuo indirizzo e avvia il test di connessione. WinGabriel ti leggerà la risposta del server, che solitamente chiarisce l'origine del problema, come ad esempio una password modificata di recente.
+
+Ricorda che la prima volta che apri una cartella potrebbero essere necessari alcuni secondi in più.
+
+Il computer è lento
+
+Spesso, un computer lento ha la memoria RAM quasi piena o poco spazio libero sul disco rigido.
+
+[smart]
+Chiudi le applicazioni che non stai utilizzando: premi F10 per visualizzare quelle aperte e chiudi quelle superflue.
+[/smart]
+
+Per liberare spazio sul disco, utilizza lo strumento "Pulizia computer" all'interno della gestione file e svuota il cestino.
+
+I video di YouTube non partono
+
+YouTube aggiorna frequentemente le proprie specifiche tecniche. Nel menu di YouTube seleziona "Aggiorna": questa operazione risolve il problema nella quasi totalità dei casi.
+
+Se il problema persiste
+
+Se un'anomalia continua a verificarsi, WinGabriel ne memorizza i dettagli all'interno di un file di registro degli errori, situato nella cartella del programma. Chi ti fornisce assistenza o gli sviluppatori di WinGabriel possono consultarlo per comprendere l'accaduto.
+
+Quando richiedi supporto, descrivi con calma che cosa stavi facendo nel momento in cui si è verificato il problema: quale sezione del programma stavi adoperando, quali tasti avevi premuto e cosa ha pronunciato la sintesi vocale. Più dettagli sarai in grado di fornire, più semplice sarà individuare la soluzione.
+
+Puoi trovare le informazioni per contattare gli sviluppatori di WinGabriel all'interno del {menu}, alla voce "Informazioni sul programma" e successivamente "Informazioni su WinGabriel".

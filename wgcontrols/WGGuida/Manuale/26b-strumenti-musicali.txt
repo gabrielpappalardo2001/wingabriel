@@ -1,0 +1,165 @@
+﻿Gli strumenti musicali
+
+Con WinGabriel suoni uno strumento usando i tasti del computer. Ogni registrazione diventa una traccia di un progetto. Le tracce si ascoltano insieme, si modificano e si esportano in MusicXML, MIDI, mp3 o wav. Gli strumenti sono di due tipi. I suoni ad alta fedeltà sono campionati da strumenti veri e si scaricano una volta sola. Quelli sintetizzati li produce il computer nota per nota e funzionano subito.
+
+Aprire gli strumenti
+
+Nel {menu} scegli "Musica", poi "Strumenti musicali". Si apre un menu con tre voci.
+
+"I miei progetti" elenca i progetti che hai salvato. Scegline uno per riaprirlo con le sue tracce e aggiungerne altre. Se non ne hai ancora, un messaggio te lo dice;
+
+"Scegli uno strumento da suonare" apre le famiglie di strumenti. Per i suoni ad alta fedeltà ci sono Pianoforti, Percussioni intonate, Organi e fisarmonica, Chitarre, Bassi, Archi, Cori e orchestre, Ottoni, Ance e sassofoni, Flauti, Sintetizzatori solisti, Sintetizzatori di sfondo, Effetti sintetici, Strumenti etnici, Percussioni varie, Effetti sonori e Batteria e percussioni. In ogni famiglia trovi i singoli strumenti, per esempio pianoforte a coda, violino, violoncello, tromba, sassofono, chitarra classica; le batterie vanno da quella standard a quella jazz. Se l'orchestra è installata c'è anche la voce "Orchestra". C'è sempre "Strumenti sintetizzati", divisi in pianoforti e tastiere, organi e fisarmonica, chitarre e corde pizzicate, archi, fiati e legni, ottoni, percussioni intonate, voci, sintetizzatori, batteria e percussioni;
+
+"Scarica o scegli un set di strumenti" serve a procurarsi i suoni. Quando hai già scaricato tutto, questa voce sparisce dal menu.
+
+Scaricare o scegliere un set di strumenti
+
+"Scarica i suoni ad alta qualità" porta sul computer i campioni degli strumenti veri. Sono circa trentadue megabyte, da scaricare una volta sola. Compare una schermata di attesa che puoi annullare. Finito il download, il menu si aggiorna da solo. Per rifarlo c'è "Scarica di nuovo i suoni ad alta qualità".
+
+"Scarica l'orchestra" porta gli strumenti campionati da un'orchestra vera, la Sonatina Symphonic Orchestra di Mattias Westlund, con licenza Creative Commons con attribuzione. Pesa circa cinquecento megabyte e si scarica una volta sola, in una cartella accanto al programma. Ogni strumento ha un suo file. Ci sono archi (violini primi e secondi, viole, violoncelli e contrabbassi, a note lunghe, staccato o pizzicato, più violino e violoncello solisti), legni (flauti, oboi, clarinetti, fagotti, ottavino, corno inglese e altri), ottoni (corni, trombe, tromboni, tuba), percussioni (timpani, campane, xilofono, piatti, triangolo e altre), cori misti, maschili e femminili, pianoforte a coda e arpa. Una nota fuori dall'estensione dello strumento resta muta, come su uno strumento vero.
+
+"Scegli un file di suoni SoundFont" serve a chi ha già un file sf2. Lo scegli con il selettore di WinGabriel e da quel momento gli strumenti ad alta fedeltà suonano con i campioni di quel file.
+
+L'ambiente dello strumento
+
+Scelto lo strumento, si apre un controllo a schermo intero con una sola riga di testo. La riga dice dove sei: la traccia nuova da registrare oppure una traccia già registrata. Da questo momento la tastiera suona. Invio avvia e ferma la registrazione. Alt apre le opzioni. AltGr apre il menu delle modifiche. Esc chiude lo strumento. Con un menu aperto i tasti non suonano.
+
+Come si suona
+
+Le due file centrali di lettere sono due tastiere di pianoforte, una sopra l'altra. I tasti si riconoscono dalla posizione, quindi tutto funziona anche con una tastiera di un'altra lingua.
+
+Nella fila bassa, Z X C V B N M, la virgola, il punto e il trattino, ci sono i tasti bianchi, dal Do al Mi dell'ottava dopo. Le note nere stanno nella fila sopra: S D G H J L e il tasto della o accentata, proprio in mezzo ai tasti bianchi. Tra Mi e Fa e tra Si e Do non c'è nessuna nota nera.
+
+Nella fila alta, Q W E R T Y U I O P e i due tasti seguenti, ci sono i tasti bianchi dell'ottava più acuta. Le note nere sono i numeri 2 3 5 6 7 9 0 e il tasto della i accentata.
+
+Con una batteria o delle percussioni, ogni tasto è un pezzo diverso del set: cassa, rullante, charleston, tom, piatti. L'elenco si ascolta da "Aiuto".
+
+Un tasto tenuto premuto fa svanire la nota piano piano, secondo lo strumento: un pianoforte a coda si spegne lentamente, un organo continua finché il tasto resta giù. Appena sollevi il tasto, la nota si stacca. Se ne premi altri mentre le note di prima stanno ancora sfumando, tutte continuano a suonare.
+
+Pagina su e Pagina giù spostano lo strumento di un'ottava più su o più giù, e la voce dice l'ottava. Maiusc dà più forza alla nota. Le note suonate non vengono lette, per non coprire la musica. Chi vuole sentirne il nome, per esercitarsi, attiva la lettura delle note da Configurazione, nel menu Musica.
+
+Le tracce
+
+Ogni volta che premi Invio inizia la registrazione di una traccia nuova. Senti un beep e nessuna parola, così nessuno ti distrae mentre suoni. Le tracce già registrate ripartono dall'inizio nello stesso istante e le senti mentre suoni, insieme al sottofondo se c'è. Premi di nuovo Invio per fermare. La traccia si aggiunge al progetto e la voce dice il numero. Se non hai suonato nessuna nota, la traccia non viene aggiunta.
+
+Con le frecce ti muovi tra le righe. Freccia giù passa alla traccia dopo, freccia su a quella prima. L'ultima riga è sempre la traccia nuova, con il suo strumento. Ogni riga letta dice il numero della traccia, lo strumento, la durata e, se non è quello normale, il volume.
+
+Maiusc con le frecce seleziona più tracce: ogni traccia toccata risulta "selezionata". Canc elimina le tracce selezionate o, se non ne hai selezionate, quella su cui sei. Durante la registrazione non si elimina niente.
+
+La barra spaziatrice ascolta tutte le tracce insieme, dall'inizio, e di nuovo premuta si ferma. Non c'è un pedale di sostegno.
+
+Il tasto Inserisci aggiunge una traccia con un altro strumento: si apre la scelta degli strumenti, e quello che scegli diventa lo strumento della traccia nuova. Le tracce già fatte restano come sono. Lo stesso comando è nelle opzioni, alla voce "Aggiungi una traccia, scegliendo lo strumento".
+
+Il menu delle modifiche
+
+AltGr, il tasto Alt di destra, premuto e rilasciato da solo, apre il menu "Modifica la traccia", come in Word. Le voci sono tre.
+
+"Elimina traccia", che diventa "Elimina le tracce selezionate" se ne hai selezionate più d'una;
+
+"Sposta traccia più in alto" e "Sposta traccia più in basso", che scambiano la traccia con quella vicina. Compaiono solo quando lo spostamento è possibile;
+
+"Modifica volume" chiede il volume in percento. Il valore normale è cento. Va da zero a quattrocento, e serve soprattutto con la batteria o con strumenti che escono bassi. Il volume si salva con il progetto e conta anche nell'esportazione.
+
+Sulla riga della traccia nuova il menu ha solo il volume, quello con cui suoni lo strumento. Durante la registrazione AltGr non fa niente.
+
+Il metronomo
+
+Dalle opzioni controlli il metronomo. Un colpo a ogni battito, più acuto sul primo della battuta.
+
+"Avvia il metronomo" lo accende per esercitarti, "Ferma il metronomo" lo spegne;
+
+"Tempo del metronomo" chiede i battiti al minuto, da trenta a trecento;
+
+"Battiti per battuta" chiede quanti sono, da uno a dodici;
+
+"Registra con il metronomo" lo fa sentire mentre registri. Il primo colpo cade nell'istante in cui parte la registrazione. "Registra senza metronomo" lo toglie.
+
+Tempo e battiti con cui registri finiscono nel progetto. L'esportazione in MusicXML e MIDI scrive il ritmo secondo quei valori.
+
+Le opzioni
+
+Alt apre il menu delle opzioni. Le voci cambiano secondo il momento.
+
+"Registra", che durante la registrazione diventa "Ferma la registrazione";
+
+"Stato" dice il progetto, lo strumento, l'ottava, quante tracce hai, la riga su cui sei, il sottofondo, il metronomo e i volumi;
+
+"Aggiungi una traccia, scegliendo lo strumento". Non c'è durante la registrazione;
+
+"Ascolta le tracce" o "Ferma l'ascolto delle tracce", quando ci sono tracce;
+
+"Elimina le tracce selezionate o la traccia corrente" ed "Esporta", anche questi solo quando ci sono tracce;
+
+"Scegli il sottofondo". Con un sottofondo scelto compaiono "Avvia il sottofondo" o "Ferma il sottofondo", "Cambia il sottofondo" e "Togli il sottofondo";
+
+le quattro voci del metronomo;
+
+"Aiuto".
+
+Volumi generali, riverbero, latenza, ripetizione del sottofondo e lettura delle note non stanno qui. Si cambiano da "Configurazione" nel menu Musica, oppure da Impostazioni, Applicazioni, Musica. Il riverbero è l'eco della stanza, che rende il suono più pieno o più asciutto.
+
+Il sottofondo
+
+Puoi suonare sopra una base: un accompagnamento, un brano senza la parte dello strumento, un metronomo registrato.
+
+1. Apri le opzioni e scegli "Scegli il sottofondo".
+
+2. Scegli un file audio. Vanno bene mp3, wav, wma, m4a, aac, flac e aiff.
+
+3. Il file si carica e la voce lo conferma. Con "Avvia il sottofondo" lo ascolti e ti eserciti.
+
+4. Quando inizi a registrare, il sottofondo riparte da capo nello stesso istante. Strumento, tracce e base nascono dallo stesso motore e restano sempre a tempo.
+
+Il volume del sottofondo si regola da Configurazione. Se la base finisce prima di te, la registrazione continua fino a quando non la fermi. Con "Ripeti il sottofondo" la base ricomincia da sola.
+
+Salvare il progetto
+
+Quando premi Esc e il progetto ha delle modifiche, si apre un menu con tre voci.
+
+"Salva il progetto" ti chiede il nome del progetto. Il progetto resta nei dati di WinGabriel;
+
+"Esci senza salvare" chiude lo strumento e butta le modifiche;
+
+"Torna allo strumento" lascia tutto com'è.
+
+Se nella richiesta del nome premi Esc, il progetto resta comunque salvato come "Progetto senza nome" con la data e l'ora, e non perdi niente. Se non ci sono modifiche, Esc chiude subito.
+
+Per riprendere il lavoro vai in "Strumenti musicali", poi "I miei progetti". Il progetto si riapre con tracce, volumi, sottofondo e tempo del metronomo. Se una traccia usa un suono ad alta fedeltà che non hai scaricato, un messaggio avvisa: quella traccia non suona, ma resta nel progetto.
+
+Esportare
+
+Dalle opzioni scegli "Esporta". Tre passaggi, in quest'ordine.
+
+1. Scegli la cartella. Il selettore parte dalla scelta delle risorse. Non esiste una cartella predefinita: la scegli ogni volta.
+
+2. Scrivi il nome del file. Come proposta c'è il nome del progetto.
+
+3. Scegli il formato.
+
+"MusicXML" scrive uno spartito che si apre in qualsiasi programma di notazione. Il ritmo segue il tempo del metronomo con cui hai registrato, o centoventi al minuto in quattro quarti se non l'hai usato, ed è arrotondato alla semicroma. Il risultato è una trascrizione di quello che hai suonato, non una lettura del ritmo che avevi in mente. Una traccia per ogni strumento. Chi suona liberamente, senza metronomo, trova spesso uno spartito molto spezzettato;
+
+"MIDI" conserva le note con i tempi esatti, uno strumento per traccia, il volume e il tempo del metronomo;
+
+"mp3" e "wav" suonano tutto il progetto, con i volumi che hai impostato e con il sottofondo, e lo scrivono in un file solo. L'mp3 è in alta qualità a trecentoventi kilobit al secondo. Se Windows non riesce a scrivere l'mp3, WinGabriel lo salva in wav e te lo dice.
+
+L'esportazione lavora in sottofondo con una schermata di attesa, e alla fine un messaggio dice dove ha scritto il file. Se il nome esiste già, il nuovo file prende un numero.
+
+La latenza
+
+La latenza è il ritardo tra il tasto premuto e il suono. WinGabriel la tiene più bassa possibile. I tasti vanno dritti allo strumento senza passare dal resto del programma, e il suono esce da un buffer molto piccolo. Con l'impostazione "minima", che è quella normale, su Windows 10 e 11 il ritardo è di solito tra cinque e dieci millisecondi. Se la scheda audio non regge questo modo, WinGabriel passa da solo all'uscita normale di Windows, con sessanta millisecondi. Le altre impostazioni sono sessanta, cento e centocinquanta.
+
+Se con la latenza minima il suono fa scatti, il computer è lento o sovraccarico. Scegli una latenza più alta da Configurazione, nel menu Musica, oppure da Impostazioni, Applicazioni, Musica. Lì trovi per strumenti, spartiti e registratore vocale i volumi, il riverbero, la latenza, la ripetizione del sottofondo, la lettura delle note e la sincronia della voce. Ogni valore si sceglie da un elenco con quello attuale già evidenziato e vale dalla prossima apertura.
+
+In caso di problemi
+
+"Non è stato possibile aprire la scheda audio" vuol dire che un altro programma occupa l'uscita audio, oppure che non c'è nessun dispositivo di riproduzione. Chiudi l'altro programma e riprova;
+
+il suono fa scatti o si interrompe. Scegli una latenza più alta;
+
+gli strumenti ad alta fedeltà non ci sono. Scaricali da "Scarica o scegli un set di strumenti". Se il download non va a buon fine, controlla la connessione e riprova; gli strumenti sintetizzati funzionano comunque;
+
+le note non suonano. Controlla il volume dello strumento in Configurazione e quello generale del computer;
+
+la batteria o uno strumento si sente troppo piano. Con AltGr apri il menu delle modifiche e alza il volume della traccia;
+
+un progetto non si riapre bene. Se un suono ad alta fedeltà manca, scaricalo e riapri il progetto.

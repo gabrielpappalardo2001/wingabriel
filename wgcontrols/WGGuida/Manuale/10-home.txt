@@ -1,0 +1,98 @@
+﻿La home, per usare il computer come un tablet
+@smart
+
+Alcuni computer portatili possono diventare tablet: basta staccare la tastiera o ripiegarla dietro lo schermo. WinGabriel se ne accorge autonomamente e te lo segnala con la frase "Modalità tablet". Da quel momento, al posto della normale scrivania, compare la home.
+
+Quando riattacchi la tastiera, WinGabriel pronuncia "Modalità computer" e ripristina la scrivania.
+
+Perché la home è diversa dalla scrivania
+
+Anche sul tablet si lavora con i file e le cartelle: li apri, li copi e li gestisci tramite Gestione file, esattamente come sul computer. La home però, analogamente ai tablet e agli smartphone, contiene esclusivamente applicazioni, senza file né cartelle, così da rimanere semplice e ordinata. I collegamenti a file e cartelle posizionati sulla scrivania rimangono su di essa e tornano visibili quando si riattacca la tastiera.
+
+Com'è fatta la home
+
+La home ha la stessa struttura di quella degli smartphone.
+
+In alto è presente una barra che mostra l'ora, lo stato del Wi-Fi e della batteria. L'icona del Wi-Fi dispone di tacche, da una a quattro, che indicano l'intensità del segnale. La batteria si colora di verde quando è in carica e diventa rossa quando la percentuale scende sotto il venti per cento. Lo screen reader descrive ogni elemento a voce, ad esempio "Wi-Fi Casa, 3 tacche su 4", oppure "Batteria 80 per cento, in carica". Eseguendo un doppio tocco sul Wi-Fi, viene visualizzato sopra la home il relativo menu: la prima opzione lo disattiva, la seconda apre l'elenco delle reti. Ci si sposta con un colpo verso destra o verso sinistra, si seleziona con un doppio tocco, si aprono le opzioni di una rete con un colpo verso l'alto e si chiude il menu eseguendo un doppio tocco con due dita.
+
+Sotto la barra si trovano le applicazioni, dieci per ciascuna pagina. Tenendo il tablet in verticale le colonne sono due, mentre in orizzontale diventano cinque.
+
+Al di sotto delle applicazioni sono presenti dei punti, uno per ogni pagina. Il punto pieno indica la pagina corrente.
+
+In basso si trova il dock: una barra di applicazioni fissa che rimane invariata in tutte le pagine. Nel dock si inseriscono le applicazioni utilizzate più frequentemente e può contenerne al massimo quattro.
+
+Le applicazioni della home
+
+Al primo avvio, la home è organizzata nel modo seguente.
+
+Nel dock si trovano l'Agenda e la Rubrica.
+
+Nella prima pagina sono presenti: Note, Mail, Web, Editor, Gestione file, Traduttore, Salute, Intelligenza artificiale, Altre funzioni e Impostazioni.
+
+Nella seconda pagina figurano: Dati riservati, Aggiornamento, Informazioni sul programma e Manuale.
+
+Questa disposizione può essere modificata a piacimento, come spiegato in seguito.
+
+Il centro di controllo non si trova sulla home. Non è un'applicazione ordinaria, bensì un pannello che si apre con un apposito gesto delle dita, analogo a quello degli smartphone, e a cui è dedicato un apposito capitolo in questo manuale.
+
+Muoversi con le dita
+
+Fai scorrere un dito verso destra per passare all'applicazione successiva, oppure verso sinistra per tornare alla precedente.
+
+Giunto all'ultima applicazione della pagina, il gesto successivo conduce direttamente nel dock. Oltrepassata l'ultima applicazione del dock, viene emesso un segnale acustico che indica il raggiungimento della fine.
+
+Posizionandosi sulla prima applicazione di una pagina, il gesto verso sinistra non causa il passaggio alla pagina precedente. Le pagine si cambiano esclusivamente tramite un gesto specifico, evitando così cambi di pagina accidentali.
+
+Per cambiare pagina si utilizzano tre dita: facendo scorrere tre dita contemporaneamente verso sinistra si passa alla pagina successiva, mentre verso destra si torna alla precedente, simulando lo sfoglio delle pagine di un libro. La voce guida enuncia il numero della pagina e la prima applicazione.
+
+È inoltre possibile appoggiare un dito sullo schermo e trascinarlo senza sollevarlo: la voce comunicherà l'elemento sottostante, che si tratti di un'applicazione, del dock o della barra superiore.
+
+Per aprire un'applicazione è necessario eseguire un doppio tocco rapido sullo schermo.
+
+Per accedere al menu delle opzioni, si fa scorrere un dito verso l'alto.
+
+Muoversi con la tastiera
+
+Se si utilizza una tastiera collegata:
+
+i tasti freccia consentono lo spostamento tra le applicazioni. Premendo la freccia giù dall'ultima riga si accede al dock, mentre premendo la freccia su dal dock si ritorna alle pagine;
+
+Pagina giù e Pagina su permettono di cambiare pagina;
+
+Invio apre l'applicazione;
+
+Alt apre il menu delle opzioni;
+
+F2 consente di rinominare l'applicazione;
+
+Canc rimuove l'applicazione dalla home;
+
+Tab sposta il cursore sulla barra in alto;
+
+F1 apre questo capitolo del manuale.
+
+Cambiare la disposizione
+
+Dal menu delle opzioni della home è possibile riorganizzare le applicazioni secondo le proprie preferenze:
+
+"Aggiungi" permette di selezionare un'applicazione non ancora presente nella home;
+
+"Rinomina" modifica il nome dell'applicazione;
+
+è possibile posizionare un'applicazione prima o dopo le altre, oppure spostarla nella pagina successiva o precedente;
+
+è consentito inserirla nel dock, oppure rimuoverla da esso per ricollocarla nelle pagine;
+
+si può rimuovere l'applicazione dalla home. L'operazione non ne comporta la perdita: l'applicazione rimane sempre disponibile nel menu delle applicazioni e può essere ripristinata in qualsiasi momento.
+
+Se la home dovesse risultare troppo disordinata, selezionando "Rimetti la disposizione iniziale" la schermata tornerà allo stato originario.
+
+Da qualsiasi menu del programma è possibile aggiungere una voce alla home: posizionandosi sulla voce desiderata, si preme Alt e si seleziona "Aggiungi alla home".
+
+Tornare alla home
+
+Da qualsiasi applicazione, facendo scorrere due dita verso l'alto si ritorna alla home, analogamente al tasto home degli smartphone.
+
+Con due dita verso destra o verso sinistra si naviga tra le applicazioni aperte. Eseguendo un triplo tocco rapido con due dita si apre il multitasking, ossia l'elenco delle applicazioni in esecuzione.
+
+Tutti i gesti sono descritti nel capitolo relativo al tocco.

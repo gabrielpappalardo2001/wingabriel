@@ -1,0 +1,67 @@
+﻿Il centro di controllo
+
+Il centro di controllo è il punto in cui puoi verificare lo stato del computer e monitorare tutte le attività che WinGabriel sta eseguendo in un dato momento.
+
+Come aprirlo
+
+Il modo più rapido consiste nel premere il tasto F6 da qualsiasi punto del programma.
+
+[smart]
+Puoi aprirlo anche premendo la combinazione di tasti Windows + A, oppure selezionando la voce "Centro di controllo" dal menu delle applicazioni.
+[/smart]
+
+[classica]
+Puoi aprirlo anche dal menu principale, alla voce "Centro di controllo".
+[/classica]
+
+Il centro di controllo si presenta come un menu e si utilizza come tale: puoi scorrere le voci con i tasti freccia giù e freccia su, confermare la scelta con Invio e chiuderlo con il tasto Esc.
+
+Cosa contiene
+
+Il centro di controllo include le seguenti voci:
+
+lo stato della batteria, che mostra il livello di carica e l'autonomia residua, oppure indica se il computer è collegato all'alimentazione;
+
+lo stato della connessione a internet, per verificare se sei connesso;
+
+i lavori in corso, qualora ve ne siano di attivi;
+
+la sezione di riproduzione, se è in corso l'ascolto di contenuti multimediali;
+
+la ricerca di file, nel caso in cui tu abbia avviato una ricerca all'interno del computer.
+
+I lavori in corso
+
+Alcune operazioni di WinGabriel richiedono tempo e vengono eseguite in background, permettendoti di continuare a usare il computer. Ad esempio: la copia o lo spostamento di numerosi file, il download di un file, di un libro o di un video, la conversione di un file audio, la ricerca di file sul computer o la riproduzione di un brano.
+
+Nel centro di controllo sono elencate tutte queste attività, ciascuna accompagnata dalla relativa percentuale di avanzamento: ad esempio, la dicitura "Copia file, 60 per cento" indica che l'operazione ha superato la metà del processo.
+
+Premendo Invio su una delle attività si apre un sottomenu con le seguenti opzioni: informazioni, pausa, riprendi, annulla.
+
+[smart]
+Il pannello del tablet
+
+Quando utilizzi il computer in modalità tablet, hai a disposizione un ulteriore centro di controllo, strutturato in modo simile a quello degli smartphone: un pannello dotato di interruttori e cursori che possono essere gestiti direttamente con le dita.
+
+Questo pannello si apre in un unico modo: effettuando uno scorrimento con tre dita dal basso verso l'alto. Lo stesso gesto permette di chiuderlo, così come la pressione del tasto Esc o un doppio tocco eseguito con due dita. È inoltre accessibile dal menu delle opzioni della schermata principale.
+
+Se compi lo stesso gesto quando il computer non si trova in modalità tablet, verrà aperto il centro di controllo a menu descritto all'inizio di questo capitolo.
+
+Il pannello comprende, procedendo dall'alto verso il basso:
+
+due interruttori, dedicati a Wi-Fi e Bluetooth, che funzionano esattamente come interruttori a levetta (acceso o spento). Lo screen reader annuncerà, ad esempio, "Wi-Fi, acceso, interruttore". Eseguendo un doppio tocco su uno di essi si aprirà un piccolo elenco composto da due voci: la prima permette di attivarlo o disattivarlo, mentre la seconda ("Elenco reti Wi-Fi" oppure "Elenco dispositivi Bluetooth") apre la schermata dalla quale è possibile gestire le connessioni e le altre impostazioni;
+
+due cursori per la regolazione, basati su una scala da zero a cento: la luminosità dello schermo e il volume del computer. La voce segnala il valore corrente, ad esempio "Volume 40 per cento, regolabile";
+
+tre pulsanti per il controllo multimediale: brano precedente, riproduci o pausa, brano successivo. Questi comandi gestiscono i contenuti in riproduzione, anche se emessi da un'altra applicazione;
+
+il pulsante che indica la periferica di riproduzione audio attiva, ad esempio "Audio su Altoparlanti". Con un doppio tocco è possibile selezionare un dispositivo differente, come le cuffie;
+
+la modalità non disturbare, descritta dettagliatamente nel capitolo dedicato al centro notifiche;
+
+infine, le stesse voci presenti nel centro di controllo in formato menu: stato della batteria, connessione e lavori in corso.
+
+All'interno del pannello, uno scorrimento del dito verso destra o verso sinistra consente di spostarsi da un comando all'altro. Sui cursori, un movimento verso l'alto o verso il basso incrementa o riduce il valore. Un doppio tocco attiva il comando corrispondente, aprendo il menu di un interruttore o azionando un pulsante. Appoggiando il dito sullo schermo e facendolo scorrere è possibile esplorare gli elementi sottostanti.
+
+Le voci del pannello si aggiornano automaticamente ogni secondo e mezzo: di conseguenza, mentre ascolti un contenuto, le percentuali di avanzamento delle attività progrediranno in tempo reale.
+[/smart]

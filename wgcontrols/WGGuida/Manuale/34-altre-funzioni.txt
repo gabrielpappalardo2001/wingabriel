@@ -1,0 +1,69 @@
+﻿Le altre funzioni
+
+Nel {menu}, alla voce "Altre funzioni", trovi alcuni utili strumenti quotidiani: il calendario, data e ora, le informazioni sul computer e le opzioni di risparmio energetico.
+
+Il calendario
+
+Il calendario mostra i giorni del mese in sequenza e si apre direttamente su quello corrente.
+
+I tasti freccia giù e freccia su consentono di spostarsi da un giorno all'altro.
+
+Per passare al mese precedente o successivo, premi il tasto Alt e seleziona "Mese precedente" oppure "Mese successivo".
+
+Cosa puoi fare in un giorno
+
+Posizionati su un giorno e premi Invio per aprire un menu che contiene le seguenti voci:
+
+"Crea un nuovo appuntamento nell'agenda" per la data selezionata;
+
+"Consulta agenda del giorno", per visualizzare gli impegni previsti;
+
+"Crea nuova nota con la data di oggi";
+
+"Consulta note del giorno";
+
+"Consulta Almanacco del giorno";
+
+"Onomastici del giorno".
+
+Le note del giorno ti permettono di tenere un piccolo diario personale.
+
+L'almanacco
+
+L'almanacco è l'equivalente del tradizionale lunario da cucina e fornisce indicazioni sul santo del giorno, gli onomastici, le feste e le ricorrenze.
+
+Nel menu delle opzioni del calendario, accessibile tramite il tasto Alt, trovi inoltre:
+
+"Mostra santo del giorno";
+
+"Mostra fasi lunari", per verificare luna nuova, luna piena e le altre fasi;
+
+"Mostra orari del sole", con gli orari di alba e tramonto;
+
+"Ricerca onomastico", che consente di inserire un nome per scoprire quando si festeggia e di aggiungere tale ricorrenza all'agenda per non dimenticare di fare gli auguri ogni anno.
+
+La tua città
+
+Sempre all'interno del menu delle opzioni del calendario trovi:
+
+"Imposta città del calendario", per specificare la tua località e fare in modo che gli orari del sole siano corretti per la tua zona;
+
+"Imposta festa locale", per aggiungere la festa patronale del tuo comune, che il calendario non può conoscere autonomamente.
+
+La data e l'ora
+
+La voce "Consulta data e ora attuali" comunica la data odierna e l'ora esatta.
+
+Le informazioni sul computer
+
+"Informazioni sistema" elenca le specifiche tecniche del computer: il sistema operativo, il nome del dispositivo, l'architettura a 32 o 64 bit, il numero di processori, la memoria totale e disponibile e il nome dell'utente attualmente connesso.
+
+Si tratta delle informazioni che un tecnico potrebbe richiedere telefonicamente in caso di assistenza.
+
+Il risparmio energetico
+
+La sezione "Risparmio energetico" comprende due opzioni:
+
+"Sospendi computer", che mette il sistema in modalità di sospensione a ridottissimo consumo energetico, ripristinando lo stato precedente al risveglio;
+
+"Blocca sessione", che mantiene il computer acceso ma richiede l'inserimento della password per poterlo utilizzare nuovamente, risultando utile quando ci si allontana e si desidera impedire l'accesso ad altri utenti.

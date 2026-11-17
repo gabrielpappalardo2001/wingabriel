@@ -1,0 +1,177 @@
+﻿La gestione file
+
+Nel computer sono presenti migliaia di file: lettere, fotografie, canzoni e documenti. I file sono custoditi all'interno delle cartelle, le quali a loro volta possono trovarsi dentro altre cartelle, in modo analogo ai fascicoli racchiusi nei cassetti di un archivio.
+
+La gestione file consente di spostarsi tra le cartelle, aprire i file, copiarli, spostarli, rinominarli ed eliminarli, il tutto servendosi della voce di WinGabriel.
+
+Il menu della gestione file
+
+Nel {menu} si seleziona "Gestione file". Si apre così un menu composto dalle seguenti voci:
+
+"Scelta risorsa": mostra i dischi e i dispositivi del computer, rappresentando il punto di partenza;
+
+"Cerca file nel computer": individua un file all'interno dell'intero sistema. Tale funzione viene approfondita nel capitolo dedicato alla ricerca;
+
+"Preferiti": raggruppa i file e le cartelle salvati per un accesso rapido;
+
+"Recenti": elenca i file e le cartelle aperti di recente.
+
+Scegliere da dove cominciare
+
+La voce "Scelta risorsa" visualizza:
+
+i dischi del computer (il disco principale è solitamente denominato C);
+
+le chiavette USB e i dischi esterni collegati;
+
+i telefoni e gli altri dispositivi connessi tramite cavo;
+
+i server FTP configurati in precedenza.
+
+Per procedere, è sufficiente effettuare una selezione utilizzando i tasti freccia e premere Invio per aprire l'elemento desiderato.
+
+Muoversi fra le cartelle
+
+All'interno di una cartella sono visibili dapprima le altre sottocartelle e successivamente i file. Di ciascuno di essi vengono annunciati il nome e il tipo.
+
+I tasti freccia giù e freccia su permettono di scorrere gli elementi;
+
+Il tasto Invio consente di accedere a una cartella o di aprire un file;
+
+I tasti Esc oppure Backspace permettono di tornare alla cartella superiore o di livello precedente;
+
+La pressione di un tasto alfabetico porta direttamente al primo elemento che inizia con quella lettera.
+
+Aprire un file
+
+Premendo Invio su un file, WinGabriel provvede ad aprirlo internamente avvalendosi dello strumento più idoneo: i documenti vengono aperti nell'editor, la musica e i video nel lettore multimediale, mentre i file PDF vengono convertiti in testo leggibile.
+
+[smart]
+Ciascun file si apre come un'applicazione indipendente, contrassegnata dal proprio nome.
+[/smart]
+
+Le operazioni sui file
+
+Posizionandosi su un file o su una cartella e premendo il tasto Alt, si apre il menu delle opzioni che raccoglie tutte le azioni eseguibili. Tali operazioni si applicano all'elemento selezionato oppure a tutti quelli evidenziati tenendo premuto il tasto Shift.
+
+Le operazioni di uso comune
+
+Apri, Copia, Taglia, Incolla, Rinomina, Elimina.
+
+Per copiare un file in un'altra cartella occorre procedere come segue:
+
+1. Posizionarsi sul file e selezionare "Copia" dal menu delle opzioni.
+
+2. Raggiungere la cartella di destinazione.
+
+3. Selezionare "Incolla" dal menu delle opzioni.
+
+Per effettuare uno spostamento anziché una copia, è sufficiente scegliere "Opzione Taglia" al primo passaggio.
+
+La funzione Rinomina permette di modificare il nome di un file o di una cartella.
+
+Ulteriori operazioni utili
+
+"Crea nuova cartella": genera una nuova cartella nella posizione corrente;
+
+"Vai a percorso": consente di digitare direttamente l'indirizzo di una cartella per raggiungerla istantaneamente;
+
+"Aggiorna": ricarica il contenuto della cartella nel caso in cui si siano verificate modifiche;
+
+"Ordina": organizza i file in base al nome, alla data, alla dimensione o al tipo;
+
+"Filtra per estensione": mostra esclusivamente una specifica tipologia di file, ad esempio solo i documenti o solo i file musicali;
+
+"Informazioni": fornisce dettagli sulle dimensioni del file, sulle date e su altre caratteristiche;
+
+"Aggiungi ai preferiti": inserisce il file o la cartella all'interno del menu "Preferiti";
+
+[smart]
+"Aggiungi alla scrivania", che genera un collegamento sul desktop, e "Copia sulla scrivania", che ne posiziona una copia effettiva;
+[/smart]
+
+"Comprimi": raggruppa più file in un unico archivio compresso, eventualmente protetto da password. Da un archivio compresso è inoltre possibile estrarre i singoli file contenuti;
+
+"Cripta" e "Decripta": proteggono un file mediante una password, impedendone l'apertura a utenti non autorizzati;
+
+"Stampa": invia un documento alla stampante.
+
+Le operazioni speciali
+
+"Traduci": traduce il contenuto di un documento in un'altra lingua;
+
+"Riassumi con l'intelligenza artificiale": sintetizza in poche righe l'argomento trattato in un documento esteso;
+
+"Riscrivi con ai": l'intelligenza artificiale riscrive il contenuto di un file di testo seguendo le istruzioni fornite. La funzione è descritta nel paragrafo "Riscrivere un file con l'intelligenza artificiale";
+
+"Descrivi l'immagine": l'intelligenza artificiale descrive ciò che è raffigurato in una fotografia;
+
+"Trascrivi audio": converte in testo una registrazione vocale;
+
+"Converti in mp3": trasforma un file audio o video in formato mp3;
+
+"Modifica tag": consente di variare il titolo e l'artista di un brano musicale;
+
+"Riproduci tutta la cartella": riproduce in sequenza tutti i file musicali presenti nella cartella.
+
+Riscrivere un file con l'intelligenza artificiale
+
+Con "Riscrivi con ai" puoi far correggere, riordinare, tradurre o rielaborare un file di testo da un modello di intelligenza artificiale, indicando a parole che cosa desideri. Alcuni esempi di istruzioni: "correggi gli errori di battitura", "traduci in inglese", "rendi il tono più cordiale", "togli le righe vuote in eccesso".
+
+La voce compare nel menu delle opzioni quando ti trovi su un file di testo: documenti semplici, file con estensione txt, md, csv, json, log, xml, html, htm, ini, yaml, yml o sql, file di programmazione come vb, cs, py, js, css, php, asp e aspx. Non compare per i documenti di Word, i PDF, le immagini e gli altri file che non sono costituiti da semplice testo. Puoi selezionare più file con il tasto Shift e riscriverli tutti insieme con le stesse istruzioni.
+
+Prima di cominciare serve un motore di intelligenza artificiale configurato, come spiegato nel capitolo sull'intelligenza artificiale. Se manca, WinGabriel te lo segnala e ti rimanda alle impostazioni.
+
+Per riscrivere un file:
+
+1. Posizionati sul file, o selezionane diversi con il tasto Shift, e premi il tasto Alt.
+
+2. Seleziona "Riscrivi con ai".
+
+3. Nel campo "Istruzioni" scrivi che cosa vuoi ottenere. Il campo accetta più righe. Per le istruzioni più lunghe puoi andare a capo.
+
+4. Se vuoi usare un modello preciso anziché quello scelto da WinGabriel, apri il menu delle opzioni del campo e seleziona "Scegli il modello AI". L'elenco comprende i modelli dei motori che hai configurato, indicati con il nome del motore, per esempio "OVHcloud" per i modelli europei, mentre la prima voce, "Automatico", lascia la scelta a WinGabriel. La preferenza viene memorizzata per le volte successive.
+
+5. Conferma. La riscrittura si avvia in background e puoi continuare a lavorare: la voce ti avvisa che puoi monitorare l'avanzamento dal centro di controllo, da cui è anche possibile sospendere o annullare l'operazione.
+
+Al termine, WinGabriel ti comunica quanti file ha modificato e, se qualcuno non è stato elaborato, ne spiega il motivo: ad esempio perché il file è vuoto, in sola lettura, non è stato trovato oppure è cambiato mentre la riscrittura era in corso.
+
+Tre avvertenze importanti:
+
+il file viene sostituito con la versione riscritta: WinGabriel non ne conserva una copia. Se il file è importante, copialo prima in un'altra cartella oppure lavora su una copia di riserva;
+
+i file lunghi vengono elaborati a blocchi, uno dopo l'altro, e l'operazione può richiedere diversi minuti. WinGabriel mantiene la codifica del file e la formattazione degli a capo, in modo che il documento rimanga leggibile dagli altri programmi;
+
+l'intelligenza artificiale può commettere errori, talvolta non evidenti: si consiglia di rileggere il risultato prima dell'uso. Il testo dei file viene inviato al servizio scelto, pertanto si raccomanda di non elaborare file contenenti password, numeri di carte di credito o dati sanitari.
+
+Le elaborazioni prolungate
+
+La copia o lo spostamento di un numero elevato di file può richiedere del tempo. Queste operazioni vengono eseguite in background, consentendo all'utente di continuare a lavorare. È possibile monitorare lo stato di avanzamento tramite il centro di controllo, dal quale si possono anche sospendere o annullare.
+
+Nel caso in cui nella cartella di destinazione sia già presente un file con lo stesso nome, WinGabriel chiederà all'utente come procedere.
+
+Eliminare i file
+
+Accedendo alle Impostazioni, alla voce "Applicazioni", poi a "File" e infine a "Eliminazione dei file", è possibile stabilire il comportamento del sistema in seguito all'eliminazione di un elemento:
+
+il file viene spostato nel Cestino di Windows, da cui risulta recuperabile (opzione più sicura);
+
+oppure viene cancellato immediatamente e in modo definitivo.
+
+Le chiavette e i telefoni
+
+Posizionandosi su una chiavetta USB o su un disco esterno, il menu delle opzioni mette a disposizione le seguenti voci:
+
+"Rimuovi disco": prepara la periferica per la rimozione sicura, evitando il danneggiamento dei file. Si raccomanda di utilizzare sempre questa funzione prima di scollegare il dispositivo;
+
+"Copia unità": duplica l'intero contenuto della chiavetta.
+
+I telefoni collegati tramite cavo possono essere gestiti analogamente ai dischi rigidi, consentendo l'esplorazione delle cartelle e il trasferimento bidirezionale dei file tra il dispositivo e il computer.
+
+I server FTP
+
+Un server FTP è un computer connesso a internet adibito alla conservazione di file, quali ad esempio quelli relativi a un sito web. Qualora si utilizzi un tale servizio, è possibile aggiungerlo tramite la funzione di scelta risorsa, rendendo le relative cartelle accessibili al pari di quelle locali.
+
+La pulizia del computer
+
+Tra le opzioni disponibili nella scelta risorsa figura anche "Pulizia computer". Questa funzione individua ed elimina i file temporanei, ossia i dati superflui accumulati da Windows e dalle applicazioni, consentendo così di recuperare prezioso spazio su disco.

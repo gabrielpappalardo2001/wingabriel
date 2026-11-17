@@ -1,0 +1,115 @@
+﻿Il telefono
+
+Con WinGabriel puoi telefonare e rispondere alle chiamate in arrivo direttamente dal computer, usando il telefono cellulare come linea. Il computer fa da vivavoce: tu ascolti e parli tramite le cuffie oppure con gli altoparlanti e il microfono del computer, mentre la chiamata passa attraverso il telefono, sfruttando il suo numero e il suo abbonamento. Non è necessario installare alcun programma sul telefono.
+
+Che cosa serve
+
+Affinché il telefono funzioni sono necessarie tre condizioni:
+
+il Bluetooth del computer deve essere acceso;
+
+il telefono deve essere associato al computer, esattamente come si fa con le cuffie: la procedura è illustrata nel capitolo dedicato alle connessioni;
+
+sul telefono bisogna concedere l'autorizzazione a usare il vivavoce Bluetooth e a condividere i contatti e la cronologia delle chiamate con il computer. Se la cronologia non viene visualizzata, il problema è quasi sempre dovuto alla mancanza di questo permesso, che si trova nelle impostazioni Bluetooth del telefono, in corrispondenza del nome del computer.
+
+Quando il telefono è collegato, WinGabriel lo riconosce autonomamente. Se il telefono si trova lontano o ha il Bluetooth disattivato, una voce ti avvisa che non ci sono telefoni collegati.
+
+Aprire il telefono
+
+Dal {menu} seleziona "Telefono". Si aprirà un menu composto da tre voci:
+
+"Componi": per digitare un numero e avviare una chiamata;
+
+"Chiamate recenti": l'elenco delle ultime chiamate effettuate e ricevute;
+
+"Chiamate perse": l'elenco esclusivo delle chiamate a cui non hai risposto.
+
+[smart]
+Il telefono si apre come un'applicazione indipendente, denominata "Telefono". Se l'applicazione è già aperta e selezioni nuovamente la voce nel menu delle applicazioni, verrai riportato esattamente nel punto in cui ti trovavi.
+[/smart]
+
+Prima di eseguire qualsiasi operazione, WinGabriel verifica la presenza di un telefono collegato e, nel frattempo, ti invita ad attendere tramite un avviso vocale. Se i telefoni collegati sono più di uno, ti verrà chiesto quale utilizzare e la scelta verrà memorizzata finché quel particolare telefono rimarrà connesso.
+
+Chiamare un numero
+
+1. Seleziona "Componi".
+
+2. Nel campo "Numero da chiamare" digita il numero, inserendo eventualmente anche il prefisso internazionale, quindi premi Invio.
+
+3. WinGabriel avvierà la chiamata sul telefono. Durante l'avvio sentirai la comunicazione vocale "Chiamata in corso, attendere".
+
+Se il campo è completamente vuoto, WinGabriel ti chiederà di inserire un numero valido. Se la chiamata non parte, ti verrà suggerito di controllare che il telefono sia collegato e raggiungibile; se invece parte ma si interrompe subito, ad esempio perché la linea è occupata, verrai avvisato che la chiamata non è andata a buon fine.
+
+Non è possibile avviare una seconda chiamata mentre ne è già in corso un'altra.
+
+Chiamare un contatto della rubrica
+
+Per chiamare una persona senza dover digitare il numero:
+
+1. Apri la rubrica, accessibile dall'Organizer.
+
+2. Posizionati sul contatto desiderato e premi il tasto Alt per aprire il menu delle opzioni.
+
+3. Seleziona "Chiama".
+
+Se il contatto dispone di più numeri, WinGabriel ti chiederà quale desideri chiamare, leggendo l'etichetta associata a ciascuno, come ad esempio "Cellulare" o "Casa". Dall'elenco dei contatti puoi anche selezionare direttamente la voce "Chiama il contatto selezionato" dal menu delle opzioni. Se il contatto non ha alcun numero associato, la voce te lo comunicherà.
+
+Le chiamate recenti e perse
+
+Le voci "Chiamate recenti" e "Chiamate perse" leggono la cronologia direttamente dal telefono. WinGabriel mostra al massimo le ultime cinquanta chiamate.
+
+Per ciascuna chiamata ascolterai, in successione: il nome del contatto (se presente nella rubrica del telefono) e il numero; successivamente, soltanto per le chiamate recenti, lo stato della chiamata (persa, ricevuta o effettuata); infine, la data e l'ora. Se il numero era nascosto, la voce pronuncerà "Numero privato".
+
+Premendo Invio su una chiamata potrai richiamare quel numero: WinGabriel richiederà una conferma pronunciando "Vuoi chiamare" seguito dal nome o dal numero. Se la chiamata è priva di numero, ad esempio perché nascosto, non potrà essere richiamata e la voce ti informerà di ciò.
+
+Se l'elenco non si apre e la voce fa riferimento ai permessi, verifica sul telefono che al computer sia consentito l'accesso ai contatti e alla cronologia delle chiamate.
+
+Le chiamate in arrivo
+
+Quando WinGabriel è aperto e il telefono è collegato, le chiamate in arrivo si ricevono direttamente dal computer, senza la necessità di aprire il menu del telefono o di toccarlo fisicamente.
+
+Ecco cosa accade:
+
+1. Il computer emette uno squillo. Se i suoni di Windows non sono attivi, ne riprodurrà uno proprio.
+
+2. La schermata del telefono si aprirà autonomamente in primo piano, indipendentemente da ciò che stavi facendo.
+
+3. Una domanda vocale ti informerà su chi sta chiamando: "Chiamata in arrivo da" seguita dal nome e dal numero, oppure unicamente dal numero, oppure dalla dicitura "un numero sconosciuto". Il nome compare non appena il telefono lo trasmette, pertanto potrebbe essere pronunciato con un leggero ritardo.
+
+4. Potrai scegliere tra "Sì, rispondi" e "No, rifiuta".
+
+Premendo il tasto Esc la chiamata verrà rifiutata, esattamente come se scegliessi "No, rifiuta". Se non compi alcuna azione e l'interlocutore riattacca, la chiamata verrà considerata persa.
+
+Se rispondi, lo squillo si interromperà e comparirà il menu della chiamata in corso, descritto nel paragrafo successivo. Qualora non fosse possibile rispondere dal computer, la voce lo segnalerà e ti inviterà a riprovare oppure a rispondere direttamente dal telefono: la chiamata rimarrà comunque attiva sul dispositivo mobile. Se decidi di rifiutare la chiamata ma il telefono non esegue il comando, la voce ti avviserà che il rifiuto non è andato a buon fine.
+
+Le chiamate perse
+
+Quando una chiamata in arrivo termina senza risposta, la voce pronuncerà "Chiamata persa da" seguita dal nome o dal numero, e l'evento verrà aggiunto alle notifiche. Aprendo la notifica si accederà direttamente alla sezione "Chiamate perse" del telefono.
+
+[smart]
+Le notifiche sono racchiuse nel centro notifiche, che si apre premendo la combinazione Windows + N. La modalità non disturbare, descritta nel capitolo sulle notifiche, disattiva l'avviso vocale ma conserva la notifica, così da non farti perdere alcuna chiamata.
+[/smart]
+
+Durante la chiamata
+
+Mentre la chiamata è in corso, o non appena la avvii, WinGabriel mostra un menu intitolato "Chiamata in corso con" seguito dal nome o dal numero. Le opzioni disponibili sono due:
+
+"Metti in attesa": sospende la conversazione senza chiuderla. Il titolo della finestra cambierà in "Chiamata in attesa con" e la voce dell'opzione diventerà "Riprendi la chiamata";
+
+"Termina la chiamata": interrompe la comunicazione riagganciando.
+
+Le funzioni "Metti in attesa" e "Riprendi" tornano utili quando devi interrompere temporaneamente la conversazione. Tieni presente che non tutti i telefoni supportano questo comando tramite vivavoce: in tal caso, la voce ti informerà che il telefono non ha eseguito il comando e la chiamata proseguirà normalmente.
+
+Quando l'altra persona riattacca, la chiamata termina autonomamente e il menu si chiude.
+
+Per la qualità dell'audio
+
+Alcune cuffie Bluetooth compaiono due volte nell'elenco dei dispositivi audio, e una delle due voci riporta la dicitura "vivavoce". Durante una chiamata il computer utilizzerà questa modalità, caratterizzata da una qualità inferiore: è un comportamento normale. Terminata la chiamata, per ascoltare musica o la voce di WinGabriel converrà tornare a selezionare l'altra voce, come spiegato nel capitolo sulle connessioni.
+
+Se qualcosa non funziona
+
+"Non c'è nessun telefono collegato in Bluetooth": accendi il Bluetooth sul computer e sul telefono, verifica che i due dispositivi siano associati e che sul telefono siano abilitate le chiamate in vivavoce;
+
+le chiamate in arrivo non vengono rilevate: WinGabriel cerca il telefono a intervalli regolari. Se hai appena attivato il Bluetooth sul telefono, attendi qualche secondo; se il problema persiste, scollega e ricollega il telefono agendo sulle impostazioni Bluetooth;
+
+"Non è stato possibile leggere le chiamate dal telefono": sul telefono non è stato concesso il permesso di condividere i contatti e la cronologia delle chiamate con il computer.

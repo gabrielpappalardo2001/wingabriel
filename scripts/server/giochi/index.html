@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Giochi</title>
+<meta name="theme-color" content="#1b5e3a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Giochi">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="icona-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="giochi.css">
+</head>
+<body>
+<a class="salta" href="#principale">Vai al contenuto</a>
+<header class="testata">
+  <h1>Giochi</h1>
+  <div id="utente" class="utente" hidden>
+    <span id="nome-utente"></span>
+    <a id="vai-chat" class="pulsante testata-pulsante" href="../chat/">Chat</a>
+    <button type="button" id="attiva-notifiche" class="testata-pulsante" hidden>Notifiche</button>
+    <button type="button" id="suoni" class="testata-pulsante" aria-pressed="true">Suoni: attivi</button>
+    <button type="button" id="esci" class="testata-pulsante">Esci</button>
+  </div>
+</header>
+
+<main id="principale" tabindex="-1">
+  <!-- Accesso -->
+  <section id="schermata-accesso" class="pannello" hidden>
+    <h2>Accedi ai giochi</h2>
+    <div class="schede" role="group" aria-label="Scegli cosa fare">
+      <button type="button" id="scheda-entra" class="scheda" aria-pressed="true">Ho già un account</button>
+      <button type="button" id="scheda-crea" class="scheda" aria-pressed="false">Voglio crearne uno</button>
+    </div>
+    <form id="modulo-accesso" method="post" action="index.html">
+      <label for="campo-nome">Nome utente</label>
+      <input id="campo-nome" name="nome" type="text" minlength="2" maxlength="20" autocomplete="username" required>
+      <label for="campo-password">Password</label>
+      <input id="campo-password" name="password" type="password" minlength="8" autocomplete="current-password" aria-describedby="aiuto-password" required>
+      <p id="aiuto-password" class="nota">Nome da 2 a 20 caratteri. Password di almeno 8.</p>
+      <div id="riga-ripeti" hidden>
+        <label for="campo-ripeti">Scrivi di nuovo la password</label>
+        <input id="campo-ripeti" type="password" minlength="8" autocomplete="new-password">
+      </div>
+      <label class="casella-scelta"><input id="ricorda" type="checkbox"> Ricordami su questo dispositivo (la password resta cifrata e vale anche per la chat)</label>
+      <button type="submit" id="invio-accesso">Entra</button>
+    </form>
+    <p id="errore-accesso" class="errore" role="alert"></p>
+    <p class="nota"><a href="https://wingabriel.it/privacy-policy" target="_blank" rel="noopener">Privacy</a>.</p>
+  </section>
+
+  <!-- Sala -->
+  <section id="schermata-sala" hidden>
+    <div class="pannello">
+      <h2 id="titolo-sala" tabindex="-1">Scegli un gioco</h2>
+      <ul id="elenco-giochi" class="giochi"></ul>
+    </div>
+    <div class="pannello">
+      <h2>Inviti e codici</h2>
+      <p id="nessun-invito">Nessun invito ricevuto.</p>
+      <ul id="elenco-inviti" class="stanze"></ul>
+      <form id="modulo-codice" class="scambio">
+        <label for="codice-partita">Hai il codice o il link di un tavolo?</label>
+        <input id="codice-partita" type="text" maxlength="200" autocomplete="off" placeholder="Scrivilo o incollalo qui">
+        <button type="submit">Entra</button>
+      </form>
+    </div>
+    <details class="pannello" id="pannello-bloccati">
+      <summary>Persone bloccate</summary>
+      <p id="nessun-bloccato">Nessuno.</p>
+      <ul id="elenco-bloccati" class="stanze"></ul>
+      <form id="modulo-blocca" class="scambio">
+        <label for="nome-blocca">Blocca un nome utente</label>
+        <input id="nome-blocca" type="text" maxlength="20" autocomplete="off">
+        <button type="submit">Blocca</button>
+      </form>
+    </details>
+    <details class="pannello" id="pannello-account">
+      <summary>Il mio account</summary>
+      <form id="modulo-elimina" class="scambio" method="post" action="index.html">
+        <label for="password-elimina">Password</label>
+        <input id="password-elimina" type="password" autocomplete="current-password" required>
+        <button type="submit">Elimina il mio account</button>
+      </form>
+      <p id="esito-elimina" class="errore" role="alert"></p>
+    </details>
+    <p id="errore-sala" class="errore" role="alert"></p>
+  </section>
+
+  <!-- Un gioco -->
+  <section id="schermata-gioco" hidden>
+    <p><a id="torna-giochi" href="#/">&larr; Tutti i giochi</a></p>
+    <div class="pannello">
+      <h2 id="titolo-gioco" tabindex="-1"></h2>
+      <p id="descrizione-gioco"></p>
+    </div>
+    <div id="pagina-gioco"></div>
+    <p id="errore-gioco" class="errore" role="alert"></p>
+  </section>
+
+  <!-- Partita -->
+  <section id="schermata-partita" hidden>
+    <div class="barra-partita">
+      <h2 id="titolo-partita"></h2>
+      <div class="azioni-partita">
+        <button type="button" id="rileggi">Leggi la situazione</button>
+        <button type="button" id="copia-link" hidden>Copia il link d'invito</button>
+        <button type="button" id="avvia-ora" hidden>Avvia la partita adesso</button>
+        <button type="button" id="abbandona">Lascia la partita</button>
+      </div>
+    </div>
+    <form id="modulo-invita" class="scambio invita" hidden>
+      <label for="nome-invita">Invita</label>
+      <input id="nome-invita" type="text" maxlength="20" autocomplete="off">
+      <button type="submit">Invita</button>
+      <p id="esito-invita" class="errore" role="alert"></p>
+    </form>
+    <p id="stato-turno" class="turno" role="status"></p>
+    <div class="colonne">
+      <div class="tavolo-contenitore">
+        <div id="mosse-pannello" class="pannello">
+          <h3 id="mosse-titolo">Le tue mosse</h3>
+          <p id="guida-turno" class="guida"></p>
+          <p id="filtro-carta" class="filtro" hidden></p>
+          <div id="mosse" class="mosse"></div>
+        </div>
+        <h3 class="solo-voce">Il tavolo</h3>
+        <div id="tavolo"></div>
+        <div id="opzioni-pannello" class="pannello" hidden>
+          <h3>Opzioni</h3>
+          <div id="opzioni" class="opzioni"></div>
+        </div>
+      </div>
+      <aside class="laterale">
+        <div class="pannello">
+          <h3>Messaggi</h3>
+          <div id="registro" class="registro" role="log" aria-live="polite" aria-relevant="additions"></div>
+          <form id="modulo-chat" class="chat">
+            <label for="testo-chat" class="solo-voce">Messaggio</label>
+            <input id="testo-chat" type="text" maxlength="200" autocomplete="off" placeholder="Messaggio">
+            <button type="submit">Invia</button>
+          </form>
+        </div>
+        <div class="pannello" id="giocatori-pannello" hidden>
+          <h3>Giocatori</h3>
+          <ul id="giocatori-partita" class="stanze"></ul>
+        </div>
+        <div class="pannello" id="situazione-pannello" hidden>
+          <h3>Situazione</h3>
+          <p id="situazione" role="status"></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <!-- richieste di password e di nome da invitare, usate dalla sala e dalle pagine dei giochi -->
+      <div id="chiedi-password" class="pannello" hidden>
+        <form id="modulo-assegna" class="scambio">
+          <label for="password-assegna">Password</label>
+          <input id="password-assegna" type="password" minlength="8" autocomplete="new-password">
+          <button type="submit">Continua</button>
+          <button type="button" id="annulla-password" class="secondario">Annulla</button>
+        </form>
+        <p id="errore-password" class="errore" role="alert"></p>
+      </div>
+      <div id="chiedi-invito" class="pannello" hidden>
+        <form id="modulo-invito-nuovo" class="scambio">
+          <label for="nome-invito-nuovo">Nome utente</label>
+          <input id="nome-invito-nuovo" type="text" minlength="2" maxlength="20" autocomplete="off" required>
+          <button type="submit">Invita</button>
+          <button type="button" id="annulla-invito" class="secondario">Annulla</button>
+        </form>
+        <p id="errore-invito-nuovo" class="errore" role="alert"></p>
+      </div>
+</main>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="giochi.js"></script>
+</body>
+</html>

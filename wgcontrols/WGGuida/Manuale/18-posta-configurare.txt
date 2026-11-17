@@ -1,0 +1,91 @@
+﻿La posta: la prima preparazione
+
+La posta elettronica, o e-mail, è la lettera di oggi: arriva in un attimo, senza francobollo, a qualsiasi ora del giorno. Prima di poterla leggere e scrivere con WinGabriel, però, bisogna configurare il programma inserendo i dati della propria casella di posta. L'operazione si fa una sola volta e poi non ci si pensa più.
+
+Cosa ti serve
+
+Per preparare la posta ti servono due cose:
+
+il tuo indirizzo di posta elettronica, per esempio mario.rossi@libero.it;
+
+la password della tua casella di posta.
+
+Aggiungere la tua casella di posta
+
+Fai così:
+
+1. Nel {menu} scegli "Mail" e premi Invio. Si apre il menu della posta.
+
+2. Scendi fino a "Impostazioni" e premi Invio.
+
+3. Scegli "Nuovo account" e premi Invio. Con il termine "account" si intende la casella di posta.
+
+4. WinGabriel ti chiede tre dati: il nome che vuoi far comparire a chi riceve i tuoi messaggi, per esempio "Mario Rossi"; il tuo indirizzo di posta; la password. Scrivili uno alla volta, passando da un campo all'altro con la freccia in basso, e alla fine premi Invio.
+
+5. WinGabriel cerca automaticamente su internet le informazioni tecniche del tuo provider di posta. Con i gestori più conosciuti, come Gmail, Libero, Virgilio, Outlook, Tiscali o Aruba, la configurazione termina qui e la tua posta è pronta.
+
+Se la ricerca automatica non riesce
+
+A volte WinGabriel non riesce a trovare autonomamente i parametri del tuo provider. In questo caso ti verranno richiesti: l'indirizzo del server di posta in arrivo e di quello in uscita, le porte e il tipo di protezione.
+
+Si tratta di informazioni tecniche, che però non devi inventare: ogni gestore di posta le pubblica sul proprio sito, solitamente in una pagina denominata "configurazione dei programmi di posta" o simili. Se riscontri difficoltà, chiedi aiuto a qualcuno affinché ti legga quella pagina.
+
+IMAP o POP3
+
+Durante la configurazione manuale, WinGabriel ti chiede di scegliere tra IMAP e POP3. Sono due modalità differenti di ricezione della posta.
+
+Con IMAP i messaggi rimangono sul server del tuo provider, come lettere lasciate in una cassetta postale che puoi consultare da qualsiasi dispositivo. Le azioni compiute in WinGabriel — come leggere, spostare o eliminare un messaggio — si rifletteranno allo stesso modo anche sul telefono e sugli altri computer. È la soluzione consigliata.
+
+Con POP3 i messaggi vengono scaricati sul computer ed eliminati dal server, come lettere recapitate a domicilio. In questo modo non li troverai sul telefono.
+
+Nel caso in cui siano disponibili entrambe le opzioni, WinGabriel seleziona automaticamente IMAP.
+
+Più caselle di posta
+
+Puoi aggiungere più caselle di posta: ad esempio quella personale, quella di lavoro e quella di un'associazione. Per ciascuna di esse, ripeti la procedura di configurazione selezionando "Nuovo account".
+
+Quando disponi di più caselle, nelle impostazioni della posta compare la voce "Caselle da consultare", che ti permette di scegliere quali visualizzare:
+
+"Una sola casella": WinGabriel controlla sempre quella;
+
+"Alcune caselle": decidi tu quali visualizzare, e i relativi messaggi compaiono insieme;
+
+"Tutte le caselle insieme, in ordine di data": tutti i messaggi riuniti in un unico elenco;
+
+"Chiedi sempre quale casella usare": ogni volta che apri la posta, sarai tu a scegliere.
+
+Questa impostazione si applica a tutte le cartelle e anche alla funzione di ricerca.
+
+Gestire le caselle
+
+Nelle impostazioni della posta, alla voce "Account", trovi l'elenco delle tue caselle. Selezionandone una puoi:
+
+modificare i relativi dati, ad esempio la password in caso di modifica;
+
+verificare la connessione;
+
+impostare l'intervallo in minuti per il controllo della posta in arrivo;
+
+disattivarla temporaneamente senza cancellarla, per esempio durante un periodo di vacanza, per poi riattivarla in seguito;
+
+eliminarla.
+
+Il test di connessione risulta particolarmente utile in caso di malfunzionamenti della posta: WinGabriel tenta il collegamento e riporta la risposta del server, che solitamente spiega l'origine del problema, come ad esempio "password errata".
+
+Quando arriva posta nuova
+
+WinGabriel rileva autonomamente l'arrivo di nuovi messaggi, solitamente in tempo reale.
+
+Alla ricezione di posta nuova, WinGabriel ti chiederà se desideri leggerla immediatamente. Rispondendo di sì, si aprirà l'elenco dei messaggi da leggere. Rispondendo di no, potrai posticipare la lettura o ignorare l'avviso.
+
+[smart]
+La notifica di posta nuova compare anche all'interno del centro notifiche.
+[/smart]
+
+La firma
+
+La firma è il testo che viene aggiunto in calce a ogni messaggio inviato, contenente ad esempio nome e numero di telefono. Dalle impostazioni della posta, alla voce "Firme", puoi creare una o più firme e impostare quella da utilizzare come predefinita.
+
+Rubrica e agenda integrate con la posta
+
+Molti fornitori di posta gestiscono anche i contatti e gli appuntamenti. WinGabriel consente di mantenere la propria rubrica e la propria agenda sincronizzate con quelle del tuo provider. Questa opzione è configurabile per ciascuna casella alla voce "Sincronizzazione contatti e agenda", come illustrato nel capitolo dedicato alla rubrica.

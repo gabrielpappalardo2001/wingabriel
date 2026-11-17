@@ -1,0 +1,141 @@
+﻿Il cloud: sincronizzare i dati fra più computer
+
+Se usi WinGabriel su più di un computer, per esempio quello di casa e quello dell'ufficio, puoi fare in modo che la rubrica, l'agenda e le altre cose importanti siano sempre identiche su tutti. Questa operazione si chiama sincronizzazione. In questo capitolo ti spiego come si fa, cosa viene sincronizzato e cosa no, e come tenere d'occhio lo spazio occupato.
+
+Cos'è il cloud e cos'è Filen
+
+Il cloud è uno spazio online dove è possibile archiviare file. WinGabriel si appoggia a Filen, un servizio che cifra i file utilizzando la tua password prima di caricarli su internet. Questo significa che nessuno, nemmeno i gestori del servizio, può leggere i dati che vi memorizzi. C'è però un aspetto fondamentale da ricordare: in caso di smarrimento della password di Filen, nessuno potrà recuperare i tuoi dati sul cloud.
+
+Per utilizzare la sincronizzazione è necessario disporre di un account Filen. Se non ne possiedi uno, puoi crearlo direttamente dall'interno di WinGabriel. Lo spazio gratuito offerto da Filen è limitato; qualora ti servisse più spazio, è possibile acquistarlo sul loro sito web.
+
+Dove si trova
+
+Nel {menu} seleziona "Impostazioni", poi "Sistema" e infine "Cloud". Le voci di questo menu variano a seconda che tu abbia già effettuato l'accesso o meno.
+
+Se non hai ancora eseguito l'accesso, visualizzerai le seguenti opzioni:
+
+"Accedi con il tuo account Filen": se possiedi già un account;
+
+"Crea un account Filen": per registrarne uno nuovo;
+
+"Reinvia l'email di conferma dell'account": qualora non avessi ricevuto il messaggio da parte di Filen.
+
+In ogni caso, saranno sempre presenti anche le voci "Backup e ripristino", "Spazio occupato" e "Informazioni sul cloud".
+
+Una volta effettuato l'accesso, compariranno le opzioni aggiuntive "Sincronizzazione tra computer", "Dati di WinGabriel", "Backup sul cloud", "Sincronizza adesso" e "Esci dall'account Filen".
+
+Creare l'account o accedere
+
+Per creare un account:
+
+1. Seleziona "Crea un account Filen".
+
+2. Inserisci il tuo indirizzo email e una password, quindi digitale nuovamente per conferma. Scegli una password facile da ricordare, poiché verrà utilizzata anche per cifrare i tuoi dati.
+
+3. Filen ti invierà un'email per confermare il tuo indirizzo. Apri il messaggio e segui le istruzioni di conferma. Se non lo trovi, controlla nella cartella della posta indesiderata oppure seleziona "Reinvia l'email di conferma dell'account".
+
+4. Torna su WinGabriel e seleziona "Accedi con il tuo account Filen". Inserisci l'indirizzo email e la password. Se hai attivato la verifica in due passaggi, ti verrà richiesto anche il relativo codice.
+
+Se disponi già di un account, salta i primi tre passaggi ed effettua direttamente l'accesso.
+
+Se utilizzi la procedura guidata di configurazione al primo avvio di WinGabriel, potrai compiere tutte queste operazioni in quell'occasione: ti verrà chiesto se desideri sincronizzare i dati con altri computer e potrai accedere o creare un account. Se il sistema rileva la presenza di un backup dei dati di WinGabriel associato al tuo account, ti chiederà se desideri ripristinarlo immediatamente. Questa funzione risulta particolarmente comoda quando si configura un nuovo computer, permettendoti di ritrovare tutto in pochi minuti.
+
+Cosa si può sincronizzare
+
+Esistono due diverse modalità di sincronizzazione, che possono essere attivate indipendentemente.
+
+La prima riguarda elementi specifici: la rubrica, l'agenda, le stazioni radio e le testate dei quotidiani. Si configura nella sezione "Sincronizzazione tra computer".
+
+La seconda riguarda i file dei dati di WinGabriel, gestiti cartella per cartella. Si configura nella sezione "Dati di WinGabriel".
+
+La sincronizzazione tra computer
+
+Accedi alla sezione "Cloud" e poi a "Sincronizzazione tra computer". Le opzioni disponibili sono:
+
+"Stato della sincronizzazione": attivata o disattivata. Finché rimane disattivata, non verrà sincronizzato alcun elemento, comprese le preferenze impostate di seguito;
+
+"Rubrica": consente di scegliere quale rubrica sincronizzare tra quelle presenti sul computer, oppure di non sincronizzarne alcuna;
+
+"Agenda": consente di scegliere quale agenda sincronizzare, oppure di non sincronizzarne alcuna;
+
+"Radio": le stazioni radio preferite e quelle ascoltate di recente. I canali televisivi sono esclusi;
+
+"Testate dei quotidiani": le testate giornalistiche e le relative categorie;
+
+"Sincronizza adesso": per avviare la sincronizzazione senza attendere gli intervalli automatici;
+
+"Informazioni sulla sincronizzazione": un riepilogo degli elementi inclusi ed esclusi dalla sincronizzazione.
+
+Quando attivi la sincronizzazione per la prima volta, WinGabriel ti ricorda di selezionare gli elementi da sincronizzare. Gli elementi non selezionati non verranno modificati.
+
+Ecco come funziona la rubrica sincronizzata: sul secondo computer selezioni la rubrica che desideri mantenere allineata. I contatti nuovi o modificati su un dispositivo verranno sincronizzati sull'altro, e lo stesso principio si applica agli appuntamenti dell'agenda.
+
+I dati di WinGabriel
+
+Accedi alla sezione "Cloud" e poi a "Dati di WinGabriel". Le opzioni disponibili sono:
+
+"Stato della sincronizzazione dei dati": attivata o disattivata;
+
+"Cartelle da sincronizzare": l'elenco delle cartelle di dati, ciascuna con l'indicazione delle dimensioni e dello stato di sincronizzazione (attivo o disattivato);
+
+"Informazioni sui dati sincronizzati": un riepilogo del volume di dati inviato e ricevuto durante l'ultima sincronizzazione.
+
+All'attivazione, WinGabriel carica sul cloud tutte le cartelle di dati, ad eccezione della configurazione e dei libri. Sugli altri computer verranno scaricati i file più recenti. La configurazione non viene mai sincronizzata, poiché ogni computer possiede impostazioni proprie relative a voce, volume e caselle di posta. I libri vengono esclusi dalla sincronizzazione a causa delle loro dimensioni elevate.
+
+Per escludere una cartella, entra in "Cartelle da sincronizzare", seleziona la cartella e imposta l'opzione su "Non sincronizzata". Per riattivarla, seleziona "Sincronizzata". Alcune cartelle sono escluse per impostazione predefinita poiché contengono materiale scaricabile da internet che può essere recuperato in seguito, come Wikisource, Internet Archive e LibriVox.
+
+Prima di avviare la sincronizzazione completa, verifica le dimensioni delle cartelle: se è presente una cartella molto pesante di cui non hai bisogno sugli altri computer, escludila per risparmiare spazio e tempo.
+
+Se due computer modificano lo stesso file
+
+Può verificarsi la situazione in cui lo stesso file viene modificato su due computer differenti prima che avvenga la sincronizzazione. In questo caso, avrà la meglio la modifica più recente. La versione precedente non andrà comunque perduta: verrà conservata per consentirne il recupero in caso di necessità.
+
+Quando avviene la sincronizzazione
+
+Non è necessario avviare la procedura manualmente. Con la sincronizzazione attiva, WinGabriel:
+
+effettua un controllo all'avvio, pochi istanti dopo l'apertura del programma;
+
+ripete il controllo circa ogni cinque minuti;
+
+sincronizza nuovamente i dati poco dopo l'attivazione della funzione o la modifica di un'impostazione;
+
+esegue un'ultima sincronizzazione al momento della chiusura del programma.
+
+Tutte queste operazioni avvengono in background, senza interrompere il tuo lavoro. Se desideri la certezza che i dati siano aggiornati prima di spegnere il computer o di passare all'altro dispositivo, seleziona "Sincronizza adesso". Verrà riprodotto un avviso di attesa e, al termine, l'esito dell'operazione.
+
+Per verificare lo stato del servizio, seleziona "Informazioni sul cloud": visualizzerai l'account in uso, lo stato della sincronizzazione, quali rubriche e agende sono allineate, se lo sono le stazioni radio e i quotidiani, lo stato dei dati e se i backup vengono copiati sul cloud.
+
+Qualora la sincronizzazione non dovesse riuscire, ad esempio a causa dell'assenza di connessione a internet, WinGabriel ti avviserà. I dati rimarranno comunque al sicuro sul computer e il tentativo verrà ripetuto al controllo successivo.
+
+I backup sul cloud
+
+I backup, descritti nel capitolo precedente, possono essere copiati anche sul cloud. Accedi alla sezione "Cloud" e poi a "Backup sul cloud". Le opzioni disponibili sono:
+
+"Copia dei backup sul cloud": attivata o disattivata. Se attiva, ogni backup completato viene copiato automaticamente anche sul cloud;
+
+"Carica sul cloud l'ultimo backup": per inviare immediatamente l'ultima copia di backup disponibile sul computer, senza generarne una nuova;
+
+"Backup presenti sul cloud": l'elenco dei backup attualmente archiviati online.
+
+Sul cloud viene conservata sempre una sola copia di backup, ovvero la più recente. Quando ne carichi una nuova, quella precedente viene eliminata per ottimizzare lo spazio. Se desideri conservare più copie, ti invitiamo a salvarle sul computer o su un disco esterno.
+
+Dall'elenco dei backup presenti sul cloud puoi selezionare quello di tuo interesse e scegliere tra le seguenti opzioni:
+
+"Scarica e ripristina": WinGabriel scarica il backup e ripristina i dati. Prima di sostituire i dati correnti verrà comunque creata una copia di sicurezza. Al termine, chiudi e riapri WinGabriel;
+
+"Elimina dal cloud": rimuove il backup dallo spazio cloud. L'operazione richiede una conferma e non può essere annullata.
+
+Lo spazio occupato
+
+Seleziona "Spazio occupato" per visualizzare un riepilogo dello spazio attualmente utilizzato sul cloud. Ti consigliamo di verificarlo periodicamente, soprattutto se hai attivato la sincronizzazione dei dati, poiché lo spazio gratuito a disposizione è limitato.
+
+Uscire dall'account
+
+Seleziona "Esci dall'account Filen" per scollegare WinGabriel dal tuo account. La sincronizzazione verrà disattivata. I dati rimarranno memorizzati sia sul computer sia su Filen, senza che venga cancellato alcun elemento. Per riprendere a utilizzare il servizio, sarà sufficiente effettuare nuovamente l'accesso.
+
+Qualche consiglio
+
+Prima di attivare la sincronizzazione dei dati su un secondo computer, assicurati di avere sul primo computer i dati che desideri conservare ed effettua un backup. Si tratta di una precauzione semplice ma molto utile.
+
+Se dovessi riscontrare problemi, il capitolo dedicato alla risoluzione degli errori ti aiuterà a individuare le azioni correttive.

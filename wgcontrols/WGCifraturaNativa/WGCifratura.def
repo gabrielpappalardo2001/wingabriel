@@ -1,0 +1,12 @@
+EXPORTS
+    WGC_Versione
+    WGC_Casuali
+    WGC_Pbkdf2
+    WGC_ChiaveIncorporata
+    WGC_GcmCifra
+    WGC_GcmDecifra
+    WGC_Proteggi
+    WGC_Rivela
+    WGC_CifraFile
+    WGC_DecifraFile
+    WGC_UltimoErrore

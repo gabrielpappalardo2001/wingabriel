@@ -1,0 +1,130 @@
+﻿La scrivania
+@smart
+
+La scrivania è la prima cosa che si incontra all'apertura di WinGabriel in modalità smart. Somiglia a una scrivania reale: vi si collocano gli elementi di uso più frequente per averli sempre a portata di mano.
+
+Com'è fatta
+
+La scrivania è organizzata come una griglia, ovvero un insieme di caselle disposte in righe e colonne, analogamente alle icone del desktop di Windows. Ciascuna casella costituisce un elemento. Quando il numero di elementi è limitato, le colonne sono due; con il loro incremento, passano a tre e successivamente a quattro.
+
+All'accesso sulla scrivania, la sintesi vocale enuncia il numero complessivo degli elementi contenuti, ad esempio "Scrivania, 12 elementi".
+
+Il primo elemento è sempre presente ed è rappresentato dal Cestino, affiancato dal conteggio degli elementi in esso contenuti.
+
+Seguono gli elementi personali, classificabili in quattro categorie:
+
+collegamenti a file o cartelle del computer: consentono di aprire il file o la cartella di origine, indipendentemente dalla loro ubicazione;
+
+collegamenti a funzioni di WinGabriel o a voci di menu: attivano con la pressione del tasto Invio operazioni che richiederebbero altrimenti tre o quattro passaggi, quali l'accesso alla posta in arrivo;
+
+file e cartelle copiati sulla scrivania: costituiscono copie effettive, archiviate in un'apposita cartella di WinGabriel;
+
+cartelle della scrivania: adibite al raggruppamento di altri elementi per una migliore organizzazione. Una cartella può a sua volta contenerne altre.
+
+Come muoversi
+
+Utilizzando la tastiera:
+
+i tasti freccia consentono lo spostamento tra le caselle nelle direzioni alto, basso, destra e sinistra;
+
+Home e Fine posizionano rispettivamente all'inizio e alla fine della riga;
+
+Control e Home oppure Control e Fine conducono al primo e all'ultimo elemento;
+
+la pressione di una lettera indirizza al primo elemento che ha inizio con tale carattere. Digitando rapidamente più lettere in sequenza si raggiunge il primo elemento corrispondente, ad esempio "p" seguita da "o" per accedere a "Posta".
+
+Per aprire un elemento si utilizza il tasto Invio o la barra spaziatrice. Se l'elemento è una cartella, l'azione ne determina l'apertura. Per uscire da una cartella si preme il tasto Esc oppure Backspace.
+
+Ciascun elemento si avvia come un'applicazione indipendente; alla sua chiusura si ripristina la visualizzazione della scrivania.
+
+Da qualsiasi punto del programma è possibile ritornare alla scrivania premendo la combinazione Control Alt D.
+
+Se ci si trova sulla scrivania, al di fuori delle cartelle, la pressione del tasto Esc richiede una conferma per l'uscita da WinGabriel.
+
+La barra di stato
+
+Al di sotto della griglia si trova la barra di stato, analoga all'area di notifica posta nell'angolo inferiore destro dello schermo di Windows, che raggruppa l'orario e lo stato della batteria.
+
+Per accedere alla barra di stato si preme il tasto Tab. Gli spostamenti tra le voci avvengono tramite le frecce destra e sinistra. Per ritornare alla griglia si preme nuovamente Tab oppure Esc.
+
+Le voci della barra di stato comprendono:
+
+l'orario, comprensivo di giorno e data;
+
+il livello di volume del computer: i tasti freccia su e freccia giù regolano l'intensità, mentre Invio attiva o disattiva l'audio;
+
+l'uscita audio attiva: la pressione di Invio commuta il flusso tra altoparlanti e cuffie, mentre i tasti freccia su e freccia giù visualizzano l'elenco dei dispositivi audio disponibili;
+
+lo stato della batteria, con indicazione della carica residua e del tempo stimato, oppure lo stato di ricarica in corso: premendo Invio si apre un messaggio di dettaglio con percentuale, stato e autonomia;
+
+la connessione di rete, con il nome della rete Wi-Fi e la potenza del segnale: Invio apre il relativo menu, descritto di seguito;
+
+il Bluetooth: Invio apre il rispettivo menu, descritto di seguito;
+
+il Centro notifiche, che indica il numero dei messaggi non letti: la pressione di Invio ne consente l'apertura.
+
+Il menu del Wi-Fi e del Bluetooth
+
+Azionando il tasto Invio sulla connessione di rete o sul Bluetooth, viene visualizzato un menu sovrapposto alla scrivania, senza che ciò comporti l'uscita da quest'ultima. La sintesi vocale ne enuncia il titolo, il numero di voci e la prima opzione disponibile.
+
+La navigazione avviene tramite i tasti freccia giù e freccia su. Il tasto Home posiziona sulla prima voce, mentre Fine sull'ultima. La digitazione di una lettera conduce alla voce successiva che inizia con tale carattere. La selezione si effettua con Invio, mentre il tasto Esc chiude il menu riportando il cursore alla barra di stato.
+
+Il menu del Wi-Fi consta di due voci. La prima è "Disattiva il Wi-Fi". La seconda è "Elenco reti Wi-Fi": azionandola si accede all'elenco delle reti rilevate dal computer, ordinate dalla più intensa alla più debole. La pressione di Invio su una rete avvia la connessione, richiedendo eventualmente la password; se applicata alla rete attualmente connessa, ne visualizza le informazioni. Il tasto Esc chiude l'elenco ripristinando le due voci principali. Se il Wi-Fi risulta disattivato, il menu mostra unicamente la voce "Attiva il Wi-Fi".
+
+Il menu del Bluetooth presenta una struttura analoga. La prima voce è "Disattiva il Bluetooth", seguita da "Elenco dispositivi Bluetooth", che comprende le periferiche già associate, quali cuffie o tastiere, e termina con l'opzione "Associa un nuovo dispositivo". La pressione di Invio su un paio di cuffie non connesse ne determina l'associazione e il routing dell'audio.
+
+Tutte le funzioni supplementari sono accessibili tramite il menu delle opzioni: posizionandosi su una voce e premendo il tasto Alt si apre un sottomenu. Per una rete sono disponibili i comandi di connessione o disconnessione, le informazioni e, qualora memorizzata, l'opzione "Dimentica la rete". Per un dispositivo compaiono le informazioni, la gestione audio e l'opzione "Dissocia il dispositivo". In calce alle opzioni è sempre presente la voce "Aggiorna elenco", per la nuova ricerca di reti o dispositivi; nel caso del Wi-Fi è inoltre inclusa l'opzione "Collegati a una rete nascosta", mentre per il Bluetooth figurano le voci per la selezione dell'uscita audio. Il tasto Esc chiude le opzioni e riporta al menu precedente.
+
+Mediante l'interfaccia touch: uno scorrimento a destra o a sinistra per la navigazione, un doppio tocco per la selezione, uno scorrimento verso l'alto per le opzioni e un doppio tocco con due dita per tornare indietro.
+
+Aggiungere elementi alla scrivania
+
+Esistono differenti modalità per l'aggiunta di elementi.
+
+Dalla scrivania: premendo il tasto Alt si apre il menu delle opzioni, dal quale si seleziona "Aggiungi" e successivamente il tipo di elemento desiderato, sia esso un collegamento a file, cartella o funzione di WinGabriel.
+
+Da un menu qualsiasi: posizionandosi su una voce di frequente utilizzo, la pressione del tasto Alt e la selezione di "Aggiungi alla scrivania" inseriscono l'elemento nella schermata principale, rendendolo accessibile tramite la pressione del tasto Invio.
+
+Dalla gestione file: posizionandosi su un file o una cartella e premendo Alt, si accede ai comandi "Aggiungi alla scrivania", che genera un collegamento, e "Copia sulla scrivania", che realizza una copia effettiva dell'elemento.
+
+Copiare, tagliare e incollare
+
+Sulla scrivania sono supportate le consuete combinazioni di tasti per la copia e l'incolla.
+
+La combinazione Control C esegue la copia del file o della cartella selezionati, consentendone il successivo incolla all'interno della gestione file o in altre applicazioni.
+
+La combinazione Control X consente il taglio di un file copiato sulla scrivania al fine di trasferirlo altrove. I collegamenti non possono essere tagliati, preservando in tal modo la collocazione dei file originali.
+
+La combinazione Control V incolla sulla scrivania i file e le cartelle precedentemente copiati, ad esempio dalla gestione file. Gli elementi precedentemente tagliati vengono trasferiti.
+
+Rinominare, spostare ed eliminare
+
+Per modificare il nome di un elemento si preme il tasto F2, si digita la nuova denominazione e si conferma con Invio. Il collegamento mantiene la propria funzionalità originaria; nel caso di un file copiato sulla scrivania, la ridenominazione si riflette direttamente sul file reale.
+
+File e cartelle recenti
+
+Nel menu delle opzioni della scrivania, attivabile tramite Alt, è presente la voce "Recenti", che elenca in ordine cronologico inverso gli ultimi file e cartelle aperti in WinGabriel. La pressione di Invio su un elemento ne determina la riapertura. Il relativo menu delle opzioni consente di aggiungere l'elemento alla scrivania o di svuotare la cronologia.
+
+Tramite il menu delle opzioni (tasto Alt) è inoltre possibile:
+
+inserire l'elemento in una cartella della scrivania;
+
+accedere alla voce "Ordinamento", che permette di disporre gli elementi per nome, tipo o data di aggiunta, nonché di riposizionare l'elemento selezionato rispetto agli altri;
+
+creare una nuova cartella.
+
+Per l'eliminazione di un elemento si utilizza il tasto Canc. I collegamenti e le cartelle vuote vengono rimossi immediatamente senza richieste di conferma, poiché non comportano la perdita di dati e l'originale permane nella sua posizione. Per i file copiati e le cartelle contenenti elementi viene invece richiesta una conferma, e i file vengono trasferiti nel cestino, dal quale possono essere recuperati.
+
+Il cestino
+
+La pressione del tasto Invio sull'elemento Cestino apre il cestino di Windows come applicazione indipendente.
+
+Per ciascun elemento presente nel cestino, il tasto Invio offre tre opzioni: ripristino, per ricollocare l'elemento nella cartella di provenienza; eliminazione definitiva; oppure riproduzione delle informazioni associate.
+
+Il menu delle opzioni consente il ripristino simultaneo di tutti gli elementi o lo svuotamento completo del cestino, previa richiesta di conferma da parte di WinGabriel. Si segnala che gli elementi rimossi tramite lo svuotamento del cestino non possono essere recuperati.
+
+In seguito allo svuotamento, WinGabriel segnala la condizione di cestino vuoto mediante un messaggio che può essere chiuso con i tasti Invio o Esc per ritornare alla scrivania.
+
+Spegnere la scrivania
+
+Qualora si preferisca l'avvio diretto del menu delle applicazioni anziché della scrivania, è possibile disattivare quest'ultima accedendo a Impostazioni, quindi a "Sistema" e infine a "Scrivania". Gli elementi personali non vengono rimossi e saranno nuovamente disponibili alla riattivazione della scrivania.
