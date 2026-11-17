@@ -14,6 +14,7 @@ Imports Renci.SshNet
 Imports Renci.SshNet.Common
 Imports WGDb
 
+' Gestione delle sessioni di comunicazione FTP e SFTP, trasferimento file, cifratura sicura delle password e gestione dei log.
 Public Enum TipoProtocolloFtp
     Ftp
     Ftps
@@ -1709,13 +1710,13 @@ Public Class CLSFtp
             ScriviLog("CLSFtp.ApriSessione - SocketException", ex)
             messaggioErrore = "Impossibile raggiungere il server (rete o porta non disponibili)."
             Return Nothing
-        Catch ex As IOException
-            ScriviLog("CLSFtp.ApriSessione - IOException", ex)
-            messaggioErrore = If(String.IsNullOrWhiteSpace(ex.Message), "Errore di I/O durante la connessione.", ex.Message)
-            Return Nothing
         Catch ex As FileNotFoundException
             ScriviLog("CLSFtp.ApriSessione - assembly mancante", ex)
             messaggioErrore = "Componente mancante per la connessione (verificare le dipendenze, es. Microsoft.Extensions.Logging.Abstractions)."
+            Return Nothing
+        Catch ex As IOException
+            ScriviLog("CLSFtp.ApriSessione - IOException", ex)
+            messaggioErrore = If(String.IsNullOrWhiteSpace(ex.Message), "Errore di I/O durante la connessione.", ex.Message)
             Return Nothing
         Catch ex As Exception
             ScriviLog("CLSFtp.ApriSessione - Errore", ex)

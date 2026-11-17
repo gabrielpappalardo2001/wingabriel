@@ -2,6 +2,7 @@
 Imports System.Text
 Imports System.Threading
 
+' Dichiarazioni di funzioni API di Windows, ganci per tastiera, eventi e gestione degli appunti.
 Friend NotInheritable Class NativoLettore
 
     Public Const WH_KEYBOARD_LL As Integer = 13

@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports UIAutomationClient
 
+' Controllo del puntatore del mouse, rilevamento degli elementi sotto il cursore e simulazione dei clic.
 Friend NotInheritable Class NavigatoreOggetti
 
     Private ReadOnly log As New Logger()

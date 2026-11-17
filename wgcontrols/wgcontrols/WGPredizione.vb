@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Sistema di predizione del testo e completamento parole basato su dizionari locali, bigrammi e distanza pesata tra i tasti.
 Public Class WGPredizione
 
     Private Shared log As New Logger()

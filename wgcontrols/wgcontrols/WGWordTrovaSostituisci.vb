@@ -1,4 +1,5 @@
-﻿Partial Public Class WGWord
+﻿' Funzionalità di ricerca e sostituzione del testo all'interno del documento.
+Partial Public Class WGWord
     Private _ultimoTestoCercato As String = ""
     Private _campiTrovaSostituisci As Campi
 

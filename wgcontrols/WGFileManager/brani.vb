@@ -9,6 +9,7 @@ Imports MediaDevices
 Imports wgcontrols
 Imports WGDati
 
+' Gestione dei brani musicali preferiti e recenti, organizzazione in categorie e riproduzione audio.
 Public Class GestoreBraniPreferitiERecenti
     Private Enum OperazioneCampi
         Nessuna

@@ -1,5 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 
+' Gestione dei dispositivi audio di sistema: enumerazione di altoparlanti e microfoni, controllo del volume e gestione dello stato
+' muto.
 Public Structure WGDispositivoAudio
     Public Property Id As String
     Public Property Nome As String

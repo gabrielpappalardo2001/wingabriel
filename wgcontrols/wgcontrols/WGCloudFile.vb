@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Runtime.InteropServices
 Imports wgcontrols
 
+' Gestione dei file sul cloud, verifica degli attributi e funzioni per assicurare il download dei file.
 Public Class WGCloudFile
 
     Private Const FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS As Integer = &H400000

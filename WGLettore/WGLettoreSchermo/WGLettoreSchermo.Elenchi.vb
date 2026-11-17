@@ -2,6 +2,9 @@
 Imports System.Threading
 Imports UIAutomationClient
 
+' Garantisce "3 di 12" in coda a ogni voce di elenco o scheda, in qualunque programma (desktop, Esplora risorse, finestre di
+' Windows): prima UIA, poi il. Sul desktop e nelle liste di Windows la posizione non arriva da UIA: la si prende dalla lista
+' stessa (Questo PC, 7 di 13).
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Shared ReadOnly _regexPosizione As New System.Text.RegularExpressions.Regex("(^|[^0-9])[0-9]+ di [0-9]+($|[^0-9])", System.Text.RegularExpressions.RegexOptions.CultureInvariant)
@@ -24,7 +27,7 @@ Partial Public NotInheritable Class WGLettoreSchermo
                 totale = 0
                 Dim lista As IntPtr = ControlliNativi.TrovaControllo(elemento, _walkerControllo, _richiestaCache, True)
                 If lista <> IntPtr.Zero Then
-                    Dim riga As ControlliNativi.RigaNativa
+                    Dim riga As ControlliNativi.RigaNativa = Nothing
                     If ControlliNativi.LeggiRigaLista(lista, riga) AndAlso riga.Totale > 0 AndAlso riga.Indice > 0 Then
                         posizione = riga.Indice
                         totale = riga.Totale
@@ -47,7 +50,7 @@ Partial Public NotInheritable Class WGLettoreSchermo
             If Not web Then
                 Dim lista As IntPtr = ControlliNativi.TrovaControllo(elemento, _walkerControllo, _richiestaCache, True)
                 If lista <> IntPtr.Zero Then
-                    Dim riga As ControlliNativi.RigaNativa
+                    Dim riga As ControlliNativi.RigaNativa = Nothing
                     If ControlliNativi.LeggiRigaLista(lista, riga) Then
                         Dim colonne As String = ControlliNativi.SoloColonne(riga)
                         If colonne <> "" Then testo = testo & ", " & colonne
@@ -148,7 +151,7 @@ Partial Public NotInheritable Class WGLettoreSchermo
             If Not _descrittore.EAlbero(elemento) Then Return testo
             Dim albero As IntPtr = ControlliNativi.TrovaControllo(elemento, _walkerControllo, _richiestaCache, False)
             If albero = IntPtr.Zero Then Return testo
-            Dim nodo As ControlliNativi.NodoNativo
+            Dim nodo As ControlliNativi.NodoNativo = Nothing
             If Not ControlliNativi.LeggiNodoSelezionato(albero, nodo) OrElse String.IsNullOrEmpty(nodo.Nome) Then Return testo
             Return ControlliNativi.FraseNodo(nodo)
         Catch ex As Exception

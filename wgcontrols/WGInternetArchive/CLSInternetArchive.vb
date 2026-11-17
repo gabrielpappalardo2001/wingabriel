@@ -7,6 +7,7 @@ Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 Imports WGDb
 
+' Gestione della ricerca e del catalogo di Internet Archive per libri e file multimediali.
 Public Class ElementoArchivio
 
     Public Titolo As String

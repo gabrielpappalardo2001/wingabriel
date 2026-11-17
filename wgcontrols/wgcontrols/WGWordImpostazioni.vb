@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Gestione delle preferenze e delle configurazioni del programma di scrittura, dalla formattazione alla sintesi vocale.
 Partial Public Class WGWord
 
     Private Shared ReadOnly _defaultImpostazioni As New Dictionary(Of String, String) From {

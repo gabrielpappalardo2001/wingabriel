@@ -4,6 +4,8 @@ Imports System.Windows.Forms
 Imports wgcontrols
 Imports System
 
+' Consultazione dei singoli quotidiani e dei siti WordPress. Gestisce la navigazione tra categorie e articoli, la lettura nel
+' browser e il riepilogo dei contenuti.
 Public Class MenuQuotidiano
     Private WithEvents listaarticoli As WGMenuLista
     Private gestoreArticoli As IGestoreArticoli
@@ -198,7 +200,7 @@ Public Class MenuQuotidiano
     Private Sub selezionacategoria()
         Try
             Dim lista As List(Of String) = listacategorie.ottieniElementi()
-            Dim idSelezionato As String
+            Dim idSelezionato As String = ""
             For Each elemento In lista
                 idSelezionato = elemento
             Next

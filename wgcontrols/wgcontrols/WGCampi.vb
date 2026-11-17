@@ -14,6 +14,7 @@ Imports Microsoft.VisualBasic
 Imports wgcontrols
 Imports WGStampante
 
+' Gestione dei moduli di immissione dati: creazione e controllo di campi di vari tipi, verifica degli obblighi e navigazione.
 Friend Enum TipoCampo
     Alfanumerico
     Numerico

@@ -9,6 +9,8 @@ Imports WGDati
 Imports wgcontrols
 Imports WGPlayerMpv
 
+' Navigazione e ascolto delle stazioni radio tramite elenchi, generi, regioni e ricerca nei palinsesti con gestione dei
+' promemoria.
 Public Class MenuRadio
 
     Private Const ID_CAMPO_RICERCA As String = "ricercaRadio"

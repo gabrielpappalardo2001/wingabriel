@@ -1,5 +1,7 @@
 Imports System.IO
 Imports System.Threading
+
+' Gestione dei processi di conversione da testo o file a formato audio MP3.
 Partial Public Class WGCentroDiControllo
     Private Class LavoroConversioneMp3
         Inherits LavoroBase

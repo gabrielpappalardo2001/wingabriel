@@ -7,6 +7,7 @@ Imports Newtonsoft.Json.Linq
 
 Imports wgcontrols
 
+' Interazione con le API di Wikipedia per scaricare, pulire e consultare voci, sezioni e indici di testo.
 Friend Class WikipediaAPI
     Private Const apiUrl As String = "https://it.wikipedia.org/w/api.php"
     Private Const indirizzoPagina As String = "https://it.wikipedia.org/?curid="

@@ -1,6 +1,7 @@
 Imports System.IO
 Imports WGStampante
 
+' Funzionalità di stampa e conversione in formato MP3 per i singoli campi dei moduli.
 Partial Public Class WGCampo
     Private _listaStampantiCampo As WGMenuLista
     Private _dialogoConversioneMp3 As WGFileDialog

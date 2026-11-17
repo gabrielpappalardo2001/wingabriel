@@ -6,6 +6,7 @@ Imports System.Windows.Forms
 Imports wgcontrols
 Imports WGDb
 
+' Gestione del database locale per la catalogazione e la ricerca degli elementi di Internet Archive.
 Public Class CLSInternetArchiveDatabase
 
     Private Const NOME_ORIGINE_BACKUP As String = "InternetArchive"

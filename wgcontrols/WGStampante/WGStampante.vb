@@ -13,6 +13,8 @@ Imports System.Text.RegularExpressions
 Imports System.Threading
 Imports System.Windows.Forms
 
+' Gestione della stampa di documenti, tabelle e immagini. Include il rilevamento delle stampanti di sistema, la configurazione
+' delle pagine e l'integrazione con la libreria PDFium.
 Public Enum TipoStampante
     Locale = 0
     ReteDiretta = 1

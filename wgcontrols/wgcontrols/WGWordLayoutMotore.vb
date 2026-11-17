@@ -3,6 +3,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Xml.Linq
 
+' Motore di impaginazione e calcolo delle righe visibili per la visualizzazione corretta del documento a schermo.
 Public Class WGWordLayoutMotore
 
     <DllImport("gdi32.dll")> Private Shared Function SelectObject(ByVal hdc As IntPtr, ByVal hgdiobj As IntPtr) As IntPtr

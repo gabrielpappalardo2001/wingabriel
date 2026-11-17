@@ -5,6 +5,7 @@ Imports System.Windows.Forms
 Imports System.Xml.Linq
 Imports wgcontrols
 
+' Gestione del dizionario personale per la correzione e la pronuncia delle parole.
 Public Class WGDizionario
     Private Shared log As New Logger()
     Private Shared instance As WGDizionario

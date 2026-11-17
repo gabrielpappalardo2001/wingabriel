@@ -49,9 +49,6 @@ Imports wgcontrols
 Imports System.Security
 Imports System.Threading.Tasks
 Imports System.Text.RegularExpressions
-Imports System.Windows.Controls
-Imports System.Windows.Forms.Integration
-Imports System.Windows.Media
 Imports System.Runtime.InteropServices
 Imports System.Text
 Imports WGDati
@@ -1908,7 +1905,7 @@ Public Class WGPlayerFormInt
 
             Dim psi As New ProcessStartInfo()
             psi.FileName = "yt-dlp"
-            psi.Arguments = $"--flat-playlist --print id ""{url}"""
+            psi.Arguments = $"--flat-playlist --print id -- {UrlPerYtDlp(url)}"
             psi.RedirectStandardOutput = True
             psi.UseShellExecute = False
             psi.CreateNoWindow = True
@@ -1916,7 +1913,7 @@ Public Class WGPlayerFormInt
             Dim output As String = Await LeggiUscitaProcessoAsync(psi)
 
             If String.IsNullOrWhiteSpace(output) Then
-                psi.Arguments = $"--flat-playlist --get-id ""{url}"""
+                psi.Arguments = $"--flat-playlist --get-id -- {UrlPerYtDlp(url)}"
                 output = Await LeggiUscitaProcessoAsync(psi)
             End If
 
@@ -2343,12 +2340,21 @@ Public Class WGPlayerFormInt
         End Try
     End Sub
 
+    ''' <summary>
+    ''' L'indirizzo pronto per la riga di comando di yt-dlp: tra virgolette, senza virgolette interne né a capo (diventano %22 o si tolgono),
+    ''' così non può chiudere l'argomento e aggiungere opzioni. Va sempre dopo "--".
+    ''' </summary>
+    Private Shared Function UrlPerYtDlp(url As String) As String
+        Dim pulito As String = If(url, "").Trim().Replace("""", "%22").Replace(vbCr, "").Replace(vbLf, "").Replace(vbTab, "")
+        Return """" & pulito & """"
+    End Function
+
     Private Sub RecuperaTitoloYoutubeInterno(url As String)
         Dim titolo As String = Nothing
         Try
             Dim psi As New ProcessStartInfo()
             psi.FileName = "yt-dlp"
-            psi.Arguments = "--no-warnings --skip-download --print ""%(title)s"" """ & url & """"
+            psi.Arguments = "--no-warnings --skip-download --print ""%(title)s"" -- " & UrlPerYtDlp(url)
             psi.RedirectStandardOutput = True
             psi.UseShellExecute = False
             psi.CreateNoWindow = True

@@ -9,6 +9,7 @@ Imports wgcontrols
 Imports WGDb
 Imports System.Runtime.Remoting.Messaging
 
+' Gestione dei dati riservati cifrati con password, configurazioni protette e migrazione a formati di sicurezza avanzati.
 Public Class Valore
     Public Nome As String
     Public Valore As String
@@ -850,6 +851,7 @@ Public Class CLSDati
             Return lista
         Catch ex As Exception
             _logger.ScriviLog(ex.Message & ex.StackTrace)
+            Return Nothing
         End Try
     End Function
 

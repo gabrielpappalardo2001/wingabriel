@@ -15,6 +15,7 @@ Imports System.Windows.Forms
 Imports wgcontrols
 Imports WGInternet
 
+' Gestione completa dei campi di testo, inclusi la configurazione della tastiera, la dettatura vocale e i menu di opzioni.
 Partial Public Class WGCampoTesto
     Inherits System.Windows.Forms.UserControl
 

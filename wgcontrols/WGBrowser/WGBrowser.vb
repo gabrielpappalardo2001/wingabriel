@@ -9,6 +9,7 @@ Imports System.Windows.Forms
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Finestra principale del browser con gestione delle schede, dei lettori locali e dell'interfaccia.
 Public Class WGBrowser
     Inherits UserControl
     Implements IWGControlloConSchede

@@ -9,6 +9,7 @@ Imports System.IO
 Imports System.Text.RegularExpressions
 Imports System.Diagnostics
 
+' Funzioni interne per la modifica del testo, la gestione degli appunti, la cronologia delle azioni e lo scorrimento.
 Partial Public Class WGWord
 
     Private _documentState As WGDocumentState = New WGDocumentState()

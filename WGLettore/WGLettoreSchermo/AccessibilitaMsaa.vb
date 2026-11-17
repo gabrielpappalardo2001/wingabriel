@@ -4,6 +4,7 @@ Imports System.Text
 Imports Accessibility
 Imports UIAutomationClient
 
+' Interazione con le API di accessibilità MSAA per descrivere eventi, finestre, ruoli e stati degli elementi sullo schermo.
 Friend NotInheritable Class AccessibilitaMsaa
 
     Private Const OggettoClient As Integer = &HFFFFFFFC
@@ -605,7 +606,7 @@ Friend NotInheritable Class AccessibilitaMsaa
             If descrizione <> "" AndAlso Not String.Equals(descrizione, nome, StringComparison.CurrentCultureIgnoreCase) AndAlso Not String.Equals(descrizione, valore, StringComparison.CurrentCultureIgnoreCase) Then parti.Add(descrizione)
             If stato <> "" Then parti.Add(stato)
             If TypeOf figlio Is Integer AndAlso CInt(figlio) = FiglioSeStesso Then
-                Dim info As AccessibilitaIA2.InfoIA2
+                Dim info As AccessibilitaIA2.InfoIA2 = Nothing
                 If AccessibilitaIA2.Leggi(accessibile, info) Then
                     Dim extra As String = AccessibilitaIA2.Frase(info)
                     If extra <> "" Then parti.Add(extra)

@@ -1,6 +1,8 @@
 ﻿Imports System.Threading
 Imports UIAutomationClient
 
+' Gestione dei moduli applicativi, recupero degli elementi con focus, navigazione nell'albero di automazione e supporto per i
+' menu.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private ReadOnly _gestoreAppModule As New GestoreAppModule(Me)

@@ -11,6 +11,7 @@ Imports AngleDom = AngleSharp.Dom
 Imports AngleHtml = AngleSharp.Html.Parser
 Imports AngleHtmlDom = AngleSharp.Html.Dom
 
+' Estrazione e pulizia del testo principale dagli articoli web e dalle pagine HTML per la lettura facilitata.
 Public NotInheritable Class EstrattoreArticoli
     Private Shared ReadOnly logger As New Logger()
     Private Const LunghezzaMinima As Integer = 200

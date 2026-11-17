@@ -1,6 +1,7 @@
 Imports System.Collections.Generic
 Imports WGStampante
 
+' Stampa dei campi di immissione dati e gestione dell'elenco delle stampanti disponibili.
 Partial public Class Campi
     Private Sub StampaCampoCorrente()
         Try

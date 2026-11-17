@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Riconoscimento dei gesti tattili sullo schermo, inclusi flick, tap multipli e modalità di navigazione per utenti non vedenti.
 Public Class WGTouk
     Implements IMessageFilter
 

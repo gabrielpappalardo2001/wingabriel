@@ -8,6 +8,7 @@ Imports System.Threading.Tasks
 Imports Microsoft.Web.WebView2.Core
 Imports wgcontrols
 
+' Gestione e monitoraggio dei download dei file da WebView2 o direttamente via web.
 Public Class ElementoDownload
     Public Property Id As Integer = 0
     Public Property Indirizzo As String = ""

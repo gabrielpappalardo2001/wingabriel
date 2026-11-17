@@ -9,6 +9,7 @@ Imports MailKit.Search
 Imports MailKit.Security
 Imports MimeKit
 
+' Gestione delle cartelle IMAP, spostamento dei messaggi e applicazione delle regole sul server.
 Partial Public Class CLSMail
 
     ' ============================================================================================

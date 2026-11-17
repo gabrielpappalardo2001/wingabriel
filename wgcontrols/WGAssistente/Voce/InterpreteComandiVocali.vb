@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Analisi e interpretazione delle frasi pronunciate per trasformarle in comandi eseguibili.
 Public Class InterpreteComandiVocali
 
     Private Const OPZIONI As RegexOptions = RegexOptions.IgnoreCase Or RegexOptions.CultureInvariant

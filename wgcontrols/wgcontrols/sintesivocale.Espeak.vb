@@ -4,6 +4,7 @@ Imports System.IO
 Imports System.Threading
 Imports System.Threading.Tasks
 
+' Integrazione del sintetizzatore vocale eSpeak per la lettura dello schermo e la conversione dei testi in file audio MP3.
 Partial Public Class sintesivocale
 
     Private _espeakAttivo As Boolean = False

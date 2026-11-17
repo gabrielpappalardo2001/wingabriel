@@ -9,6 +9,7 @@ Imports System.Diagnostics
 Imports System.Linq
 Imports System.Text
 
+' Controllo del menu delle opzioni con intercettazione globale degli eventi di tastiera tramite ganci di sistema Windows.
 Public Class WGMenuOpzioni
     Inherits UserControl
 

@@ -7,6 +7,7 @@ Imports System.Security.Cryptography
 Imports System.Text
 Imports WGDb
 
+' Protezione e cifratura delle rubriche con password e gestione delle coppie di chiavi crittografiche per i dati personali.
 Partial Public Class CLSContatti
 
     ' I campi personali dei contatti di una rubrica protetta vengono cifrati nel database. La

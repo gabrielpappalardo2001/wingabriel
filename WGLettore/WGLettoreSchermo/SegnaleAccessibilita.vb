@@ -1,6 +1,8 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Text
 
+' Segnalazione dello stato di accessibilità al sistema operativo, attivazione dei client UIA e MSAA e risveglio delle finestre per
+' il lettore.
 Friend NotInheritable Class SegnaleAccessibilita
 
     Public Const WM_GETOBJECT As Integer = &H3D

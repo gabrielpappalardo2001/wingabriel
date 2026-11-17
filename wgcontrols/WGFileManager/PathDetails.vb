@@ -1,6 +1,7 @@
 ﻿Imports System.IO
 Imports System.Threading
 
+' Analisi dettagliata di percorsi di file, cartelle e unità disco, con calcolo delle dimensioni e delle statistiche di utilizzo.
 Public Class PathDetails
     Private _fileSystemInfo As FileSystemInfo
     Private _driveInfo As DriveInfo

@@ -2,6 +2,7 @@
 Imports System.Text
 Imports UIAutomationClient
 
+' Estrazione e formattazione degli attributi di stile, colore, allineamento e proprietà dei controlli.
 Friend NotInheritable Class LetturaAttributi
 
     Private Const AttributoNomeCarattere As Integer = 40005
@@ -246,8 +247,8 @@ Friend NotInheritable Class LetturaAttributi
         If LeggiBool(intervallo, AttributoPedice) Then parti.Add("pedice")
         Dim colore As Integer = LeggiColore(intervallo, AttributoColoreTesto)
         If colore >= 0 Then
-            Dim nomeColore As String = NomeColore(colore)
-            If nomeColore <> "" AndAlso (completo OrElse nomeColore <> "nero") Then parti.Add("colore " & nomeColore)
+            Dim testoColore As String = NomeColore(colore)
+            If testoColore <> "" AndAlso (completo OrElse testoColore <> "nero") Then parti.Add("colore " & testoColore)
         End If
         Dim sfondo As Integer = LeggiColore(intervallo, AttributoColoreSfondo)
         If sfondo >= 0 Then
@@ -290,8 +291,8 @@ Friend NotInheritable Class LetturaAttributi
             If LeggiBool(intervallo, AttributoPedice) Then voci.Add({"pedice", "pedice", "non pedice"})
             Dim colore As Integer = LeggiColore(intervallo, AttributoColoreTesto)
             If colore >= 0 Then
-                Dim nomeColore As String = NomeColore(colore)
-                If nomeColore <> "" Then voci.Add({"colore", "colore " & nomeColore, ""})
+                Dim testoColore As String = NomeColore(colore)
+                If testoColore <> "" Then voci.Add({"colore", "colore " & testoColore, ""})
             End If
             Dim sfondo As Integer = LeggiColore(intervallo, AttributoColoreSfondo)
             If sfondo >= 0 Then

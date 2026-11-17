@@ -11,6 +11,7 @@ Imports System.Security
 Imports WGDb
 Imports System.Xml.Serialization
 
+' Gestione delle note personali, dei formati di testo, della ricerca e della protezione dei contenuti riservati con cifratura.
 Public Class Nota
     Implements IDisposable
 
@@ -307,6 +308,7 @@ Public Class CLSNote
                 Return LeggiImpostazione("UsaEditorWord", "0") = "1"
             Catch ex As Exception
                 _logger.ScriviLog(ex.Message & ex.StackTrace)
+                Return False
             End Try
         End Get
         Set(value As Boolean)
@@ -333,6 +335,7 @@ Public Class CLSNote
                 Return LeggiImpostazione("UsaEditorWordLettura", "0") = "1"
             Catch ex As Exception
                 _logger.ScriviLog(ex.Message & ex.StackTrace)
+                Return False
             End Try
         End Get
         Set(value As Boolean)
@@ -388,8 +391,6 @@ Public Class CLSNote
             Catch ex2 As Exception
                 _logger.ScriviLog(ex2.Message & ex2.StackTrace)
             End Try
-        Catch ex3 As Exception
-            _logger.ScriviLog(ex3.Message & ex3.StackTrace)
             Return False
         End Try
     End Function

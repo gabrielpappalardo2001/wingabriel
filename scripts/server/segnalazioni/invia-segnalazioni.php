@@ -20,14 +20,20 @@ function registro(string $riga): void
     @file_put_contents($file, date('Y-m-d H:i:s') . ' ' . $riga . "\n", FILE_APPEND | LOCK_EX);
 }
 
+/** L'indirizzo che riceve le segnalazioni (solo sul server); vuoto se manca o non è un indirizzo di posta valido. */
 function destinatario(): string
 {
-    return trim((string) @file_get_contents(FILE_DESTINATARIO));
+    $a = trim((string) @file_get_contents(FILE_DESTINATARIO));
+    return filter_var($a, FILTER_VALIDATE_EMAIL) !== false ? $a : '';
 }
 
 function invia(string $oggetto, string $testo): bool
 {
     try {
+        if (destinatario() === '') {
+            registro('manca ' . FILE_DESTINATARIO . ': le segnalazioni restano in coda');
+            return false;
+        }
         $intestazioni = 'From: Segnalazioni WinGabriel <' . MITTENTE . ">\r\n"
             . 'To: ' . destinatario() . "\r\n"
             . 'Subject: =?UTF-8?B?' . base64_encode($oggetto) . "?=\r\n"

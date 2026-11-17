@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Elaborazione preliminare del flusso audio con riduzione del rumore, filtri e normalizzazione.
 Public Class PreElaborazioneVoce
     Implements IDisposable
 

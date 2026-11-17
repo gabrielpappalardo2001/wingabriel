@@ -9,6 +9,7 @@ Imports System.Threading
 Imports wgcontrols
 Imports WGDb
 
+' Gestione dell'agenda, degli appuntamenti, delle categorie e della sincronizzazione dei calendari.
 Partial Public Class CLSAgenda
     Private log As New Logger()
     Private Shared _instance As CLSAgenda
@@ -205,22 +206,22 @@ Partial Public Class CLSAgenda
     End Sub
 
     Private Function ApriConnessione() As SQLiteConnection
-try
-        Dim conn As SQLiteConnection = WGDatabase.ApriConnessione(_dbPath, "Version=3;Journal Mode=WAL;Synchronous=Normal;Cache Size=-65536;Page Size=4096;Pooling=True;Max Pool Size=64;BusyTimeout=5000;Foreign Keys=True;")
-        If conn Is Nothing Then
-            conn = New SQLiteConnection(connectionString)
-            conn.Open()
-        End If
-        Using cmd As New SQLiteCommand(conn)
-            cmd.CommandTimeout = CommandTimeoutSeconds
-            cmd.CommandText = "PRAGMA synchronous = NORMAL; PRAGMA temp_store = MEMORY; PRAGMA cache_size = -65536; PRAGMA foreign_keys = ON;"
-            cmd.ExecuteNonQuery()
-        End Using
-        Return conn
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-        Return Nothing
-end try
+        Try
+            Dim conn As SQLiteConnection = WGDatabase.ApriConnessione(_dbPath, "Version=3;Journal Mode=WAL;Synchronous=Normal;Cache Size=-65536;Page Size=4096;Pooling=True;Max Pool Size=64;BusyTimeout=5000;Foreign Keys=True;")
+            If conn Is Nothing Then
+                conn = New SQLiteConnection(connectionString)
+                conn.Open()
+            End If
+            Using cmd As New SQLiteCommand(conn)
+                cmd.CommandTimeout = CommandTimeoutSeconds
+                cmd.CommandText = "PRAGMA synchronous = NORMAL; PRAGMA temp_store = MEMORY; PRAGMA cache_size = -65536; PRAGMA foreign_keys = ON;"
+                cmd.ExecuteNonQuery()
+            End Using
+            Return conn
+        Catch ex As Exception
+            log.ScriviLog(ex.ToString())
+            Return Nothing
+        End Try
     End Function
 
     Private Sub InizializzaDatabase()
@@ -491,36 +492,38 @@ end try
         End Try
     End Function
 
+    ''' <summary>Il testo di un campo senza spazi ai lati e tagliato alla lunghezza massima consentita.</summary>
     Private Function SanitizzaInput(input As String) As String
-       try
-If String.IsNullOrWhiteSpace(input) Then
+        Try
+            If String.IsNullOrWhiteSpace(input) Then
+                Return ""
+            End If
+            Dim pulito As String = input.Trim()
+            If pulito.Length > MaxInputLength Then
+                Return pulito.Substring(0, MaxInputLength)
+            End If
+            Return pulito
+        Catch ex As Exception
+            log.ScriviLog("CLSAgenda.SanitizzaInput: " & ex.ToString())
             Return ""
-        End If
-        Dim pulito As String = input.Trim()
-        If pulito.Length > MaxInputLength Then
-            Return pulito.Substring(0, MaxInputLength)
-        End If
-        Return pulito
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-        Return ""
-end try
+        End Try
     End Function
 
+    ''' <summary>Le note senza spazi ai lati e tagliate alla lunghezza massima consentita.</summary>
     Private Function SanitizzaNote(input As String) As String
-        try
-If String.IsNullOrWhiteSpace(input) Then
+        Try
+            If String.IsNullOrWhiteSpace(input) Then
+                Return ""
+            End If
+            Dim pulito As String = input.Trim()
+            If pulito.Length > MaxNoteLength Then
+                Return pulito.Substring(0, MaxNoteLength)
+            End If
+            Return pulito
+        Catch ex As Exception
+            log.ScriviLog("CLSAgenda.SanitizzaNote: " & ex.ToString())
             Return ""
-        End If
-        Dim pulito As String = input.Trim()
-        If pulito.Length > MaxNoteLength Then
-            Return pulito.Substring(0, MaxNoteLength)
-        End If
-        Return pulito
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-        Return ""
-end try
+        End Try
     End Function
 
     Public Function OttieniElencoCategorie() As List(Of String)

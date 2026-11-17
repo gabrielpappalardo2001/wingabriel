@@ -8,6 +8,7 @@ Imports Newtonsoft.Json.Linq
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Costruzione dell'albero di accessibilità della pagina per la lettura vocale e la navigazione.
 Public Class WGAlberoAccessibilita
 
     Public Class Risultato

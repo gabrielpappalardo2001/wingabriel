@@ -510,6 +510,11 @@ Public Class MenuTelefono
         End Try
     End Sub
 
+    ''' <summary>DomandaInArrivoEsc con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub DomandaInArrivoEsc(senderEvento As Object, eEvento As EventArgs)
+        DomandaInArrivoEsc()
+    End Sub
+
     Private Sub DomandaInArrivoEsc()
         Try
             If Not _inArrivo OrElse _esitoInArrivo.Length > 0 Then Return
@@ -809,6 +814,11 @@ Public Class MenuTelefono
         End Try
     End Sub
 
+    ''' <summary>ListaTelefoniAbbandonata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ListaTelefoniAbbandonata(senderEvento As Object, eEvento As EventArgs)
+        ListaTelefoniAbbandonata()
+    End Sub
+
     Private Sub ListaTelefoniAbbandonata()
         Try
             ChiudiListaTelefoni()
@@ -997,6 +1007,11 @@ Public Class MenuTelefono
         End Try
     End Sub
 
+    ''' <summary>ListaCronologiaAbbandonata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ListaCronologiaAbbandonata(senderEvento As Object, eEvento As EventArgs)
+        ListaCronologiaAbbandonata()
+    End Sub
+
     Private Sub ListaCronologiaAbbandonata()
         ChiudiListaCronologia()
     End Sub
@@ -1099,6 +1114,11 @@ Public Class MenuTelefono
             log.ScriviLog("MenuTelefono.ChiudiListaNumeri: " & ex.Message)
             _listaNumeri = Nothing
         End Try
+    End Sub
+
+    ''' <summary>ListaNumeriAbbandonata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ListaNumeriAbbandonata(senderEvento As Object, eEvento As EventArgs)
+        ListaNumeriAbbandonata()
     End Sub
 
     Private Sub ListaNumeriAbbandonata()
@@ -1347,6 +1367,11 @@ Public Class MenuTelefono
 
     ' Esc non chiude il menu: durante la chiamata resta aperto, e si chiude da solo quando la
     ' chiamata termina (da qui con "Termina la chiamata", oppure dall'altro capo).
+    ''' <summary>ChiamataInCorsoEsc con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiamataInCorsoEsc(senderEvento As Object, eEvento As EventArgs)
+        ChiamataInCorsoEsc()
+    End Sub
+
     Private Sub ChiamataInCorsoEsc()
     End Sub
 

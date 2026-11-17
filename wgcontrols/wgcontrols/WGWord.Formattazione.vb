@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Gestione della formattazione del testo e dei paragrafi, inclusi font, colori, elenchi puntati e numerati, e rientri.
 Partial Public Class WGWord
     Public Sub LeggiInfoFormattazione()
         Try

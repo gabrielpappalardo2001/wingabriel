@@ -6,6 +6,7 @@ Imports System.Collections.Generic
 Imports System.Linq
 Imports wgcontrols
 
+' Rendering grafico dei campi di testo e gestione della formattazione dei caratteri, dei segmenti e del cursore.
 Public Class SegmentoTesto
     Public Property Testo As String = ""
     Public Property NomeFont As String = "Arial"

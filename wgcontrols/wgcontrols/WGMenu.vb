@@ -11,6 +11,7 @@ Imports System.Net.Http
 Imports System.Threading.Tasks
 Imports System.Collections.Generic
 
+' Gestione dei menu di navigazione, scelta delle voci e interazione tramite tastiera e schermo touch.
 Public Class WGMenu
 
     Private WithEvents _inner As WGMenuInt

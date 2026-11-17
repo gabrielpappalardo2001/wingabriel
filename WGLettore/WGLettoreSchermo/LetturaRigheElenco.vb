@@ -3,6 +3,7 @@ Imports System.Diagnostics
 Imports System.Text
 Imports UIAutomationClient
 
+' Estrazione e lettura di righe, celle e intestazioni all'interno di tabelle ed elenchi.
 Friend NotInheritable Class LetturaRigheElenco
 
     Private Const SchemaTabella As Integer = 10012

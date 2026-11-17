@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Concurrent
 Imports UIAutomationClient
 
+' Gestore per il caricamento e il recupero dei moduli applicativi specifici in base al programma attivo.
 Friend NotInheritable Class GestoreAppModule
 
     Private ReadOnly _lettore As WGLettoreSchermo

@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.Runtime.InteropServices
 
+' Lettura e analisi delle informazioni di accessibilità basate sulle specifiche IAccessible2 per gli elementi delle applicazioni.
 Friend NotInheritable Class AccessibilitaIA2
 
     Private Shared ReadOnly IidServiceProvider As New Guid("6D5140C1-7436-11CE-8034-00AA006009FA")

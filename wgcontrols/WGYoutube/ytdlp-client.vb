@@ -653,10 +653,10 @@ Public Class YtdlpClient
                     If Not String.IsNullOrEmpty(filtroSp) Then
                         urlRicerca &= "&sp=" & filtroSp
                     End If
-                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-end {maxResults} {COMMON_ARGS} {VirgolettaArgomento(urlRicerca)}"
+                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-end {maxResults} {COMMON_ARGS} -- {VirgolettaArgomento(urlRicerca)}"
                 Else
                     Dim searchString As String = $"{searchPrefix}{maxResults}:{currentQuery}"
-                    arguments = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} {VirgolettaArgomento(searchString)}"
+                    arguments = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} -- {VirgolettaArgomento(searchString)}"
                 End If
 
                 Dim jsonToken As JToken = RunYtdlpJson(arguments)
@@ -677,7 +677,7 @@ Public Class YtdlpClient
             If searchResults.Count = 0 AndAlso (searchType = YoutubeItemType.Channel OrElse searchType = YoutubeItemType.Playlist) Then
                 Try
                     Dim urlMista As String = "https://www.youtube.com/results?search_query=" & Uri.EscapeDataString(queriesToTry(0))
-                    Dim argomentiMisti As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-end {Math.Max(maxResults, 50)} {COMMON_ARGS} {VirgolettaArgomento(urlMista)}"
+                    Dim argomentiMisti As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-end {Math.Max(maxResults, 50)} {COMMON_ARGS} -- {VirgolettaArgomento(urlMista)}"
 
                     Dim jsonMisto As JToken = RunYtdlpJson(argomentiMisti)
                     Dim entriesMiste = jsonMisto.SelectToken("entries")
@@ -1418,7 +1418,7 @@ Public Class YtdlpClient
             Dim startIdx As Integer = (numeroPagina - 1) * dimensionePagina + 1
             Dim endIdx As Integer = numeroPagina * dimensionePagina
 
-            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
 
             Dim jsonToken As JToken
             Try
@@ -1635,10 +1635,10 @@ Public Class YtdlpClient
                     If Not String.IsNullOrEmpty(filtroSp) Then
                         urlRicerca &= "&sp=" & filtroSp
                     End If
-                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} {VirgolettaArgomento(urlRicerca)}"
+                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} -- {VirgolettaArgomento(urlRicerca)}"
                 Else
                     Dim searchString As String = $"{searchPrefix}{endIdx}:{currentQuery}"
-                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} {VirgolettaArgomento(searchString)}"
+                    arguments = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} -- {VirgolettaArgomento(searchString)}"
                 End If
 
                 Dim jsonToken As JToken
@@ -1669,7 +1669,7 @@ Public Class YtdlpClient
 
     Public Function RecuperaMetadatiUrl(url As String) As YoutubeSearchResult
         Try
-            Dim arguments As String = $"-J --flat-playlist --playlist-items 0 --skip-download {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --flat-playlist --playlist-items 0 --skip-download {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
 
             Dim id As String = jsonToken.Value(Of String)("id")
@@ -1737,7 +1737,7 @@ Public Class YtdlpClient
                 argomentoSponsorBlock = " --sponsorblock-mark all"
             End If
 
-            Dim arguments As String = $"-J --skip-download --ignore-errors{argomentoSponsorBlock} {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --skip-download --ignore-errors{argomentoSponsorBlock} {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
 
             Dim capitoliToken = jsonToken.SelectToken("chapters")
@@ -1882,7 +1882,7 @@ Public Class YtdlpClient
     Private Function GetChannelAboutMetadata(channelId As String) As JToken
         Try
             Dim url As String = $"https://www.youtube.com/channel/{channelId}/about"
-            Dim arguments As String = $"-J --skip-download --ignore-errors {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --skip-download --ignore-errors {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             Return RunYtdlpJson(arguments)
         Catch ex As Exception
             logger.ScriviLog($"ERRORE [YtdlpClient.GetChannelAboutMetadata channelId={channelId}]: {ex.ToString()}")
@@ -1910,9 +1910,9 @@ Public Class YtdlpClient
 
             Dim arguments As String
             If itemType = YoutubeItemType.Channel Then
-                arguments = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} --playlist-items 0 {VirgolettaArgomento(url)}"
+                arguments = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} --playlist-items 0 -- {VirgolettaArgomento(url)}"
             Else
-                arguments = $"-J --skip-download --ignore-errors {COMMON_ARGS} {VirgolettaArgomento(url)}"
+                arguments = $"-J --skip-download --ignore-errors {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             End If
 
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
@@ -2009,7 +2009,7 @@ Public Class YtdlpClient
             Dim url As String = $"https://www.youtube.com/watch?v={videoId}"
             Dim ordineValido As String = If(ordine = "new", "new", "top")
             ' Limite di commenti e risposte, altrimenti nei video molto commentati l'attesa non finisce più.
-            Dim arguments As String = $"-J --get-comments --skip-download --ignore-errors --extractor-args ""youtube:comment_sort={ordineValido};max_comments=200,all,all,30"" {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --get-comments --skip-download --ignore-errors --extractor-args ""youtube:comment_sort={ordineValido};max_comments=200,all,all,30"" {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
 
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
             Dim commentsToken = jsonToken.SelectToken("comments")
@@ -2052,7 +2052,7 @@ Public Class YtdlpClient
 
     Private Function GetPlaylistMetadata(url As String) As (TotalCount As Integer?, Uploader As String, UploaderId As String)
         Try
-            Dim args As String = $"-J --flat-playlist --playlist-items 0 {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim args As String = $"-J --flat-playlist --playlist-items 0 {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             Dim json As JToken = RunYtdlpJson(args)
 
             Dim count As Integer? = json.Value(Of Integer?)("playlist_count")
@@ -2147,7 +2147,7 @@ Public Class YtdlpClient
     Private Function GetPlaylistsFromUrl(url As String) As List(Of YoutubeSearchResult)
         Dim playlists As New List(Of YoutubeSearchResult)()
         Try
-            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --compat-options no-youtube-unavailable-videos {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --compat-options no-youtube-unavailable-videos {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
             Dim entries = jsonToken.SelectToken("entries")
             If entries Is Nothing Then Return playlists
@@ -2210,7 +2210,7 @@ Public Class YtdlpClient
         If maxVideos > 0 Then
             limitArg = $" --playlist-end {maxVideos}"
         End If
-        Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --compat-options no-youtube-unavailable-videos{limitArg} {COMMON_ARGS} {VirgolettaArgomento(url)}"
+        Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --compat-options no-youtube-unavailable-videos{limitArg} {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
 
         Dim jsonToken As JToken = RunYtdlpJson(arguments)
         Dim entries = jsonToken.SelectToken("entries")
@@ -2247,7 +2247,7 @@ Public Class YtdlpClient
 
     Private Function GetVideosChunk(url As String, startIdx As Integer, endIdx As Integer, defaultUploader As String, defaultUploaderId As String) As List(Of YoutubeSearchResult)
         Dim videos As New List(Of YoutubeSearchResult)()
-        Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} {VirgolettaArgomento(url)}"
+        Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors --playlist-start {startIdx} --playlist-end {endIdx} {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
         Dim jsonToken As JToken = RunYtdlpJson(arguments)
         Dim entries = jsonToken.SelectToken("entries")
 
@@ -2315,7 +2315,7 @@ Public Class YtdlpClient
         Dim playlists As New List(Of YoutubeSearchResult)()
         Try
             Dim url As String = $"https://www.youtube.com/channel/{channelId}/playlists"
-            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} {VirgolettaArgomento(url)}"
+            Dim arguments As String = $"-J --flat-playlist --skip-download --ignore-errors {COMMON_ARGS} -- {VirgolettaArgomento(url)}"
 
             Dim jsonToken As JToken = RunYtdlpJson(arguments)
             Dim entries = jsonToken.SelectToken("entries")

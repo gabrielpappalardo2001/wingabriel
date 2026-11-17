@@ -1,3 +1,4 @@
-﻿Public Class UserControl1
+﻿' Controllo utente vuoto.
+Public Class UserControl1
 
 End Class

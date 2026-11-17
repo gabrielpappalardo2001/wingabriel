@@ -2,6 +2,7 @@
 Imports System.Diagnostics
 Imports UIAutomationClient
 
+' Lettura e navigazione degli elementi ad albero, gestione dei livelli e dello stato di espansione.
 Friend NotInheritable Class LetturaAlberi
 
     Private Const SchemaSelezione As Integer = 10001

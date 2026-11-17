@@ -5,6 +5,7 @@ Imports System.Globalization
 Imports MailKit
 Imports MimeKit
 
+' Gestione della cache locale per l'elenco dei messaggi e la cronologia delle ricerche.
 Partial Public Class CLSMail
 
     Private Const NomeTabellaCacheElenco As String = "cache_elenco"

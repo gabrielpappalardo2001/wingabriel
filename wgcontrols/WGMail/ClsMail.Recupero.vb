@@ -8,6 +8,8 @@ Imports MailKit.Net.Imap
 Imports MailKit.Security
 Imports MimeKit
 
+' Gestione e recupero delle bozze di posta e dei messaggi grezzi. Estrae allegati, immagini inline e parti del messaggio
+' convertendo il testo in HTML.
 Public Class BozzaRecuperata
     Public Property Identificativo As String = ""
     Public Property Destinatari As List(Of String) = New List(Of String)()

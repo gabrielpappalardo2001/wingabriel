@@ -6,6 +6,7 @@ Imports System.Windows.Forms
 Imports wgcontrols
 Imports WGDb
 
+' Gestione del database locale per l'archivio dei libri di testo e dei relativi autori.
 Public Class CLSBibliotecaTestiDatabase
 
     Private Const NOME_ORIGINE_BACKUP As String = "BibliotecaTesti"

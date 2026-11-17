@@ -10,6 +10,7 @@ Imports System.Collections.Generic
 Imports System.Diagnostics
 Imports System.Security.AccessControl
 
+' Finestra di dialogo personalizzata per la scelta di file e cartelle, ottimizzata per la navigazione con screen reader.
 Public Class WGFileDialog
     Public Event selezioneterminata(elementi As List(Of String))
     Public Event singolaselezione(elemento As String)

@@ -3,6 +3,7 @@ Imports System.Diagnostics
 Imports System.Text
 Imports UIAutomationClient
 
+' Motore principale per l'esplorazione, l'indicizzazione e la lettura dei contenuti nelle pagine web.
 Friend NotInheritable Class ContestoNavigazione
     Public Radice As IUIAutomationElement
     Public Chiave As String = ""

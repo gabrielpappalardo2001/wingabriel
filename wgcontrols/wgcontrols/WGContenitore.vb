@@ -5,6 +5,7 @@ Imports System.Threading
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Finestra principale e contenitore grafico per la gestione dei controlli, dello schermo touch e dell'interfaccia.
 Partial Public Class WGContenitore
     Inherits Form
 

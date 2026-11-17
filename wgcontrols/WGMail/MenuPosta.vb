@@ -10,6 +10,9 @@ Imports wgcontrols
 Imports WGContatti
 Imports WGFileManager
 Imports WGStampante
+
+' Menu principale della posta elettronica con elenco degli account, cartelle di sistema, gestione dei messaggi non letti e dei
+' destinatari recenti.
 Partial Public Class MenuPosta
 
     Private Enum ScopoAccount

@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Calcolo delle impronte digitali SHA-256 per i file. Implementa l'algoritmo di sicurezza per la verifica dei binari.
 Public NotInheritable Class WGImprontaSha256
 
     Private Shared ReadOnly _costanti As UInteger() = New UInteger() {

@@ -4,6 +4,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Linq
 Imports System.Windows.Forms
 
+' Integrazione dei documenti Word all'interno dei campi di immissione, con gestione della navigazione e dei menu di uscita.
 Partial Public Class Campi
 
     Public Sub AggiungiWord(titolo As String, Optional id As String = "", Optional obbligatorio As Boolean = False, Optional solaLettura As Boolean = False)

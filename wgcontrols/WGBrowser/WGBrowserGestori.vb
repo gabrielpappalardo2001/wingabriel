@@ -5,6 +5,7 @@ Imports Microsoft.Web.WebView2.Core
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Gestori degli eventi del browser: cicli di vita, dialoghi, richieste di rete, download e menu contestuali.
 Friend NotInheritable Class WGBrowserGestoreVita
     Private ReadOnly _scheda As WGSchedaBrowser
     Private ReadOnly _log As New Logger()

@@ -2,6 +2,7 @@
 Imports System.Threading
 Imports UIAutomationClient
 
+' Gestione dei menu virtuali, barre dei menu e messaggi di chat con comandi dedicati.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Const SchemaAttivazione As Integer = 10000

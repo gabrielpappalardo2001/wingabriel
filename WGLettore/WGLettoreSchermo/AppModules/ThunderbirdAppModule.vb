@@ -1,5 +1,6 @@
 ﻿Imports UIAutomationClient
 
+' Modulo di supporto per il programma di posta Thunderbird con gestione del fuoco e degli avvisi vocali.
 Friend NotInheritable Class ThunderbirdAppModule
     Inherits AppModuleLettore
 

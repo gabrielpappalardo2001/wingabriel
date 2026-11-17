@@ -11,6 +11,7 @@ Imports System.Runtime.InteropServices
 Imports System.Threading.Tasks
 Imports wgcontrols
 
+' Gestione dei movimenti del cursore, della tastiera e della lettura vocale continua per la navigazione nel documento.
 Public Class WGWordGestoreMovimento
 
     Private _word As WGWord

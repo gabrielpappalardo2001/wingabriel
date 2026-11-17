@@ -7,6 +7,7 @@ Imports System.Collections.Generic
 Imports System.Text
 Imports System.Threading
 
+' Gestione del movimento e dell'interazione all'interno dei campi di testo, con supporto per tastiera touch e feedback vocale.
 Public Class WGCampiMovimento
     Inherits Control
     Implements IWGBrailleCampo

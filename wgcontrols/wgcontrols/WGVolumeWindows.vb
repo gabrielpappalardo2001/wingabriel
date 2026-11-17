@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Controllo diretto del volume audio di sistema e delle sessioni audio tramite le interfacce Core Audio di Windows.
 Public NotInheritable Class WGVolumeWindows
 
     Private Const CLSCTX_ALL As Integer = 23

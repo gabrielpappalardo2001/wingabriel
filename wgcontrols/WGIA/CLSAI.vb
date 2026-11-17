@@ -9,6 +9,9 @@ Imports System.Threading.Tasks
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 Imports WGDb
+
+' Integrazione con i servizi di intelligenza artificiale per chat, elaborazione di testi, gestione della cronologia e
+' interrogazione dei modelli supportati.
 Public Class CLSAi
     Implements IDisposable
 

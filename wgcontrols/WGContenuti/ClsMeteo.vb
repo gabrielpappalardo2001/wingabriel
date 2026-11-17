@@ -6,6 +6,7 @@ Imports System.Net.Http
 Imports Newtonsoft.Json.Linq
 Imports WGDb
 
+' Gestione delle previsioni meteo e dei dati marini tramite database locale, con ricerca delle località e dei comuni.
 Public Class CLSMeteo
 
     Private Shared ReadOnly logger As New wgcontrols.Logger()

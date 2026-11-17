@@ -3,6 +3,7 @@ Imports System.Threading
 Imports System.Runtime.InteropServices
 Imports UIAutomationClient
 
+' Registrazione e smistamento degli eventi UIA tra cui fuoco, proprietà, struttura, testo e notifiche.
 Friend Delegate Sub RicevitoreEventoEsteso(evento As EventoLettore)
 
 Friend NotInheritable Class RegistroEventiUia

@@ -8,6 +8,8 @@ Imports wgcontrols
 Imports WGDati
 Imports WGDb
 
+' Gestione del database per preferiti e recenti di radio e televisione. Sincronizza le voci della raccolta e gestisce la
+' cronologia degli ascolti.
 Public Class RadioTvDatabase
 
 #Region "Modelli"

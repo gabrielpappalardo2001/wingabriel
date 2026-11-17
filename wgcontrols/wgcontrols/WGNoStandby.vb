@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Impedisce la sospensione automatica del sistema operativo durante l'esecuzione di operazioni prolungate.
 Public NotInheritable Class WGNoStandby
 
     <DllImport("kernel32.dll", CharSet:=CharSet.Auto, SetLastError:=True)>

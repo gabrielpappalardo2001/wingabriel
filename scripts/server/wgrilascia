@@ -64,13 +64,13 @@ def prodotto_valido(p):
 
 
 def versione_valida(v):
-    if not re.match(r'^[0-9A-Za-z][0-9A-Za-z._-]{0,40}$', v or ''):
+    if not re.fullmatch(r'[0-9A-Za-z][0-9A-Za-z._-]{0,40}', v or ''):
         errore('versione non valida: %s' % v)
     return v
 
 
 def id_valido(i):
-    if not re.match(r'^[0-9A-Za-z_-]{3,60}$', i or ''):
+    if not re.fullmatch(r'[0-9A-Za-z_-]{3,60}', i or ''):
         errore('identificativo non valido: %s' % i)
     return i
 

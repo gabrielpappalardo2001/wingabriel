@@ -1,6 +1,7 @@
 Imports System.Diagnostics.Eventing.Reader
 Imports wgcontrols
 
+' Editor di testi a schede per WinGabriel, con supporto a vari formati, controllo della memoria e funzioni di esportazione.
 Public Class editor
     Private log As New Logger()
     Private menusalvataggiogiaaperto As Boolean = False

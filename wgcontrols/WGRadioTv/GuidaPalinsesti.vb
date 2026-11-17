@@ -146,7 +146,7 @@ Friend NotInheritable Class GuidaPalinsesti
     Friend Shared Async Function SiglaMediasetAsync(nome As String, radio As Boolean) As Task(Of String)
         Dim directory As Dictionary(Of String, KeyValuePair(Of String, String)) = Await DirectoryMediasetAsync().ConfigureAwait(False)
         If directory Is Nothing Then Return Nothing
-        Dim trovata As KeyValuePair(Of String, String)
+        Dim trovata As KeyValuePair(Of String, String) = Nothing
         Dim chiave As String = If(radio, "RADIO", "TV") & "|" & GuidaPalinsesti.Chiave(nome)
         If directory.TryGetValue(chiave, trovata) Then Return trovata.Key
         Return ""

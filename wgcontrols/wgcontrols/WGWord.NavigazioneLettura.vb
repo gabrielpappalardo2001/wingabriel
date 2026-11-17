@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Strumenti di navigazione vocale e lettura per immagini, tabelle, intestazioni, celle e sezioni specifiche.
 Partial Public Class WGWord
     Public Sub VaiAImmagineSuccessiva()
         Try

@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Text
 Imports UIAutomationClient
 
+' Caricamento e gestione delle regole per interpretare i ruoli dei controlli nei diversi framework dell'interfaccia utente.
 Friend NotInheritable Class RegoleRuoli
 
     Private Shared ReadOnly _blocco As New Object()

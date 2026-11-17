@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports wgcontrols
 
+' Gestione dell'interfaccia e dei comandi del browser integrato di WinGabriel.
 Public Class WGGestoreBrowser
     Private ReadOnly _log As New Logger()
     Private ReadOnly _lettura As sintesivocale = sintesivocale.GetInstance()

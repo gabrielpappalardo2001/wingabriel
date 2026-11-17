@@ -9,6 +9,7 @@ Imports Windows.Graphics.Imaging
 Imports Windows.Media.Ocr
 Imports Windows.Storage.Streams
 
+' Riconoscimento ottico dei caratteri per leggere il contenuto visivo dello schermo.
 Friend NotInheritable Class LetturaOcrSchermo
 
     Private ReadOnly log As New Logger()

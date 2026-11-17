@@ -2,6 +2,7 @@
 Imports System.Globalization
 Imports System.Text
 
+' Analisi e costruzione dell'indice della guida e dei punti di riferimento del documento.
 Friend NotInheritable Class VoceIndiceAiuto
     Public Id As Integer
     Public Tipo As String = ""

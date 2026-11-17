@@ -9,6 +9,7 @@ Imports System.Xml.Serialization
 Imports wgcontrols
 Imports WGDb
 
+' Gestione del database locale per YouTube. Salva cronologia, preferiti, iscrizioni e cache delle ricerche.
 Public Class ElementoSalvato
     Public Property Id As String
     Public Property Titolo As String

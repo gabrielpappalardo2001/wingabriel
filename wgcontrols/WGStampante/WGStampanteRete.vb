@@ -6,6 +6,8 @@ Imports System.Text
 Imports System.Threading
 Imports System.Threading.Tasks
 
+' Gestione e ricerca delle stampanti di rete con script PowerShell. Rileva i dispositivi disponibili e ne gestisce
+' l'installazione.
 Public Class WGStampanteTrovata
     Public Property Id As String = ""
     Public Property Nome As String = ""

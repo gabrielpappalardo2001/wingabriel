@@ -3,6 +3,7 @@ Imports System.Globalization
 Imports System.Linq
 Imports System.Text
 
+' Elaborazione e conversione dei messaggi di posta elettronica e dei relativi contenuti multimediali.
 Public Class WGImmaginePosta
     Public Property Cid As String = ""
     Public Property NomeFile As String = ""

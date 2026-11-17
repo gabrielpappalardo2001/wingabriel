@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports UIAutomationClient
 
+' Modulo applicativo dedicato al Blocco note di Windows per la lettura del fuoco e della barra di stato.
 Friend NotInheritable Class NotepadAppModule
     Inherits AppModuleLettore
 

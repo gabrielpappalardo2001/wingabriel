@@ -1,6 +1,7 @@
 ﻿Imports System.Diagnostics
 Imports System.Runtime.InteropServices
 
+' Controllo automatico del blocco del sistema. Monitora il processo di Esplora risorse per rilevare blocchi e gestire il riavvio.
 Friend NotInheritable Class WatchdogAutomazione
 
     Private Const RpcServerNonDisponibile As Integer = &H800706BA

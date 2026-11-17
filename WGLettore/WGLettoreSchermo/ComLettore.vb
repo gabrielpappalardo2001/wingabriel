@@ -1,5 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 
+' Rilascio delle risorse comuni del lettore di schermo.
 Friend Module ComLettore
 
     Public Sub Rilascia(oggetto As Object)

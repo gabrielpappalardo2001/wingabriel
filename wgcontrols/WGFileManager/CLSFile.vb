@@ -13,6 +13,7 @@ Imports System.Threading.Tasks
 Imports System.Threading
 Imports System.Windows.Forms
 
+' Gestione del file system, monitoraggio delle cartelle, dispositivi WPD, unità disco e operazioni di base su file e directory.
 Public Class CLSFile
     Implements IDisposable
     Public Event FileCreated(path As String)

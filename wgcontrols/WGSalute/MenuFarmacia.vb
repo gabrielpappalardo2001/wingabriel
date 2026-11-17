@@ -6,10 +6,8 @@ Imports System.Text
 Imports System.Threading
 Imports System.Threading.Tasks
 Imports System.Windows.Forms
-Imports WGDati
 Imports wgcontrols
 Imports WGOcr
-Imports WGOpenStrictMaps
 ''' <summary>
 ''' Menu accessibile per consultare i farmaci AIFA, leggere il bugiardino
 ''' e trovare le farmacie aperte.

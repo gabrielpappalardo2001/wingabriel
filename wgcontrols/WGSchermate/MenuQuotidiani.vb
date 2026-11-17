@@ -8,6 +8,8 @@ Imports System.Net
 Imports System.Threading
 Imports System.Threading.Tasks
 
+' Gestione dell'elenco dei quotidiani e dei feed RSS. Permette l'aggiunta di nuove testate, l'organizzazione in categorie e il
+' recupero degli articoli non letti.
 Public Class MenuQuotidiani
     Private menu As New WGMenu
     Private WithEvents elencoQuotidianiPersonaliLista As WGMenuLista

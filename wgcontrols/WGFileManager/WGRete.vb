@@ -9,6 +9,7 @@ Imports System.Threading
 Imports System.Threading.Tasks
 Imports Microsoft.Win32
 
+' Gestione delle connessioni di rete, condivisioni SMB, unità mappate e verifica della raggiungibilità delle risorse remote.
 Public NotInheritable Class WGRete
 
     Private Sub New()

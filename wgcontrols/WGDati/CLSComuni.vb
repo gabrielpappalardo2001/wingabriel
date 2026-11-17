@@ -3,6 +3,7 @@ Imports System.Xml.Serialization
 Imports System.Collections.Generic
 Imports wgcontrols
 
+' Consultazione dell'elenco dei comuni italiani, dei codici catastali, dei CAP e delle informazioni geografiche da XML.
 Public Class CLSComuni
     Private xmlFilePath As String
     Private ReadOnly _logger As New Logger()

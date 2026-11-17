@@ -11,6 +11,8 @@ Imports Newtonsoft.Json.Linq
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Classe principale della scheda del browser web: gestione del ciclo di vita della pagina, caricamento, eventi e configurazione
+' iniziale.
 Partial Public Class WGSchedaBrowser
     Implements IDisposable
 

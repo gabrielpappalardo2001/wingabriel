@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports UIAutomationClient
 
+' Gestione del terminale con comandi rapidi per interrompere la voce e ricevere subito le nuove righe.
 Friend NotInheritable Class TerminaleAppModule
     Inherits AppModuleLettore
 

@@ -12,6 +12,7 @@ Imports WGDati
 Imports WGDb
 Imports wgcontrols
 
+' Gestione del database locale delle stazioni radio. Salva e carica le informazioni su paesi, regioni, generi e stazioni manuali.
 Public Class RadioDb
 
 #Region "Modelli"

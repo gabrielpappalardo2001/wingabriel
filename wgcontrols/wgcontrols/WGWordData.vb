@@ -1,6 +1,7 @@
 Imports System.Collections.Generic
 Imports System.Text
 
+' Strutture dati per i documenti di testo, inclusi paragrafi, tabelle, righe, celle e proprietà di formattazione.
 Public Class UndoState
     Public Elements As List(Of DocElement)
     Public CaretIndex As Integer

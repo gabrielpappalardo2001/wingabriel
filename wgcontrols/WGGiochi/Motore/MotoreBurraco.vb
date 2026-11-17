@@ -792,7 +792,7 @@ Friend Class MotoreBurraco
                 _mani(posto) = Ordina(ConCarta(_mani(posto), carta))
                 _fase = "azione"
                 eventi.Add(New EventoMotore(Nothing, nome & " pesca dal mazzo."))
-                eventi.Add(New EventoMotore(posto, "Hai pescato: " & Me.Nome(carta) & "."))
+                eventi.Add(New EventoMotore(posto, "Hai pescato: " & MotoreBurraco.Nome(carta) & "."))
                 Return eventi
             End If
 
@@ -811,7 +811,7 @@ Friend Class MotoreBurraco
                     Dim i As Integer = Integer.Parse(parti(2))
                     Dim nuova As Comb = Combinazione(ConCarta(_squadre(sq).Combinazioni(i).Carte, cima))
                     _squadre(sq).Combinazioni(i) = nuova
-                    eventi.Add(New EventoMotore(Nothing, nome & " attacca " & Me.Nome(cima) & " alla " & Descrivi(nuova) & "."))
+                    eventi.Add(New EventoMotore(Nothing, nome & " attacca " & MotoreBurraco.Nome(cima) & " alla " & Descrivi(nuova) & "."))
                 Else
                     Dim ids As List(Of Integer) = ListaInt(parti(2))
                     Dim daMano As List(Of Integer) = ids.Where(Function(x) x <> cima).ToList()
@@ -845,7 +845,7 @@ Friend Class MotoreBurraco
                 Togli(_mani(posto), {id})
                 Dim nuova As Comb = Combinazione(ConCarta(_squadre(sq).Combinazioni(i).Carte, id))
                 _squadre(sq).Combinazioni(i) = nuova
-                eventi.Add(New EventoMotore(Nothing, nome & " attacca " & Me.Nome(id) & " alla " & Descrivi(nuova) & "."))
+                eventi.Add(New EventoMotore(Nothing, nome & " attacca " & MotoreBurraco.Nome(id) & " alla " & Descrivi(nuova) & "."))
                 ControllaApertura(posto, eventi)
                 DopoCalata(posto, eventi)
                 Return eventi
@@ -865,7 +865,7 @@ Friend Class MotoreBurraco
                 Dim id As Integer = Integer.Parse(parti(1))
                 Togli(_mani(posto), {id})
                 _scarti.Add(id)
-                eventi.Add(New EventoMotore(Nothing, nome & " scarta " & Me.Nome(id) & "."))
+                eventi.Add(New EventoMotore(Nothing, nome & " scarta " & MotoreBurraco.Nome(id) & "."))
                 _provvPosto = -1
                 _provvMano = Nothing
                 _rinuncia = False

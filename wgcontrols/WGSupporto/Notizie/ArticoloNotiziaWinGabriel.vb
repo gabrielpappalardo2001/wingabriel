@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Struttura dati per la gestione dei singoli articoli di notizie. Contiene titolo, testo e indirizzo web.
 Public Class ArticoloNotiziaWinGabriel
     Public Property IdArticolo As String
     Public Property Titolo As String

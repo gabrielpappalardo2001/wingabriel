@@ -8,6 +8,7 @@ Imports System.Text
 Imports System.Threading
 Imports WGDb
 
+' Gestione delle agende multiple, dei collegamenti agli account e della protezione tramite cifratura ibrida.
 Partial Public Class CLSAgenda
 
     ' Agende multiple. Un'agenda e' un contenitore di appuntamenti con un nome. Puo' essere

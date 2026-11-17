@@ -6,6 +6,7 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Menu di navigazione della biblioteca testi per la ricerca e la lettura dei libri scaricati.
 Public Class MenuBibliotecaTesti
 
     Private Const PAGE_SIZE As Integer = 120
@@ -154,6 +155,11 @@ Public Class MenuBibliotecaTesti
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaAutori con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaAutori(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaAutori()
+    End Sub
+
     Private Sub ChiudiListaAutori()
         Try
             If listaAutori IsNot Nothing Then
@@ -216,6 +222,11 @@ Public Class MenuBibliotecaTesti
         Catch ex As Exception
             _logger.ScriviLog("MenuBibliotecaTesti.mostraelencoper_genere: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaGeneri con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaGeneri(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaGeneri()
     End Sub
 
     Private Sub ChiudiListaGeneri()
@@ -371,6 +382,11 @@ Public Class MenuBibliotecaTesti
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaRicercheRecenti con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRicercheRecenti(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRicercheRecenti()
+    End Sub
+
     Private Sub ChiudiListaRicercheRecenti()
         Try
             If listaRicercheRecenti IsNot Nothing Then
@@ -445,6 +461,11 @@ Public Class MenuBibliotecaTesti
         Catch ex As Exception
             _logger.ScriviLog("MenuBibliotecaTesti.sceltaCategorie: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaCategorie con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaCategorie(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaCategorie()
     End Sub
 
     Private Sub ChiudiListaCategorie()
@@ -538,6 +559,11 @@ Public Class MenuBibliotecaTesti
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaRisultati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRisultati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRisultati()
+    End Sub
+
     Private Sub ChiudiListaRisultati()
         Try
             If listaRisultati IsNot Nothing Then
@@ -613,6 +639,11 @@ Public Class MenuBibliotecaTesti
         End Try
     End Sub
 
+    ''' <summary>CampoDocumento_Chiusura con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub CampoDocumento_Chiusura(senderEvento As Object, eEvento As EventArgs)
+        CampoDocumento_Chiusura()
+    End Sub
+
     Private Sub CampoDocumento_Chiusura()
         Try
             _campoDocumento = Nothing
@@ -674,6 +705,11 @@ Public Class MenuBibliotecaTesti
         Catch ex As Exception
             _logger.ScriviLog("MenuBibliotecaTesti.mostraLibriScaricati: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaLibriScaricati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaLibriScaricati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaLibriScaricati()
     End Sub
 
     Private Sub ChiudiListaLibriScaricati()
@@ -778,6 +814,11 @@ Public Class MenuBibliotecaTesti
         Catch ex As Exception
             _logger.ScriviLog("MenuBibliotecaTesti.MostraIndiceCapitoliScaricati: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaCapitoliScaricati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaCapitoliScaricati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaCapitoliScaricati()
     End Sub
 
     Private Sub ChiudiListaCapitoliScaricati()

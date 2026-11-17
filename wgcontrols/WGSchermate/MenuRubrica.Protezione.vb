@@ -6,6 +6,8 @@ Imports WGContatti
 Imports WGMail
 Imports wgcontrols
 
+' Gestione delle rubriche e della loro sicurezza. Permette l'accesso tramite password, il collegamento di account esterni e
+' l'importazione o esportazione di contatti vCard.
 Partial Public Class MenuRubrica
 
     Private Enum ScopoPassword

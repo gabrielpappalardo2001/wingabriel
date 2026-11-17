@@ -15,6 +15,8 @@ Imports System.Threading.Tasks
 Imports System.Reflection
 Imports System.Collections.Generic
 
+' Gestione delle liste accessibili con navigazione, elementi selezionabili, eventi di scorrimento e scorciatoie da tastiera per
+' utenti non vedenti.
 Public Class ElementoLista
     Public Property Testo As String
     Public Property Id As String

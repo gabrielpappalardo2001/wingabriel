@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Gestione dello scaricamento dei file del modello vocale locale.
 Public Class ScaricamentoModelloLocale
 
     Private Shared _inCorso As Boolean = False

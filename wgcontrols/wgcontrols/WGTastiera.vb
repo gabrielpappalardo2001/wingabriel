@@ -6,6 +6,7 @@ Imports System.Threading
 Imports System.Text
 Imports System.Collections.Concurrent
 
+' Gestione globale della tastiera, traduzione dei tasti secondo il layout scelto, ganci di sistema e invio di input.
 Public NotInheritable Class WGTastiera
     Implements IDisposable
 

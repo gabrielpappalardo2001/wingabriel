@@ -1,5 +1,6 @@
 ﻿Imports UIAutomationClient
 
+' Gestione specifica delle voci di elenco e dei movimenti interni alle liste per le applicazioni supportate.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Function EVoceDiElenco(elemento As IUIAutomationElement) As Boolean

@@ -8,6 +8,7 @@ Imports WGContatti
 Imports WGDati
 Imports WGMail
 
+' Sincronizzazione automatica in sottofondo della rubrica e del calendario con i server remoti.
 Public Class SincronizzazioneWG
 
     Public Const ChiaveRubricaAttiva As String = "SincronizzazioneRubricaAutomatica"

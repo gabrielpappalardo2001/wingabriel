@@ -21,6 +21,7 @@ Imports System.Globalization
 Imports WGFtp
 Imports WGDb
 
+' Centro di controllo principale per la gestione di file, trasferimenti FTP, download e riproduzione multimediale.
 Public Enum ElementType
     File
     WebRadio

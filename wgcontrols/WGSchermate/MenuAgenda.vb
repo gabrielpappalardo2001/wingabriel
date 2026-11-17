@@ -8,6 +8,8 @@ Imports System.IO
 Imports System.Threading
 Imports System.Collections.Generic
 
+' Gestione completa del calendario e degli appuntamenti. Include la visualizzazione delle scadenze, la sincronizzazione con
+' account esterni e la configurazione dei promemoria.
 Partial Friend Class MenuAgenda
     Private guidaagenda As New GuidaAgenda
     Private classeagenda As CLSAgenda
@@ -167,6 +169,11 @@ Partial Friend Class MenuAgenda
         AddHandler campoGuida.chiusura, AddressOf chiusuraCampoGuida
         campoGuida.init("Guida - " & titoloGuida, testoGuida, True, True, False, False)
         campoGuida.avvia()
+    End Sub
+
+    ''' <summary>chiusuraCampoGuida con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiusuraCampoGuida(senderEvento As Object, eEvento As EventArgs)
+        chiusuraCampoGuida()
     End Sub
 
     Private Sub chiusuraCampoGuida()
@@ -3380,6 +3387,11 @@ Partial Friend Class MenuAgenda
         End Try
     End Sub
 
+    ''' <summary>chiudiorariolista con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiudiorariolista(senderEvento As Object, eEvento As EventArgs)
+        chiudiorariolista()
+    End Sub
+
     Private Sub chiudiorariolista()
         Try
             RemoveHandler menuListaSlot.escPremuto, AddressOf chiudiorariolista
@@ -3396,6 +3408,11 @@ Partial Friend Class MenuAgenda
             _logger.ScriviLog("MenuAgenda.chiudiorariolista (menuDate) - " & ex.Message & Environment.NewLine & ex.StackTrace)
         End Try
         ScegliDataConMenu()
+    End Sub
+
+    ''' <summary>ChiudiMenuDate con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiMenuDate(senderEvento As Object, eEvento As EventArgs)
+        ChiudiMenuDate()
     End Sub
 
     Private Sub ChiudiMenuDate()

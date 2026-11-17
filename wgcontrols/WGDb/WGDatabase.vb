@@ -10,6 +10,8 @@ Imports System.Text.RegularExpressions
 Imports System.Windows.Forms
 Imports System.Xml
 
+' Accesso centralizzato ai database SQLite di WinGabriel, gestione delle connessioni, migrazione delle cartelle dati e
+' manutenzione delle tabelle.
 Friend NotInheritable Class LoggerWGDb
 
     Private ReadOnly _percorsoLog As String

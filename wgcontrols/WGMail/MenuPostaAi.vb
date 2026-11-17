@@ -5,6 +5,8 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Integrazione dell'intelligenza artificiale per la posta elettronica. Permette di generare riassunti dei messaggi e risposte
+' automatiche sia dalla lista che in lettura.
 Partial Public Class MenuPosta
 
     Private Enum ScopoIstruzioniAi

@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Struttura dati per i comandi vocali interpretati, con dettagli su argomenti, destinatari e opzioni.
 Public Class ComandoVocale
     Public Property Tipo As TipoComandoVocale = TipoComandoVocale.Sconosciuto
     Public Property TestoOriginale As String = ""

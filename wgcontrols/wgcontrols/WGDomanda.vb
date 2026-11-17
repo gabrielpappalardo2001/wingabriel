@@ -1,4 +1,5 @@
-﻿Public Class WGDomanda
+﻿' Gestione delle finestre di dialogo per le domande all'utente con risposta confermabile o annullabile.
+Public Class WGDomanda
     Private menu As New WGMenu
     Public Event rispostadomanda(e As DialogResult)
 

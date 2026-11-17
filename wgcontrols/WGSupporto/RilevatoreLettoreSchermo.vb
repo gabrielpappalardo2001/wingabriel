@@ -4,6 +4,7 @@ Imports System.IO
 Imports Microsoft.Win32
 Imports wgcontrols
 
+' Rilevamento dei lettori di schermo installati nel sistema. Identifica software come NVDA, JAWS, KSR e l'assistente vocale.
 Friend NotInheritable Class RilevatoreLettoreSchermo
 
     Friend Const NOME_WINGABRIEL As String = "WinGabriel"

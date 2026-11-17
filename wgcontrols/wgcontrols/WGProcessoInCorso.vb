@@ -7,6 +7,7 @@ Imports System.Drawing
 Imports System.Diagnostics
 Imports wgcontrols
 
+' Gestione delle schermate di attesa per operazioni lunghe, con feedback vocale, sovrimpressione grafica e tasti di annullamento.
 Public Class WGProcessoInCorso
     Inherits UserControl
 

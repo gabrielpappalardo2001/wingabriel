@@ -3,6 +3,8 @@ Imports System.Collections.Generic
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Gestione avanzata delle firme e delle regole di posta elettronica. Permette di creare, modificare e applicare filtri sui
+' messaggi basati su mittente, oggetto e cartelle.
 Partial Public Class MenuPosta
 
     Private _postaAvanzata As PostaAvanzata

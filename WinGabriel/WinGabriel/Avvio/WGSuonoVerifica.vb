@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Riproduzione dei suoni di verifica all'avvio con gestione dei cicli audio.
 Public NotInheritable Class WGSuonoVerifica
 
     Private Declare Auto Function midiOutOpen Lib "winmm.dll" (ByRef lphMidiOut As IntPtr, ByVal uDeviceID As Integer, ByVal dwCallback As IntPtr, ByVal dwInstance As IntPtr, ByVal dwFlags As Integer) As Integer

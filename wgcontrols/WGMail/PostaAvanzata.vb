@@ -7,6 +7,8 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports WGDb
 
+' Gestione avanzata di firme e regole locali per i messaggi. Include i metodi per il salvataggio sul database e l'applicazione dei
+' filtri alle caselle.
 Public Class FirmaMail
     Public Property Chiave As String = ""
     Public Property Nome As String = ""

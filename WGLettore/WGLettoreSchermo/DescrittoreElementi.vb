@@ -3,6 +3,7 @@ Imports System.Diagnostics
 Imports System.Globalization
 Imports UIAutomationClient
 
+' Estrazione e formattazione delle proprietà, dei ruoli e degli stati degli elementi dell'interfaccia utente.
 Friend NotInheritable Class DescrittoreElementi
 
     Public Const ProprietaRettangolo As Integer = 30001

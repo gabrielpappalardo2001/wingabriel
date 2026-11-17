@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports wgcontrols
 
+' Visualizzazione delle schermate di guida e dei testi di aiuto per le varie sezioni del programma.
 Public Class WGGuida
 
     Private Shared ReadOnly _log As New Logger()

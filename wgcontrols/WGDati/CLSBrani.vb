@@ -16,6 +16,7 @@ Imports System.Threading
 Imports System.Threading.Tasks
 Imports WGDb
 
+' Gestione della libreria musicale, dei brani preferiti, delle sessioni di riproduzione e dei metadati dei file audio.
 Public Enum OrdinamentoPreferiti
     Alfabetico
     DataAggiunta
@@ -147,19 +148,17 @@ Public Class CLSBrani
     ) As Integer
     End Function
 
+    ''' <summary>La cartella dei dati del lettore multimediale (dove sta library.db).</summary>
     Private Shared Function RisolviCartellaPlayer() As String
-
-        Dim cartella As String = WGDatabase.CartellaDati("player")
-
+        Dim cartella As String = ""
         Try
-            If Not String.IsNullOrWhiteSpace(cartella) Then Return cartella
-        Catch ex as Exception
-
-            Dim log As New Logger()
-            log.ScriviLog(ex.Message & ex.StackTrace)
-        End try
-                Return Cartella    
-End Function
+            cartella = WGDatabase.CartellaDati("player")
+        Catch ex As Exception
+            Dim registro As New Logger()
+            registro.ScriviLog("CLSBrani.RisolviCartellaPlayer: " & ex.ToString())
+        End Try
+        Return cartella
+    End Function
 
     Public Sub New()
         Try
@@ -216,21 +215,22 @@ End Function
                 Catch ex As SQLiteException When ex.ResultCode = SQLiteErrorCode.Busy OrElse ex.ResultCode = SQLiteErrorCode.Locked
                     If i = maxRetries Then Throw
                     occupato = True
-                catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-end try
+                Catch ex As Exception
+                    ' un errore che non è "database occupato" non passa riprovando: si registra e si rinuncia
+                    log.ScriviLog("CLSBrani.ExecuteWithRetryAsync: " & ex.ToString())
+                    Return Nothing
+                End Try
                 ' VB non accetta Await dentro Catch: l'attesa sta qui, fuori dal blocco.
                 If occupato Then
                     Await Task.Delay(delay)
                     delay *= 2
                 End If
-
             Next
             Return Nothing
-        
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-Finally
+        Catch ex As Exception
+            log.ScriviLog("CLSBrani.ExecuteWithRetryAsync: " & ex.ToString())
+            Return Nothing
+        Finally
             _dbLock.Release()
         End Try
     End Function
@@ -322,109 +322,109 @@ Finally
     End Function
 
     Private Async Function MigraVecchiDatiXmlAsync() As Task
-try
-        Dim pathPreferitiXml As String = System.IO.Path.Combine(_appDataFolder, "favorites.xml")
-        Dim pathSessioniXml As String = System.IO.Path.Combine(_appDataFolder, "player.xml")
+        Try
+            Dim pathPreferitiXml As String = System.IO.Path.Combine(_appDataFolder, "favorites.xml")
+            Dim pathSessioniXml As String = System.IO.Path.Combine(_appDataFolder, "player.xml")
 
-        If System.IO.File.Exists(pathPreferitiXml) Then
-            Try
-                Dim preferitiLegacy As List(Of LegacyBranoPreferito) = Nothing
-                Await Task.Run(Sub()
-                                   Using reader As New System.IO.StreamReader(pathPreferitiXml)
-                                       Dim serializer As New XmlSerializer(GetType(List(Of LegacyBranoPreferito)))
-                                       preferitiLegacy = DirectCast(serializer.Deserialize(reader), List(Of LegacyBranoPreferito))
-                                   End Using
-                               End Sub)
+            If System.IO.File.Exists(pathPreferitiXml) Then
+                Try
+                    Dim preferitiLegacy As List(Of LegacyBranoPreferito) = Nothing
+                    Await Task.Run(Sub()
+                                       Using reader As New System.IO.StreamReader(pathPreferitiXml)
+                                           Dim serializer As New XmlSerializer(GetType(List(Of LegacyBranoPreferito)))
+                                           preferitiLegacy = DirectCast(serializer.Deserialize(reader), List(Of LegacyBranoPreferito))
+                                       End Using
+                                   End Sub)
 
-                If preferitiLegacy IsNot Nothing AndAlso preferitiLegacy.Count > 0 Then
-                    Await ExecuteNonQueryWithRetryAsync(Async Function(conn)
-                                                            Using transaction = conn.BeginTransaction()
-                                                                Try
-                                                                    For Each p In preferitiLegacy
-                                                                        If Not String.IsNullOrWhiteSpace(p.Path) Then
-                                                                            Dim normalizedPath As String = NormalizzaPercorso(p.Path)
-                                                                            Using cmd As New SQLiteCommand("INSERT INTO Preferiti (Path, DateAdded, Duration, CategoryId, ChiaveWG) VALUES (@path, @date, @dur, 0, @chiaveWG) ON CONFLICT(Path) DO NOTHING;", conn)
-                                                                                cmd.Parameters.AddWithValue("@path", normalizedPath)
-                                                                                cmd.Parameters.AddWithValue("@date", p.DateAdded)
-                                                                                cmd.Parameters.AddWithValue("@dur", p.Duration)
-                                                                                cmd.Parameters.AddWithValue("@chiaveWG", WGDatabase.GeneraChiave())
-                                                                                Await cmd.ExecuteNonQueryAsync()
-                                                                            End Using
-                                                                        End If
-                                                                    Next
-                                                                    transaction.Commit()
-                                                                
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-                                                                    transaction.Rollback()
-                                                                    Throw
-                                                                End Try
-                                                            End Using
-                                                        End Function)
-                End If
+                    If preferitiLegacy IsNot Nothing AndAlso preferitiLegacy.Count > 0 Then
+                        Await ExecuteNonQueryWithRetryAsync(Async Function(conn)
+                                                                Using transaction = conn.BeginTransaction()
+                                                                    Try
+                                                                        For Each p In preferitiLegacy
+                                                                            If Not String.IsNullOrWhiteSpace(p.Path) Then
+                                                                                Dim normalizedPath As String = NormalizzaPercorso(p.Path)
+                                                                                Using cmd As New SQLiteCommand("INSERT INTO Preferiti (Path, DateAdded, Duration, CategoryId, ChiaveWG) VALUES (@path, @date, @dur, 0, @chiaveWG) ON CONFLICT(Path) DO NOTHING;", conn)
+                                                                                    cmd.Parameters.AddWithValue("@path", normalizedPath)
+                                                                                    cmd.Parameters.AddWithValue("@date", p.DateAdded)
+                                                                                    cmd.Parameters.AddWithValue("@dur", p.Duration)
+                                                                                    cmd.Parameters.AddWithValue("@chiaveWG", WGDatabase.GeneraChiave())
+                                                                                    Await cmd.ExecuteNonQueryAsync()
+                                                                                End Using
+                                                                            End If
+                                                                        Next
+                                                                        transaction.Commit()
 
-                System.IO.File.Move(pathPreferitiXml, pathPreferitiXml & ".migrated")
-            Catch ex As Exception
-                log.ScriviLog($"Migration Error Favorites: {ex.Message}")
-                    Try
-                        System.IO.File.Move(pathPreferitiXml, pathPreferitiXml & ".error")
-                    Catch ex2 As Exception
-                        log.ScriviLog(ex2.Message & ex2.StackTrace)
-                    End try
-            End Try
-        End If
+                                                                    Catch ex As Exception
+                                                                        log.ScriviLog(ex.ToString())
+                                                                        transaction.Rollback()
+                                                                        Throw
+                                                                    End Try
+                                                                End Using
+                                                            End Function)
+                    End If
 
-        If System.IO.File.Exists(pathSessioniXml) Then
-            Try
-                Dim sessioniLegacy As List(Of LegacySessione) = Nothing
-                Await Task.Run(Sub()
-                                   Using reader As New System.IO.StreamReader(pathSessioniXml)
-                                       Dim serializer As New XmlSerializer(GetType(List(Of LegacySessione)))
-                                       sessioniLegacy = DirectCast(serializer.Deserialize(reader), List(Of LegacySessione))
-                                   End Using
-                               End Sub)
+                    System.IO.File.Move(pathPreferitiXml, pathPreferitiXml & ".migrated")
+                Catch ex As Exception
+                    log.ScriviLog($"Migration Error Favorites: {ex.Message}")
+                        Try
+                            System.IO.File.Move(pathPreferitiXml, pathPreferitiXml & ".error")
+                        Catch ex2 As Exception
+                            log.ScriviLog(ex2.Message & ex2.StackTrace)
+                        End try
+                End Try
+            End If
 
-                If sessioniLegacy IsNot Nothing AndAlso sessioniLegacy.Count > 0 Then
-                    Await ExecuteNonQueryWithRetryAsync(Async Function(conn)
-                                                            Using transaction = conn.BeginTransaction()
-                                                                Try
-                                                                    For Each s In sessioniLegacy
-                                                                        If Not String.IsNullOrWhiteSpace(s.Path) Then
-                                                                            Dim normalizedPath As String = NormalizzaPercorso(s.Path)
-                                                                            Using cmd As New SQLiteCommand("INSERT INTO Sessioni (Path, Position, Sha1Hash, LastPlayed, ChiaveWG) VALUES (@path, @pos, @hash, @last, @chiaveWG) ON CONFLICT(Path) DO NOTHING;", conn)
-                                                                                cmd.Parameters.AddWithValue("@path", normalizedPath)
-                                                                                cmd.Parameters.AddWithValue("@pos", s.Position)
-                                                                                cmd.Parameters.AddWithValue("@hash", s.Sha1Hash)
-                                                                                cmd.Parameters.AddWithValue("@last", s.LastPlayed)
-                                                                                cmd.Parameters.AddWithValue("@chiaveWG", WGDatabase.GeneraChiave())
-                                                                                Await cmd.ExecuteNonQueryAsync()
-                                                                            End Using
-                                                                        End If
-                                                                    Next
-                                                                    transaction.Commit()
-                                                                catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-                                                                    transaction.Rollback()
-                                                                    Throw
-                                                                End Try
-                                                            End Using
-                                                        End Function)
-                End If
+            If System.IO.File.Exists(pathSessioniXml) Then
+                Try
+                    Dim sessioniLegacy As List(Of LegacySessione) = Nothing
+                    Await Task.Run(Sub()
+                                       Using reader As New System.IO.StreamReader(pathSessioniXml)
+                                           Dim serializer As New XmlSerializer(GetType(List(Of LegacySessione)))
+                                           sessioniLegacy = DirectCast(serializer.Deserialize(reader), List(Of LegacySessione))
+                                       End Using
+                                   End Sub)
 
-                System.IO.File.Move(pathSessioniXml, pathSessioniXml & ".migrated")
-            Catch ex As Exception
-                log.ScriviLog($"Migration Error Sessions: {ex.Message}")
-                    Try
-                        System.IO.File.Move(pathSessioniXml, pathSessioniXml & ".error")
-                    Catch ex2 As Exception
-                        log.ScriviLog(ex2.Message & ex2.StackTrace)
-                    End try
+                    If sessioniLegacy IsNot Nothing AndAlso sessioniLegacy.Count > 0 Then
+                        Await ExecuteNonQueryWithRetryAsync(Async Function(conn)
+                                                                Using transaction = conn.BeginTransaction()
+                                                                    Try
+                                                                        For Each s In sessioniLegacy
+                                                                            If Not String.IsNullOrWhiteSpace(s.Path) Then
+                                                                                Dim normalizedPath As String = NormalizzaPercorso(s.Path)
+                                                                                Using cmd As New SQLiteCommand("INSERT INTO Sessioni (Path, Position, Sha1Hash, LastPlayed, ChiaveWG) VALUES (@path, @pos, @hash, @last, @chiaveWG) ON CONFLICT(Path) DO NOTHING;", conn)
+                                                                                    cmd.Parameters.AddWithValue("@path", normalizedPath)
+                                                                                    cmd.Parameters.AddWithValue("@pos", s.Position)
+                                                                                    cmd.Parameters.AddWithValue("@hash", s.Sha1Hash)
+                                                                                    cmd.Parameters.AddWithValue("@last", s.LastPlayed)
+                                                                                    cmd.Parameters.AddWithValue("@chiaveWG", WGDatabase.GeneraChiave())
+                                                                                    Await cmd.ExecuteNonQueryAsync()
+                                                                                End Using
+                                                                            End If
+                                                                        Next
+                                                                        transaction.Commit()
+                                                                    catch ex as exception
+                                                                        log.ScriviLog(ex.ToString())
+                                                                        transaction.Rollback()
+                                                                        Throw
+                                                                    End Try
+                                                                End Using
+                                                            End Function)
+                    End If
 
-            End Try
-        End If
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-end try
+                    System.IO.File.Move(pathSessioniXml, pathSessioniXml & ".migrated")
+                Catch ex As Exception
+                    log.ScriviLog($"Migration Error Sessions: {ex.Message}")
+                        Try
+                            System.IO.File.Move(pathSessioniXml, pathSessioniXml & ".error")
+                        Catch ex2 As Exception
+                            log.ScriviLog(ex2.Message & ex2.StackTrace)
+                        End try
+
+                End Try
+            End If
+        Catch ex As Exception
+            log.ScriviLog(ex.ToString())
+        End Try
     End Function
 
     Public Async Function InfoBranoAsync(percorso As String) As Task(Of MetadatiBrano)
@@ -455,38 +455,39 @@ end try
     End Function
 
     Private Async Function GetMetadatiDaDBAsync(path As String) As Task(Of MetadatiBrano)
-try
-        Return Await ExecuteWithRetryAsync(Async Function(conn)
-                                               Using cmd As New SQLiteCommand("SELECT * FROM Metadati WHERE Path = @path", conn)
-                                                   cmd.Parameters.AddWithValue("@path", path)
-                                                   Using reader As SQLiteDataReader = Await cmd.ExecuteReaderAsync()
-                                                       If Await reader.ReadAsync() Then
-                                                           Return New MetadatiBrano With {
-                                                               .Path = reader("Path").ToString(),
-                                                               .Titolo = If(IsDBNull(reader("Titolo")), "", reader("Titolo").ToString()),
-                                                               .Artista = If(IsDBNull(reader("Artista")), "", reader("Artista").ToString()),
-                                                               .Album = If(IsDBNull(reader("Album")), "", reader("Album").ToString()),
-                                                               .Anno = If(IsDBNull(reader("Anno")), "", reader("Anno").ToString()),
-                                                               .CoverUrl = If(IsDBNull(reader("CoverUrl")), "", reader("CoverUrl").ToString()),
-                                                               .Genere = If(IsDBNull(reader("Genere")), "", reader("Genere").ToString()),
-                                                               .PreviewUrl = If(IsDBNull(reader("PreviewUrl")), "", reader("PreviewUrl").ToString()),
-                                                               .TrackNumber = If(IsDBNull(reader("TrackNumber")), 0, Convert.ToInt32(reader("TrackNumber"))),
-                                                               .TrackCount = If(IsDBNull(reader("TrackCount")), 0, Convert.ToInt32(reader("TrackCount"))),
-                                                               .DiscNumber = If(IsDBNull(reader("DiscNumber")), 0, Convert.ToInt32(reader("DiscNumber"))),
-                                                               .DiscCount = If(IsDBNull(reader("DiscCount")), 0, Convert.ToInt32(reader("DiscCount"))),
-                                                               .Country = If(IsDBNull(reader("Country")), "", reader("Country").ToString()),
-                                                               .Explicit = If(IsDBNull(reader("Explicit")), "", reader("Explicit").ToString()),
-                                                               .DataAggiornamento = DateTime.Parse(reader("DataAggiornamento").ToString())
-                                                           }
-                                                       End If
+        Try
+            Return Await ExecuteWithRetryAsync(Async Function(conn)
+                                                   Using cmd As New SQLiteCommand("SELECT * FROM Metadati WHERE Path = @path", conn)
+                                                       cmd.Parameters.AddWithValue("@path", path)
+                                                       Using reader As SQLiteDataReader = Await cmd.ExecuteReaderAsync()
+                                                           If Await reader.ReadAsync() Then
+                                                               Return New MetadatiBrano With {
+                                                                   .Path = reader("Path").ToString(),
+                                                                   .Titolo = If(IsDBNull(reader("Titolo")), "", reader("Titolo").ToString()),
+                                                                   .Artista = If(IsDBNull(reader("Artista")), "", reader("Artista").ToString()),
+                                                                   .Album = If(IsDBNull(reader("Album")), "", reader("Album").ToString()),
+                                                                   .Anno = If(IsDBNull(reader("Anno")), "", reader("Anno").ToString()),
+                                                                   .CoverUrl = If(IsDBNull(reader("CoverUrl")), "", reader("CoverUrl").ToString()),
+                                                                   .Genere = If(IsDBNull(reader("Genere")), "", reader("Genere").ToString()),
+                                                                   .PreviewUrl = If(IsDBNull(reader("PreviewUrl")), "", reader("PreviewUrl").ToString()),
+                                                                   .TrackNumber = If(IsDBNull(reader("TrackNumber")), 0, Convert.ToInt32(reader("TrackNumber"))),
+                                                                   .TrackCount = If(IsDBNull(reader("TrackCount")), 0, Convert.ToInt32(reader("TrackCount"))),
+                                                                   .DiscNumber = If(IsDBNull(reader("DiscNumber")), 0, Convert.ToInt32(reader("DiscNumber"))),
+                                                                   .DiscCount = If(IsDBNull(reader("DiscCount")), 0, Convert.ToInt32(reader("DiscCount"))),
+                                                                   .Country = If(IsDBNull(reader("Country")), "", reader("Country").ToString()),
+                                                                   .Explicit = If(IsDBNull(reader("Explicit")), "", reader("Explicit").ToString()),
+                                                                   .DataAggiornamento = DateTime.Parse(reader("DataAggiornamento").ToString())
+                                                               }
+                                                           End If
+                                                       End Using
                                                    End Using
-                                               End Using
-                                               Return Nothing
-                                           End Function)   
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-end try
-End Function
+                                                   Return Nothing
+                                               End Function)
+        Catch ex As Exception
+            log.ScriviLog("CLSBrani.GetMetadatiDaDBAsync: " & ex.ToString())
+            Return Nothing
+        End Try
+    End Function
 
     Private Async Function ScaricaEArchiviaMetadatiAsync(path As String, termineRicerca As String) As Task(Of MetadatiBrano)
         Try
@@ -673,9 +674,9 @@ End Function
                                                                 End Using
                                                             Next
                                                             transaction.Commit()
-                                                        
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
+
+                                                        Catch ex As Exception
+                                                            log.ScriviLog(ex.ToString())
                                                             transaction.Rollback()
                                                             Throw
                                                         End Try
@@ -962,80 +963,81 @@ log.ScriviLog(Ex.message & ex.StackTrace)
     End Function
 
     Private Function GetMediaDurationPropertyStore(percorso As String) As Long
-try
-        If Not System.IO.File.Exists(percorso) Then Return 0
-        Dim propertyStore As IPropertyStore = Nothing
-        Dim durationKey As New PROPERTYKEY() With {.fmtid = PKEY_Media_Duration_FMTID, .pid = PKEY_Media_Duration_PID}
-        Dim propVar As New PropVariant()
-        Dim duration As Long = 0
-
         Try
-            Dim hr As Integer = SHGetPropertyStoreFromParsingName(percorso, IntPtr.Zero, STGM_READ, IID_IPropertyStore, propertyStore)
-            If hr = S_OK AndAlso propertyStore IsNot Nothing Then
-                hr = propertyStore.GetValue(durationKey, propVar)
-                If hr = S_OK AndAlso propVar.vt = 20 Then
-                    duration = propVar.lVal
-                    duration = duration \ 10000
-                End If
-            End If
-        Catch ex As Exception
-            log.ScriviLog(ex.Message)
-        Finally
-            If propertyStore IsNot Nothing Then
-                Marshal.ReleaseComObject(propertyStore)
-            End If
-        End Try
-        Return duration
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-end try
+            If Not System.IO.File.Exists(percorso) Then Return 0
+            Dim propertyStore As IPropertyStore = Nothing
+            Dim durationKey As New PROPERTYKEY() With {.fmtid = PKEY_Media_Duration_FMTID, .pid = PKEY_Media_Duration_PID}
+            Dim propVar As New PropVariant()
+            Dim duration As Long = 0
 
+            Try
+                Dim hr As Integer = SHGetPropertyStoreFromParsingName(percorso, IntPtr.Zero, STGM_READ, IID_IPropertyStore, propertyStore)
+                If hr = S_OK AndAlso propertyStore IsNot Nothing Then
+                    hr = propertyStore.GetValue(durationKey, propVar)
+                    If hr = S_OK AndAlso propVar.vt = 20 Then
+                        duration = propVar.lVal
+                        duration = duration \ 10000
+                    End If
+                End If
+            Catch ex As Exception
+                log.ScriviLog(ex.Message)
+            Finally
+                If propertyStore IsNot Nothing Then
+                    Marshal.ReleaseComObject(propertyStore)
+                End If
+            End Try
+            Return duration
+        Catch ex As Exception
+            log.ScriviLog("CLSBrani.GetMediaDurationPropertyStore: " & ex.ToString())
+            Return 0
+        End Try
     End Function
 
     Private Function GetMediaDuration(percorso As String) As Long
-try
-        If percorso.ToLower().StartsWith("http") OrElse percorso.ToLower().StartsWith("smb:") Then Return 0
-        If Not System.IO.File.Exists(percorso) Then Return 0
-
-        Dim duration As Long = GetMediaDurationPropertyStore(percorso)
-        If duration > 0 Then Return duration
-
-        Dim shell As Object = Nothing
-        Dim folder As Object = Nothing
-        Dim fileItem As Object = Nothing
-
         Try
-            shell = Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application"))
-            folder = shell.NameSpace(System.IO.Path.GetDirectoryName(percorso))
-            fileItem = folder.ParseName(System.IO.Path.GetFileName(percorso))
+            If percorso.ToLower().StartsWith("http") OrElse percorso.ToLower().StartsWith("smb:") Then Return 0
+            If Not System.IO.File.Exists(percorso) Then Return 0
 
-            If fileItem IsNot Nothing Then
-                Dim durataStringa As String = folder.GetDetailsOf(fileItem, 27)
-                If Not String.IsNullOrEmpty(durataStringa) AndAlso durataStringa.Contains(":") Then
-                    Dim parti() As String = durataStringa.Split(":")
-                    If parti.Length = 3 Then
-                        Dim ore As Integer = 0
-                        Dim minuti As Integer = 0
-                        Dim secondi As Integer = 0
-                        If Integer.TryParse(parti(0), ore) AndAlso Integer.TryParse(parti(1), minuti) AndAlso Integer.TryParse(parti(2), secondi) Then
-                            Dim totaleSecondi As Long = ore * 3600 + minuti * 60 + secondi
-                            duration = totaleSecondi * 1000
+            Dim duration As Long = GetMediaDurationPropertyStore(percorso)
+            If duration > 0 Then Return duration
+
+            Dim shell As Object = Nothing
+            Dim folder As Object = Nothing
+            Dim fileItem As Object = Nothing
+
+            Try
+                shell = Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application"))
+                folder = shell.NameSpace(System.IO.Path.GetDirectoryName(percorso))
+                fileItem = folder.ParseName(System.IO.Path.GetFileName(percorso))
+
+                If fileItem IsNot Nothing Then
+                    Dim durataStringa As String = folder.GetDetailsOf(fileItem, 27)
+                    If Not String.IsNullOrEmpty(durataStringa) AndAlso durataStringa.Contains(":") Then
+                        Dim parti() As String = durataStringa.Split(":")
+                        If parti.Length = 3 Then
+                            Dim ore As Integer = 0
+                            Dim minuti As Integer = 0
+                            Dim secondi As Integer = 0
+                            If Integer.TryParse(parti(0), ore) AndAlso Integer.TryParse(parti(1), minuti) AndAlso Integer.TryParse(parti(2), secondi) Then
+                                Dim totaleSecondi As Long = ore * 3600 + minuti * 60 + secondi
+                                duration = totaleSecondi * 1000
+                            End If
                         End If
                     End If
                 End If
-            End If
-        Catch ex As Exception
-            log.ScriviLog(ex.Message)
-        Finally
-            If fileItem IsNot Nothing AndAlso Marshal.IsComObject(fileItem) Then Marshal.ReleaseComObject(fileItem)
-            If folder IsNot Nothing AndAlso Marshal.IsComObject(folder) Then Marshal.ReleaseComObject(folder)
-            If shell IsNot Nothing AndAlso Marshal.IsComObject(shell) Then Marshal.ReleaseComObject(shell)
-        End Try
+            Catch ex As Exception
+                log.ScriviLog(ex.Message)
+            Finally
+                If fileItem IsNot Nothing AndAlso Marshal.IsComObject(fileItem) Then Marshal.ReleaseComObject(fileItem)
+                If folder IsNot Nothing AndAlso Marshal.IsComObject(folder) Then Marshal.ReleaseComObject(folder)
+                If shell IsNot Nothing AndAlso Marshal.IsComObject(shell) Then Marshal.ReleaseComObject(shell)
+            End Try
 
-        Return duration
-catch ex as exception
-log.ScriviLog(Ex.message & ex.StackTrace)
-end try
+            Return duration
+        Catch ex As Exception
+            log.ScriviLog("CLSBrani.GetMediaDuration: " & ex.ToString())
+            Return 0
+        End Try
     End Function
 
     Public Async Function AggiungiBranoRecenteAsync(percorso As String) As Task

@@ -2,6 +2,7 @@
 Imports System.Text
 Imports UIAutomationClient
 
+' Gestione della lettura dei campi di testo, cursori, selezioni ed eco dei tasti digitati.
 Friend NotInheritable Class DifferenzaTesto
     Public Rimosso As String = ""
     Public Aggiunto As String = ""

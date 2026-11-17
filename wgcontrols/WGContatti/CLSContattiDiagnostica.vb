@@ -7,6 +7,7 @@ Imports System.Security.Cryptography
 Imports System.Text
 Imports System.Windows.Forms
 
+' Diagnostica e riparazione automatica delle incoerenze nella rubrica, con scrittura dei log di errore.
 Partial Public Class CLSContatti
 
     ' ============================================================================================

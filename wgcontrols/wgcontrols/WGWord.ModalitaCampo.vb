@@ -2,6 +2,7 @@
 Imports System.Collections.Generic
 Imports System.Text
 
+' Gestione della modalità campo per l'inserimento guidato e la conferma dei dati all'interno del documento.
 Partial Public Class WGWord
 
     Private _modalitaCampo As Boolean = False

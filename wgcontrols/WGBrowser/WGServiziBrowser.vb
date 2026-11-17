@@ -12,6 +12,8 @@ Imports Newtonsoft.Json.Linq
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Servizi di supporto per il browser, tra cui la gestione delle identità e dei user agent, il controllo delle finestre e la
+' registrazione dei download.
 Public NotInheritable Class WGIdentitaBrowser
     Private Shared ReadOnly log As New Logger()
     Private Shared _versionePiattaforma As String = Nothing

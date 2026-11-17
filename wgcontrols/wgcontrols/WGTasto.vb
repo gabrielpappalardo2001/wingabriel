@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Gestione dei messaggi a schermo associati a tasti specifici, con supporto per interazione tattile e da tastiera.
 Public Class WGTasto
     Inherits UserControl
 

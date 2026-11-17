@@ -10,6 +10,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Installazione e configurazione automatica del motore Python Trafilatura per l'estrazione dei contenuti web.
 Public Class InstallatoreTrafilatura
     Private Shared ReadOnly loggerCondiviso As New Logger()
     Private Shared ReadOnly lockInstallazione As New Object()

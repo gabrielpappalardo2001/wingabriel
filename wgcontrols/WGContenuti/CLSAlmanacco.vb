@@ -9,6 +9,8 @@ Imports System.Threading.Tasks
 Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 
+' Gestione dell'almanacco giornaliero: calcoli astronomici, fasi lunari, santi del giorno, onomastici e avvenimenti storici tratti
+' da Wikipedia.
 Public Structure CoordinateCitta
     Public Lat As Double
     Public Lon As Double
@@ -1225,6 +1227,8 @@ Public Class CLSAlmanacco
 
     Private Async Function AggiungiSantoDelGiorno(sb As StringBuilder, oggi As DateTime) As Task
         sb.AppendLine("SANTI DEL GIORNO:")
+        ' VB non permette Await dentro Catch: se Wikipedia non risponde, il ripiego si aspetta dopo il blocco.
+        Dim serveRipiego As Boolean = False
         Try
             Dim cul As New CultureInfo("it-IT")
             Dim nomePagina As String = $"{oggi.Day}_{oggi.ToString("MMMM", cul)}"
@@ -1248,11 +1252,18 @@ Public Class CLSAlmanacco
 
         Catch ex As HttpRequestException
             logger.ScriviLog("CLSAlmanacco.AggiungiSantoDelGiorno (HTTP) - " & ex.Message & Environment.NewLine & ex.StackTrace)
-            AggiungiSantoDelGiornoFallback(sb, oggi)
+            serveRipiego = True
         Catch ex As Exception
             logger.ScriviLog("CLSAlmanacco.AggiungiSantoDelGiorno - " & ex.Message & Environment.NewLine & ex.StackTrace)
-            AggiungiSantoDelGiornoFallback(sb, oggi)
+            serveRipiego = True
         End Try
+        If serveRipiego Then
+            Try
+                Await AggiungiSantoDelGiornoFallback(sb, oggi)
+            Catch ex As Exception
+                logger.ScriviLog("CLSAlmanacco.AggiungiSantoDelGiorno (ripiego) - " & ex.Message & Environment.NewLine & ex.StackTrace)
+            End Try
+        End If
     End Function
 
     Private Function EstraiSantiDaWikitext(wikitext As String) As List(Of String)

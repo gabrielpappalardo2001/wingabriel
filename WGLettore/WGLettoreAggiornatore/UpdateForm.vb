@@ -14,6 +14,7 @@ Imports System.Threading
 Imports System.Windows.Forms
 Imports System.Xml.Linq
 
+' Procedura di aggiornamento per il lettore di schermo, con verifica dei rilasci firmati e gestione delle configurazioni locali.
 Friend NotInheritable Class ImprontaSha256
 
     Private Shared ReadOnly _costanti As UInteger() = New UInteger() { _
@@ -3156,13 +3157,13 @@ Friend Class GestoreAggiornamento
 
     Friend Shared Function EsisteVersionePrecedente(ByVal cartellaBase As String) As Boolean
         Try
-            Dim percorsoManifesto As String = PercorsoManifesto(cartellaBase)
+            Dim fileManifesto As String = PercorsoManifesto(cartellaBase)
 
-            If Not File.Exists(percorsoManifesto) Then
+            If Not File.Exists(fileManifesto) Then
                 Return False
             End If
 
-            Dim righe() As String = File.ReadAllLines(percorsoManifesto, Encoding.UTF8)
+            Dim righe() As String = File.ReadAllLines(fileManifesto, Encoding.UTF8)
 
             For Each riga As String In righe
                 If Not String.IsNullOrWhiteSpace(riga) Then
@@ -3179,13 +3180,13 @@ Friend Class GestoreAggiornamento
 
     Friend Shared Function DescrizioneVersionePrecedente(ByVal cartellaBase As String) As String
         Try
-            Dim percorsoInformazioni As String = PercorsoInformazioni(cartellaBase)
+            Dim fileInformazioni As String = PercorsoInformazioni(cartellaBase)
 
-            If Not File.Exists(percorsoInformazioni) Then
+            If Not File.Exists(fileInformazioni) Then
                 Return String.Empty
             End If
 
-            Dim contenuto As String = File.ReadAllText(percorsoInformazioni, Encoding.UTF8).Trim()
+            Dim contenuto As String = File.ReadAllText(fileInformazioni, Encoding.UTF8).Trim()
 
             If String.IsNullOrWhiteSpace(contenuto) Then
                 Return String.Empty
@@ -3304,15 +3305,15 @@ Friend Class GestoreAggiornamento
             _tokenAnnullamento = tokenAnnullamento
             _descrizioneCorrente = "Lettura della versione precedente"
 
-            Dim percorsoManifesto As String = PercorsoManifesto(_cartellaBase)
+            Dim fileManifesto As String = PercorsoManifesto(_cartellaBase)
 
-            If Not File.Exists(percorsoManifesto) Then
+            If Not File.Exists(fileManifesto) Then
                 risultato.Successo = False
                 risultato.Errori.Add("Nessuna versione precedente disponibile.")
                 Return risultato
             End If
 
-            Dim righe() As String = File.ReadAllLines(percorsoManifesto, Encoding.UTF8)
+            Dim righe() As String = File.ReadAllLines(fileManifesto, Encoding.UTF8)
             Dim voci As New List(Of String)()
 
             For Each riga As String In righe

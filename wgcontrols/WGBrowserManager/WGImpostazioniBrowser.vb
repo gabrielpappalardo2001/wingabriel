@@ -1,6 +1,7 @@
 Imports System.IO
 Imports wgcontrols
 
+' Gestione delle preferenze di navigazione: motori di ricerca, traduzioni, blocchi e cartelle di download.
 Public NotInheritable Class WGImpostazioniBrowser
     Private Shared ReadOnly _log As New Logger()
 

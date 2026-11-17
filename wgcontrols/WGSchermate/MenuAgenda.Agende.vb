@@ -4,6 +4,8 @@ Imports wgcontrols
 Imports WGDati
 Imports WGMail
 
+' Gestione delle agende di lavoro. Permette la selezione, la creazione, la ridenominazione, l'eliminazione e la protezione tramite
+' password.
 Partial Friend Class MenuAgenda
 
     Private Enum ScopoPasswordAgenda

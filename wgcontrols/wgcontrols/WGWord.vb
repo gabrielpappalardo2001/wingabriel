@@ -18,6 +18,8 @@ Imports System.IO.Compression.ZipFile
 
 Imports System.Linq
 Imports UglyToad.PdfPig
+
+' Controllo di scrittura principale in stile Word per Windows, con gestione avanzata di tastiera, cursori e accessibilità vocale.
 Partial Public Class WGWord
     Inherits Control
     Private tastiera As WGTastiera = WGTastiera.GetInstance()

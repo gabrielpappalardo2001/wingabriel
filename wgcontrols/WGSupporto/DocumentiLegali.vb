@@ -3,6 +3,7 @@ Imports System.Collections.Generic
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Visualizzazione delle condizioni d'uso e dell'informativa sulla privacy. Gestisce la navigazione tra le sezioni dei documenti.
 Public Class SezioneDocumentoLegale
     Public Property Titolo As String
     Public Property Html As String

@@ -12,6 +12,7 @@ Imports MimeKit
 Imports MimeKit.Text
 Imports MimeKit.Utils
 
+' Gestione della creazione, dell'invio e del salvataggio delle bozze dei messaggi di posta.
 Public Class ImmagineInlineMessaggio
     Public Property Cid As String = ""
     Public Property NomeFile As String = ""

@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Punto di ingresso principale del programma, gestione dell'avvio, controllo dei lettori di schermo attivi e migrazione dei dati.
 Module iniziale
 
     Private Declare Unicode Function DeleteFileW Lib "kernel32.dll" (ByVal lpFileName As String) As Boolean

@@ -35,6 +35,8 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Gestione dell'avvio, degli aggiornamenti automatici e dei collegamenti di sistema. Verifica i file binari e la configurazione
+' iniziale.
 Module ServiziAvvio
 
     Friend ReadOnly log As New wgcontrols.Logger()

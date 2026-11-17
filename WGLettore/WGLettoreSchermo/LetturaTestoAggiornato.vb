@@ -2,6 +2,7 @@
 Imports System.Text
 Imports UIAutomationClient
 
+' Confronto e gestione delle variazioni di testo per rilevare il contenuto aggiornato.
 Friend NotInheritable Class LetturaTestoAggiornato
 
     Private Const SchemaTesto As Integer = 10014

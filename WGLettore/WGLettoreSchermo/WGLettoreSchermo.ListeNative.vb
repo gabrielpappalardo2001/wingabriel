@@ -175,7 +175,7 @@ Partial Public NotInheritable Class WGLettoreSchermo
             Dim giaInLista As Boolean = lista = _listaNativaCorrente AndAlso MillisecondiDa(_listaNativaTick) <= ValiditaListaNativaMs
             Dim sulDesktop As Boolean = ListaDelDesktop(lista)
             If Not giaInLista AndAlso Not sulDesktop Then Return False
-            Dim riga As ControlliNativi.RigaNativa
+            Dim riga As ControlliNativi.RigaNativa = Nothing
             If Not ControlliNativi.LeggiRigaLista(lista, riga) OrElse String.IsNullOrEmpty(riga.Nome) Then Return False
             _listaNativaCorrente = lista
             _listaNativaTick = Environment.TickCount

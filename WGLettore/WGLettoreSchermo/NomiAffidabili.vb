@@ -3,6 +3,8 @@ Imports System.Diagnostics
 Imports System.Text
 Imports UIAutomationClient
 
+' Risoluzione dei nomi dei controlli e degli elementi dell'interfaccia grafica, gestendo etichette vicine, tooltip e
+' identificatori per la lettura vocale.
 Friend NotInheritable Class NomiAffidabili
 
     Private Const ProfonditaMassima As Integer = 2

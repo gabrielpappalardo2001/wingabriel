@@ -7,6 +7,8 @@ Imports WGDati
 Imports wgcontrols
 Imports WGPlayerMpv
 
+' Gestione della visione dei canali televisivi, dei preferiti, dei recenti e della consultazione dei programmi con relativi
+' promemoria.
 Public Class MenuTv
 
     Private Const TESTO_AGGIUNGI_PREFERITI As String = "Aggiungi ai preferiti"

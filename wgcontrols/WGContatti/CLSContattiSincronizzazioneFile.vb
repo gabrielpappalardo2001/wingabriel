@@ -6,6 +6,8 @@ Imports System.Globalization
 Imports System.Security.Cryptography
 Imports System.Text
 Imports wgcontrols
+
+' Sincronizzazione e unione dei contatti tra il database locale e i file esterni, con risoluzione dei doppioni.
 Partial Public Class CLSContatti
 
     Private Const NomeTabellaSyncEliminati As String = "contatti_sync_eliminati"

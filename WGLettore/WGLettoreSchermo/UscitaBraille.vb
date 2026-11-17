@@ -3,6 +3,8 @@ Imports System.IO.Ports
 Imports System.Text
 Imports System.Threading
 
+' Gestione della comunicazione con i display Braille, traduzione del testo in caratteri Braille e controllo della porta seriale o
+' USB.
 Friend NotInheritable Class UscitaBraille
 
     Public Event Aggiornato(testo As String)

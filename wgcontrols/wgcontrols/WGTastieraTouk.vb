@@ -3,6 +3,7 @@ Imports System.Drawing.Drawing2D
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Tastiera virtuale su schermo per dispositivi tattili, con layout accessibili, suggerimenti di parole e riscontro vocale.
 Public Class WGTastieraTouch
     Inherits Control
     Implements IWGElementoTattile

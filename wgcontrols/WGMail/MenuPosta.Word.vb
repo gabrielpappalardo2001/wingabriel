@@ -4,6 +4,9 @@ Imports System.IO
 Imports System.Windows.Forms
 Imports wgcontrols
 Imports System.Text.StringBuilder
+
+' Lettura e scrittura dei messaggi tramite l'editor Word. Gestisce il salvataggio delle bozze locali, il recupero dei messaggi e
+' le azioni di invio o eliminazione.
 Partial Public Class MenuPosta
 
     Private _corpoHtmlComposizione As String = ""

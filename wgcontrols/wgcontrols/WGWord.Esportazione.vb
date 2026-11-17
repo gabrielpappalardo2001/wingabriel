@@ -18,6 +18,7 @@ Imports System.IO.Compression.ZipFile
 Imports System.Linq
 Imports UglyToad.PdfPig
 
+' Esportazione dei documenti in vari formati tra cui HTML, testo, RTF, EPUB, Markdown e PDF, oltre all'importazione da PDF.
 Partial Public Class WGWord
     Public Sub SalvaCopia(percorso As String)
         Try

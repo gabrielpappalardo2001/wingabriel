@@ -1,5 +1,6 @@
 ﻿Imports System.Collections.Generic
 
+' Dizionario e gestione delle descrizioni testuali delle emoji per la lettura vocale.
 Public Class WGEmogi
     Private _dizionarioEmogi As Dictionary(Of String, String)
 

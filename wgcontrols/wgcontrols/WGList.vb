@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.IO
 
+' Implementazione di una lista collegata basata su heap per la gestione efficiente dei dati.
 Public Class WGList
     Implements IDisposable
 

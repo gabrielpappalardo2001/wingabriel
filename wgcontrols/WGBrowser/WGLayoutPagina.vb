@@ -4,6 +4,7 @@ Imports System.Threading.Tasks
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Analisi del layout visivo e strutturale della pagina web e delle lingue dei testi.
 Public Class InfoNodoLayout
     Public IndiceGlobale As Integer = -1
     Public IndicePadre As Integer = -1

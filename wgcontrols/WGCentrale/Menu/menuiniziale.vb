@@ -36,6 +36,8 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Menu di avvio del programma con la gestione della sessione, delle notizie, degli strumenti multimediali e delle opzioni di
+' uscita.
 Public Class menuiniziale
     Private WithEvents preavvisi As New PreavvisoManager
     Private menu As WGMenu

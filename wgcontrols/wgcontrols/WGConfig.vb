@@ -6,6 +6,7 @@ Imports System.Threading
 Imports System.Xml
 Imports wgcontrols
 
+' Gestione della configurazione del programma, salvataggio atomico e accesso ai valori tramite XML.
 Public Class WGConfig
 
     Private Shared ReadOnly log As New wgcontrols.Logger()

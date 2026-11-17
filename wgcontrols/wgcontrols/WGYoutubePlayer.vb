@@ -12,6 +12,7 @@ Imports System.Net.Http
 Imports System.IO.Compression
 Imports System.Runtime.InteropServices
 
+' Riproduttore multimediale per video di YouTube integrato nell'interfaccia e accessibile tramite comandi vocali.
 Public Class WGYoutubePlayer
     Inherits UserControl
     Implements IDisposable

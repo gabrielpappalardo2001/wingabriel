@@ -10,6 +10,7 @@ Imports GabrielSync.Filen
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Sincronizzazione dei dati locali con il cloud, gestione delle cartelle escluse e controllo dello stato dei file remoti.
 Friend NotInheritable Class VoceMenuCloud
 
     Private ReadOnly _chiave As String

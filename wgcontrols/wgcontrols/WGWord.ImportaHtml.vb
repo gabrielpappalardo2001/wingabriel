@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports HtmlAgilityPack
 
+' Importazione e conversione di codice HTML in elementi del documento, con gestione di stili, tabelle e immagini incorporate.
 Partial Public Class WGWord
 
     Private Class StileHtml

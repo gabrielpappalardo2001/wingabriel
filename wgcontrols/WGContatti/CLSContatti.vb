@@ -5,9 +5,10 @@ Imports System.IO
 Imports System.Linq
 Imports System.Text
 Imports System.Windows.Forms
-Imports WGDati
 Imports WGDb
 Imports wgcontrols
+
+' Gestione del database dei contatti, delle rubriche indipendenti per account e delle categorie.
 Partial Public Class CLSContatti
     Implements IDisposable
 

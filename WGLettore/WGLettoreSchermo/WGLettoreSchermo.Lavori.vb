@@ -4,6 +4,8 @@ Imports System.Diagnostics
 Imports System.Threading
 Imports UIAutomationClient
 
+' Automazione rapida, gestione dei ritardi per i tasti, sorveglianza degli eventi di fuoco e monitoraggio di altri lettori di
+' schermo attivi.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Const TempoMassimoRapido As UInteger = 400UI

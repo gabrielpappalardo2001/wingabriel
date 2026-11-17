@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Gestione e navigazione dell'indice del documento con funzioni per scorrere, eliminare o rimuovere sezioni e voci.
 Partial Public Class WGWord
     Public Function OttieniSezioneCorrenteIndice() As String
         Try

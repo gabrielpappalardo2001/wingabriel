@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Strumenti di utilità per il testo: correzione ortografica, emoji, interlinea, zoom, gestione degli appunti e formati RTF e HTML.
 Partial Public Class WGWord
     Public Sub MostraSuggerimentiOrtografici()
         Try

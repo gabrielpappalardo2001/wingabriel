@@ -9,6 +9,7 @@ Imports System.IO
 Imports System.Text.StringBuilder
 Imports System.Runtime.InteropServices
 
+' Interfaccia principale per la gestione di YouTube. Permette la ricerca, la riproduzione di video e la gestione dei preferiti.
 Public Class YtdlpCapitoliProvider
     Implements ICapitoliProvider
 
@@ -2177,6 +2178,11 @@ Partial Public Class MenuYoutube
         OpzioneOrdinaGenerica(CType(elencorisultati, Object), risultatiRicercaCorrente, AddressOf AggiornaListaRisultati)
     End Sub
 
+    ''' <summary>HandlerDinamicoPreferitiRisultati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub HandlerDinamicoPreferitiRisultati(idEvento As String)
+        HandlerDinamicoPreferitiRisultati()
+    End Sub
+
     Private Sub HandlerDinamicoPreferitiRisultati()
         GestioneDinamicaPreferiti(elencorisultati, risultatiRicercaCorrente)
         OpzioneRiproduciRisultato()
@@ -3774,6 +3780,11 @@ Partial Public Class MenuYoutube
         OpzioneOrdinaGenerica(CType(elencoContenuti, Object), risultatiContenutiCorrenti, AddressOf AggiornaListaRisultati)
     End Sub
 
+    ''' <summary>HandlerDinamicoPreferitiContenuti con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub HandlerDinamicoPreferitiContenuti(idEvento As String)
+        HandlerDinamicoPreferitiContenuti()
+    End Sub
+
     Private Sub HandlerDinamicoPreferitiContenuti()
         GestioneDinamicaPreferiti(elencoContenuti, risultatiContenutiCorrenti)
     End Sub
@@ -5053,6 +5064,11 @@ Partial Public Class MenuYoutube
         End Try
     End Function
 
+    ''' <summary>OpzioneApriCanaleIscrizione con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OpzioneApriCanaleIscrizione(idEvento As String)
+        OpzioneApriCanaleIscrizione()
+    End Sub
+
     Private Sub OpzioneApriCanaleIscrizione()
         Try
             Dim iscrizione = TrovaIscrizioneSelezionata()
@@ -5399,6 +5415,11 @@ Partial Public Class MenuYoutube
         End Try
     End Function
 
+    ''' <summary>OpzioneVediNuoviVideoCanaleSelezionato con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OpzioneVediNuoviVideoCanaleSelezionato(idEvento As String)
+        OpzioneVediNuoviVideoCanaleSelezionato()
+    End Sub
+
     Private Sub OpzioneVediNuoviVideoCanaleSelezionato()
         Try
             Dim canale = TrovaCanaleNuoviSelezionato()
@@ -5679,6 +5700,11 @@ Partial Public Class MenuYoutube
             Return Nothing
         End Try
     End Function
+
+    ''' <summary>OpzioneRiproduciVideoNuovo con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OpzioneRiproduciVideoNuovo(idEvento As String)
+        OpzioneRiproduciVideoNuovo()
+    End Sub
 
     Private Sub OpzioneRiproduciVideoNuovo()
         Try

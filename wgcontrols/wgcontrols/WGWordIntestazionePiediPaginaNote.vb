@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.Text
 
+' Gestione di intestazioni, piè di pagina, note a piè di pagina e collegamenti nel testo del documento.
 Partial Public Class WGWord
     Private _campiIntestazionePiePagina As Campi
     Private _tipoCampiIntestazionePiePaginaCorrente As String = ""

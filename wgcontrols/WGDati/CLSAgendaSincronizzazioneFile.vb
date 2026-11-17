@@ -9,6 +9,7 @@ Imports System.Text
 Imports wgcontrols
 Imports WGDb
 
+' Sincronizzazione su file degli appuntamenti dell'agenda e gestione dei doppioni dal server.
 Partial Public Class CLSAgenda
 
     Private Const NomeTabellaAgendaSyncEliminati As String = "AppuntamentiSyncEliminati"

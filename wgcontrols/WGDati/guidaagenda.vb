@@ -1,5 +1,7 @@
 ﻿Imports wgcontrols
 
+' Gestione della guida dell'agenda: visualizzazione e consultazione delle informazioni e degli appuntamenti per gli utenti non
+' vedenti.
 Public Class GuidaAgenda
     Public ReadOnly MenuPrincipale As String = "Questo è il menu principale dell'Agenda Digitale. Da qui puoi accedere a tutte le funzionalità del sistema. Selezionando Nuovo appuntamento potrai registrare una nuova attività scegliendo tra appuntamento singolo, ricorrenza o evento. Selezionando Consulta avrai accesso a diverse modalità di visualizzazione della tua agenda, come la visione completa, i programmi giornalieri o mensili. La voce Cerca ti permette di rintracciare attività specifiche usando parole chiave o date. In Categorie puoi creare, rinominare o eliminare i raggruppamenti per organizzare le tue attività. Infine, in Configurazione potrai regolare il comportamento del sistema, i tuoi orari lavorativi e le opzioni di notifica. Se ci sono attività scadute o in scadenza, appariranno delle voci dedicate direttamente in questo menu per permetterti di gestirle rapidamente."
 

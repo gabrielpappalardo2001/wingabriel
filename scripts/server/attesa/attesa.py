@@ -231,7 +231,8 @@ async def inoltra(metodo, target, intest, corpo):
             'Connection: close',
         ]
         for nome in ('x-token', 'content-type', 'origin'):
-            if nome in intest:
+            # solo valori senza caratteri di controllo: un a capo dentro un valore non deve poter aggiungere righe alla richiesta per Apache
+            if nome in intest and not any(ord(c) < 32 or ord(c) == 127 for c in intest[nome]):
                 testa.append('%s: %s' % (nome, intest[nome]))
         if metodo != 'GET' or corpo:
             testa.append('Content-Length: %d' % len(corpo))

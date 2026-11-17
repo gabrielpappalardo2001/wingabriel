@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Comunicazione interprocesso tramite named pipe con messaggi strutturati per l'interazione con il servizio di sistema C++.
 Public Class WGServiceInterop
     Public Shared Function InviaComando(comando As String) As String
         Try

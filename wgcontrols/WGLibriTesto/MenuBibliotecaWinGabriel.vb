@@ -5,6 +5,7 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Interfaccia di ricerca e consultazione della biblioteca online WinGabriel.
 Public Class MenuBibliotecaWinGabriel
 
     Private Menu As WGMenu
@@ -225,6 +226,11 @@ Public Class MenuBibliotecaWinGabriel
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaRisultati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRisultati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRisultati()
+    End Sub
+
     Private Sub ChiudiListaRisultati()
         Try
             If listaRisultati IsNot Nothing Then
@@ -435,6 +441,11 @@ Public Class MenuBibliotecaWinGabriel
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaRicercheRecenti con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRicercheRecenti(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRicercheRecenti()
+    End Sub
+
     Private Sub ChiudiListaRicercheRecenti()
         Try
             If listaRicercheRecenti IsNot Nothing Then
@@ -532,6 +543,11 @@ Public Class MenuBibliotecaWinGabriel
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaLibriScaricati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaLibriScaricati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaLibriScaricati()
+    End Sub
+
     Private Sub ChiudiListaLibriScaricati()
         Try
             If listaLibriScaricati IsNot Nothing Then
@@ -625,6 +641,11 @@ Public Class MenuBibliotecaWinGabriel
             _logger.ScriviLog("MenuBibliotecaWinGabriel.ApriPdfInCampo: " & ex.ToString())
             MostraMessaggio("Non riesco ad aprire il PDF in lettura.")
         End Try
+    End Sub
+
+    ''' <summary>CampoDocumento_Chiusura con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub CampoDocumento_Chiusura(senderEvento As Object, eEvento As EventArgs)
+        CampoDocumento_Chiusura()
     End Sub
 
     Private Sub CampoDocumento_Chiusura()

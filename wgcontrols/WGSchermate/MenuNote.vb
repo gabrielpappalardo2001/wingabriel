@@ -11,6 +11,9 @@ Imports System.Threading.Tasks
 Imports System.Collections.Generic
 Imports System.IO
 Imports WGMail
+
+' Gestione delle note testuali e dei documenti Word. Permette la scrittura, la lettura, la ricerca e la protezione tramite
+' password.
 Friend Class MenuNote
     Private id As String
     Private password As String
@@ -197,15 +200,16 @@ end sub
 
 #Region "Supporto file temporanei .docx"
 
+    ''' <summary>Il file .docx temporaneo in cui si apre una nota in formato Word (nella cartella temp del programma).</summary>
     Private Function PercorsoTempNotaDocx() As String
         Try
-            if directory.exists(Application.StartupPath & "\temp") Then
-                Directory.CreateDirectory(Application.StartupPath & "\temp")
-                Return Application.StartupPath & "\temp\nota.docx"
-            End if
+            Dim cartella As String = Path.Combine(Application.StartupPath, "temp")
+            If Not Directory.Exists(cartella) Then Directory.CreateDirectory(cartella)
+            Return Path.Combine(cartella, "nota.docx")
         Catch ex As Exception
+            ' la cartella del programma non è scrivibile: si usa quella temporanea di Windows
             _logger.ScriviLog("Errore in PercorsoTempNotaDocx: " & ex.Message)
-            Return Path.Combine(Application.StartupPath, "nota_" & Guid.NewGuid().ToString("N") & ".docx")
+            Return Path.Combine(Path.GetTempPath(), "nota_" & Guid.NewGuid().ToString("N") & ".docx")
         End Try
     End Function
 
@@ -248,6 +252,11 @@ AddHandler campinota.chiusura, AddressOf chiudi
             msgBox.ShowDialog()
             _logger.ScriviLog("Exception in AvviaScritturaNuovaNota: " & ex.Message & " StackTrace: " & ex.StackTrace)
         End Try
+    End Sub
+
+    ''' <summary>completaScritturaNuovaNotaWord con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub completaScritturaNuovaNotaWord(senderEvento As Object, eEvento As EventArgs)
+        completaScritturaNuovaNotaWord()
     End Sub
 
     Private Sub completaScritturaNuovaNotaWord()
@@ -547,6 +556,11 @@ AddHandler campiNota.Chiusura, AddressOf completaModificaNotaWord
             msgBox.ShowDialog()
             _logger.ScriviLog("Exception in AvviaModificaNotaWord: " & ex.Message & " StackTrace: " & ex.StackTrace)
         End Try
+    End Sub
+
+    ''' <summary>completaModificaNotaWord con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub completaModificaNotaWord(senderEvento As Object, eEvento As EventArgs)
+        completaModificaNotaWord()
     End Sub
 
     Private Sub completaModificaNotaWord()
@@ -1475,6 +1489,11 @@ RemoveHandler campiNota.Chiusura, AddressOf completaModificaNotaWord
         End Try
     End Sub
 
+    ''' <summary>notaselezionata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub notaselezionata(idEvento As String)
+        notaselezionata()
+    End Sub
+
     Private Sub notaselezionata()
         Try
             Dim idRecuperato As String = RecuperaIdSelezionato()
@@ -1631,6 +1650,11 @@ RemoveHandler campiNota.Chiusura, AddressOf completaModificaNotaWord
             msgBox.ShowDialog()
             _logger.ScriviLog("Exception in inserimentopasswordaperturanota: " & ex.Message & " StackTrace: " & ex.StackTrace)
         End Try
+    End Sub
+
+    ''' <summary>chiudinote con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiudinote(senderEvento As Object, eEvento As EventArgs)
+        chiudinote()
     End Sub
 
     Private Sub chiudinote()

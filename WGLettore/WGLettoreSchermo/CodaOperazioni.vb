@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Threading
 
+' Gestione della coda di esecuzione delle operazioni in background con controllo dei thread e annullamento.
 Friend NotInheritable Class CodaOperazioni
 
     Private Class RichiestaOperazione

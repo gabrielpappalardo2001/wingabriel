@@ -1,5 +1,7 @@
 ﻿Imports System.Threading
 
+' Gestione del silenzio della sintesi vocale quando WinGabriel è in primo piano o il lettore è sospeso, per evitare
+' sovrapposizioni di voce.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Const ValiditaSilenzioMs As Integer = 40

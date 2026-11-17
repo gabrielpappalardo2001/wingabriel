@@ -6,6 +6,8 @@ Imports MailKit
 Imports MailKit.Net.Imap
 Imports MailKit.Search
 
+' Gestione della posta in arrivo tramite il comando IMAP IDLE. Mantiene la connessione aperta per ricevere i messaggi in tempo
+' reale o esegue un controllo periodico leggero.
 Partial Public Class CLSMail
 
     ' Sorveglianza della posta in arrivo con il comando IDLE dell'IMAP. Invece di chiedere al

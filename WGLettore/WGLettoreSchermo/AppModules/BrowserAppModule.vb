@@ -1,5 +1,6 @@
 ﻿Imports System.Text.RegularExpressions
 
+' Modulo applicativo specifico per la gestione dei browser web e la lettura dei titoli delle pagine.
 Friend NotInheritable Class BrowserAppModule
     Inherits AppModuleLettore
 

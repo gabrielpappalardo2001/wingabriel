@@ -8,6 +8,8 @@ Imports System.Text.RegularExpressions
 Imports System.Threading
 Imports UIAutomationClient
 
+' Nucleo principale del lettore di schermo, con la gestione del ciclo di lavoro, degli eventi di automazione, della navigazione e
+' della configurazione delle opzioni di lettura.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private Const ClsidAutomazione8 As String = "e22ad333-b25f-460c-83d0-0581107395c9"
@@ -5953,7 +5955,7 @@ Partial Public NotInheritable Class WGLettoreSchermo
             NativoLettore.GetWindowThreadProcessId(finestra, pid)
             Dim nome As String = NomeProgramma(pid)
             If nome <> "*" Then Return nome
-            Dim inCache As VoceNomeApplicazione
+            Dim inCache As VoceNomeApplicazione = Nothing
             If _nomiApplicazioneFinestra.TryGetValue(finestra, inCache) Then
                 Dim validita As Long = If(inCache.Nome <> "", 120000L, 4000L)
                 If MillisecondiDa(inCache.Tick) < validita Then Return inCache.Nome

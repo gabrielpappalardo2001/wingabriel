@@ -17,6 +17,7 @@ Imports AngleDom = AngleSharp.Dom
 Imports AngleHtml = AngleSharp.Html.Parser
 Imports AngleHtmlDom = AngleSharp.Html.Dom
 
+' Gestione dei quotidiani, dei feed RSS, delle categorie e scaricamento sicuro delle pagine web con tentativi ripetuti.
 Public Enum TipoQuotidiano
     WordPress
     Rss

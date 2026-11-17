@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.Globalization
 
+' Gestione delle preferenze e dei parametri di configurazione specifici per il movimento nei campi.
 Partial Public Class WGCampoMovimento
 
     Private ReadOnly config As New WGConfig()

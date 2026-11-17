@@ -8,6 +8,9 @@ Imports wgcontrols
 Imports WGContatti
 Imports WGDati
 Imports WGMail
+
+' Gestione dei contatti della rubrica. Include la ricerca, la visualizzazione dei dettagli, la gestione dei preferiti e il
+' monitoraggio automatico delle modifiche.
 Partial Public Class MenuRubrica
 
     Private ReadOnly log As New wgcontrols.Logger()
@@ -455,6 +458,11 @@ Partial Public Class MenuRubrica
         End Try
     End Sub
 
+    ''' <summary>ListaRicercheRecentiAbbandonata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ListaRicercheRecentiAbbandonata(senderEvento As Object, eEvento As EventArgs)
+        ListaRicercheRecentiAbbandonata()
+    End Sub
+
     Private Sub ListaRicercheRecentiAbbandonata()
         Try
             If _listaRicercheRecenti IsNot Nothing Then _listaRicercheRecenti.abbandona()
@@ -836,6 +844,11 @@ Partial Public Class MenuRubrica
             log.ScriviLog("MenuRubrica.TogglePreferitoDaLista: " & ex.Message)
         End Try
     End Sub
+    ''' <summary>chiudilista con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiudilista(senderEvento As Object, eEvento As EventArgs)
+        chiudilista()
+    End Sub
+
     Private Sub chiudilista()
         Try
             ChiudiElencoContatti()
@@ -1091,6 +1104,11 @@ Partial Public Class MenuRubrica
         Catch ex As Exception
             log.ScriviLog("MenuRubrica.ImpostaPreferitoCorrente: " & ex.Message)
         End Try
+    End Sub
+
+    ''' <summary>chiudilettura con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiudilettura(senderEvento As Object, eEvento As EventArgs)
+        chiudilettura()
     End Sub
 
     Private Sub chiudilettura()
@@ -1627,6 +1645,11 @@ Partial Public Class MenuRubrica
         Catch ex As Exception
             log.ScriviLog("MenuRubrica.VoceAccountPredefinito: " & ex.Message)
         End Try
+    End Sub
+
+    ''' <summary>ListaAccountPredefinitoEsc con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ListaAccountPredefinitoEsc(senderEvento As Object, eEvento As EventArgs)
+        ListaAccountPredefinitoEsc()
     End Sub
 
     Private Sub ListaAccountPredefinitoEsc()

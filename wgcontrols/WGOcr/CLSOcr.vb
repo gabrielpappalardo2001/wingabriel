@@ -7,6 +7,8 @@ Imports System.Windows.Forms
 Imports Tesseract
 Imports UglyToad.PdfPig
 
+' Riconoscimento ottico dei caratteri per immagini e file PDF. Gestisce i modelli di intelligenza artificiale per la lingua
+' italiana e la scrittura dei log.
 Public Class CLSOcr
 
     Private Const NomeLinguaOcr As String = "ita"
@@ -155,7 +157,7 @@ Public Class CLSOcr
                                 If immaginePdf.TryGetPng(datiPng) Then
                                     bytesImmagine = datiPng
                                 Else
-                                    Dim memoriaImmagine As Memory(Of Byte)
+                                    Dim memoriaImmagine As Memory(Of Byte) = Nothing
                                     If immaginePdf.TryGetBytesAsMemory(memoriaImmagine) Then
                                         bytesImmagine = memoriaImmagine.ToArray()
                                     End If

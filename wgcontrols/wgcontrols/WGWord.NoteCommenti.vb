@@ -8,6 +8,7 @@ Imports System.Runtime.InteropServices
 Imports System.Linq
 Imports DocumentFormat.OpenXml.Spreadsheet
 
+' Inserimento e gestione di note a piè di pagina, commenti, caratteri speciali e operazioni di riordinamento dei paragrafi.
 Partial Public Class WGWord
     Private _campiNotaInserimento As Campi = Nothing
 

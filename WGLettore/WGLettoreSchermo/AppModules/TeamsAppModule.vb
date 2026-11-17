@@ -1,5 +1,6 @@
 ﻿Imports UIAutomationClient
 
+' Modulo applicativo per la gestione dell'accessibilità e la lettura dei messaggi e dei menu in Microsoft Teams.
 Friend NotInheritable Class TeamsAppModule
     Inherits AppModuleLettore
 

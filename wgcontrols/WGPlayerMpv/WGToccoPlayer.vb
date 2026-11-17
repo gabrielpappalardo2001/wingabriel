@@ -4,6 +4,8 @@ Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Gestione del lettore multimediale tramite interfaccia touch e gesti. Disegna pulsanti, cursori e controlla gli stati di primo
+' piano della finestra.
 Public Class WGToccoPlayer
     Inherits Control
 

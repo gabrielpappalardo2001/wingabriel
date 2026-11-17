@@ -1,5 +1,6 @@
 ﻿Imports System.Collections.Generic
 
+' Filtro e pulizia degli eventi e del testo duplicato o obsoleto.
 Friend NotInheritable Class FiltroEventi
 
     Private ReadOnly _blocco As New Object()

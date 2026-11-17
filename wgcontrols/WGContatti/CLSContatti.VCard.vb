@@ -5,6 +5,7 @@ Imports System.IO
 Imports System.Linq
 Imports System.Text
 
+' Esportazione e importazione dei contatti della rubrica in formato VCard, con supporto per i formati 3.0 e 2.1.
 Partial Public Class CLSContatti
 
     ' ============================================================================================

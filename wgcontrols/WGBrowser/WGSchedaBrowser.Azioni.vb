@@ -13,6 +13,8 @@ Imports WGBrowserManager
 Imports wgcontrols
 Imports WGPlayerMpv
 
+' Gestione delle azioni avanzate del browser: riproduzione video con il lettore multimediale, caricamento file, condivisione dello
+' schermo e gestione dei download.
 Friend NotInheritable Class RispostaUnica
     Private _data As Integer = 0
 

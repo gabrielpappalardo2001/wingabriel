@@ -20,6 +20,7 @@ Imports WGDati
 Imports WGPlayerMpv
 Imports WGStampante
 
+' Menu principale di esplorazione file e risorse di rete, con gestione di unità locali, condivisioni e server FTP.
 Public Class MenuFile
     Private Enum TipoElencoServerFtp
         Preferito
@@ -728,6 +729,11 @@ Public Class MenuFile
         End Try
     End Sub
 
+    ''' <summary>OnServerReteInserito con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnServerReteInserito(senderEvento As Object, eEvento As EventArgs)
+        OnServerReteInserito()
+    End Sub
+
     Private Sub OnServerReteInserito()
         Try
             Dim campiCorrente As Campi = campi
@@ -855,6 +861,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("NuovaConnessioneRete - Errore", ex)
         End Try
+    End Sub
+
+    ''' <summary>OnNuovaConnessioneReteInserita con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnNuovaConnessioneReteInserita(senderEvento As Object, eEvento As EventArgs)
+        OnNuovaConnessioneReteInserita()
     End Sub
 
     Private Sub OnNuovaConnessioneReteInserita()
@@ -1256,6 +1267,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("ChiediLimiteVelocitaFtp - Errore", ex)
         End Try
+    End Sub
+
+    ''' <summary>OnLimiteVelocitaFtpInserito con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnLimiteVelocitaFtpInserito(senderEvento As Object, eEvento As EventArgs)
+        OnLimiteVelocitaFtpInserito()
     End Sub
 
     Private Sub OnLimiteVelocitaFtpInserito()
@@ -2059,6 +2075,11 @@ Public Class MenuFile
         End Try
     End Sub
 
+    ''' <summary>OnNuovoServerFtpInserito con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnNuovoServerFtpInserito(senderEvento As Object, eEvento As EventArgs)
+        OnNuovoServerFtpInserito()
+    End Sub
+
     Private Sub OnNuovoServerFtpInserito()
         Try
             Dim campiCorrente As Campi = campi
@@ -2296,6 +2317,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("RichiediNuovaPasswordDopoErroreFtp - Errore", ex)
         End Try
+    End Sub
+
+    ''' <summary>OnNuovaPasswordDopoErroreFtpInserita con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnNuovaPasswordDopoErroreFtpInserita(senderEvento As Object, eEvento As EventArgs)
+        OnNuovaPasswordDopoErroreFtpInserita()
     End Sub
 
     Private Sub OnNuovaPasswordDopoErroreFtpInserita()
@@ -3445,6 +3471,11 @@ Public Class MenuFile
         End Try
     End Sub
 
+    ''' <summary>OnEscListaInformazioniFtp con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnEscListaInformazioniFtp(senderEvento As Object, eEvento As EventArgs)
+        OnEscListaInformazioniFtp()
+    End Sub
+
     Private Sub OnEscListaInformazioniFtp()
         Try
             If _listaInformazioniFtp IsNot Nothing Then
@@ -3729,6 +3760,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("OnPermessiFtpScelti - Errore selezione", ex)
         End Try
+    End Sub
+
+    ''' <summary>OnEscPermessiFtp con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnEscPermessiFtp(senderEvento As Object, eEvento As EventArgs)
+        OnEscPermessiFtp()
     End Sub
 
     Private Sub OnEscPermessiFtp()
@@ -5223,6 +5259,11 @@ Public Class MenuFile
         End Try
     End Sub
 
+    ''' <summary>OnEscListaReport con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnEscListaReport(senderEvento As Object, eEvento As EventArgs)
+        OnEscListaReport()
+    End Sub
+
     Private Sub OnEscListaReport()
         Try
             If _listaReport IsNot Nothing Then
@@ -6276,6 +6317,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("MostraInformazioniUI - Errore", ex)
         End Try
+    End Sub
+
+    ''' <summary>OnEscListaInformazioni con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub OnEscListaInformazioni(senderEvento As Object, eEvento As EventArgs)
+        OnEscListaInformazioni()
     End Sub
 
     Private Sub OnEscListaInformazioni()
@@ -7582,6 +7628,11 @@ Public Class MenuFile
         End Try
     End Sub
 
+    ''' <summary>RiscritturaAnnullata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub RiscritturaAnnullata(senderEvento As Object, eEvento As EventArgs)
+        RiscritturaAnnullata()
+    End Sub
+
     Private Sub RiscritturaAnnullata()
         Try
             LiberaCampiRiscrittura()
@@ -7589,6 +7640,11 @@ Public Class MenuFile
         Catch ex As Exception
             ScriviLogCompleto("MenuFile.RiscritturaAnnullata - Errore", ex)
         End Try
+    End Sub
+
+    ''' <summary>RiscritturaConfermata con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub RiscritturaConfermata(senderEvento As Object, eEvento As EventArgs)
+        RiscritturaConfermata()
     End Sub
 
     Private Sub RiscritturaConfermata()

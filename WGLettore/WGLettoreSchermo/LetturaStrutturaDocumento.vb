@@ -2,6 +2,7 @@
 Imports System.Text.RegularExpressions
 Imports UIAutomationClient
 
+' Lettura della struttura di documenti, fogli di calcolo e proprietà di stile o indirizzo.
 Friend NotInheritable Class LetturaStrutturaDocumento
 
     Private Const SchemaTesto As Integer = 10014

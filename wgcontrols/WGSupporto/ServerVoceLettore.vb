@@ -6,6 +6,7 @@ Imports System.Text
 Imports System.Threading
 Imports wgcontrols
 
+' Gestione della comunicazione tramite pipe con il lettore vocale. Elabora i flussi di dati e comandi audio.
 Friend NotInheritable Class ServerVoceLettore
 
     Private Shared ReadOnly log As New Logger()

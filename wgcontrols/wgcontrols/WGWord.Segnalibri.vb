@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Gestione dei segnalibri, inserimento di data e ora, e divisione del testo in frasi per la navigazione.
 Partial Public Class WGWord
     Public Sub AggiungiSegnalibro(nome As String)
         Try

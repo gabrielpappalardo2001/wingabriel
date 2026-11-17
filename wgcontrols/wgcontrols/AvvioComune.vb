@@ -8,6 +8,7 @@ Imports System.Diagnostics
 Imports System.Windows.Forms
 Imports System.Linq
 
+' Funzioni comuni per la gestione dei log di avvio e della configurazione iniziale dei volumi.
 Public Module AvvioComune
 
     Public Const ID_CONFIG_DISATTIVA_SUONI_VOLUME_AVVIO As String = "disattiva_suoni_volume_avvio"

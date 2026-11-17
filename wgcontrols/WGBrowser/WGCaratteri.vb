@@ -4,6 +4,7 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Traduzione dei tasti premuti in caratteri pronunciabili e gestione dei layout di tastiera.
 Public NotInheritable Class WGCaratteri
     Private Shared ReadOnly log As New Logger()
 

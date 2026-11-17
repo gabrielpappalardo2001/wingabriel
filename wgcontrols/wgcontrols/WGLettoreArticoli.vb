@@ -5,6 +5,7 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports HAP = HtmlAgilityPack
 
+' Estrazione e pulizia del testo da pagine web e documenti per una lettura strutturata e priva di elementi superflui.
 Public Class ArticoloEstratto
     Public Property Indirizzo As String = ""
     Public Property Titolo As String = ""

@@ -228,7 +228,7 @@ Public NotInheritable Class SessioneFotocamera
     End Sub
 
     ''' <summary>Se dalle impostazioni è cambiato qualcosa che riguarda la videocamera, la si riapre con i valori nuovi.</summary>
-    Private Async Sub ControllaStato(stato As Object)
+    Private Sub ControllaStato(stato As Object)
         Try
             If _chiusa OrElse _occupato OrElse _inRegistrazione Then Return
             If _inRiproduzione Then
@@ -552,7 +552,7 @@ Public NotInheritable Class SessioneFotocamera
         Dim esito As String = ""
         Dim destinazione As String = ""
         Try
-            Task.Run(Sub() SuoniFotocamera.SuonaFineVideo())
+            Dim suonoFine As Task = Task.Run(Sub() SuoniFotocamera.SuonaFineVideo())   ' non si aspetta: il suono va insieme al lavoro
             Await WGProcessoInCorso.EseguiAsync("Sto preparando il video, attendere",
                 Function() Task.Run(Sub()
                                         Dim tempi As New List(Of String)()

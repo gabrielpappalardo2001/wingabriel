@@ -6,6 +6,8 @@ Imports Newtonsoft.Json.Linq
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Gestione della tastiera e dell'interazione con i widget all'interno delle pagine web, con lettura vocale della digitazione e
+' navigazione tra i controlli.
 Public Structure PressioneTastoBrowser
     Public Tasto As Keys
     Public Shift As Boolean

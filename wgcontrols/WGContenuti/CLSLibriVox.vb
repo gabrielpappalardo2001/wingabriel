@@ -8,6 +8,8 @@ Imports System.Windows.Forms
 Imports wgcontrols
 Imports WGDb
 
+' Gestione del catalogo e dei download dei libri audio da LibriVox, con ricerca per autore e lingua e gestione delle ultime
+' aggiunte.
 Public Enum OrdinamentoLibri
     AlfabeticoAZ
     PiuRecente

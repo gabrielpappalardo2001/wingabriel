@@ -10,6 +10,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Gestione della singola pagina web, esecuzione di script e controllo dei frame attivi.
 Public Class WGPaginaWeb
     Private ReadOnly log As New Logger()
     Private ReadOnly _controllo As Control

@@ -471,8 +471,6 @@ Public Class WGMpv
 
     Private Const URL_LIBMPV_X64 As String = "https://wingabriel.net/wingabriel/x64/libmpv-2.dll"
     Private Const URL_LIBMPV_X86 As String = "https://wingabriel.net/wingabriel/x86/libmpv-2.dll"
-    Private Const URL_LIBMPV_X64_HTTP As String = "http://wingabriel.net/wingabriel/x64/libmpv-2.dll"
-    Private Const URL_LIBMPV_X86_HTTP As String = "http://wingabriel.net/wingabriel/x86/libmpv-2.dll"
 
     Private Const MACCHINA_PE_I386 As Integer = &H14C
     Private Const MACCHINA_PE_AMD64 As Integer = &H8664
@@ -697,9 +695,11 @@ Public Class WGMpv
                 Return False
             End Try
 
-            Dim riuscito As Boolean = ScaricaFileLibreria(UrlLibreriaPrincipale(), fileTemporaneo)
+            ' Prima dal rilascio firmato (sito o, se il sito non risponde, GitHub), controllando l'impronta scritta nel manifest;
+            ' se il manifest non si legge, dal sito e solo in https. Mai in http: la libreria si carica nel programma.
+            Dim riuscito As Boolean = ScaricaLibreriaDalRilascio(fileTemporaneo)
             If Not riuscito Then
-                riuscito = ScaricaFileLibreria(UrlLibreriaAlternativa(), fileTemporaneo)
+                riuscito = ScaricaFileLibreria(UrlLibreriaPrincipale(), fileTemporaneo)
             End If
 
             If Not riuscito Then
@@ -951,12 +951,40 @@ Public Class WGMpv
         End Try
     End Function
 
-    Private Shared Function UrlLibreriaAlternativa() As String
+    ''' <summary>
+    ''' Scarica libmpv-2.dll dal rilascio firmato di WinGabriel (quello che usa anche l'aggiornatore) e controlla che l'impronta SHA-256
+    ''' sia quella del manifest. Falso se il manifest non si legge, se manca la voce o se l'impronta non torna (il file si cancella).
+    ''' </summary>
+    Private Shared Function ScaricaLibreriaDalRilascio(destinazione As String) As Boolean
         Try
-            If IntPtr.Size = 8 Then Return URL_LIBMPV_X64_HTTP
-            Return URL_LIBMPV_X86_HTTP
-        Catch
-            Return URL_LIBMPV_X86_HTTP
+            Dim errore As String = ""
+            Dim canale As String = RilascioFirmato.NormalizzaCanale(New WGConfig().LeggiValore("canale_aggiornamenti"))
+            Dim manifest As RilascioFirmato.Manifest = RilascioFirmato.Leggi("wingabriel", canale, errore)
+            If manifest Is Nothing Then
+                log.ScriviLog("ScaricaLibreriaDalRilascio: manifest non disponibile (" & errore & ")")
+                Return False
+            End If
+            Dim voce As RilascioFirmato.VoceManifest = manifest.Voci.FirstOrDefault(Function(v) v.Libmpv)
+            If voce Is Nothing Then Return False
+            Dim relativo As String = If(IntPtr.Size = 8, voce.UrlX64, voce.UrlX86)
+            Dim attesa As String = If(IntPtr.Size = 8, voce.ImprontaX64, voce.ImprontaX86)
+            If String.IsNullOrWhiteSpace(relativo) OrElse String.IsNullOrWhiteSpace(attesa) Then Return False
+            If Not ScaricaFileLibreria(RilascioFirmato.UrlFile(manifest.UrlBaseFile, relativo), destinazione) Then Return False
+            Dim impronta As String
+            Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                Using flusso As FileStream = File.OpenRead(destinazione)
+                    impronta = BitConverter.ToString(sha.ComputeHash(flusso)).Replace("-", "").ToLowerInvariant()
+                End Using
+            End Using
+            If Not String.Equals(impronta, attesa, StringComparison.OrdinalIgnoreCase) Then
+                log.ScriviLog("ScaricaLibreriaDalRilascio: l'impronta del file scaricato non corrisponde al manifest firmato")
+                File.Delete(destinazione)
+                Return False
+            End If
+            Return True
+        Catch ex As Exception
+            log.ScriviLog("ScaricaLibreriaDalRilascio: " & ex.ToString())
+            Return False
         End Try
     End Function
 

@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Spostamento e lettura all'interno del testo per paragrafi, frasi, pagine e posizioni del cursore con supporto sonoro.
 Partial Public Class WGWord
 
     Private _suoniNavigazione As WGSuoni

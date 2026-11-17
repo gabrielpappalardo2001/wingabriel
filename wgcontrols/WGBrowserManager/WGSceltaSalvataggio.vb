@@ -1,6 +1,7 @@
 Imports System.IO
 Imports wgcontrols
 
+' Finestra di dialogo per scegliere dove e come salvare i file scaricati.
 Public Class WGSceltaSalvataggio
     Public Event Confermato(percorso As String)
     Public Event Annullato As EventHandler

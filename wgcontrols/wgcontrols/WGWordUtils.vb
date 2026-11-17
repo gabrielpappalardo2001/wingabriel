@@ -9,6 +9,7 @@ Imports DocumentFormat.OpenXml
 Imports DocumentFormat.OpenXml.Packaging
 Imports OX = DocumentFormat.OpenXml.Wordprocessing
 
+' Strumenti di utilità per il caricamento, il salvataggio e la conversione dei documenti tra formati diversi come DOCX e ODT.
 Public Class WGDocumentState
     Public Property Elements As List(Of DocElement) = New List(Of DocElement)()
     Public Property PageSettings As Dictionary(Of String, Integer) = New Dictionary(Of String, Integer)()

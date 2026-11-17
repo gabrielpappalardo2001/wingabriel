@@ -8,6 +8,8 @@ Imports System.Threading
 Imports System.Threading.Tasks
 Imports UIAutomationClient
 
+' Iniezione e comunicazione con librerie di supporto nei processi esterni per estrarre informazioni sulla struttura delle
+' finestre.
 Friend NotInheritable Class AiutoInProcesso
 
     Private Const VersioneProtocollo As String = "1"

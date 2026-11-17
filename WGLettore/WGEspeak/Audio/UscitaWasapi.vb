@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Threading
 
+' Gestione dell'uscita audio tramite le API WASAPI per la riproduzione vocale, con controllo della latenza e dei buffer hardware.
 Friend NotInheritable Class UscitaWasapi
     Inherits MotoreUscita
 

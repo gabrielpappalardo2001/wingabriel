@@ -6,6 +6,8 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 Imports WGPlayerMpv
+
+' Menu principale per la ricerca, l'ascolto e la gestione dei contenuti di Internet Archive.
 Public Class MenuInternetArchive
 
     Private Const PAGE_SIZE As Integer = 120
@@ -223,6 +225,11 @@ Public Class MenuInternetArchive
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaRicercheRecenti con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRicercheRecenti(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRicercheRecenti()
+    End Sub
+
     Private Sub ChiudiListaRicercheRecenti()
         Try
             If listaRicercheRecenti IsNot Nothing Then
@@ -326,6 +333,11 @@ Public Class MenuInternetArchive
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaAutori con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaAutori(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaAutori()
+    End Sub
+
     Private Sub ChiudiListaAutori()
         Try
             If listaAutori IsNot Nothing Then
@@ -388,6 +400,11 @@ Public Class MenuInternetArchive
         End Try
     End Sub
 
+    ''' <summary>ChiudiListaGeneri con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaGeneri(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaGeneri()
+    End Sub
+
     Private Sub ChiudiListaGeneri()
         Try
             If listaGeneri IsNot Nothing Then
@@ -448,6 +465,11 @@ Public Class MenuInternetArchive
         Catch ex As Exception
             _logger.ScriviLog("MenuInternetArchive.mostraelencoper_supporto: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaSupporti con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaSupporti(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaSupporti()
     End Sub
 
     Private Sub ChiudiListaSupporti()
@@ -596,6 +618,11 @@ Public Class MenuInternetArchive
         Catch ex As Exception
             _logger.ScriviLog("MenuInternetArchive.mostraLibriScaricati: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaLibriScaricati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaLibriScaricati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaLibriScaricati()
     End Sub
 
     Private Sub ChiudiListaLibriScaricati()
@@ -831,6 +858,11 @@ Public Class MenuInternetArchive
         End Select
     End Function
 
+    ''' <summary>ChiudiListaRisultati con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaRisultati(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaRisultati()
+    End Sub
+
     Private Sub ChiudiListaRisultati()
         Try
             If listaRisultati IsNot Nothing Then
@@ -869,6 +901,11 @@ Public Class MenuInternetArchive
         Catch ex As Exception
             _logger.ScriviLog("MenuInternetArchive.elemento_selezionato: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>CampoDocumento_Chiusura con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub CampoDocumento_Chiusura(senderEvento As Object, eEvento As EventArgs)
+        CampoDocumento_Chiusura()
     End Sub
 
     Private Sub CampoDocumento_Chiusura()
@@ -955,6 +992,11 @@ Public Class MenuInternetArchive
         Catch ex As Exception
             _logger.ScriviLog("MenuInternetArchive.CapitoliSelezionati: " & ex.ToString())
         End Try
+    End Sub
+
+    ''' <summary>ChiudiListaCapitoli con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ChiudiListaCapitoli(senderEvento As Object, eEvento As EventArgs)
+        ChiudiListaCapitoli()
     End Sub
 
     Private Sub ChiudiListaCapitoli()

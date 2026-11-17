@@ -344,13 +344,15 @@ Public NotInheritable Class RevisioneMusicXml
             Dim alto As Integer = 0
             Dim haIntervallo As Boolean = IntervalloStrumento(Parti(p).Nome, basso, alto)
             Dim ultimaNotaPerVoce As New Dictionary(Of String, Integer)()
+            Dim parte As Integer = p   ' copia per la funzione qui sotto: la variabile del ciclo non va catturata
             For Each mi As MisuraInfo In misure
+                Dim misura As MisuraInfo = mi
                 Dim aggiungi As Action(Of String) = Sub(testo As String)
                                                         Dim pr As New ProblemaSpartito()
-                                                        pr.Parte = p
-                                                        pr.Misura = mi.Indice
-                                                        pr.Numero = mi.Numero
-                                                        pr.Testo = "Battuta " & mi.Numero & ", " & Parti(p).Nome & ": " & testo
+                                                        pr.Parte = parte
+                                                        pr.Misura = misura.Indice
+                                                        pr.Numero = misura.Numero
+                                                        pr.Testo = "Battuta " & misura.Numero & ", " & Parti(parte).Nome & ": " & testo
                                                         elenco.Add(pr)
                                                     End Sub
                 ' la durata delle voci

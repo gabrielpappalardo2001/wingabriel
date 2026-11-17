@@ -3,6 +3,7 @@ Imports System.Runtime.InteropServices
 Imports System.Text
 Imports UIAutomationClient
 
+' Accesso alla memoria dei processi remoti e lettura delle strutture native per liste e alberi di Windows.
 Friend NotInheritable Class ControlliNativi
 
     Private Const PROCESS_VM_OPERATION As UInteger = &H8UI

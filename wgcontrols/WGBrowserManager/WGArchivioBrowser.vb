@@ -3,6 +3,7 @@ Imports System.Globalization
 Imports WGDb
 Imports wgcontrols
 
+' Gestione del database locale del browser per preferiti, cronologia, download e credenziali.
 Public NotInheritable Class WGArchivioBrowser
     Private Shared _istanza As WGArchivioBrowser
     Private Shared ReadOnly _lockIstanza As New Object()

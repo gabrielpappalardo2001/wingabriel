@@ -11,6 +11,7 @@ Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 Imports WGDb
 
+' Integrazione con la biblioteca online di WinGabriel per il download e la lettura dei libri.
 Public Class LibroWinGabriel
 
     Public Id As Integer

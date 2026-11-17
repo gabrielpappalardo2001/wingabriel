@@ -7,6 +7,7 @@ Imports MailKit.Net.Imap
 Imports MailKit.Search
 Imports MimeKit
 
+' Filtraggio dei messaggi di posta e pulizia dell'oggetto dai prefissi di risposta e inoltro.
 Public Enum CriterioFiltroMessaggi
     Mittente = 0
     Oggetto = 1

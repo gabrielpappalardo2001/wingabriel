@@ -5,7 +5,6 @@ Imports System.Text
 Imports System.Threading
 Imports System.Threading.Tasks
 Imports System.Windows.Forms
-Imports WGDati
 Imports wgcontrols
 
 ''' <summary>

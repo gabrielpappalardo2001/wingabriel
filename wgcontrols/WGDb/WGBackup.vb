@@ -9,6 +9,8 @@ Imports System.Threading
 Imports System.Windows.Forms
 Imports System.Xml
 
+' Gestione completa dei backup dei dati di WinGabriel: creazione, archiviazione, compressione, ripristino e applicazione delle
+' regole di ritenzione.
 Public Enum IntervalloBackup
     Mai = 0
     Quotidiano = 1
@@ -806,11 +808,11 @@ Public NotInheritable Class WGBackup
             If String.IsNullOrWhiteSpace(resto) Then Return ""
 
             If String.Equals(primoSegmento, NomeCartellaDatiNellArchivio, StringComparison.OrdinalIgnoreCase) Then
-                Return Path.Combine(CartellaRadiceDati(), resto)
+                Return DentroLaCartella(CartellaRadiceDati(), resto)
             End If
 
             If String.Equals(primoSegmento, NomeCartellaConfigNellArchivio, StringComparison.OrdinalIgnoreCase) Then
-                Return Path.Combine(CartellaConfigurazione(), resto)
+                Return DentroLaCartella(CartellaConfigurazione(), resto)
             End If
 
             If String.Equals(primoSegmento, NomeCartellaOriginiNellArchivio, StringComparison.OrdinalIgnoreCase) Then
@@ -820,12 +822,32 @@ Public NotInheritable Class WGBackup
                 Dim restoOrigine As String = resto.Substring(secondoSeparatore + 1)
                 Dim origini As Dictionary(Of String, String) = OriginiRegistrate()
                 If Not origini.ContainsKey(nomeOrigine) Then Return ""
-                Return Path.Combine(origini(nomeOrigine), restoOrigine)
+                Return DentroLaCartella(origini(nomeOrigine), restoOrigine)
             End If
 
             Return ""
         Catch ex As Exception
             _registro.ScriviLog("WGBackup.DestinazioneDiVoce (" & If(nomeNellArchivio, "") & "): " & ex.ToString())
+            Return ""
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Il percorso completo di una voce dell'archivio dentro la cartella indicata; vuoto se la voce ne uscirebbe (per esempio con "..\"
+    ''' o un percorso assoluto): un backup costruito apposta non può scrivere file fuori dalle cartelle dei dati.
+    ''' </summary>
+    Private Shared Function DentroLaCartella(cartella As String, relativo As String) As String
+        Try
+            If String.IsNullOrWhiteSpace(cartella) OrElse String.IsNullOrWhiteSpace(relativo) OrElse Path.IsPathRooted(relativo) Then Return ""
+            Dim radice As String = Path.GetFullPath(cartella).TrimEnd(Path.DirectorySeparatorChar) & Path.DirectorySeparatorChar
+            Dim completo As String = Path.GetFullPath(Path.Combine(radice, relativo))
+            If Not completo.StartsWith(radice, StringComparison.OrdinalIgnoreCase) Then
+                _registro.ScriviLog("WGBackup.DentroLaCartella: voce rifiutata perché uscirebbe dalla cartella (" & relativo & ")")
+                Return ""
+            End If
+            Return completo
+        Catch ex As Exception
+            _registro.ScriviLog("WGBackup.DentroLaCartella (" & If(relativo, "") & "): " & ex.ToString())
             Return ""
         End Try
     End Function

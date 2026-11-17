@@ -4,6 +4,7 @@ Imports System.Collections.Generic
 Imports System.Windows.Forms
 Imports System.Linq
 
+' Disegno grafico a schermo del documento, dei caratteri e delle pagine con supporto per temi e zoom.
 Public Class WGWordRender
     Inherits NativeWindow
     Implements IDisposable

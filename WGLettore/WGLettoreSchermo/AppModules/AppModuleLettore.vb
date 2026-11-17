@@ -1,5 +1,6 @@
 ﻿Imports UIAutomationClient
 
+' Classe base per i moduli applicativi specifici che personalizzano il comportamento del lettore per le diverse applicazioni.
 Friend MustInherit Class AppModuleLettore
 
     Private ReadOnly _lettore As WGLettoreSchermo

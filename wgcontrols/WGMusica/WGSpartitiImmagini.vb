@@ -244,7 +244,7 @@ Public NotInheritable Class PreparazioneScansione
                 Dim areaPagina As Double = pagina.Width * pagina.Height
                 Dim cePaginaIntera As Boolean = False
                 For Each immagine In pagina.GetImages()
-                    Dim a As Double = Math.Abs(immagine.Bounds.Width * immagine.Bounds.Height)
+                    Dim a As Double = Math.Abs(immagine.BoundingBox.Width * immagine.BoundingBox.Height)
                     If a < areaPagina * 0.6 Then Continue For
                     cePaginaIntera = True
                     Dim png As Byte() = Nothing

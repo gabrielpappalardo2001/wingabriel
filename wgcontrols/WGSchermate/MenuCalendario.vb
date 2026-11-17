@@ -12,6 +12,8 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports WGDati
 
+' Gestione della vista calendario mensile. Include il calcolo delle feste locali, la consultazione di santi e onomastici e le
+' informazioni astronomiche giornaliere.
 Friend Class MenuCalendario
 
     Private log As New Logger()
@@ -1048,6 +1050,11 @@ Friend Class MenuCalendario
         Catch ex As Exception
             log.ScriviLog("MenuCalendario.ChiudiListaSanti - " & ex.Message & Environment.NewLine & ex.StackTrace)
         End Try
+    End Sub
+
+    ''' <summary>chiusuracampo con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub chiusuracampo(senderEvento As Object, eEvento As EventArgs)
+        chiusuracampo()
     End Sub
 
     Private Sub chiusuracampo()

@@ -7,6 +7,9 @@ Imports System.Threading ' Necessario per accedere al thread corrente
 Imports System.Windows.Forms ' Necessario per il controllo del thread della GUI
 Imports Ude
 Imports wgcontrols
+
+' Gestione di basso livello per i file dell'editor, inclusi rilevamento della codifica, conversione dei caratteri e gestione di
+' formati speciali come RTF.
 Friend Class EditorSystem
     Private Shared log As New wgcontrols.Logger()
 

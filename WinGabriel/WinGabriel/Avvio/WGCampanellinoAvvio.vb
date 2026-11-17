@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Gestione del campanellino di avvio e riproduzione dei suoni tramite strumenti musicali o fallback.
 Public NotInheritable Class WGCampanellinoAvvio
 
     Private Declare Auto Function midiOutOpen Lib "winmm.dll" (ByRef lphMidiOut As IntPtr, ByVal uDeviceID As Integer, ByVal dwCallback As IntPtr, ByVal dwInstance As IntPtr, ByVal dwFlags As Integer) As Integer

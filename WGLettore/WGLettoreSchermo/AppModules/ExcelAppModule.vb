@@ -5,6 +5,8 @@ Imports System.Text
 Imports System.Threading
 Imports UIAutomationClient
 
+' Modulo di supporto per Microsoft Excel, che gestisce la lettura delle celle, delle formule, dei titoli di riga e colonna e della
+' selezione.
 Friend NotInheritable Class ExcelAppModule
     Inherits AppModuleLettore
 

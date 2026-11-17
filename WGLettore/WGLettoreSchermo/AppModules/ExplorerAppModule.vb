@@ -2,6 +2,7 @@
 Imports System.Text
 Imports UIAutomationClient
 
+' Modulo applicativo per la gestione e la lettura ottimizzata delle finestre e delle cartelle di Esplora file.
 Friend NotInheritable Class ExplorerAppModule
     Inherits AppModuleLettore
 

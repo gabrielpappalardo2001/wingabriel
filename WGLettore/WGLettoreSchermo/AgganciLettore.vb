@@ -4,6 +4,8 @@ Imports System.Diagnostics
 Imports System.Runtime.InteropServices
 Imports System.Threading
 
+' Gestione degli agganci per la tastiera e gli eventi di sistema, traduzione dei comandi rapidi e controllo dell'interazione
+' utente.
 Friend NotInheritable Class AgganciLettore
 
     Private Const VK_BACK As Integer = &H8

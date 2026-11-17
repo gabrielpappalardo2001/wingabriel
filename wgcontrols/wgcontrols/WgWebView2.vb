@@ -4,6 +4,7 @@ Imports System.Drawing
 Imports Microsoft.Web.WebView2.WinForms
 Imports Microsoft.Web.WebView2.Core
 
+' Integrazione del motore WebView2 per la navigazione web interna e il rendering di contenuti in formato HTML.
 Public NotInheritable Class WGWebView
     Private Shared ReadOnly logger As New Logger()
     Private Shared ReadOnly _lock As New Object()

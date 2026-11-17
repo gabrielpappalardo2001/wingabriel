@@ -5,6 +5,8 @@ Imports System.Text
 Imports System.Threading.Tasks
 Imports wgcontrols
 Imports WGDb
+
+' Gestione delle conversazioni con l'intelligenza artificiale, invio di domande, allegati e riassunti.
 Public Class MenuAi
 
     Private Shared log As New Logger()

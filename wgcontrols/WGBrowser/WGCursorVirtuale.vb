@@ -10,6 +10,7 @@ Imports Newtonsoft.Json.Linq
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Cursore virtuale per la lettura riga per riga e la traduzione dei contenuti accessibili.
 Public Enum ContestoLettura
     Tutto
     Contenitori

@@ -1,3 +1,4 @@
+' Interfacce per la gestione delle schede, la chiusura delle finestre e gli annunci vocali di ingresso.
 Public Interface IWGControlloConSchede
     Function CambiaScheda(avanti As Boolean) As Boolean
 End Interface

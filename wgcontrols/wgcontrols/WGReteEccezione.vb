@@ -8,6 +8,7 @@ Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Gestione centralizzata e tracciamento su file delle eccezioni non gestite nei thread dell'interfaccia e dei task.
 Public NotInheritable Class WGReteEccezioni
 
     Private Shared ReadOnly _lockScrittura As New Object()

@@ -2,6 +2,7 @@
 Imports System.Text
 Imports UIAutomationClient
 
+' Gestione e navigazione avanzata di tabelle, griglie, celle e relative coordinate.
 Friend NotInheritable Class LetturaTabelle
 
     Private Const SchemaGriglia As Integer = 10006

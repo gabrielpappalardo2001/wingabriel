@@ -3,6 +3,7 @@ Imports System.Globalization
 Imports System.Text
 Imports System.Threading
 
+' Coda e gestione della sintesi vocale con priorità, storico delle frasi, pause e formattazione del testo letto.
 Friend Enum PrioritaAnnuncio
     Bassa = 0
     Normale = 1

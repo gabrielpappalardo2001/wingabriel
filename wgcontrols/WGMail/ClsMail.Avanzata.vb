@@ -8,6 +8,7 @@ Imports MailKit.Net.Imap
 Imports MailKit.Search
 Imports WGDb
 
+' Funzioni avanzate di cifratura delle password e gestione della chiave fissa per gli account di posta.
 Partial Public Class CLSMail
 
     Private Const MarcatoreCifratura As String = "ENC1:"

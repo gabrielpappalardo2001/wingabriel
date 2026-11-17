@@ -4,6 +4,8 @@ Imports System.Text
 Imports System.Threading
 Imports UIAutomationClient
 
+' Gestione dei comandi estesi, configurazione delle preferenze di lettura, ricerca testuale, aiuto interattivo e supporto per la
+' revisione dei testi.
 Partial Public NotInheritable Class WGLettoreSchermo
 
     Private _codaVoce As CodaVoce

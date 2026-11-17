@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports System.Windows.Forms
 
+' Menù contestuali e voci di comando per la formattazione di caratteri, paragrafi, tabelle, collegamenti e note.
 Partial Public Class WGWord
 
     Private Class VoceMenuOspite

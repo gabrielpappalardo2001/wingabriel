@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Threading.Tasks
 Imports wgcontrols
 
+' Avvio automatico del lettore di schermo preferito all'avvio del programma. Controlla lo stato dei processi in esecuzione.
 Friend NotInheritable Class AvvioLettorePreferito
 
     Private Shared ReadOnly log As New Logger()

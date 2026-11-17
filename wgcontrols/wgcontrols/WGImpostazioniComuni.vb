@@ -2,6 +2,7 @@
 Imports System.Diagnostics
 Imports WGStampante
 
+' Gestione delle preferenze utente, scelta dello screen reader, del browser e delle impostazioni di stampa.
 Public Class WGImpostazioniComuni
 
     Private Shared _nomeProcessoScreenReaderAvviato As String = ""
@@ -318,6 +319,15 @@ Public Class WGImpostazioniComuni
                 Return
             End If
             If indirizzo.StartsWith("www.", StringComparison.OrdinalIgnoreCase) Then indirizzo = "https://" & indirizzo
+            ' L'indirizzo si ricostruisce: spazi e virgolette diventano %20 e %22, così un link (che può venire da una pagina o da una
+            ' mail) non può aggiungere opzioni alla riga di comando del browser.
+            Dim uriValido As Uri = Nothing
+            If Not Uri.TryCreate(indirizzo, UriKind.Absolute, uriValido) OrElse
+               (uriValido.Scheme <> Uri.UriSchemeHttp AndAlso uriValido.Scheme <> Uri.UriSchemeHttps) Then
+                MostraAvvisoLink("Questo tipo di link non si può aprire in WinGabriel.")
+                Return
+            End If
+            indirizzo = uriValido.AbsoluteUri
 
             Dim impostazioni As New WGImpostazioniComuni()
             Dim scelta As String = impostazioni.BrowserPreferito
@@ -341,7 +351,7 @@ Public Class WGImpostazioniComuni
                 If String.IsNullOrEmpty(percorsoBrowserScelto) Then
                     Process.Start(New ProcessStartInfo(indirizzo) With {.UseShellExecute = True})
                 Else
-                    Process.Start(New ProcessStartInfo(percorsoBrowserScelto, indirizzo) With {.UseShellExecute = True})
+                    Process.Start(New ProcessStartInfo(percorsoBrowserScelto, """" & indirizzo & """") With {.UseShellExecute = True})
                 End If
             End If
         Catch ex As Exception

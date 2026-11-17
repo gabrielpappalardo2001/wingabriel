@@ -12,6 +12,8 @@ Imports wgcontrols
 Imports WGDati
 Imports WGDb
 
+' Gestione del database dei canali televisivi. Contiene la struttura dei canali, il caricamento da sorgenti esterne, la verifica
+' dello stato di funzionamento e la ricerca.
 Public Class TvCanaliDb
 
 #Region "Modelli"

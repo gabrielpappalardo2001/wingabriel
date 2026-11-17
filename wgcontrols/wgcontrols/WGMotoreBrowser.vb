@@ -9,6 +9,7 @@ Imports Microsoft.Web.WebView2.Core
 Imports WGBrowserManager
 Imports wgcontrols
 
+' Gestione del motore di rendering WebView2, dei processi isolati, dei dati utente e della diagnostica per l'ambiente web.
 Public NotInheritable Class WGMotoreBrowser
     Private Shared ReadOnly log As New Logger()
     Private Shared ReadOnly _lock As New Object()

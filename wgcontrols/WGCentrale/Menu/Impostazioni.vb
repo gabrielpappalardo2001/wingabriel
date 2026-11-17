@@ -35,6 +35,8 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Menu principale delle impostazioni suddiviso per categorie, per la configurazione del sistema, della voce, della lettura e delle
+' connessioni.
 Public Class Impostazioni
     Private configManager As New WGConfig()
     Private impostazioniComuni As New WGImpostazioniComuni()
@@ -3598,6 +3600,11 @@ Public Class Impostazioni
         Catch ex As Exception
             logger.ScriviLog("ChiediPercorsoStampanteCondivisa eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
         End Try
+    End Sub
+
+    ''' <summary>ConfermaPercorsoStampanteCondivisa con la firma esatta dell'evento: così AddHandler e RemoveHandler agganciano e staccano lo stesso gestore.</summary>
+    Private Sub ConfermaPercorsoStampanteCondivisa(senderEvento As Object, eEvento As EventArgs)
+        ConfermaPercorsoStampanteCondivisa()
     End Sub
 
     Private Sub ConfermaPercorsoStampanteCondivisa()

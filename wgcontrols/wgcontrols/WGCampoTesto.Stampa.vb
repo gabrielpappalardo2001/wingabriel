@@ -1,5 +1,6 @@
 Imports WGStampante
 
+' Gestione della stampa e selezione delle stampanti per i campi di testo dedicati.
 Partial Public Class WGCampoTesto
     Private Sub StampaCampoTesto(sender As Object, e As EventArgs)
         Try

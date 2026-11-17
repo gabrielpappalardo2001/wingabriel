@@ -13,6 +13,7 @@ Imports Windows.Devices.Enumeration
 Imports Windows.Devices.Radios
 Imports wgcontrols
 
+' Gestione delle chiamate telefoniche recenti tramite connessione Bluetooth Handsfree e comandi AT.
 Public Enum TipoChiamata
     Sconosciuta = 0
     Persa = 1

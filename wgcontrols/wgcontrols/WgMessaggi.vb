@@ -6,6 +6,7 @@ Imports System.Drawing
 Imports System.Diagnostics
 Imports wgcontrols
 
+' Gestione dei messaggi a schermo e delle finestre di dialogo accessibili con comandi da tastiera e gesti.
 Public Class WGMessaggi
     Implements IDisposable
 

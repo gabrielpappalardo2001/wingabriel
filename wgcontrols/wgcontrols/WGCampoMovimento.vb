@@ -18,6 +18,8 @@ Imports HtmlAgilityPack
 Imports SymSpell
 Imports wgcontrols
 
+' Campo di testo evoluto per la digitazione e la lettura vocale. Gestisce hook di tastiera, lettura continua, formattazione del
+' testo, tabelle e comandi di ricerca.
 Partial Public Class WGCampoMovimento
     Inherits RichTextBox
 

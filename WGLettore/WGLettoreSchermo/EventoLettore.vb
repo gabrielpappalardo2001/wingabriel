@@ -1,5 +1,6 @@
 ﻿Imports UIAutomationClient
 
+' Definizione degli eventi, dei tasti, dei comandi e delle azioni gestite dal lettore di schermo.
 Friend Enum TipoEventoLettore
     Focus
     PrimoPiano

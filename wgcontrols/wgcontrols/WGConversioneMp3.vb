@@ -9,6 +9,7 @@ Imports HtmlAgilityPack
 Imports UglyToad.PdfPig
 Imports WGStampante
 
+' Conversione di testi e documenti in file audio MP3 con gestione della sintesi vocale e dei formati supportati.
 Public Class WGConversioneMp3
     Private ReadOnly _log As New Logger()
 

@@ -4,6 +4,7 @@ Imports System.Threading.Tasks
 Imports wgcontrols
 Imports WGNavidrome
 
+' Configurazione delle preferenze di ascolto e gestione delle opzioni avanzate per il server musicale Navidrome.
 Partial Public Class MenuMediaPlayer
 
     Private Const CAMPO_INDIRIZZO As String = "navidrome.indirizzo"

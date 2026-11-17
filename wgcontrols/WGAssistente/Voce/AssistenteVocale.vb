@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Gestione dell'assistente vocale, riconoscimento vocale offline con modelli Vosk e interazione con i comandi.
 Public Class AssistenteVocale
     Inherits NativeWindow
 

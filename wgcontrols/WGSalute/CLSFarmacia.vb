@@ -14,7 +14,6 @@ Imports Newtonsoft.Json.Linq
 Imports UglyToad.PdfPig
 Imports UglyToad.PdfPig.DocumentLayoutAnalysis.TextExtractor
 Imports wgcontrols
-Imports WGDati
 Imports WGOcr
 Imports WGOpenStrictMap
 

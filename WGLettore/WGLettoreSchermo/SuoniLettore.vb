@@ -2,6 +2,7 @@
 Imports NAudio.Wave
 Imports NAudio.Wave.SampleProviders
 
+' Interruttore generale: spento, nessun suono del lettore, da qualunque parte arrivi la richiesta.
 Friend NotInheritable Class SuoniLettore
 
     Private Const Frequenza As Integer = 44100

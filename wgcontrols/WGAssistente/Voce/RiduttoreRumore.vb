@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Riduzione del rumore di fondo dai campioni audio registrati tramite trasformata di Fourier.
 Public Class RiduttoreRumore
     Implements IDisposable
 

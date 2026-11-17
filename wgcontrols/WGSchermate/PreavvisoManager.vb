@@ -8,6 +8,9 @@ Imports System.Threading.Tasks
 Imports System.Reflection
 Imports WGYoutube
 Imports WGMail
+
+' Gestione centralizzata degli avvisi automatici in sottofondo. Coordina notifiche, promemoria di agenda, sincronizzazioni
+' periodiche e backup dei dati.
 Public Class PreavvisoManager
     Public Shared Property IstanzaAttiva As PreavvisoManager
     ''' <summary>

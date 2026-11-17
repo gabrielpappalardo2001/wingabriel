@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Rilevamento della parola chiave per attivare l'ascolto dei comandi vocali.
 Public Class RilevatoreParolaAttivazione
     Implements IDisposable
 

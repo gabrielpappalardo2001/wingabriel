@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Generic
 Imports UIAutomationClient
 
+' Modulo applicativo per la lettura del fuoco e dei risultati all'interno della calcolatrice.
 Friend NotInheritable Class CalcolatriceAppModule
     Inherits AppModuleLettore
 

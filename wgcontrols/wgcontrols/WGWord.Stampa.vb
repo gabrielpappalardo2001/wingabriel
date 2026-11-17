@@ -2,6 +2,7 @@ Imports System.Collections.Generic
 Imports System.Text
 Imports WGStampante
 
+' Estrazione dei blocchi di stampa e generazione del testo ottimizzato per la sintesi vocale e la stampa.
 Partial Public Class WGWord
     Public Function OttieniBlocchiStampa() As List(Of WGBloccoStampa)
         Dim risultato As New List(Of WGBloccoStampa)()

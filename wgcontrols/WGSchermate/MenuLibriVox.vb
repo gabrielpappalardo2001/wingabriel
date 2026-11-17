@@ -7,6 +7,8 @@ Imports System.Collections.Generic
 Imports System.IO
 Imports System.Linq
 
+' Catalogo e riproduttore degli audiolibri di LibriVox. Permette la ricerca, il download e l'ascolto dei libri completi o dei
+' singoli capitoli.
 Public Class MenuLibriVox
     Private camporicerca As WGCampoTesto
     Private Menu As WGMenu

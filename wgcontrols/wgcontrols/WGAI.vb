@@ -11,6 +11,9 @@ Imports System.Threading.Tasks
 Imports Newtonsoft.Json.Linq
 Imports UglyToad.PdfPig
 Imports WGDb
+
+' Integrazione con i servizi di intelligenza artificiale per il riassunto di testi e file. Gestisce la comunicazione con diversi
+' provider.
 Public Class WGAi
 
     Public Enum ProviderAi

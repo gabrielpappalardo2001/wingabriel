@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Rilevamento della presenza di voce nei campioni audio in ingresso.
 Public Class RilevatoreVoce
     Implements IDisposable
 

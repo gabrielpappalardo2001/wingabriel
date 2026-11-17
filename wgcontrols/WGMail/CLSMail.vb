@@ -4659,7 +4659,7 @@ Partial Public Class CLSMail
     Private Function RisolviUrlRelativo(urlBase As String, href As String) As String
         Try
             If String.IsNullOrWhiteSpace(href) Then Return urlBase
-            Dim uriHref As Uri
+            Dim uriHref As Uri = Nothing
             If Uri.TryCreate(href, UriKind.Absolute, uriHref) Then Return uriHref.ToString()
             Return New Uri(New Uri(urlBase), href).ToString()
         Catch
@@ -7679,7 +7679,7 @@ Partial Public Class CLSMail
 
             If Not String.IsNullOrWhiteSpace(evento.RegolaRicorrenza) Then
                 Try
-                    vevento.RecurrenceRules.Add(New RecurrencePattern(evento.RegolaRicorrenza.Trim()))
+                    vevento.RecurrenceRule = New RecurrencePattern(evento.RegolaRicorrenza.Trim())
                 Catch exRrule As Exception
                     ScriviLog("CLSMail.CostruisciIcs RRULE (" & evento.RegolaRicorrenza & "): " & exRrule.ToString())
                 End Try
@@ -7748,10 +7748,10 @@ Partial Public Class CLSMail
             If evento.Fine = DateTime.MinValue Then evento.Fine = evento.Inizio
             If evento.Fine < evento.Inizio Then evento.Fine = evento.Inizio
 
-            If vevento.RecurrenceRules IsNot Nothing AndAlso vevento.RecurrenceRules.Count > 0 Then
+            If vevento.RecurrenceRule IsNot Nothing Then
                 ' Teniamo la regola cosi' com'e' (stringa RFC 5545) per non perdere componenti
                 ' che non gestiamo esplicitamente, coerentemente col comportamento precedente.
-                evento.RegolaRicorrenza = vevento.RecurrenceRules(0).ToString()
+                evento.RegolaRicorrenza = vevento.RecurrenceRule.ToString()
             End If
 
             ' EXDATE la leggiamo a mano dal testo ICS originale (gia' disponibile qui) invece che

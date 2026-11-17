@@ -8,6 +8,7 @@ Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 Imports WGDb
 
+' Gestione della biblioteca di testi, ricerca e download da fonti online come Wikisource.
 Public Enum FonteLibro
     Wikisource
 End Enum

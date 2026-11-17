@@ -1,5 +1,6 @@
 ﻿Imports System.Net.NetworkInformation
 
+' Verifica la presenza di una connessione di rete attiva gestendo eventuali errori.
 Public Class connessione
     Public Function VerificaConnessione() As Boolean
         Try

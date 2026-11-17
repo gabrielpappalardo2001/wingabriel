@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Text
 Imports UIAutomationClient
 
+' Scrittura e analisi diagnostica dell'albero degli elementi dell'interfaccia.
 Friend NotInheritable Class DiagnosticaAlbero
 
     Private ReadOnly log As New Logger()

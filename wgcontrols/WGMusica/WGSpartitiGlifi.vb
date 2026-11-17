@@ -318,7 +318,7 @@ Friend NotInheritable Class LetturaGlifi
                     If String.IsNullOrEmpty(l.Value) Then Continue For
                     Dim nome As String = If(l.FontName, "")
                     If nome.Contains("Times") OrElse nome.Contains("Arial") OrElse nome.Contains("Helvetica") OrElse nome.Contains("Calibri") Then Continue For
-                    Dim b = l.GlyphRectangle
+                    Dim b = l.BoundingBox
                     Dim c As New CarattereInfo()
                     c.Font = If(nome.Contains("+"), nome.Substring(nome.IndexOf("+"c) + 1), nome)
                     c.Codice = AscW(l.Value(0)).ToString("X")

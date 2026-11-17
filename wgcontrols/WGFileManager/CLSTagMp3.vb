@@ -2,6 +2,7 @@
 Imports System.Threading.Tasks
 Imports Newtonsoft.Json.Linq
 
+' Lettura, scrittura e aggiornamento dei tag musicali nei file MP3, con ricerca delle informazioni online.
 Public Class CLSTagMp3
     Private _log As New wgcontrols.Logger()
 

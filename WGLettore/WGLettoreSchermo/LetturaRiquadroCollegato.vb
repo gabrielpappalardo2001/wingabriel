@@ -4,6 +4,7 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports UIAutomationClient
 
+' Ricerca e lettura dei riquadri collegati, aree di documento e contesti associati.
 Friend NotInheritable Class LetturaRiquadroCollegato
 
     Private Const SchemaTesto As Integer = 10014

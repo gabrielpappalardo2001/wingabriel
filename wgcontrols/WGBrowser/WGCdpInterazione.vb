@@ -7,6 +7,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Interazione con la pagina tramite Chrome DevTools Protocol per clic, scrittura e scorrimento.
 <Flags>
 Public Enum ModificatoriInput
     Nessuno = 0

@@ -2,6 +2,7 @@
 Imports System.Runtime.InteropServices
 Imports System.Text
 
+' Interfaccia e supporto per la lettura di applicazioni basate su piattaforma Java.
 Friend NotInheritable Class LetturaJava
 
     Private Const LunghezzaNome As Integer = 1024

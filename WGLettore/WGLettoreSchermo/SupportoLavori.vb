@@ -2,6 +2,7 @@
 Imports System.Text
 Imports System.Threading
 
+' Gestione della registrazione degli errori e esecuzione di chiamate tipizzate per il supporto operativo del lettore.
 Public NotInheritable Class RegistroErrori
 
     Private Shared ReadOnly _log As New Logger()

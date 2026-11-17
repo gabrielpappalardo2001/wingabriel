@@ -6,6 +6,7 @@ Imports System.Threading
 Imports WGDb
 Imports wgcontrols
 
+' Blocco della pubblicità nel browser basato su elenchi di domini da filtrare.
 Public NotInheritable Class WGBloccoPubblicita
     Private Shared ReadOnly _log As New Logger()
     Private Shared ReadOnly _lockCaricamento As New Object()

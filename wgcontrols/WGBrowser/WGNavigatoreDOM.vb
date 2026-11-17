@@ -2,6 +2,7 @@ Imports System.Threading.Tasks
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Navigazione rapida tra elementi specifici della pagina come intestazioni, link, pulsanti e moduli.
 Public Class WGNavigatoreDOM
     Private ReadOnly log As New Logger()
     Private ReadOnly paginaWeb As WGPaginaWeb

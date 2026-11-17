@@ -9,6 +9,8 @@ Imports System.Threading
 Imports System.Threading.Tasks
 Imports wgcontrols
 
+' Pulizia del computer e manutenzione del sistema, con eliminazione di file temporanei, svuotamento del cestino e rimozione di
+' duplicati.
 Public Class WGPuliziaPC
     Private _log As New Logger()
 

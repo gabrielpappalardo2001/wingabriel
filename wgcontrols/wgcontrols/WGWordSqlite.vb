@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Collections.Generic
 Imports WGDb
 
+' Gestione del database locale SQLite per il salvataggio e il recupero dei testi dei documenti.
 Public Class WGWordSqlite
     Private _dbPath As String
     Private _connectionString As String

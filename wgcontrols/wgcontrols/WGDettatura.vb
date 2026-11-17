@@ -10,6 +10,7 @@ Imports NAudio.Wave
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Sistema di dettatura vocale con supporto a provider locali e cloud, trascrizione e gestione delle chiavi API.
 Public Class WGDettatura
     Implements IDisposable
 

@@ -15,6 +15,7 @@ Imports System.Timers
 Imports System.Windows.Forms
 Imports System.Xml.Linq
 
+' Utilità generali per lo stato dell'applicazione, blocco del mouse, finestre di dialogo, indicatori di attesa e aggiornamenti.
 Public Module WGUtils
 
     Public programmadisattivato As Boolean = False

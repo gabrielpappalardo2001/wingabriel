@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Text
 
+' Interazione con le API di Windows per la gestione dei processi, dei token di sicurezza, dei desktop e delle metriche di sistema.
 Friend NotInheritable Class SupportoSistema
 
     Private Const TokenIntegrityLevel As Integer = 25

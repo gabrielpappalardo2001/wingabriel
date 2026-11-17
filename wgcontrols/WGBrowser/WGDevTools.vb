@@ -10,6 +10,7 @@ Imports Newtonsoft.Json
 Imports Newtonsoft.Json.Linq
 Imports wgcontrols
 
+' Comunicazione con il protocollo DevTools per il controllo dei frame e l'analisi degli elementi.
 Public Class WGDevTools
     Implements IDisposable
 

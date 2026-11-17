@@ -7,6 +7,7 @@ Imports System.Text.RegularExpressions
 Imports System.Runtime.InteropServices
 Imports System.Linq
 
+' Modifica del documento: inserimento di collegamenti, immagini, gestione dei segnalibri e manipolazione completa delle tabelle.
 Partial Public Class WGWord
     Public Sub InserisciLink(nome As String, url As String)
         Try

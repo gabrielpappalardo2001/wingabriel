@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Elenco delle notizie recenti da leggere. Permette la visualizzazione e la selezione delle notizie per la consultazione.
 Public Class MenuNotizieDaLeggereWinGabriel
     Private WithEvents menuLista As WGMenuLista
     Private elenco As New List(Of ArticoloNotiziaWinGabriel)

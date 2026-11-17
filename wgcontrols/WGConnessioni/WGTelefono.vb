@@ -12,6 +12,8 @@ Imports Windows.Devices.Bluetooth
 Imports wgcontrols
 Imports System.IO
 
+' Gestione della connessione al telefono via Bluetooth, con supporto per chiamate, rubrica e messaggi SMS tramite protocolli OBEX
+' e HFP.
 Public Class Contatto
     Public Property Nome As String = ""
     Public Property Numeri As New List(Of String)()

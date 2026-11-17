@@ -4,6 +4,8 @@ Imports System.Data
 Imports WGContatti
 Imports wgcontrols
 
+' Selezione e gestione delle rubriche per la ricerca dei destinatari. Gestisce anche le password degli account e verifica il
+' supporto alla sincronizzazione.
 Partial Public Class MenuPosta
 
     ' Scelta della rubrica in cui cercare i destinatari. Le rubriche possono essere piu' d'una,

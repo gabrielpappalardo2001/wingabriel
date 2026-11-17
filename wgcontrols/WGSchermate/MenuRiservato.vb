@@ -13,6 +13,8 @@ Imports System.Text
 Imports System.Threading
 Imports System.Linq
 
+' Archivio sicuro protetto da password per dati sensibili. Gestisce note riservate, carte di pagamento, dati di siti internet e
+' documenti di identità.
 Public Class MenuRiservato
     Private singolodato As Dato
     Private Class modificadato

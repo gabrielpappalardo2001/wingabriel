@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
 
+' Gestione del ritorno di fuoco alle finestre native e controllo dello stato dei modificatori di rientro.
 Partial Public Class WGWord
 
     <DllImport("user32.dll", EntryPoint:="EnableWindow")>

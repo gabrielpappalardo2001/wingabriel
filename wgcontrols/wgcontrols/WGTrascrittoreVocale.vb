@@ -6,6 +6,7 @@ Imports NAudio.Wave
 Imports SherpaOnnx
 Imports wgcontrols
 
+' Gestione del riconoscimento vocale offline locale, inclusi download dei modelli, trascrizione audio e compitazione.
 Public NotInheritable Class WGTrascrittoreLocale
 
     Private Shared log As New Logger()

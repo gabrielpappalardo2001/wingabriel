@@ -1,4 +1,6 @@
-﻿Friend NotInheritable Class RuoliPredefiniti
+﻿' Ruoli parlati per framework, classe, ruolo ARIA o tipo di controllo localizzato. Formato di ogni voce: framework|chiave|ruolo.
+' Il framework può essere win32, winform, wpf, xaml, qt, java, chrome, mozilla oppure *.
+Friend NotInheritable Class RuoliPredefiniti
 
     ' Ruoli parlati per framework, classe, ruolo ARIA o tipo di controllo localizzato.
     ' Formato di ogni voce: framework|chiave|ruolo. Il framework può essere win32, winform, wpf, xaml, qt, java, chrome, mozilla oppure *.

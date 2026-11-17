@@ -6,6 +6,7 @@ Imports System.Text
 Imports System.Drawing
 Imports System.Threading
 
+' Controllo grafico personalizzato per elenchi e menu, ottimizzato per la visualizzazione e l'interazione accessibile.
 Public Class WGListaView
     Inherits Control
     Implements IWGElementoTattile

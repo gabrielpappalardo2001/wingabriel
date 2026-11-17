@@ -6,6 +6,8 @@ Imports System.Text
 Imports System.Text.RegularExpressions
 Imports wgcontrols
 
+' Previsioni meteorologiche basate sulla localizzazione geografica. Offre bollettini attuali, giornalieri, orari, settimanali e la
+' gestione dei comuni preferiti.
 Friend Class MenuMeteo
 
     Private ReadOnly _almanacco As CLSAlmanacco

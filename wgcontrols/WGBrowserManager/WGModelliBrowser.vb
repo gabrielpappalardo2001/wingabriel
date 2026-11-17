@@ -1,3 +1,4 @@
+' Strutture dati per preferiti, visite, credenziali, permessi e download del browser.
 Public Class PreferitoBrowser
     Public Property Chiave As String = ""
     Public Property Titolo As String = ""

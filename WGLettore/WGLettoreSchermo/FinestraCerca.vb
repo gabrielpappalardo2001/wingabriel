@@ -1,5 +1,6 @@
 ﻿Imports System.Windows.Forms
 
+' Finestra di dialogo per la ricerca testuale rapida con gestione della tastiera e della voce.
 Friend NotInheritable Class FinestraCerca
     Inherits Form
 

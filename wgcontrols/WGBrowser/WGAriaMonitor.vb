@@ -3,6 +3,7 @@ Imports System.Linq
 Imports System.Windows.Forms
 Imports wgcontrols
 
+' Monitoraggio degli annunci ARIA e delle notifiche dinamiche delle pagine web.
 Public Class AnnuncioPagina
     Public Property Istante As DateTime = DateTime.Now
     Public Property Testo As String = ""

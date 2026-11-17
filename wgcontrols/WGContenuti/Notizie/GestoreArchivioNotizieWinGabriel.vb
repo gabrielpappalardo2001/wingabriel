@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Gestione dell'archivio locale delle notizie, con tracciamento degli articoli letti e delle notifiche.
 Public Class GestoreArchivioNotizieWinGabriel
     Private Shared ReadOnly _lock As New Object()
 

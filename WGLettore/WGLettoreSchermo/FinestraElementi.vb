@@ -2,6 +2,7 @@
 Imports System.Windows.Forms
 Imports UIAutomationClient
 
+' Elenco navigabile degli elementi della pagina con gruppi, selezione e lettura vocale.
 Friend NotInheritable Class VoceElementoPagina
     Private Shared ReadOnly logVoce As New Logger()
     Private _elemento As IUIAutomationElement

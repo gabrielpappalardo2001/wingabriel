@@ -18,6 +18,8 @@ Imports HtmlAgilityPack
 Imports SymSpell
 Imports wgcontrols
 
+' Controllo principale dei singoli campi di immissione, con gestione della tastiera, degli eventi di chiusura e dell'accessibilità
+' vocale.
 Partial Public Class WGCampo
     Inherits System.Windows.Forms.UserControl
     Implements IWGControlloConSchede

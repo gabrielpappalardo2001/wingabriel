@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports UIAutomationClient
 
+' Gestione degli eventi di automazione relativi alla selezione con UIA.
 Friend Delegate Sub RicevitoreSelezione(elemento As IUIAutomationElement)
 
 <ComVisible(True)>

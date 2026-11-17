@@ -8,6 +8,7 @@ Imports System.Data.SQLite
 Imports System.Collections.Generic
 Imports WGDb
 
+' Gestione degli elementi preferiti e recenti, con salvataggio su database, ordinamento e funzioni di backup dedicate.
 Public Enum TabellaPreferitiRecenti
     PreferitiDir
     PreferitiFile

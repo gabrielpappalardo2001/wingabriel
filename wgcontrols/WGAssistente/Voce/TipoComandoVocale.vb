@@ -35,6 +35,7 @@ Imports WGStampante
 Imports WGContatti
 Imports WGConnessioni
 
+' Elenco dei tipi di comandi vocali supportati dall'assistente.
 Public Enum TipoComandoVocale
     Sconosciuto
     RiproduciVideo

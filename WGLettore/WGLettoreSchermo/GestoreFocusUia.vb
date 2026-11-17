@@ -1,6 +1,7 @@
 ﻿Imports System.Runtime.InteropServices
 Imports UIAutomationClient
 
+' Gestione degli eventi di cambio del fuoco tramite le API UIA.
 Friend Delegate Sub RicevitoreFocus(elemento As IUIAutomationElement)
 
 <ComVisible(True)>

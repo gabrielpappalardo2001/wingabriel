@@ -2,6 +2,8 @@ Imports System.IO
 Imports System.Threading
 Imports System.Collections.Generic
 Imports System.Diagnostics
+
+' Riconoscimento automatico e gestione dei file di spartiti musicali.
 Partial Public Class WGCentroDiControllo
 
     ''' <summary>
