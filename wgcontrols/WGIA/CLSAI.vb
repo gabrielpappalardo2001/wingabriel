@@ -275,7 +275,9 @@ Public Class CLSAi
 
             Using client As New HttpClient()
                 client.Timeout = TimeSpan.FromSeconds(30)
-                Dim url As String = "https://generativelanguage.googleapis.com/v1beta/models?key=" & Uri.EscapeDataString(chiave)
+                ' la chiave va nell'intestazione, non nell'indirizzo: così non resta nei registri di proxy e server intermedi
+                client.DefaultRequestHeaders.TryAddWithoutValidation("x-goog-api-key", chiave)
+                Dim url As String = "https://generativelanguage.googleapis.com/v1beta/models"
                 Using risposta As HttpResponseMessage = Await client.GetAsync(url)
                     WGAi.RegistraRichiestaGemini()
                     Dim corpo As String = Await risposta.Content.ReadAsStringAsync()

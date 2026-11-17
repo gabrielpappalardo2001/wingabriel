@@ -1552,13 +1552,18 @@ Public Class WGCentroDiControllo
             If Not File.Exists(p7z) Then
                 Try
                     ImpostaFaseDipendenze("Download di 7z...", 0, 10)
+                    ' 7za da un commit preciso del repository (non dal ramo master, che può cambiare) e con l'impronta controllata:
+                    ' è un programma che poi si esegue, quindi deve essere esattamente quello previsto.
                     Dim url7z As String = ""
+                    Dim impronta7z As String = ""
                     If Environment.Is64BitOperatingSystem Then
-                        url7z = "https://github.com/develar/7zip-bin/raw/master/win/x64/7za.exe"
+                        url7z = "https://github.com/develar/7zip-bin/raw/234abf56ddc2935de44e07d5e3c40eecab95d5af/win/x64/7za.exe"
+                        impronta7z = "b0cfdeaf429f5cc53f85123dd8f5a5feb92c19d31aa34df257edf9a26be05f95"
                     Else
-                        url7z = "https://github.com/develar/7zip-bin/raw/master/win/ia32/7za.exe"
+                        url7z = "https://github.com/develar/7zip-bin/raw/234abf56ddc2935de44e07d5e3c40eecab95d5af/win/ia32/7za.exe"
+                        impronta7z = "31fd52f8996986623cf52c3b4d0f7ac74a9dec63fc16c902cef673eed550c435"
                     End If
-                    ScaricaFileHttpConProgresso(client, url7z, p7z, _statoDownloadDipendenzeHttp, Nothing)
+                    ScaricaFileHttpConProgresso(client, url7z, p7z, _statoDownloadDipendenzeHttp, Nothing, impronta7z)
                 Catch ex As Exception
                     _log.ScriviLog(ex.ToString())
                 End Try
@@ -1607,17 +1612,20 @@ Public Class WGCentroDiControllo
                 Try
                     ImpostaFaseDipendenze("Download di FFmpeg...", 30, 35)
                     Dim urlFfmpeg As String = ""
+                    Dim improntaFfmpeg As String = ""
                     If Environment.Is64BitOperatingSystem Then
                         urlFfmpeg = "https://github.com/kusaanko/FFmpeg-Auto-Build/releases/download/workflow-202501150548/win64_win64_20250115.zip"
+                        improntaFfmpeg = "20c5b558ff8f1e7f74d6d17163b255acfe658b0b63918c2c47a5789d31cba7d0"
                     Else
                         urlFfmpeg = "https://github.com/kusaanko/FFmpeg-Auto-Build/releases/download/workflow-202501150548/win32_win32_20250115.zip"
+                        improntaFfmpeg = "49cac3ec9617982e06354e5dab54d86e9c7075ba1b622f07ac20e748f889a4b6"
                     End If
 
                     Dim zipPath As String = Path.Combine(downloadDir, "ffmpeg.zip")
                     Dim extractPath As String = Path.Combine(downloadDir, "ffmpeg_extracted")
                     Directory.CreateDirectory(extractPath)
 
-                    If ScaricaFileHttpConProgresso(client, urlFfmpeg, zipPath, _statoDownloadDipendenzeHttp, Nothing) Then
+                    If ScaricaFileHttpConProgresso(client, urlFfmpeg, zipPath, _statoDownloadDipendenzeHttp, Nothing, improntaFfmpeg) Then
                         _statoDownloadDipendenze = "Estrazione di FFmpeg..."
                         EstraiArchivio(zipPath, extractPath, p7z)
 
@@ -1636,13 +1644,15 @@ Public Class WGCentroDiControllo
             If Not File.Exists(pathNvdaDll) Then
                 Try
                     ImpostaFaseDipendenze("Download di NVDA Controller...", 65, 35)
-                    Dim urlNvda As String = "https://download.nvaccess.org/releases/stable/nvda_2025.3.2_controllerClient.zip"
+                    ' il percorso della versione resta valido anche quando esce la successiva (la cartella "stable" tiene solo l'ultima)
+                    Dim urlNvda As String = "https://download.nvaccess.org/releases/2026.3.1/nvda_2026.3.1_controllerClient.zip"
+                    Dim improntaNvda As String = "aededbf58c7ebfe5acb8ce1b52b4f0cc017f5e604f52de32eef69ac8eb0310b2"
 
                     Dim zipPath As String = Path.Combine(downloadDir, "nvda.zip")
                     Dim extractPath As String = Path.Combine(downloadDir, "nvda_extracted")
                     Directory.CreateDirectory(extractPath)
 
-                    If ScaricaFileHttpConProgresso(client, urlNvda, zipPath, _statoDownloadDipendenzeHttp, Nothing) Then
+                    If ScaricaFileHttpConProgresso(client, urlNvda, zipPath, _statoDownloadDipendenzeHttp, Nothing, improntaNvda) Then
                         _statoDownloadDipendenze = "Estrazione di NVDA..."
                         EstraiArchivio(zipPath, extractPath, p7z)
 

@@ -1597,11 +1597,16 @@ Partial Public Class WGSchedaBrowser
         End Try
     End Sub
 
-    Friend Sub MessaggioDallaPagina(testo As String)
+    ''' <summary>
+    ''' Un messaggio dello script di WinGabriel nella pagina. origineVera è il sito del documento che l'ha mandato, detto da WebView2;
+    ''' se manca (messaggi dal legame DevTools) vale il sito della pagina principale. Il campo "origine" scritto nel messaggio non si usa mai.
+    ''' </summary>
+    Friend Sub MessaggioDallaPagina(testo As String, Optional origineVera As String = "")
         Try
             If String.IsNullOrEmpty(testo) OrElse _ponte Is Nothing OrElse _chiusa Then Return
             Dim ponte As WGPonteNativo = _ponte
-            DopoEvento(Sub() ponte.RiceviMessaggio(testo))
+            Dim origine As String = If(String.IsNullOrEmpty(origineVera), WGArchivioBrowser.OrigineDi(_indirizzo), origineVera)
+            DopoEvento(Sub() ponte.RiceviMessaggio(testo, origine))
         Catch ex As Exception
             log.ScriviLog("WGSchedaBrowser.MessaggioDallaPagina: " & ex.Message)
         End Try
@@ -2620,9 +2625,11 @@ Public Class WGPonteNativo
         _scheda = scheda
     End Sub
 
-    Public Sub RiceviMessaggio(testoJson As String)
+    Public Sub RiceviMessaggio(testoJson As String, Optional origineVera As String = "")
         Try
             Dim messaggio As JObject = JObject.Parse(testoJson)
+            ' l'origine scritta dalla pagina non conta: vale quella vera (vuota se non è un sito http o https)
+            messaggio("origine") = If(origineVera, "")
             Select Case messaggio.Value(Of String)("tipo")
                 Case "focus"
                     Dim dati As JObject = TryCast(messaggio("riga"), JObject)

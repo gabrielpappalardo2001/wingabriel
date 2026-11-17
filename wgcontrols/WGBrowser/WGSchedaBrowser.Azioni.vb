@@ -1987,7 +1987,10 @@ Partial Public Class WGSchedaBrowser
     Private Async Sub CompilaCredenziali(credenziale As CredenzialeBrowser)
         Try
             If credenziale Is Nothing Then Return
-            Dim script As String = "window.__wgAgente ? window.__wgAgente.compilaCredenziali(" & JsonConvert.SerializeObject(credenziale.Utente) & "," & JsonConvert.SerializeObject(credenziale.Password) & ") : 0"
+            ' Si compila solo se il documento attivo è dello stesso sito della pagina: mai dentro una cornice di un altro sito (per esempio una pubblicità).
+            Dim hostPagina As String = WGArchivioBrowser.HostDi(_indirizzo).ToLowerInvariant()
+            If hostPagina.StartsWith("www.") Then hostPagina = hostPagina.Substring(4)
+            Dim script As String = "(location.hostname.toLowerCase().replace(/^www\./, '') === " & JsonConvert.SerializeObject(hostPagina) & " && window.__wgAgente) ? window.__wgAgente.compilaCredenziali(" & JsonConvert.SerializeObject(credenziale.Utente) & "," & JsonConvert.SerializeObject(credenziale.Password) & ") : 0"
             Dim compilati As Integer = NumeroDa(Await EseguiNelFrameAttivoAsync(script))
             If compilati > 0 Then
                 If Archivio IsNot Nothing Then Archivio.SegnaUsoCredenziale(credenziale.Chiave)

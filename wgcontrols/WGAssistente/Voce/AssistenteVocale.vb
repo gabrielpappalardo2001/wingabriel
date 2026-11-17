@@ -121,6 +121,8 @@ Public Class AssistenteVocale
     Private Const MODELLO_STOP_LOCALE As String = "^(?:stop|basta|fine|chiudi|ferma(?:ti)?|esci|grazie\s+basta|ho\s+finito)\b"
     Private Const MODELLO_ERRORE_RETE_O_QUOTA As String = "\b(?:429|50[234])\b|quota|resource[_\s]?exhausted|rate[_\s]?limit|too\s+many\s+requests|\blimit|esaurit|time[d]?\s?out|scadut|connessi|connect|network|\brete\b|resolv|risolt|risolver|\bhost\b|internet|\bdns\b|unavailable|raggiungibil|socket|\bssl\b|\btls\b|webexception|httprequestexception|taskcanceled|operationcanceled"
     Private Const URL_LIBRERIE As String = "https://github.com/alphacep/vosk-api/releases/download/v0.3.45/vosk-win64-0.3.45.zip"
+    ' l'impronta SHA-256 di quell'archivio: contiene librerie che si caricano nel programma, quindi deve essere esattamente quello
+    Private Const IMPRONTA_LIBRERIE As String = "f1dcc9cca460630f81ea8f71794f69c80bed6556d2a4e6237b5785e1d2dff34b"
     Private Const URL_MODELLO_VAD As String = "https://raw.githubusercontent.com/snakers4/silero-vad/master/src/silero_vad/data/silero_vad.onnx"
     Private Const NOME_EVENTO_ATTIVAZIONE As String = "WGParolaAttivazioneRilevata"
     Private Const FREQUENZA_CAMPIONAMENTO As Integer = 16000
@@ -5878,7 +5880,7 @@ Public Class AssistenteVocale
             Dim scaricaAlta As Boolean = qualita = QualitaVosk.Alta
 
             Dim elementi As New List(Of ElementoModello)()
-            If scaricaLibrerie Then elementi.Add(New ElementoModello() With {.Indirizzo = URL_LIBRERIE, .NomeFile = "librerie.zip", .DimensioneMinima = 1000000L, .Estrazione = TipoEstrazioneModello.Zip})
+            If scaricaLibrerie Then elementi.Add(New ElementoModello() With {.Indirizzo = URL_LIBRERIE, .NomeFile = "librerie.zip", .ImprontaSha256 = IMPRONTA_LIBRERIE, .DimensioneMinima = 1000000L, .Estrazione = TipoEstrazioneModello.Zip})
             If scaricaBassa Then elementi.Add(New ElementoModello() With {.Indirizzo = URL_MODELLO, .NomeFile = "modello_bassa.zip", .DimensioneMinima = 10000000L, .Estrazione = TipoEstrazioneModello.Zip})
             If scaricaAlta Then elementi.Add(New ElementoModello() With {.Indirizzo = URL_MODELLO_ALTA, .NomeFile = "modello_alta.zip", .DimensioneMinima = 100000000L, .Estrazione = TipoEstrazioneModello.Zip})
 

@@ -1185,7 +1185,14 @@ Friend NotInheritable Class WGBrowserGestoreFrame
             Dim testo As String = TestoMessaggio(e)
             If String.IsNullOrEmpty(testo) Then Return
             WGTracciaMotore.Scrivi("evento WebMessageReceived " & If(TypeOf sender Is CoreWebView2Frame, "cornice ", "") & If(testo.Length > 60, testo.Substring(0, 60), testo))
-            _scheda.MessaggioDallaPagina(testo)
+            ' L'origine del messaggio la dice WebView2 (e.Source), non la pagina: un sito non può farsi passare per un altro.
+            Dim origineVera As String = ""
+            Try
+                origineVera = WGArchivioBrowser.OrigineDi(e.Source)
+            Catch exOrigine As Exception
+                _log.ScriviLog("WGBrowserGestoreFrame.MessaggioRicevuto origine: " & exOrigine.Message)
+            End Try
+            _scheda.MessaggioDallaPagina(testo, origineVera)
         Catch ex As Exception
             _log.ScriviLog("WGBrowserGestoreFrame.MessaggioRicevuto: " & ex.Message)
         End Try

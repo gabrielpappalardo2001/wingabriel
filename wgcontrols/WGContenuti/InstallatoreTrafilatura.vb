@@ -23,6 +23,8 @@ Public Class InstallatoreTrafilatura
     Public Const MotoreTrafilatura As String = "trafilatura"
 
     Private Const IndirizzoPython As String = "https://www.python.org/ftp/python/3.12.10/python-3.12.10-embed-win32.zip"
+    ' l'impronta SHA-256 di quell'archivio: Python poi si esegue, quindi deve essere esattamente quello
+    Private Const ImprontaPython As String = "084b9eb24cb848605c895d05b738fbc2572efc8b4c18c415a824065864a2b853"
     Private Const IndirizzoGetPip As String = "https://bootstrap.pypa.io/get-pip.py"
     Private Const NomeCartella As String = "trafilatura"
     Private Const NomeCartellaNuova As String = "trafilatura.installazione"
@@ -269,6 +271,9 @@ Public Class InstallatoreTrafilatura
             Notifica(avanzamento, "Scaricamento di Python")
             Dim fileZip As String = Path.Combine(cartellaNuova, "python-embed-win32.zip")
             Scarica(IndirizzoPython, fileZip, token)
+            If Not String.Equals(ImprontaFile(fileZip), ImprontaPython, StringComparison.OrdinalIgnoreCase) Then
+                Throw New InvalidOperationException("l'archivio di Python scaricato non è quello previsto (impronta diversa)")
+            End If
 
             fase = "estrazione di Python"
             Notifica(avanzamento, "Estrazione di Python")
@@ -315,6 +320,20 @@ Public Class InstallatoreTrafilatura
             logger.ScriviLog($"Eccezione in InstallatoreTrafilatura.Notifica: {ex.Message} - StackTrace: {ex.StackTrace}")
         End Try
     End Sub
+
+    ''' <summary>L'impronta SHA-256 di un file, in esadecimale minuscolo (vuota se non si legge).</summary>
+    Private Function ImprontaFile(percorso As String) As String
+        Try
+            Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                Using flusso As FileStream = File.OpenRead(percorso)
+                    Return BitConverter.ToString(sha.ComputeHash(flusso)).Replace("-", "").ToLowerInvariant()
+                End Using
+            End Using
+        Catch ex As Exception
+            logger.ScriviLog("InstallatoreTrafilatura.ImprontaFile: " & ex.Message)
+            Return ""
+        End Try
+    End Function
 
     Private Sub Scarica(ByVal indirizzo As String, ByVal destinazione As String, ByVal token As CancellationToken)
         Try

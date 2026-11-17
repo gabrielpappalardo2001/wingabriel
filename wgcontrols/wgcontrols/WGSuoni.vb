@@ -67,18 +67,10 @@ Friend Class WGMidi
         Try
             midiOut = New MidiOut(0)
         Catch ex As DllNotFoundException
-            Try
-                Dim downloadUrl As String = "https://www.wingabriel.net/wingabriel/naudio.dll"
-                Dim dllPath As String = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "NAudio.dll")
-                Using webClient As New WebClient()
-                    webClient.Headers.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36")
-                    webClient.DownloadFile(downloadUrl, dllPath)
-                End Using
-                midiOut = New MidiOut(0)
-            Catch downloadEx As Exception
-                log.ScriviLog($"WGMidi download: {downloadEx.ToString()}")
-                Throw
-            End Try
+            ' Le librerie di NAudio fanno parte del rilascio firmato: se mancano le rimette l'aggiornatore. Non si scaricano più a parte
+            ' dal vecchio sistema (era la versione 1, che sovrascriveva quella giusta).
+            log.ScriviLog($"WGMidi: libreria mancante: {ex.ToString()}")
+            Throw
         Catch ex As COMException
             log.ScriviLog($"WGMidi COMException: {ex.ToString()}")
             Throw
