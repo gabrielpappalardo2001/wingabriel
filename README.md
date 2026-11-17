@@ -7,7 +7,7 @@ Programma per Windows pensato per chi usa un lettore di schermo. Sito: [wingabri
 - `WinGabriel` – il programma principale
 - `wgcontrols` – le librerie del programma (una per funzione)
 - `WGUpdater` – l'aggiornatore
-- `WGLettore` – il lettore di schermo di WinGabriel
+- il lettore di schermo WGLettore ha il suo repository: [wglettore](https://github.com/gabrielpappalardo2001/wglettore)
 - `scripts/server` – i server di chat, giochi e del motore d'attesa, e gli script dei rilasci (`wgrilascia`, `wgpacchetti`)
 
 ## Rilasci

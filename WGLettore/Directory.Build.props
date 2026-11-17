@@ -1,5 +1,0 @@
-﻿<Project>
-  <PropertyGroup>
-    <PostBuildEvent>if exist "$(SolutionDir)salva.cmd" call "$(SolutionDir)salva.cmd"</PostBuildEvent>
-  </PropertyGroup>
-</Project>
