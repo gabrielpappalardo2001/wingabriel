@@ -70,6 +70,33 @@ Public Module AvvioAmministratore
         Return locale
     End Function
 
+    ''' <summary>
+    ''' Un argomento tra virgolette secondo le regole di Windows: le barre rovesciate prima di una virgoletta (o della virgoletta di chiusura)
+    ''' si raddoppiano e le virgolette interne si fanno precedere da una barra. Così "C:\cartella\" non si mangia l'argomento dopo.
+    ''' </summary>
+    Private Function ArgomentoTraVirgolette(valore As String) As String
+        Try
+            Dim testo As String = If(valore, "")
+            Dim sb As New System.Text.StringBuilder("""")
+            Dim barre As Integer = 0
+            For Each c As Char In testo
+                If c = "\"c Then
+                    barre += 1
+                ElseIf c = """"c Then
+                    sb.Append("\"c, barre * 2 + 1).Append(""""c)
+                    barre = 0
+                Else
+                    sb.Append("\"c, barre).Append(c)
+                    barre = 0
+                End If
+            Next
+            sb.Append("\"c, barre * 2).Append(""""c)
+            Return sb.ToString()
+        Catch
+            Return """"""
+        End Try
+    End Function
+
     Public Function Elevato() As Boolean
         Try
             Using identita As WindowsIdentity = WindowsIdentity.GetCurrent()
@@ -114,7 +141,7 @@ Public Module AvvioAmministratore
             If IntegrazioneWindows.AttivitaPuntaQui() AndAlso IntegrazioneWindows.AvviaTramiteAttivita() Then Return True
             Dim riga As New System.Text.StringBuilder("/nonelevare")
             For i As Integer = 1 To argomenti.Length - 1
-                riga.Append(" """).Append(argomenti(i).Replace("""", "\""")).Append(""""c)
+                riga.Append(" "c).Append(ArgomentoTraVirgolette(argomenti(i)))
             Next
             Dim info As New ProcessStartInfo(Application.ExecutablePath, riga.ToString())
             info.UseShellExecute = True

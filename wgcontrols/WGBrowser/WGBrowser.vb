@@ -247,6 +247,23 @@ Public Class WGBrowser
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' Il documento del lettore (per esempio una mail in HTML, scritta da chiunque) con le regole di sicurezza in testa, prima di qualunque
+    ''' suo contenuto: niente script (nemmeno i link javascript: e i gestori come onerror), niente cornici, oggetti o moduli che inviano dati.
+    ''' Le immagini e gli stili restano. Pulire l'HTML a mano non basta: le regole le fa rispettare il motore del browser.
+    ''' </summary>
+    Private Shared Function ConRegoleDiSicurezza(html As String) As String
+        Try
+            Dim corpo As String = System.Text.RegularExpressions.Regex.Replace(If(html, ""), "^\s*<!doctype[^>]*>", "", System.Text.RegularExpressions.RegexOptions.IgnoreCase)
+            Const regole As String = "<meta http-equiv=""Content-Security-Policy"" content=""default-src 'none'; script-src 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; form-action 'none'; base-uri 'none'; connect-src 'none'; img-src data: https: http:; media-src data: https: http:; style-src 'unsafe-inline' https: http:; font-src data: https: http:"">"
+            Return "<!DOCTYPE html>" & regole & corpo
+        Catch ex As Exception
+            Dim registro As New Logger()
+            registro.ScriviLog("WGBrowser.ConRegoleDiSicurezza: " & ex.Message)
+            Return "<!DOCTYPE html><meta http-equiv=""Content-Security-Policy"" content=""default-src 'none'"">"
+        End Try
+    End Function
+
     Private Function AvviaLettore(richiesta As WGRichiestaLettoreHtml) As Boolean
         Try
             _modoLettore = True
@@ -257,7 +274,7 @@ Public Class WGBrowser
             Directory.CreateDirectory(cartella)
             PulisciFileLettore(cartella)
             _fileLettore = Path.Combine(cartella, Guid.NewGuid().ToString("N") & ".html")
-            File.WriteAllText(_fileLettore, richiesta.Html, New System.Text.UTF8Encoding(True))
+            File.WriteAllText(_fileLettore, ConRegoleDiSicurezza(richiesta.Html), New System.Text.UTF8Encoding(True))
             Dim contenitore As WGContenitore = WGContenitore.Istanza
             If contenitore Is Nothing Then Return False
             Dim forzaHandle As IntPtr = Me.Handle

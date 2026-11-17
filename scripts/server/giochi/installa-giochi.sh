@@ -93,6 +93,37 @@ if [ "$BETA" = 1 ]; then
   exit 0
 fi
 
+echo "== Intestazioni di sicurezza della pagina dei giochi (anche della copia beta)"
+# Regole del contenuto (CSP): script, stili, immagini, suoni e richieste solo da questo sito; niente oggetti; la pagina si può
+# inserire in una cornice solo dalle pagine di wingabriel.it. Se Apache non accetta la configurazione, si toglie e si va avanti.
+SICUREZZA_GIOCHI=/etc/apache2/conf-available/wingabriel-giochi-sicurezza.conf
+NUOVA_SICUREZZA="$(mktemp)"
+cat > "$NUOVA_SICUREZZA" <<'CONFEOF'
+# generato da installa-giochi.sh: non modificare a mano
+<LocationMatch "^/(beta/)?giochi/">
+    Header always set Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' data: blob:; connect-src 'self'; font-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors https://wingabriel.it https://www.wingabriel.it"
+    Header always set Referrer-Policy "no-referrer"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+</LocationMatch>
+CONFEOF
+if ! cmp -s "$NUOVA_SICUREZZA" "$SICUREZZA_GIOCHI"; then
+  install -m 644 -o root -g root "$NUOVA_SICUREZZA" "$SICUREZZA_GIOCHI"
+  a2enmod -q headers >/dev/null 2>&1 || true
+  a2enconf -q wingabriel-giochi-sicurezza >/dev/null 2>&1 || true
+  if apache2ctl configtest >/dev/null 2>&1; then
+    systemctl reload apache2
+    echo "intestazioni di sicurezza attive"
+  else
+    echo "ATTENZIONE: Apache non accetta le intestazioni di sicurezza: le tolgo"
+    a2disconf -q wingabriel-giochi-sicurezza >/dev/null 2>&1 || true
+    rm -f "$SICUREZZA_GIOCHI"
+  fi
+else
+  echo "intestazioni di sicurezza già a posto"
+fi
+rm -f "$NUOVA_SICUREZZA"
+
 echo "== nginx e Apache (niente registro né copia veloce per giochi.php)"
 python3 - "$NGINX" "$APACHE_SITO" <<'PYEOF'
 import re, subprocess, sys

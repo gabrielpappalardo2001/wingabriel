@@ -451,6 +451,8 @@ Friend NotInheritable Class WGGestorePlugin
         Try
             Dim nome As String = New AssemblyName(args.Name).Name
             If String.IsNullOrWhiteSpace(nome) OrElse nome.EndsWith(".resources", StringComparison.OrdinalIgnoreCase) Then Return Nothing
+            ' solo un nome semplice: niente barre né ".." che portino fuori da plugin\librerie
+            If nome.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 OrElse nome.Contains("..") Then Return Nothing
             Dim richiedente As InfoPlugin = Nothing
             If args.RequestingAssembly Is Nothing Then Return Nothing
             SyncLock _blocco
