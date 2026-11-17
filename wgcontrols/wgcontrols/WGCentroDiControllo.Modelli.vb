@@ -95,7 +95,7 @@ Partial Public Class WGCentroDiControllo
 
     Private Sub EseguiScaricamentoModelli(parametro As Object)
         Dim lavoro As LavoroModelli = TryCast(parametro, LavoroModelli)
-        Dim cartellaTemporanea As String = Path.Combine(Path.GetTempPath(), "wgmodelli_" & Guid.NewGuid().ToString("N"))
+        Dim cartellaTemporanea As String = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), "wgmodelli_" & Guid.NewGuid().ToString("N"))
         Dim esito As String = ""
         Try
             If lavoro Is Nothing Then Return

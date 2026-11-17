@@ -104,25 +104,7 @@ Public Module AvvioAmministratore
     ''' e partirebbe come amministratore senza nessuna conferma.
     ''' </summary>
     Public Function EseguibileAffidabile(percorso As String) As Boolean
-        Try
-            If String.IsNullOrWhiteSpace(percorso) Then Return False
-            If Not Elevato() Then Return True
-            Dim completo As String = Path.GetFullPath(percorso)
-            Dim radici As New List(Of String) From {
-                Environment.GetEnvironmentVariable("ProgramW6432"),
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
-                Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
-                Environment.GetFolderPath(Environment.SpecialFolder.Windows),
-                AppDomain.CurrentDomain.BaseDirectory}
-            For Each radice As String In radici
-                If String.IsNullOrWhiteSpace(radice) Then Continue For
-                Dim r As String = Path.GetFullPath(radice).TrimEnd("\"c) & "\"
-                If completo.StartsWith(r, StringComparison.OrdinalIgnoreCase) Then Return True
-            Next
-            Return False
-        Catch
-            Return False
-        End Try
+        Return WGDb.WGPercorsiApplicazione.AvvioSicuro(percorso)
     End Function
 
     Public Function Elevato() As Boolean
@@ -158,7 +140,11 @@ Public Module AvvioAmministratore
     ''' </summary>
     Public Function RilanciaSeServe() As Boolean
         Try
-            If Elevato() OrElse Not Richiesto() Then Return False
+            If Elevato() Then
+                IntegrazioneWindows.TogliAttivitaSeInsicura()
+                Return False
+            End If
+            If Not Richiesto() Then Return False
             Dim argomenti As String() = Environment.GetCommandLineArgs()
             ' Con /nonelevare (che il nuovo processo riceve) non si chiede più niente: evita ogni giro a vuoto.
             For i As Integer = 1 To argomenti.Length - 1
@@ -166,7 +152,7 @@ Public Module AvvioAmministratore
             Next
             ' Se WinGabriel è installato (attività pianificata che punta a questa copia) si avvia da lì: privilegi di amministratore senza
             ' alcuna richiesta di conferma, da qualunque via sia partito (icona, avvio automatico, riavvio da parte di WGService).
-            If IntegrazioneWindows.AttivitaPuntaQui() AndAlso IntegrazioneWindows.AvviaTramiteAttivita() Then Return True
+            If WGDb.WGPercorsiApplicazione.InCartellaProtetta(Application.ExecutablePath) AndAlso IntegrazioneWindows.AttivitaPuntaQui() AndAlso IntegrazioneWindows.AvviaTramiteAttivita() Then Return True
             Dim riga As New System.Text.StringBuilder("/nonelevare")
             For i As Integer = 1 To argomenti.Length - 1
                 riga.Append(" "c).Append(ArgomentoTraVirgolette(argomenti(i)))

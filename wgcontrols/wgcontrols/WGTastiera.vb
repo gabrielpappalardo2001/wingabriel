@@ -2529,7 +2529,8 @@ Public NotInheritable Class WGTastiera
                 System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Programs", "KSR ScreenReader", "KSR.exe")
             }
             For Each candidato As String In candidati
-                If System.IO.File.Exists(candidato) Then Return candidato
+                ' da amministratore la copia nei dati dell'utente non si avvia (partirebbe come amministratore)
+                If System.IO.File.Exists(candidato) AndAlso WGDb.WGPercorsiApplicazione.AvvioSicuro(candidato) Then Return candidato
             Next
             Return ""
         Catch ex As Exception

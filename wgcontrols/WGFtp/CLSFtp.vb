@@ -34,6 +34,11 @@ Public Class InfoServerFtp
     Public Property LimiteVelocitaKBs As Integer = 0
     Public Property SalvaPassword As Boolean = True
     Public Property UltimaCartella As String = ""
+    ''' <summary>
+    ''' Solo durante la prova della connessione, quando si aggiunge o si modifica il server: accetta una chiave SFTP o un certificato FTPS
+    ''' diversi da quelli già visti, così l'impronta nuova si legge e si mostra l'avviso. Non si salva.
+    ''' </summary>
+    Public Property AccettaChiaveCambiata As Boolean = False
 End Class
 
 Public Class InfoImpostazioniFtp
@@ -1582,6 +1587,37 @@ Public Class CLSFtp
         Catch ex As Exception
             ScriviLog("CLSFtp.VerificaImprontaHostSftp - Errore", ex)
             messaggioAvviso = $"Non è stato possibile verificare l'identità del server SFTP ""{server.Host}:{server.Porta}"". Procedi solo se ti fidi di questa connessione."
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Vero se il certificato FTPS si può accettare: valido secondo Windows, oppure uguale a quello salvato alla prima connessione
+    ''' (impronta SHA-256, salvata con la porta come una chiave SFTP, con il prefisso "ftps:").
+    ''' </summary>
+    Private Function CertificatoFtpsAccettabile(server As InfoServerFtp, e As FtpSslValidationEventArgs) As Boolean
+        Try
+            If e.PolicyErrors = System.Net.Security.SslPolicyErrors.None Then Return True
+            If e.Certificate Is Nothing Then Return False
+            Dim attuale As String
+            Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                attuale = "ftps:" & Convert.ToBase64String(sha.ComputeHash(e.Certificate.GetRawCertData()))
+            End Using
+            Dim salvata As String = OttieniImprontaSalvataSftp(server.Host, server.Porta)
+            If String.IsNullOrEmpty(salvata) Then
+                SalvaImprontaSftp(server.Host, server.Porta, attuale)
+                ScriviLog("CLSFtp.CertificatoFtpsAccettabile - primo certificato non verificato da Windows accettato e salvato per " & server.Host & ":" & server.Porta & " (" & e.PolicyErrors.ToString() & ")", Nothing)
+                Return True
+            End If
+            If String.Equals(salvata, attuale, StringComparison.Ordinal) Then Return True
+            If server.AccettaChiaveCambiata Then
+                SalvaImprontaSftp(server.Host, server.Porta, attuale)
+                Return True
+            End If
+            ScriviLog("CLSFtp.CertificatoFtpsAccettabile - certificato diverso da quello salvato per " & server.Host & ":" & server.Porta, Nothing)
+            Return False
+        Catch ex As Exception
+            ScriviLog("CLSFtp.CertificatoFtpsAccettabile - Errore", ex)
             Return False
         End Try
     End Function
@@ -3423,6 +3459,7 @@ Public Class CLSFtp
     End Function
 
     Private Function CreaClientSftp(server As InfoServerFtp, sessione As SessioneFtp, ByRef messaggioErrore As String, ByRef autenticazioneFallita As Boolean) As SftpClient
+        Dim chiaveRifiutata As Boolean = False
         messaggioErrore = ""
         autenticazioneFallita = False
         Try
@@ -3442,15 +3479,27 @@ Public Class CLSFtp
                 ScriviLog("CLSFtp.CreaClientSftp - lettura impostazioni", exImpostazioni)
             End Try
 
+            ' La chiave del server si controlla qui, prima che parta la password: se è diversa da quella salvata la connessione si ferma
+            ' (qualcuno in mezzo alla rete potrebbe fingersi il server e prendersi la password). La prima volta la si salva.
             AddHandler client.HostKeyReceived, Sub(sender As Object, e As HostKeyEventArgs)
                                                    Try
-                                                       If sessione IsNot Nothing Then
-                                                           sessione.ImprontaSftp = Convert.ToBase64String(e.FingerPrint)
+                                                       Dim attuale As String = Convert.ToBase64String(e.FingerPrint)
+                                                       If sessione IsNot Nothing Then sessione.ImprontaSftp = attuale
+                                                       Dim salvata As String = OttieniImprontaSalvataSftp(server.Host, server.Porta)
+                                                       If String.IsNullOrEmpty(salvata) Then
+                                                           If Not server.AccettaChiaveCambiata Then SalvaImprontaSftp(server.Host, server.Porta, attuale)
+                                                           e.CanTrust = True
+                                                       ElseIf String.Equals(salvata, attuale, StringComparison.Ordinal) OrElse server.AccettaChiaveCambiata Then
+                                                           e.CanTrust = True
+                                                       Else
+                                                           chiaveRifiutata = True
+                                                           e.CanTrust = False
                                                        End If
                                                    Catch exImpronta As Exception
-                                                       CLSFtp.ScriviLog("CLSFtp.CreaClientSftp - Errore calcolo impronta", exImpronta)
+                                                       CLSFtp.ScriviLog("CLSFtp.CreaClientSftp - Errore controllo chiave", exImpronta)
+                                                       chiaveRifiutata = True
+                                                       e.CanTrust = False
                                                    End Try
-                                                   e.CanTrust = True
                                                End Sub
 
             Try
@@ -3485,6 +3534,10 @@ Public Class CLSFtp
             Return Nothing
         Catch ex As Exception
             ScriviLog("CLSFtp.CreaClientSftp - Errore", ex)
+            If chiaveRifiutata Then
+                messaggioErrore = "La chiave del server SFTP " & server.Host & ":" & server.Porta & " è cambiata dall'ultima connessione, quindi la connessione è stata fermata prima di mandare la password. Se il server è stato davvero cambiato, modifica il server e prova la connessione per accettare la chiave nuova."
+                Return Nothing
+            End If
             messaggioErrore = If(String.IsNullOrWhiteSpace(ex.Message), "Connessione SFTP non riuscita.", ex.Message)
             autenticazioneFallita = MessaggioIndicaAutenticazione(messaggioErrore)
             Return Nothing
@@ -3517,7 +3570,13 @@ Public Class CLSFtp
                     Else
                         client.Config.EncryptionMode = FtpEncryptionMode.Explicit
                     End If
-                    client.Config.ValidateAnyCertificate = True
+                    ' Il certificato si controlla: valido per Windows, oppure (server con certificato fatto in casa) lo stesso della
+                    ' prima connessione. Prima si accettava qualunque certificato, e chi stava in mezzo alla rete leggeva la password.
+                    client.Config.ValidateAnyCertificate = False
+                    Dim serverCertificato As InfoServerFtp = server
+                    AddHandler client.ValidateCertificate, Sub(controllo, e)
+                                                               e.Accept = CertificatoFtpsAccettabile(serverCertificato, e)
+                                                           End Sub
                 End If
                 If server.LimiteVelocitaKBs > 0 Then
                     client.Config.DownloadRateLimit = server.LimiteVelocitaKBs

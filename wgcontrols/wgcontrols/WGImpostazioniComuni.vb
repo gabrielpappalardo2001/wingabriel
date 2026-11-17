@@ -345,13 +345,13 @@ Public Class WGImpostazioniComuni
             End If
 
             If scelta = "Predefinito" Then
-                Process.Start(New ProcessStartInfo(indirizzo) With {.UseShellExecute = True})
+                WGDb.AvvioDaUtente.Apri(indirizzo)
             Else
                 Dim percorsoBrowserScelto As String = PercorsoBrowser(scelta)
                 If String.IsNullOrEmpty(percorsoBrowserScelto) Then
-                    Process.Start(New ProcessStartInfo(indirizzo) With {.UseShellExecute = True})
+                    WGDb.AvvioDaUtente.Apri(indirizzo)
                 Else
-                    Process.Start(New ProcessStartInfo(percorsoBrowserScelto, """" & indirizzo & """") With {.UseShellExecute = True})
+                    WGDb.AvvioDaUtente.Apri(percorsoBrowserScelto, """" & indirizzo & """")
                 End If
             End If
         Catch ex As Exception

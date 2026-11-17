@@ -5697,7 +5697,8 @@ Partial Public Class CLSMail
 
     ''' <summary>
     ''' Sorgenti autoconfig di Thunderbird per un dominio, in ordine di priorita':
-    ''' autoconfig.&lt;dominio&gt; https, /.well-known https, le stesse in http, poi l'ISPDB Mozilla.
+    ''' autoconfig.&lt;dominio&gt; https, /.well-known https, l'ISPDB Mozilla e solo per ultime le stesse in http: in chiaro
+    ''' chiunque sulla rete potrebbe cambiare i server suggeriti, e l'indirizzo e-mail non si manda.
     ''' L'indirizzo viene passato in query (emailaddress=) come fa Thunderbird: alcuni hoster
     ''' rispondono in modo diverso per le caselle ospitate. Un XML che non e' un clientConfig
     ''' viene ignorato e si prova l'URL successivo.
@@ -5714,9 +5715,9 @@ Partial Public Class CLSMail
             Dim url() As String = {
                 "https://autoconfig." & dominio & "/mail/config-v1.1.xml" & query,
                 "https://" & dominio & "/.well-known/autoconfig/mail/config-v1.1.xml" & query,
-                "http://autoconfig." & dominio & "/mail/config-v1.1.xml" & query,
-                "http://" & dominio & "/.well-known/autoconfig/mail/config-v1.1.xml" & query,
-                "https://autoconfig.thunderbird.net/v1.1/" & dominio
+                "https://autoconfig.thunderbird.net/v1.1/" & dominio,
+                "http://autoconfig." & dominio & "/mail/config-v1.1.xml",
+                "http://" & dominio & "/.well-known/autoconfig/mail/config-v1.1.xml"
             }
 
             For Each candidato As String In url

@@ -190,7 +190,18 @@ Public Class WGStampante
     ' Sorgente dei binari PDFium per Windows: https://github.com/bblanchon/pdfium-binaries
     ' "latest" scarica sempre l'ultima versione. Per bloccare una versione precisa usare
     ' https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2FNNNN/  (NNNN = numero build)
-    Private Const URL_BASE_PDFIUM As String = "https://github.com/bblanchon/pdfium-binaries/releases/latest/download/"
+    ' Una versione fissata, con le impronte dei pacchetti: "latest" cambierebbe senza che nessuno controlli cosa si carica nel programma.
+    Private Const URL_BASE_PDFIUM As String = "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium%2F8165/"
+
+    ''' <summary>L'impronta SHA-256 del pacchetto pdfium-win-architettura.tgz della versione fissata; "" se l'architettura non è prevista.</summary>
+    Private Shared Function ImprontaPdfium(architettura As String) As String
+        Select Case architettura
+            Case "x64" : Return "ca7338ae7779b8b1b82f4580305c4d762d214f8df1d54b47647fe3cc75989ded"
+            Case "x86" : Return "fc697d735516b2dd408072ecdd808a67e12c6402f3e762299015da1d81142986"
+            Case "arm64" : Return "d65e405c59cffe6fe36c0935b90d40ddf3ce75ef284f3168a28dcf00d0388131"
+            Case Else : Return ""
+        End Select
+    End Function
     Private Const TIMEOUT_DOWNLOAD_PDFIUM_MS As Integer = 60000
     Private Const PAUSA_DOPO_ERRORE_DOWNLOAD_PDFIUM_MS As Integer = 60000
     Private Const DIMENSIONE_MINIMA_PDFIUM As Long = 1024L * 1024L
@@ -1923,8 +1934,9 @@ Public Class WGStampante
             ScriviLog("CartellePdfium base: " & ex.Message)
         End Try
         Try
+            ' Da amministratore la copia nei dati dell'utente non si usa: chiunque giri come utente potrebbe sostituirla.
             Dim datiLocali As String = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
-            If Not String.IsNullOrWhiteSpace(datiLocali) Then elenco.Add(Path.Combine(datiLocali, "WinGabriel", "pdfium", architettura))
+            If Not String.IsNullOrWhiteSpace(datiLocali) AndAlso Not WGDb.WGPercorsiApplicazione.Elevato() Then elenco.Add(Path.Combine(datiLocali, "WinGabriel", "pdfium", architettura))
         Catch ex As Exception
             ScriviLog("CartellePdfium dati locali: " & ex.Message)
         End Try
@@ -1955,7 +1967,7 @@ Public Class WGStampante
         errore = ""
         Dim temporaneo As String = ""
         Try
-            temporaneo = Path.Combine(Path.GetTempPath(), "pdfium_" & Guid.NewGuid().ToString("N") & ".dll")
+            temporaneo = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), "pdfium_" & Guid.NewGuid().ToString("N") & ".dll")
             Dim url As String = URL_BASE_PDFIUM & "pdfium-win-" & architettura & ".tgz"
             ScriviLog("ScaricaPdfium: download di " & url)
 
@@ -1984,7 +1996,23 @@ Public Class WGStampante
             Dim estratta As Boolean = False
             Using risposta As WebResponse = richiesta.GetResponse()
                 Using flusso As Stream = risposta.GetResponseStream()
-                    estratta = EstraiPdfiumDaTgz(flusso, temporaneo)
+                    ' Prima tutto il pacchetto in memoria (pochi MB), poi l'impronta, poi l'estrazione: la libreria si carica nel programma
+                    ' e deve essere esattamente quella della versione fissata.
+                    Using memoria As New MemoryStream()
+                        flusso.CopyTo(memoria)
+                        Dim attesa As String = ImprontaPdfium(architettura)
+                        Dim trovata As String
+                        Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                            trovata = BitConverter.ToString(sha.ComputeHash(memoria.ToArray())).Replace("-", "").ToLowerInvariant()
+                        End Using
+                        If attesa = "" OrElse Not String.Equals(attesa, trovata, StringComparison.OrdinalIgnoreCase) Then
+                            ScriviLog("ScaricaPdfium: impronta diversa da quella attesa per " & architettura)
+                            errore = "Il componente " & NOME_DLL_PDFIUM & " scaricato non è quello previsto."
+                            Return ""
+                        End If
+                        memoria.Position = 0
+                        estratta = EstraiPdfiumDaTgz(memoria, temporaneo)
+                    End Using
                 End Using
             End Using
 

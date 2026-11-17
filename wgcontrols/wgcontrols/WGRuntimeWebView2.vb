@@ -466,7 +466,7 @@ Public NotInheritable Class WGRuntimeWebView2
                 Return esito
             End If
 
-            percorsoCab = Path.Combine(Path.GetTempPath(), "wgwebview2_" & Guid.NewGuid().ToString("N") & ".cab")
+            percorsoCab = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), "wgwebview2_" & Guid.NewGuid().ToString("N") & ".cab")
             If Not Await ScaricaCabAsync(cab, percorsoCab, progresso, token).ConfigureAwait(False) Then
                 esito.Descrizione = If(token.IsCancellationRequested, "Scaricamento annullato.", "Scaricamento del runtime " & cab.Versione & " (" & architettura & ") non riuscito.")
                 Return esito

@@ -1,14 +1,13 @@
-Imports System.Diagnostics
+﻿Imports System.Diagnostics
 Imports System.IO
-Imports System.IO.Compression
 Imports System.Net.Http
 Imports System.Threading.Tasks
 Imports System.Windows.Forms
 Imports wgcontrols
 
 ''' <summary>
-''' L'installazione del lettore di schermo: si scarica wglettore.zip da www.wingabriel.net oppure si usa la copia
-''' accanto a WinGabriel. La procedura guidata chiede se usarlo in modo portatile o installarlo nel sistema.
+''' L'installazione del lettore di schermo: si scarica il rilascio firmato del lettore (ogni file con l'impronta del manifest
+''' firmato) oppure si usa la copia accanto a WinGabriel. La procedura guidata chiede se usarlo in modo portatile o installarlo nel sistema.
 ''' Nel sistema WGLettore.exe /installa:sistema chiede la conferma di amministratore, copia il lettore in
 ''' Programmi\WGLettore e registra il servizio per la schermata di accesso, di blocco e del controllo account
 ''' utente. Se NVDA è registrato sul controllo account utente, viene tolto da lì. In uso portatile i file restano
@@ -18,7 +17,6 @@ Imports wgcontrols
 ''' </summary>
 Friend NotInheritable Class InstallatoreLettore
 
-    Friend Const IndirizzoArchivio As String = "https://www.wingabriel.net/download/wglettore.zip"
     Private Const DimensioneMassima As Long = 200L * 1024L * 1024L
 
     Private Sub New()
@@ -139,12 +137,9 @@ Friend NotInheritable Class InstallatoreLettore
         Dim cartella As String = Path.Combine(base, "installazione-lettore", Guid.NewGuid().ToString("N"))
         Try
             Directory.CreateDirectory(cartella)
-            Dim archivio As String = Path.Combine(cartella, "wglettore.zip")
-            If Not Scarica(archivio) Then Return -2
-
             Dim destinazione As String = Path.Combine(cartella, "contenuto")
             Directory.CreateDirectory(destinazione)
-            If Not Scompatta(archivio, destinazione) Then Return -3
+            If Not ScaricaDalRilascio(destinazione) Then Return -2
 
             Dim eseguibile As String = Nothing
             For Each percorso As String In Directory.GetFiles(destinazione, "WGLettore.exe", SearchOption.AllDirectories)
@@ -200,51 +195,57 @@ Friend NotInheritable Class InstallatoreLettore
         Next
     End Sub
 
-    Private Shared Function Scarica(percorsoFile As String) As Boolean
+    ''' <summary>
+    ''' Scarica il lettore dal rilascio firmato (lo stesso che usa il suo aggiornatore): il puntatore e il manifest sono firmati e ogni
+    ''' file deve avere l'impronta SHA-256 scritta nel manifest. Uno zip preso così com'è dal sito, se il sito venisse manomesso, farebbe
+    ''' partire come amministratore un programma qualsiasi. Falso se il manifest non si legge o se un file non torna.
+    ''' </summary>
+    Private Shared Function ScaricaDalRilascio(destinazione As String) As Boolean
+        Dim log As New Logger()
         Try
+            Dim errore As String = ""
+            Dim canale As String = RilascioFirmato.NormalizzaCanale(New WGConfig().LeggiValore("canale_aggiornamenti"))
+            Dim manifest As RilascioFirmato.Manifest = RilascioFirmato.Leggi("wglettore", canale, errore)
+            If manifest Is Nothing OrElse manifest.Voci.Count = 0 Then
+                log.ScriviLog("InstallatoreLettore.ScaricaDalRilascio: manifest non disponibile (" & errore & ")")
+                Return False
+            End If
+            Dim radice As String = Path.GetFullPath(destinazione).TrimEnd(Path.DirectorySeparatorChar) & Path.DirectorySeparatorChar
+            Dim totale As Long = 0
             Using client As New HttpClient()
                 client.Timeout = TimeSpan.FromMinutes(5)
                 client.DefaultRequestHeaders.UserAgent.ParseAdd("WinGabriel-InstallatoreLettore/1.0")
-                Using risposta As HttpResponseMessage = client.GetAsync(IndirizzoArchivio, HttpCompletionOption.ResponseHeadersRead).GetAwaiter().GetResult()
-                    If Not risposta.IsSuccessStatusCode Then Return False
-                    Dim lunghezza As Long? = risposta.Content.Headers.ContentLength
-                    If lunghezza.HasValue AndAlso lunghezza.Value > DimensioneMassima Then Return False
-                    Using sorgente As Stream = risposta.Content.ReadAsStreamAsync().GetAwaiter().GetResult()
-                        Using destinazione As FileStream = File.Create(percorsoFile)
-                            Dim blocco(81919) As Byte
-                            Dim totale As Long = 0
-                            Dim letti As Integer = sorgente.Read(blocco, 0, blocco.Length)
-                            While letti > 0
-                                totale += letti
-                                If totale > DimensioneMassima Then Return False
-                                destinazione.Write(blocco, 0, letti)
-                                letti = sorgente.Read(blocco, 0, blocco.Length)
-                            End While
-                        End Using
+                For Each voce As RilascioFirmato.VoceManifest In manifest.Voci
+                    If voce.Libmpv OrElse String.IsNullOrWhiteSpace(voce.Percorso) OrElse RilascioFirmato.FileDaNonScaricare(voce.Percorso) Then Continue For
+                    If String.IsNullOrWhiteSpace(voce.Impronta) Then Return False
+                    Dim relativo As String = voce.Percorso.Replace("/"c, Path.DirectorySeparatorChar).TrimStart(Path.DirectorySeparatorChar)
+                    Dim arrivo As String = Path.GetFullPath(Path.Combine(destinazione, relativo))
+                    If Not arrivo.StartsWith(radice, StringComparison.OrdinalIgnoreCase) Then Return False
+                    Directory.CreateDirectory(Path.GetDirectoryName(arrivo))
+                    Dim dati As Byte()
+                    Using risposta As HttpResponseMessage = client.GetAsync(RilascioFirmato.UrlFile(manifest.UrlBaseFile, voce.Percorso)).GetAwaiter().GetResult()
+                        If Not risposta.IsSuccessStatusCode Then
+                            log.ScriviLog("InstallatoreLettore.ScaricaDalRilascio: " & voce.Percorso & " risposta " & CInt(risposta.StatusCode).ToString())
+                            Return False
+                        End If
+                        dati = risposta.Content.ReadAsByteArrayAsync().GetAwaiter().GetResult()
                     End Using
-                End Using
-            End Using
-            Return True
-        Catch
-            Return False
-        End Try
-    End Function
-
-    ' Scompatta con la protezione dai percorsi che escono dalla cartella di destinazione.
-    Private Shared Function Scompatta(archivio As String, destinazione As String) As Boolean
-        Try
-            Dim radice As String = Path.GetFullPath(destinazione).TrimEnd(Path.DirectorySeparatorChar) & Path.DirectorySeparatorChar
-            Using zip As ZipArchive = ZipFile.OpenRead(archivio)
-                For Each voce As ZipArchiveEntry In zip.Entries
-                    If voce.FullName.EndsWith("/", StringComparison.Ordinal) OrElse voce.Name = "" Then Continue For
-                    Dim percorso As String = Path.GetFullPath(Path.Combine(destinazione, voce.FullName.Replace("/"c, Path.DirectorySeparatorChar)))
-                    If Not percorso.StartsWith(radice, StringComparison.OrdinalIgnoreCase) Then Return False
-                    Directory.CreateDirectory(Path.GetDirectoryName(percorso))
-                    voce.ExtractToFile(percorso, True)
+                    totale += dati.Length
+                    If totale > DimensioneMassima Then Return False
+                    Dim impronta As String
+                    Using sha As System.Security.Cryptography.SHA256 = System.Security.Cryptography.SHA256.Create()
+                        impronta = BitConverter.ToString(sha.ComputeHash(dati)).Replace("-", "").ToLowerInvariant()
+                    End Using
+                    If Not String.Equals(impronta, voce.Impronta, StringComparison.OrdinalIgnoreCase) Then
+                        log.ScriviLog("InstallatoreLettore.ScaricaDalRilascio: l'impronta di " & voce.Percorso & " non corrisponde al manifest firmato")
+                        Return False
+                    End If
+                    File.WriteAllBytes(arrivo, dati)
                 Next
             End Using
             Return True
-        Catch
+        Catch ex As Exception
+            log.ScriviLog("InstallatoreLettore.ScaricaDalRilascio: " & ex.Message)
             Return False
         End Try
     End Function

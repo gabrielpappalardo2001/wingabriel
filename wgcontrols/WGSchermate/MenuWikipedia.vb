@@ -317,7 +317,7 @@ Public Class MenuWikipedia
             If apri IsNot Nothing Then
                 apri(New Uri(percorso).AbsoluteUri)
             Else
-                Process.Start(New ProcessStartInfo(percorso) With {.UseShellExecute = True})
+                WGDb.AvvioDaUtente.Apri(percorso)
             End If
             Return True
         Catch ex As Exception
@@ -497,7 +497,7 @@ Public Class MenuWikipedia
             If apri IsNot Nothing Then
                 apri(indirizzo)
             Else
-                Process.Start(New ProcessStartInfo(indirizzo) With {.UseShellExecute = True})
+                WGDb.AvvioDaUtente.Apri(indirizzo)
             End If
         Catch ex As Exception
             _log.ScriviLog("MenuWikipedia.ApriPaginaNelBrowser: " & ex.ToString())

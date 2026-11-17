@@ -249,7 +249,7 @@ Public NotInheritable Class WGEspeak
     End Sub
 
     Public Shared Async Function InstallaAsync(progresso As IProgress(Of Integer), token As CancellationToken) As Task(Of String)
-        Dim lavoro As String = Path.Combine(Path.GetTempPath(), "WinGabriel-espeak-" & Guid.NewGuid().ToString("N"))
+        Dim lavoro As String = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), "WinGabriel-espeak-" & Guid.NewGuid().ToString("N"))
         Try
             ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol Or SecurityProtocolType.Tls12
             Directory.CreateDirectory(lavoro)

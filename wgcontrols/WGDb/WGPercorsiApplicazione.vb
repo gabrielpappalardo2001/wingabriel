@@ -65,6 +65,76 @@ Public NotInheritable Class WGPercorsiApplicazione
         End Try
     End Sub
 
+    ''' <summary>Vero se il programma gira con i privilegi di amministratore.</summary>
+    Public Shared Function Elevato() As Boolean
+        Try
+            Using identita As System.Security.Principal.WindowsIdentity = System.Security.Principal.WindowsIdentity.GetCurrent()
+                Return New System.Security.Principal.WindowsPrincipal(identita).IsInRole(System.Security.Principal.WindowsBuiltInRole.Administrator)
+            End Using
+        Catch ex As Exception
+            Scrivi("Elevato: " & ex.Message)
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' Vero se il file (o la cartella) sta in Programmi o in Windows, dove un utente normale non può scrivere. Il programma che gira da
+    ''' amministratore deve avviare o caricare solo cose che stanno lì: in %LOCALAPPDATA%, %TEMP% o in una cartella scelta dall'utente
+    ''' chiunque giri come utente potrebbe cambiarle e farle partire come amministratore, senza nessuna conferma di Windows.
+    ''' </summary>
+    Public Shared Function InCartellaProtetta(percorso As String) As Boolean
+        Try
+            If String.IsNullOrWhiteSpace(percorso) Then Return False
+            Dim completo As String = Path.GetFullPath(percorso)
+            For Each radice As String In New String() {Environment.GetEnvironmentVariable("ProgramW6432"),
+                                                       Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles),
+                                                       Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+                                                       Environment.GetFolderPath(Environment.SpecialFolder.Windows)}
+                If String.IsNullOrWhiteSpace(radice) Then Continue For
+                Dim r As String = Path.GetFullPath(radice).TrimEnd("\"c) & "\"
+                If completo.StartsWith(r, StringComparison.OrdinalIgnoreCase) Then Return True
+            Next
+        Catch ex As Exception
+            Scrivi("InCartellaProtetta: " & ex.Message)
+        End Try
+        Return False
+    End Function
+
+    ''' <summary>
+    ''' Vero se il programma può avviare o caricare il file senza regalare i suoi privilegi: senza amministratore sempre; con, solo per i
+    ''' file in Programmi, in Windows o nella cartella del programma (se il programma è portatile la sua cartella è comunque dell'utente).
+    ''' </summary>
+    Public Shared Function AvvioSicuro(percorso As String) As Boolean
+        Try
+            If String.IsNullOrWhiteSpace(percorso) Then Return False
+            If Not Elevato() Then Return True
+            If InCartellaProtetta(percorso) Then Return True
+            Dim completo As String = Path.GetFullPath(percorso)
+            Return completo.StartsWith(CartellaProgramma() & "\", StringComparison.OrdinalIgnoreCase)
+        Catch ex As Exception
+            Scrivi("AvvioSicuro: " & ex.Message)
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
+    ''' La cartella per i file di lavoro che poi si eseguono o si installano (programmi scaricati, pacchetti da estrarre, script). Senza
+    ''' privilegi è %TEMP%. Con i privilegi e il programma in Programmi è Programmi\WinGabriel\temp: il %TEMP% dell'utente lo può scrivere
+    ''' chiunque giri come utente, che potrebbe cambiare un file tra il controllo dell'impronta e l'installazione.
+    ''' </summary>
+    Public Shared Function CartellaTemporanea() As String
+        Try
+            If Elevato() AndAlso InCartellaProtetta(CartellaProgramma()) Then
+                Dim c As String = Path.Combine(CartellaProgramma(), "temp")
+                If Not Directory.Exists(c) Then Directory.CreateDirectory(c)
+                Return c
+            End If
+        Catch ex As Exception
+            Scrivi("CartellaTemporanea: " & ex.Message)
+        End Try
+        Return Path.GetTempPath()
+    End Function
+
     ''' <summary>La cartella del programma, senza barra finale.</summary>
     Public Shared Function CartellaProgramma() As String
         Return AppDomain.CurrentDomain.BaseDirectory.TrimEnd("\"c, "/"c)

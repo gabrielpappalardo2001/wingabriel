@@ -689,7 +689,7 @@ Public Class WGMpv
             SegnalaStatoLibreria("download", "Sto scaricando il componente di riproduzione, attendi.")
 
             Try
-                fileTemporaneo = Path.Combine(Path.GetTempPath(), "libmpv-2-" & Guid.NewGuid().ToString("N") & ".tmp")
+                fileTemporaneo = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), "libmpv-2-" & Guid.NewGuid().ToString("N") & ".tmp")
             Catch exTemp As Exception
                 log.ScriviLog("ScaricaEInstallaLibreria percorso temporaneo: " & exTemp.Message)
                 Return False

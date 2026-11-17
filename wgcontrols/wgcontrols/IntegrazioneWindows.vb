@@ -242,6 +242,30 @@ Public NotInheritable Class IntegrazioneWindows
         End Try
     End Function
 
+    ''' <summary>
+    ''' Con i privilegi di amministratore: se l'attività esiste ma avvia un programma fuori da Programmi (lo facevano le versioni di prima
+    ''' con le copie portatili), la toglie. Quell'attività darebbe i privilegi senza conferma a chiunque sostituisca il programma.
+    ''' </summary>
+    Public Shared Sub TogliAttivitaSeInsicura()
+        Try
+            If Not AvvioAmministratore.Elevato() Then Return
+            Dim xml As String = ""
+            If EseguiConUscita("schtasks.exe", "/Query /TN " & NomeAttivita & " /XML", xml) <> 0 Then Return
+            Dim inizio As Integer = xml.IndexOf("<Command>", StringComparison.OrdinalIgnoreCase)
+            Dim fine As Integer = xml.IndexOf("</Command>", StringComparison.OrdinalIgnoreCase)
+            If inizio < 0 OrElse fine <= inizio Then Return
+            Dim comando As String = System.Net.WebUtility.HtmlDecode(xml.Substring(inizio + 9, fine - inizio - 9)).Trim().Trim(""""c)
+            If WGDb.WGPercorsiApplicazione.InCartellaProtetta(comando) Then Return
+            Dim uscita As String = ""
+            EseguiConUscita("schtasks.exe", "/Delete /TN " & NomeAttivita & " /F", uscita)
+            Dim log As New Logger()
+            log.ScriviLog("IntegrazioneWindows: tolta l'attività che avviava come amministratore un programma fuori da Programmi: " & comando)
+        Catch ex As Exception
+            Dim log As New Logger()
+            log.ScriviLog("IntegrazioneWindows.TogliAttivitaSeInsicura: " & ex.Message)
+        End Try
+    End Sub
+
     ''' <summary>Fa partire WinGabriel tramite l'attività (elevato, senza conferma). Vero se Windows l'ha avviata.</summary>
     Public Shared Function AvviaTramiteAttivita() As Boolean
         Dim uscita As String = ""
@@ -268,7 +292,10 @@ Public NotInheritable Class IntegrazioneWindows
         xml.AppendLine("  <Settings><MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy><DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries><StopIfGoingOnBatteries>false</StopIfGoingOnBatteries><ExecutionTimeLimit>PT0S</ExecutionTimeLimit><Enabled>true</Enabled><AllowStartOnDemand>true</AllowStartOnDemand></Settings>")
         xml.AppendLine("  <Actions Context=""Author""><Exec><Command>" & Escape(eseguibile) & "</Command><Arguments>/nonelevare</Arguments><WorkingDirectory>" & Escape(Path.GetDirectoryName(eseguibile)) & "</WorkingDirectory></Exec></Actions>")
         xml.AppendLine("</Task>")
-        Dim percorsoXml As String = Path.Combine(Path.GetTempPath(), "wingabriel-attivita-" & Guid.NewGuid().ToString("N") & ".xml")
+        If Not WGDb.WGPercorsiApplicazione.InCartellaProtetta(eseguibile) Then Return False
+        ' Il file per schtasks sta accanto al programma, in Programmi: nel %TEMP% dell'utente qualcuno potrebbe cambiarlo prima che
+        ' schtasks lo legga, e l'attività avvierebbe come amministratore un altro programma.
+        Dim percorsoXml As String = Path.Combine(Path.GetDirectoryName(eseguibile), "wingabriel-attivita-" & Guid.NewGuid().ToString("N") & ".xml")
         File.WriteAllText(percorsoXml, xml.ToString(), Encoding.Unicode)
         Try
             Dim uscita As String = ""
@@ -393,6 +420,10 @@ Public NotInheritable Class IntegrazioneWindows
     Public Shared Function Installa(copiaInProgrammi As Boolean) As Integer
         If Not AvvioAmministratore.Elevato() Then Return AvvioAmministratore.EseguiComeAmministratore("/integrazione:installa" & If(copiaInProgrammi, " /copia", ""))
         Try
+            ' L'attività avvia il programma come amministratore senza chiedere niente: se puntasse a una cartella dell'utente, qualunque
+            ' programma avviato dall'utente potrebbe sostituire WinGabriel.exe (o una sua libreria) e diventare amministratore. Quindi
+            ' l'attività punta sempre a una copia in Programmi.
+            If Not copiaInProgrammi AndAlso Not WGDb.WGPercorsiApplicazione.InCartellaProtetta(EseguibileCorrente()) Then copiaInProgrammi = True
             If copiaInProgrammi Then
                 Dim destinazione As String = CartellaInstallazione()
                 Dim esito As Integer = CopiaProgramma(destinazione)

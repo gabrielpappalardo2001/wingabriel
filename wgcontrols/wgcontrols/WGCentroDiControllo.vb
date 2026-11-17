@@ -1576,7 +1576,12 @@ Public Class WGCentroDiControllo
                     ImpostaFaseDipendenze("Download di yt-dlp...", 10, 5)
                     ' l'impronta pubblicata insieme al file: se c'è si controlla, se non si riesce a leggerla si scarica comunque
                     Dim improntaYtDlp As String = ImprontaDaElenco(ScaricaTestoHttp(client, "https://github.com/yt-dlp/yt-dlp/releases/latest/download/SHA2-256SUMS"), "yt-dlp.exe")
-                    ScaricaFileHttpConProgresso(client, "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", pYtDlp, _statoDownloadDipendenzeHttp, Nothing, improntaYtDlp)
+                    ' Senza l'impronta non si scarica: è un programma che poi si esegue.
+                    If improntaYtDlp <> "" Then
+                        ScaricaFileHttpConProgresso(client, "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", pYtDlp, _statoDownloadDipendenzeHttp, Nothing, improntaYtDlp)
+                    Else
+                        _log.ScriviLog("ControllaEScaricaDipendenze: impronta di yt-dlp non disponibile, scaricamento rimandato")
+                    End If
                 Catch ex As Exception
                     _log.ScriviLog(ex.ToString())
                 End Try
@@ -1595,7 +1600,7 @@ Public Class WGCentroDiControllo
                     Dim improntaDeno As String = ""
                     Dim corrispondenzaDeno As System.Text.RegularExpressions.Match = System.Text.RegularExpressions.Regex.Match(ScaricaTestoHttp(client, "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip.sha256sum"), "Hash\s*:\s*([0-9A-Fa-f]{64})")
                     If corrispondenzaDeno.Success Then improntaDeno = corrispondenzaDeno.Groups(1).Value
-                    If ScaricaFileHttpConProgresso(client, "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip", zipDeno, _statoDownloadDipendenzeHttp, Nothing, improntaDeno) Then
+                    If improntaDeno <> "" AndAlso ScaricaFileHttpConProgresso(client, "https://github.com/denoland/deno/releases/latest/download/deno-x86_64-pc-windows-msvc.zip", zipDeno, _statoDownloadDipendenzeHttp, Nothing, improntaDeno) Then
                         _statoDownloadDipendenze = "Estrazione del motore JavaScript..."
                         EstraiArchivio(zipDeno, estraiDeno, p7z)
                         Dim trovatoDeno As String = Directory.GetFiles(estraiDeno, "deno.exe", System.IO.SearchOption.AllDirectories).FirstOrDefault()
@@ -2500,7 +2505,9 @@ Public Class WGCentroDiControllo
                 If System.IO.Directory.Exists(path) Then
                     Return True
                 Else
-                    Dim p As New ProcessStartInfo("cmd.exe", $"/c mkdir ""{path}""")
+                    Dim argomentoCartella As String = ArgomentoCmd(path)
+                    If argomentoCartella Is Nothing Then Return False
+                    Dim p As New ProcessStartInfo("cmd.exe", "/c mkdir " & argomentoCartella)
                     p.WindowStyle = ProcessWindowStyle.Hidden
                     p.CreateNoWindow = True
                     p.UseShellExecute = False
@@ -2622,7 +2629,8 @@ Public Class WGCentroDiControllo
 
                 Try
                     Dim isDir As Boolean = System.IO.Directory.Exists(oldId)
-                    Dim cmdArgs As String = $"/c move /Y ""{oldId}"" ""{newPath}"""
+                    If ArgomentoCmd(oldId) Is Nothing OrElse ArgomentoCmd(newPath) Is Nothing Then Return False
+                    Dim cmdArgs As String = "/c move /Y " & ArgomentoCmd(oldId) & " " & ArgomentoCmd(newPath)
                     Dim p As New ProcessStartInfo("cmd.exe", cmdArgs)
                     p.WindowStyle = ProcessWindowStyle.Hidden
                     p.CreateNoWindow = True
@@ -5968,7 +5976,7 @@ Public Class WGCentroDiControllo
                     lavoro.StatoDownload.Azzera(titolo)
                     lavoro.Info = $"Download di {titolo}, libro {lavoro.LibriCompletati + 1} di {lavoro.LibriTotali}"
 
-                    Dim tempFile As String = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.zip")
+                    Dim tempFile As String = Path.Combine(WGDb.WGPercorsiApplicazione.CartellaTemporanea(), $"{Guid.NewGuid()}.zip")
                     Dim cartellaFinale As String = Path.Combine(lavoro.CartellaDownload, NomeCartellaSicuroLibriVox(titolo))
 
                     Try
@@ -7639,7 +7647,8 @@ Public Class WGCentroDiControllo
 
     Private Sub CopiaDaRigaDiComando(sorgente As String, destinazione As String)
         Try
-            EseguiComandoShell(If(System.IO.Directory.Exists(sorgente), $"/C xcopy ""{sorgente}"" ""{destinazione}"" /E /I /Y", $"/C copy /Y ""{sorgente}"" ""{destinazione}"""))
+            If ArgomentoCmd(sorgente) Is Nothing OrElse ArgomentoCmd(destinazione) Is Nothing Then Return
+            EseguiComandoShell(If(System.IO.Directory.Exists(sorgente), "/C xcopy " & ArgomentoCmd(sorgente) & " " & ArgomentoCmd(destinazione) & " /E /I /Y", "/C copy /Y " & ArgomentoCmd(sorgente) & " " & ArgomentoCmd(destinazione)))
         Catch ex As Exception
             _log.ScriviLog(ex.ToString())
         End Try
@@ -7647,7 +7656,8 @@ Public Class WGCentroDiControllo
 
     Private Sub SpostaDaRigaDiComando(sorgente As String, destinazione As String)
         Try
-            EseguiComandoShell($"/C move /Y ""{sorgente}"" ""{destinazione}""")
+            If ArgomentoCmd(sorgente) Is Nothing OrElse ArgomentoCmd(destinazione) Is Nothing Then Return
+            EseguiComandoShell("/C move /Y " & ArgomentoCmd(sorgente) & " " & ArgomentoCmd(destinazione))
         Catch ex As Exception
             _log.ScriviLog(ex.ToString())
         End Try
@@ -7655,11 +7665,27 @@ Public Class WGCentroDiControllo
 
     Private Sub EliminaDaRigaDiComando(sorgente As String)
         Try
-            EseguiComandoShell(If(System.IO.Directory.Exists(sorgente), $"/C rmdir /S /Q ""{sorgente}""", $"/C del /F /Q ""{sorgente}"""))
+            If ArgomentoCmd(sorgente) Is Nothing Then Return
+            EseguiComandoShell(If(System.IO.Directory.Exists(sorgente), "/C rmdir /S /Q " & ArgomentoCmd(sorgente), "/C del /F /Q " & ArgomentoCmd(sorgente)))
         Catch ex As Exception
             _log.ScriviLog(ex.ToString())
         End Try
     End Sub
+
+    ''' <summary>
+    ''' Un percorso tra virgolette per la riga di cmd.exe, oppure Nothing se contiene caratteri che cmd interpreta anche tra virgolette
+    ''' (le virgolette stesse, % delle variabili, ! dell'espansione ritardata, caratteri di controllo): con quei nomi il comando non si
+    ''' esegue, perché un nome di file costruito apposta potrebbe cambiarlo.
+    ''' </summary>
+    Private Shared Function ArgomentoCmd(percorso As String) As String
+        If String.IsNullOrWhiteSpace(percorso) Then Return Nothing
+        For Each c As Char In percorso
+            If c = """"c OrElse c = "%"c OrElse c = "!"c OrElse Char.IsControl(c) Then Return Nothing
+        Next
+        Dim p As String = percorso
+        If p.EndsWith("\"c) Then p &= "."
+        Return """" & p & """"
+    End Function
 
     Private Sub EseguiComandoShell(argomenti As String)
         Try
@@ -7933,7 +7959,7 @@ Public Class WGCentroDiControllo
             If lavoro Is Nothing Then Return
             If Not AttendiRisorseLibere(lavoro) Then Return
 
-            scriptPath = Path.Combine(Path.GetTempPath(), $"bt_send_{Guid.NewGuid()}.ps1")
+
             Dim scriptContent As String =
                 "$files = @(" & String.Join(",", lavoro.Files.Select(Function(f) "'" & f.Replace("'", "''") & "'")) & ")" & vbCrLf &
                 "$device = '" & lavoro.NomeDispositivo.Replace("'", "''") & "'" & vbCrLf &
@@ -7944,9 +7970,9 @@ Public Class WGCentroDiControllo
                 "  Start-Sleep -Milliseconds 200" & vbCrLf &
                 "  }" & vbCrLf &
                 "}"
-            File.WriteAllText(scriptPath, scriptContent)
 
-            Dim psi As New ProcessStartInfo("powershell.exe", $"-NoProfile -ExecutionPolicy Bypass -File {Chr(34)}{scriptPath}{Chr(34)}")
+            Dim psi As New ProcessStartInfo("powershell.exe", "-NoProfile -NonInteractive -EncodedCommand " & Convert.ToBase64String(Encoding.Unicode.GetBytes(scriptContent)))
+            ' Lo script passa sulla riga di comando: un file .ps1 nel %TEMP% dell'utente si potrebbe cambiare prima che PowerShell lo legga.
             psi.UseShellExecute = False
             psi.RedirectStandardOutput = True
             psi.CreateNoWindow = True

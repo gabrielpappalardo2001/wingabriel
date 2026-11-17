@@ -50,7 +50,9 @@ Friend NotInheritable Class RilevatoreLettoreSchermo
 
     Private Shared Function FileEsiste(percorso As String) As Boolean
         Try
-            Return Not String.IsNullOrWhiteSpace(percorso) AndAlso File.Exists(percorso)
+            ' Da amministratore un lettore che sta nei dati dell'utente, o indicato nel suo registro, non si avvia: partirebbe come
+            ' amministratore e chiunque giri come utente potrebbe averlo sostituito.
+            Return Not String.IsNullOrWhiteSpace(percorso) AndAlso File.Exists(percorso) AndAlso WGDb.WGPercorsiApplicazione.AvvioSicuro(percorso)
         Catch ex As Exception
             log.ScriviLog("RilevatoreLettoreSchermo.FileEsiste: " & ex.Message)
             Return False

@@ -1,4 +1,4 @@
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Collections.Specialized
 Imports System.ComponentModel
 Imports System.Configuration
@@ -1904,7 +1904,14 @@ Public Class MenuFile
     Private Sub TestConnessioneModificaFtpThread()
         Try
             Dim improntaSftp As String = ""
-            Dim esito As Boolean = ftpEngine.TestaConnessioneFtp(_tempServerFtpInModifica, improntaSftp)
+            ' la prova legge anche una chiave cambiata, per poterla mostrare e far decidere se accettarla
+            _tempServerFtpInModifica.AccettaChiaveCambiata = True
+            Dim esito As Boolean
+            Try
+                esito = ftpEngine.TestaConnessioneFtp(_tempServerFtpInModifica, improntaSftp)
+            Finally
+                _tempServerFtpInModifica.AccettaChiaveCambiata = False
+            End Try
             If esito Then
                 Dim avviso As String = ""
                 _tempImprontaSftpCorrente = improntaSftp
@@ -2196,7 +2203,14 @@ Public Class MenuFile
             Dim autenticazioneFallita As Boolean = False
             Dim sessioneAperta As SessioneFtp = Nothing
             _tempAutenticazioneFallitaFtp = False
-            Dim completato As Boolean = EseguiConAttesaMassima(Sub() sessioneAperta = ftpEngine.ApriSessione(_tempNuovoServerFtp, messaggioErrore, autenticazioneFallita), 25000)
+            ' la prova legge anche una chiave cambiata, per poterla mostrare e far decidere se accettarla
+            _tempNuovoServerFtp.AccettaChiaveCambiata = True
+            Dim completato As Boolean
+            Try
+                completato = EseguiConAttesaMassima(Sub() sessioneAperta = ftpEngine.ApriSessione(_tempNuovoServerFtp, messaggioErrore, autenticazioneFallita), 25000)
+            Finally
+                _tempNuovoServerFtp.AccettaChiaveCambiata = False
+            End Try
 
             If Not completato Then
                 uiContext.Post(AddressOf OnTestConnessioneFtpCompletato, False)

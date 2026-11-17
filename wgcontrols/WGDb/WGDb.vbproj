@@ -73,6 +73,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvvioDaUtente.vb" />
     <Compile Include="AssemblyInfo.vb" />
     <Compile Include="WGBackup.vb" />
     <Compile Include="WGCifratura.vb" />

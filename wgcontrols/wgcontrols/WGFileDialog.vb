@@ -767,9 +767,10 @@ Public Class WGFileDialog
         Dim p As String = percorso
         If p.EndsWith("\"c) OrElse p.EndsWith("/"c) Then p &= "."
         For Each c As Char In p
-            If c = """"c OrElse c = "&"c OrElse c = "|"c OrElse c = ">"c OrElse c = "<"c OrElse Char.IsControl(c) Then Return Nothing
+            ' sulla riga di cmd /c "%%" non è una sequenza di escape: i percorsi con % (e ! dell'espansione ritardata) non passano
+            If c = """"c OrElse c = "&"c OrElse c = "|"c OrElse c = ">"c OrElse c = "<"c OrElse c = "%"c OrElse c = "!"c OrElse Char.IsControl(c) Then Return Nothing
         Next
-        Return """" & p.Replace("%", "%%") & """"
+        Return """" & p & """"
     End Function
 
     Private Function OttieniDirectoryAccessibiliCmdFailover(directory As String) As String()
