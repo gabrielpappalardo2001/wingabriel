@@ -289,9 +289,39 @@ Module iniziale
                 Return Reflection.Assembly.LoadFrom(percorso)
             End If
 
+            If nomeRichiesto.Equals("System.Net.Http", StringComparison.OrdinalIgnoreCase) Then
+                Return CaricaSystemNetHttpDisponibile()
+            End If
+
             Return Nothing
         Catch ex As Exception
             ScriviLogBootstrap("RisolviAssembly eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
+            Return Nothing
+        End Try
+    End Function
+
+    ' Il reindirizzamento puo' chiedere la 4.2.0.0 (assembly di riferimento di .NET 4.8),
+    ' mentre nel GAC/runtime c'e' la versione installata (spesso 4.0.0.0). Si carica
+    ' quella presente, senza richiedere una versione precisa.
+    Friend Function CaricaSystemNetHttpDisponibile() As Reflection.Assembly
+        Try
+            For Each giaCaricato As Reflection.Assembly In AppDomain.CurrentDomain.GetAssemblies()
+                Try
+                    If String.Equals(giaCaricato.GetName().Name, "System.Net.Http", StringComparison.OrdinalIgnoreCase) Then
+                        Return giaCaricato
+                    End If
+                Catch
+                End Try
+            Next
+
+            Dim percorsoRuntime As String = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "System.Net.Http.dll")
+            If File.Exists(percorsoRuntime) Then
+                Return Reflection.Assembly.LoadFrom(percorsoRuntime)
+            End If
+
+            Return Nothing
+        Catch ex As Exception
+            ScriviLogBootstrap("CaricaSystemNetHttpDisponibile eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
             Return Nothing
         End Try
     End Function
@@ -555,34 +585,6 @@ Module iniziale
             Catch exPunteggiatura As Exception
                 ScriviLogAvvio("main: impossibile sistemare la configurazione della punteggiatura: " & exPunteggiatura.Message & Environment.NewLine & exPunteggiatura.StackTrace)
             End Try
-
-            Dim fileScaricatiCorrettamente As Boolean = False
-
-            ' Una sola richiesta breve al sito: se ha un rilascio firmato, è già quello applicato e i file sono come li abbiamo lasciati
-            ' (dimensione e data, pochi millisecondi), non c'è niente da scaricare né da confrontare e si parte subito.
-            Dim giaAggiornato As Boolean = False
-            Try
-                giaAggiornato = ControlloRapidoAggiornamento()
-            Catch exRapido As Exception
-                ScriviLogAvvio("main: controllo rapido dell'aggiornamento non riuscito: " & exRapido.Message)
-                giaAggiornato = False
-            End Try
-
-            Try
-                If giaAggiornato Then
-                    fileScaricatiCorrettamente = True
-                Else
-                    fileScaricatiCorrettamente = ScaricaFileNecessari()
-                End If
-            Catch exComponenti As Exception
-                ScriviLogAvvio("Errore durante lo scaricamento dei file necessari: " & exComponenti.Message & Environment.NewLine & exComponenti.StackTrace)
-                fileScaricatiCorrettamente = False
-            End Try
-
-            If Not fileScaricatiCorrettamente Then
-                AnnunciaConSintesiBootstrap("Non riesco a scaricare tutti i file necessari. WinGabriel non può avviarsi. Controlla la connessione a internet e riprova.")
-                Return
-            End If
 
             AvviaProgramma()
         Catch ex As Exception
@@ -1189,90 +1191,6 @@ Module iniziale
                 If voceCom IsNot Nothing Then Marshal.ReleaseComObject(voceCom)
             Catch
             End Try
-        End Try
-    End Sub
-
-    <MethodImpl(MethodImplOptions.NoInlining)>
-    Friend Sub EseguiScaricamentoFileInBackground()
-        Try
-            risultatoScaricamentoFile = WGUtils.WGAggiornatoreFile.ScaricaFileMancantiEAggiornati()
-        Catch ex As Exception
-            ScriviLogAvvio("EseguiScaricamentoFileInBackground eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
-        End Try
-    End Sub
-
-    <MethodImpl(MethodImplOptions.NoInlining)>
-    Friend Function ScaricaFileNecessari() As Boolean
-        Try
-            Const ATTESA_MASSIMA_SCARICAMENTO_MS As Integer = 600000
-
-            risultatoScaricamentoFile = Nothing
-
-            Dim threadScaricamento As New Thread(AddressOf EseguiScaricamentoFileInBackground)
-            threadScaricamento.IsBackground = True
-            threadScaricamento.Start()
-
-            Dim annuncioEseguito As Boolean = False
-            Dim cronometroScaricamento As Stopwatch = Stopwatch.StartNew()
-
-            While threadScaricamento.IsAlive
-                Try
-                    If Not annuncioEseguito AndAlso WGUtils.WGAggiornatoreFile.PercentualeCorrente < 100 Then
-                        annuncioEseguito = True
-                        AnnunciaDownloadComponentiInCorso()
-                    End If
-                Catch exAnnuncio As Exception
-                    ScriviLogAvvio("ScaricaFileNecessari (annuncio): " & exAnnuncio.Message & Environment.NewLine & exAnnuncio.StackTrace)
-                    annuncioEseguito = True
-                End Try
-
-                If cronometroScaricamento.ElapsedMilliseconds > ATTESA_MASSIMA_SCARICAMENTO_MS Then
-                    Return False
-                End If
-
-                Try
-                    Thread.Sleep(200)
-                Catch exAttesa As Exception
-                    ScriviLogAvvio("ScaricaFileNecessari (attesa): " & exAttesa.Message)
-                End Try
-            End While
-
-            Try
-                threadScaricamento.Join(5000)
-            Catch exJoin As Exception
-                ScriviLogAvvio("ScaricaFileNecessari (join): " & exJoin.Message & Environment.NewLine & exJoin.StackTrace)
-            End Try
-
-            If risultatoScaricamentoFile Is Nothing Then
-                Return False
-            End If
-
-            If risultatoScaricamentoFile.Errori IsNot Nothing Then
-                For Each errore As String In risultatoScaricamentoFile.Errori
-                Next
-            End If
-
-            Return risultatoScaricamentoFile.Successo
-        Catch ex As Exception
-            ScriviLogAvvio("ScaricaFileNecessari eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
-            Return False
-        End Try
-    End Function
-
-    Friend Sub AnnunciaDownloadComponentiInCorso()
-        Try
-            AnnunciaConSintesiBootstrap("Ci sono dei nuovi file da scaricare, il programma partirà a breve.")
-
-            Try
-                For i As Integer = 1 To 3
-                    Console.Beep(1000, 200)
-                    Thread.Sleep(150)
-                Next
-            Catch exBeep As Exception
-                ScriviLogAvvio("AnnunciaDownloadComponentiInCorso (beep): " & exBeep.Message & Environment.NewLine & exBeep.StackTrace)
-            End Try
-        Catch ex As Exception
-            ScriviLogAvvio("AnnunciaDownloadComponentiInCorso eccezione: " & ex.Message & Environment.NewLine & ex.StackTrace)
         End Try
     End Sub
 

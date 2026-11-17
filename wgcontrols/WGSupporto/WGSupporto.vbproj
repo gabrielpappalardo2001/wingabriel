@@ -209,6 +209,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

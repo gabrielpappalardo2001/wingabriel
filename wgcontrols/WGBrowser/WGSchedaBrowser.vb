@@ -1,4 +1,4 @@
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.IO
 Imports System.Linq
@@ -1601,11 +1601,11 @@ Partial Public Class WGSchedaBrowser
     ''' Un messaggio dello script di WinGabriel nella pagina. origineVera è il sito del documento che l'ha mandato, detto da WebView2;
     ''' se manca (messaggi dal legame DevTools) vale il sito della pagina principale. Il campo "origine" scritto nel messaggio non si usa mai.
     ''' </summary>
-    Friend Sub MessaggioDallaPagina(testo As String, Optional origineVera As String = "")
+    Friend Sub MessaggioDallaPagina(testo As String, Optional origineVera As String = "", Optional origineCerta As Boolean = True)
         Try
             If String.IsNullOrEmpty(testo) OrElse _ponte Is Nothing OrElse _chiusa Then Return
             Dim ponte As WGPonteNativo = _ponte
-            Dim origine As String = If(String.IsNullOrEmpty(origineVera), WGArchivioBrowser.OrigineDi(_indirizzo), origineVera)
+            Dim origine As String = If(String.IsNullOrEmpty(origineVera), If(origineCerta, WGArchivioBrowser.OrigineDi(_indirizzo), ""), origineVera)
             DopoEvento(Sub() ponte.RiceviMessaggio(testo, origine))
         Catch ex As Exception
             log.ScriviLog("WGSchedaBrowser.MessaggioDallaPagina: " & ex.Message)
@@ -1618,7 +1618,10 @@ Partial Public Class WGSchedaBrowser
             If metodo = "Runtime.bindingCalled" Then
                 If parametri.Value(Of String)("name") = WGDevTools.NomeLegame Then
                     Dim carico As String = parametri.Value(Of String)("payload")
-                    If Not String.IsNullOrEmpty(carico) Then MessaggioDallaPagina(carico)
+                    ' Dal legame si sa solo la sessione: quella principale è la pagina (e le sue cornici dello stesso sito), le altre sono
+                    ' cornici di altri siti, di cui qui non si conosce l'origine. Per quelle l'origine resta incerta e i messaggi che
+                    ' riguardano password, permessi e stampa non valgono.
+                    If Not String.IsNullOrEmpty(carico) Then MessaggioDallaPagina(carico, "", String.IsNullOrEmpty(sessione))
                 End If
                 Return
             End If
@@ -2630,6 +2633,9 @@ Public Class WGPonteNativo
             Dim messaggio As JObject = JObject.Parse(testoJson)
             ' l'origine scritta dalla pagina non conta: vale quella vera (vuota se non è un sito http o https)
             messaggio("origine") = If(origineVera, "")
+            ' senza un'origine sicura niente che riguardi password, permessi, stampa o cookie
+            Dim tipoMessaggio As String = If(messaggio.Value(Of String)("tipo"), "")
+            If String.IsNullOrEmpty(origineVera) AndAlso (tipoMessaggio = "credenziali" OrElse tipoMessaggio = "campoLogin" OrElse tipoMessaggio = "permessoNotifiche" OrElse tipoMessaggio = "stampa" OrElse tipoMessaggio = "cookie") Then Return
             Select Case messaggio.Value(Of String)("tipo")
                 Case "focus"
                     Dim dati As JObject = TryCast(messaggio("riga"), JObject)

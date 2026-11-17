@@ -39,9 +39,12 @@ ESCLUSI_ESTENSIONI = ('.pdb', '.php', '.aspx', '.asax', '.bak', '.tmp', '.wgtmp'
 ESCLUSI_PARTI = ('.bak-',)
 
 # Nel manifest (l'elenco che l'aggiornatore confronta con i file installati) valgono le stesse regole del vecchio elenco:
-# niente x86 e x64 (si scaricano con il pacchetto zip, tranne libmpv), niente file di configurazione o di sviluppo.
+# niente x86 e x64 (si scaricano con il pacchetto zip, tranne libmpv), niente file di configurazione del sito o di sviluppo.
 MANIFEST_CARTELLE_ESCLUSE = ('app_data', 'bin', 'obj', 'x86', 'x64', '.git', '.vs', 'properties')
 MANIFEST_ESTENSIONI_ESCLUSE = ('.config', '.cs', '.vb', '.pdb', '.aspx', '.asax', '.resx', '.vbproj', '.csproj', '.sln', '.user', '.php')
+# I .config dei programmi invece sì: WinGabriel.exe.config ha i reindirizzamenti delle librerie, e senza la versione nuova chi aggiorna
+# una libreria (System.Net.Http, System.Memory...) trova il programma che non parte o funzioni che non vanno.
+MANIFEST_CONFIG_PROGRAMMI = ('.exe.config', '.dll.config')
 
 
 def errore(testo, codice=1):
@@ -184,7 +187,7 @@ def costruisci_manifest(prodotto, versione, radice_f, manifest_precedente):
         if any(p.lower() in MANIFEST_CARTELLE_ESCLUSE or p.startswith('.') for p in parti[:-1]):
             continue
         nome = parti[-1]
-        if nome.lower() in ESCLUSI_NOMI or nome.lower().endswith(MANIFEST_ESTENSIONI_ESCLUSE):
+        if nome.lower() in ESCLUSI_NOMI or (nome.lower().endswith(MANIFEST_ESTENSIONI_ESCLUSE) and not nome.lower().endswith(MANIFEST_CONFIG_PROGRAMMI)):
             continue
         h = impronta(rel, percorso, st)
         voci.append({'p': rel, 's': st.st_size, 'h': h, 'm': formato_data(st.st_mtime), 'mt': int(st.st_mtime)})

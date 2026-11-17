@@ -1,4 +1,4 @@
-Imports System.Collections.Generic
+﻿Imports System.Collections.Generic
 Imports System.Drawing
 Imports System.IO
 Imports System.Linq
@@ -1984,9 +1984,34 @@ Partial Public Class WGSchedaBrowser
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Il nome del sito (senza www.) del documento dove sta il cursore, letto dal programma: location.href è una proprietà che la pagina
+    ''' non può ridefinire, mentre un controllo fatto con le funzioni JavaScript della pagina (toLowerCase, replace) una cornice di un
+    ''' altro sito lo potrebbe ingannare. Vuoto se non si riesce a leggere.
+    ''' </summary>
+    Private Async Function HostFrameAttivoAsync() As Task(Of String)
+        Try
+            Dim valore As JToken = Await EseguiNelFrameAttivoAsync("location.href")
+            If valore Is Nothing Then Return ""
+            Dim host As String = WGArchivioBrowser.HostDi(valore.ToString()).ToLowerInvariant()
+            If host.StartsWith("www.") Then host = host.Substring(4)
+            Return host
+        Catch ex As Exception
+            log.ScriviLog("WGSchedaBrowser.HostFrameAttivoAsync: " & ex.Message)
+            Return ""
+        End Try
+    End Function
+
     Private Async Sub CompilaCredenziali(credenziale As CredenzialeBrowser)
         Try
             If credenziale Is Nothing Then Return
+            Dim hostAttivo As String = Await HostFrameAttivoAsync()
+            Dim hostScheda As String = WGArchivioBrowser.HostDi(_indirizzo).ToLowerInvariant()
+            If hostScheda.StartsWith("www.") Then hostScheda = hostScheda.Substring(4)
+            If hostAttivo = "" OrElse hostAttivo <> hostScheda Then
+                lettura.LeggiTesto("Il campo è in una parte della pagina che appartiene a un altro sito" & If(hostAttivo <> "", ", " & hostAttivo, "") & ": la password non si inserisce")
+                Return
+            End If
             ' Si compila solo se il documento attivo è dello stesso sito della pagina: mai dentro una cornice di un altro sito (per esempio una pubblicità).
             Dim hostPagina As String = WGArchivioBrowser.HostDi(_indirizzo).ToLowerInvariant()
             If hostPagina.StartsWith("www.") Then hostPagina = hostPagina.Substring(4)
@@ -2017,6 +2042,11 @@ Partial Public Class WGSchedaBrowser
             For Each coppia As KeyValuePair(Of String, String) In dati
                 If Not String.IsNullOrWhiteSpace(coppia.Value) Then oggetto(coppia.Key) = coppia.Value
             Next
+            ' Se il modulo è dentro una cornice di un altro sito lo si dice prima, così si sa a chi vanno i dati.
+            Dim hostAttivo As String = Await HostFrameAttivoAsync()
+            Dim hostScheda As String = WGArchivioBrowser.HostDi(_indirizzo).ToLowerInvariant()
+            If hostScheda.StartsWith("www.") Then hostScheda = hostScheda.Substring(4)
+            If hostAttivo <> "" AndAlso hostAttivo <> hostScheda Then lettura.LeggiTesto("Il modulo appartiene a " & hostAttivo & ", non a " & hostScheda)
             Dim script As String = "window.__wgAgente ? window.__wgAgente.compilaModulo(" & oggetto.ToString(Formatting.None) & ") : 0"
             Dim compilati As Integer = NumeroDa(Await EseguiNelFrameAttivoAsync(script))
             If compilati > 0 Then

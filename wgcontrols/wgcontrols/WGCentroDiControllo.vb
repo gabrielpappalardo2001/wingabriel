@@ -1531,6 +1531,20 @@ Public Class WGCentroDiControllo
 
     Private Sub ControllaEScaricaDipendenze()
         Try
+            EseguiControlloEDownloadDipendenze()
+        Catch ex As Exception
+            _log.ScriviLog(ex.ToString())
+        Finally
+            _inDownloadDipendenze = False
+            RaiseEvent DownloadDipendenzeCompletato()
+        End Try
+    End Sub
+
+    ' HttpClient vive qui, in un metodo a parte: se System.Net.Http non si carica, l'eccezione
+    ' resta in questo metodo e il thread di download non termina il processo.
+    <System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.NoInlining)>
+    Private Sub EseguiControlloEDownloadDipendenze()
+        Try
             _inDownloadDipendenze = True
             _baseProgressoDipendenze = 0
             _pesoProgressoDipendenze = 0
@@ -1685,9 +1699,6 @@ Public Class WGCentroDiControllo
 
         Catch ex As Exception
             _log.ScriviLog(ex.ToString())
-        Finally
-            _inDownloadDipendenze = False
-            RaiseEvent DownloadDipendenzeCompletato()
         End Try
     End Sub
 
