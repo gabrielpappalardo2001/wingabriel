@@ -1,6 +1,6 @@
 # WinGabriel
 
-Programma per Windows pensato per chi usa un lettore di schermo. Sito: [wingabriel.it](https://www.wingabriel.it).
+Software multifunzione per Windows: posta, agenda, note, browser, radio, giochi, chat e molto altro in un unico programma. Sito: [wingabriel.it](https://www.wingabriel.it).
 
 ## Cartelle
 

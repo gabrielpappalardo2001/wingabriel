@@ -1,6 +1,6 @@
 # WinGabriel
 
-Applicazione Windows pensata per utenti non vedenti, basata su **screen reader** (JAWS/NVDA) e sintesi vocale, con un menu principale unificato che dà accesso ad agenda, calendario, audiolibri (LibriVox), note, quotidiani, Wikipedia e una sezione riservata. Usa la libreria `wgcontrols.dll` (vedi repo `wgcontrols`) per tutta la parte UI accessibile, TTS e gestione media.
+Software multifunzione per Windows, con un menu principale unificato che dà accesso ad agenda, calendario, audiolibri (LibriVox), note, quotidiani, Wikipedia e una sezione riservata. Usa la libreria `wgcontrols.dll` (vedi repo `wgcontrols`) per tutta la parte UI accessibile, TTS e gestione media.
 
 > Documentazione interna per chi mantiene il codice.
 

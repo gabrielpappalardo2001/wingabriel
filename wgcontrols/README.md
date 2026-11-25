@@ -1,6 +1,6 @@
 # wgcontrols
 
-Libreria di componenti e servizi che alimenta **WinGabriel**, un ambiente Windows pensato per utenti non vedenti che si appoggia agli screen reader **JAWS** e **NVDA**. La solution `wgcontrols.sln` raggruppa la libreria UI principale, i moduli dati, i servizi multimediali e i binari nativi C++ che fanno da ponte verso lo screen reader, la sintesi SAPI e i servizi di sistema.
+Libreria di componenti e servizi che alimenta **WinGabriel**, un software multifunzione per Windows. La solution `wgcontrols.sln` raggruppa la libreria UI principale, i moduli dati, i servizi multimediali e i binari nativi C++ che fanno da ponte verso lo screen reader, la sintesi SAPI e i servizi di sistema.
 
 > Documentazione interna per chi mantiene il codice. Tono operativo: scopo del modulo, dipendenze, punti d'attenzione.
 
